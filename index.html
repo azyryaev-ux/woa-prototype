@@ -498,6 +498,88 @@
             background: #fff;
         }
 
+        /* Accordion Styles */
+        .accordion-section {
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .accordion-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            cursor: pointer;
+            background: #fff;
+            transition: background 0.2s ease;
+        }
+
+        .accordion-header:hover {
+            background: #fafafa;
+        }
+
+        .accordion-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #000;
+            font-family: 'Akkurat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .accordion-chevron {
+            font-size: 12px;
+            color: #666;
+            transition: transform 0.2s ease;
+        }
+
+        .accordion-section.collapsed .accordion-chevron {
+            transform: rotate(-90deg);
+        }
+
+        .accordion-summary {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.5;
+            margin-top: 4px;
+            font-family: 'Akkurat Mono', monospace;
+        }
+
+        .accordion-content {
+            max-height: 2000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-section.collapsed .accordion-content {
+            max-height: 0;
+        }
+
+        .census-data-buttons {
+            display: flex;
+            gap: 8px;
+            padding: 0 20px 16px 20px;
+        }
+
+        .census-data-btn {
+            flex: 1;
+            padding: 8px 12px;
+            background: #f5f5f5;
+            border: 1px solid #d1d1d1;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            font-family: 'Akkurat Mono', monospace;
+            text-align: center;
+        }
+
+        .census-data-btn:hover {
+            background: #ebebeb;
+            border-color: #b8b8b8;
+        }
+
         .filter-group {
             margin-bottom: 14px;
         }
@@ -5709,8 +5791,17 @@
         </div>
 
         <div class="sidebar-content">
-            <!-- Time & Data Category -->
-            <div class="filters-section">
+            <!-- Area Data and Time Controls Accordion -->
+            <div class="accordion-section collapsed" id="area-data-accordion">
+                <div class="accordion-header">
+                    <div>
+                        <div class="accordion-title">Area data and time controls</div>
+                        <div class="accordion-summary">Showing 2022 property data and poverty rate for ZIP codes</div>
+                    </div>
+                    <span class="accordion-chevron">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="filters-section">
                         <div class="filter-group inline" style="gap: 8px;">
                             <label class="filter-label inline">Show data for</label>
                             <select style="width: 60px; padding-left: 8px; padding-right: 4px;">
@@ -5757,12 +5848,27 @@
                                 </select>
                             </div>
                         </div>
-
-                        <div class="filter-divider" style="margin-bottom: 8px;"></div>
                     </div>
+                </div>
+            </div>
 
-            <!-- Property Filters Category -->
-            <div class="filters-section" style="padding-top: 0;">
+            <!-- View area Census data buttons (always visible) -->
+            <div class="census-data-buttons">
+                <button class="census-data-btn">View area Census data</button>
+                <button class="census-data-btn">Compare areas</button>
+            </div>
+
+            <!-- Property Filters Accordion -->
+            <div class="accordion-section collapsed" id="property-filters-accordion">
+                <div class="accordion-header">
+                    <div>
+                        <div class="accordion-title">Property filters</div>
+                        <div class="accordion-summary">Showing Commercial (1-4 unit) properties with 1 to 50 units, owned by Private Organizations and landlords who are Private Organizations, with 23 advanced filters applied</div>
+                    </div>
+                    <span class="accordion-chevron">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="filters-section" style="padding-top: 0;">
                         <div class="filter-row" style="margin-bottom: 14px;">
                             <div class="filter-group">
                                 <label class="filter-label">Property types</label>
@@ -5807,6 +5913,8 @@
                             <div class="toggle-switch"></div>
                         </div>
                     </div>
+                </div>
+            </div>
 
             <div class="advanced-filters-info">
                 <span class="advanced-filters-text">
@@ -8027,6 +8135,14 @@
 
         // Tab switching - initial setup
         attachTabListeners();
+
+        // Accordion functionality
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', function() {
+                const section = this.parentElement;
+                section.classList.toggle('collapsed');
+            });
+        });
 
         // Toggle buttons
         document.querySelectorAll('.toggle-btn').forEach(btn => {
