@@ -6,64 +6,57 @@
     <title>Who Owns What - Property Ownership</title>
     <style>
         @font-face {
-            font-family: 'Akkurat';
-            src: url('AkkuratLight.ttf') format('truetype');
-            font-weight: 300;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'Akkurat';
-            src: url('Akkurat-Regular.ttf') format('truetype');
+            font-family: 'Aspekta';
+            src: url('aspekta-main/fonts/webfonts/Aspekta-400.woff2') format('woff2');
             font-weight: 400;
             font-style: normal;
         }
 
         @font-face {
-            font-family: 'Akkurat';
-            src: url('Akkurat-Regular.ttf') format('truetype');
+            font-family: 'Aspekta';
+            src: url('aspekta-main/fonts/webfonts/Aspekta-500.woff2') format('woff2');
             font-weight: 500;
             font-style: normal;
         }
 
         @font-face {
-            font-family: 'Akkurat';
-            src: url('Akkurat-Bold.ttf') format('truetype');
+            font-family: 'Aspekta';
+            src: url('aspekta-main/fonts/webfonts/Aspekta-600.woff2') format('woff2');
             font-weight: 600;
             font-style: normal;
         }
 
         @font-face {
-            font-family: 'Akkurat';
-            src: url('Akkurat-Bold.ttf') format('truetype');
+            font-family: 'Aspekta';
+            src: url('aspekta-main/fonts/webfonts/Aspekta-700.woff2') format('woff2');
             font-weight: 700;
             font-style: normal;
         }
 
         @font-face {
-            font-family: 'Akkurat Mono';
-            src: url('Akkurat-Mono.ttf') format('truetype');
+            font-family: 'Geist Mono';
+            src: url('Geist.Mono/GeistMono-Regular.woff2') format('woff2');
             font-weight: 400;
             font-style: normal;
         }
 
         @font-face {
-            font-family: 'Akkurat Mono';
-            src: url('Akkurat-Mono.ttf') format('truetype');
+            font-family: 'Geist Mono';
+            src: url('Geist.Mono/GeistMono-Medium.woff2') format('woff2');
             font-weight: 500;
             font-style: normal;
         }
 
         @font-face {
-            font-family: 'Akkurat Mono';
-            src: url('Akkurat-Mono.ttf') format('truetype');
+            font-family: 'Geist Mono';
+            src: url('Geist.Mono/GeistMono-SemiBold.woff2') format('woff2');
             font-weight: 600;
             font-style: normal;
         }
 
         @font-face {
-            font-family: 'Akkurat Mono';
-            src: url('Akkurat-Mono.ttf') format('truetype');
+            font-family: 'Geist Mono';
+            src: url('Geist.Mono/GeistMono-Bold.woff2') format('woff2');
             font-weight: 700;
             font-style: normal;
         }
@@ -75,7 +68,7 @@
         }
 
         body {
-            font-family: 'Akkurat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'Aspekta', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: #fff;
             color: #000;
             display: flex;
@@ -134,7 +127,7 @@
             font-size: 11px;
             font-weight: 600;
             letter-spacing: 0.5px;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
             flex-shrink: 0;
             color: #ededed;
             line-height: 1.3;
@@ -147,7 +140,7 @@
             gap: 8px;
             padding: 5px 10px;
             border: 1px solid #333;
-            border-radius: 6px;
+            border-radius: 8px;
             background: #1a1a1a;
             transition: all 0.2s ease;
             box-shadow: 0 0 0 0px rgba(255, 255, 255, 0);
@@ -198,7 +191,7 @@
             margin-top: 8px;
             background: #1a1a1a;
             border: 1px solid #333;
-            border-radius: 6px;
+            border-radius: 8px;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
             z-index: 100;
             display: none;
@@ -238,7 +231,7 @@
             color: #ededed;
             cursor: pointer;
             transition: background 0.15s ease;
-            border-radius: 6px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -251,7 +244,7 @@
         .search-item-icon {
             width: 20px;
             height: 20px;
-            border-radius: 6px;
+            border-radius: 4px;
             background: #2a2a2a;
             flex-shrink: 0;
             display: flex;
@@ -298,7 +291,7 @@
             color: #000;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
             margin-bottom: 12px;
         }
 
@@ -312,7 +305,7 @@
             padding: 10px 14px;
             background: #fafafa;
             border: 1px solid #eaeaea;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 12px;
             font-weight: 500;
             color: #000;
@@ -349,7 +342,7 @@
         .quick-stat-card {
             background: #fff;
             border: 1px solid #eaeaea;
-            border-radius: 6px;
+            border-radius: 8px;
             padding: 12px;
             display: flex;
             flex-direction: column;
@@ -360,7 +353,7 @@
             font-size: 20px;
             font-weight: 700;
             color: #000;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
         }
 
         .quick-stat-label {
@@ -369,7 +362,7 @@
             color: #666;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
         }
 
         /* Collapsible Filter Categories */
@@ -404,7 +397,7 @@
             color: #000;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
         }
 
         .filter-count-badge {
@@ -416,10 +409,10 @@
             padding: 0 6px;
             background: #000;
             color: #fff;
-            border-radius: 6px;
+            border-radius: 9px;
             font-size: 10px;
             font-weight: 700;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
         }
 
         .filter-category-chevron {
@@ -458,7 +451,7 @@
             padding: 10px 12px;
             background: #fff;
             border: 1px solid #d1d1d1;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 12px;
             font-weight: 600;
             color: #000;
@@ -498,88 +491,6 @@
             background: #fff;
         }
 
-        /* Accordion Styles */
-        .accordion-section {
-            border-bottom: 1px solid #eaeaea;
-        }
-
-        .accordion-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 20px;
-            cursor: pointer;
-            background: #fff;
-            transition: background 0.2s ease;
-        }
-
-        .accordion-header:hover {
-            background: #fafafa;
-        }
-
-        .accordion-title {
-            font-size: 13px;
-            font-weight: 600;
-            color: #000;
-            font-family: 'Akkurat', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .accordion-chevron {
-            font-size: 12px;
-            color: #666;
-            transition: transform 0.2s ease;
-        }
-
-        .accordion-section.collapsed .accordion-chevron {
-            transform: rotate(-90deg);
-        }
-
-        .accordion-summary {
-            font-size: 13px;
-            color: #666;
-            line-height: 1.5;
-            margin-top: 4px;
-            font-family: 'Akkurat Mono', monospace;
-        }
-
-        .accordion-content {
-            max-height: 2000px;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .accordion-section.collapsed .accordion-content {
-            max-height: 0;
-        }
-
-        .census-data-buttons {
-            display: flex;
-            gap: 8px;
-            padding: 0 20px 16px 20px;
-        }
-
-        .census-data-btn {
-            flex: 1;
-            padding: 8px 12px;
-            background: #f5f5f5;
-            border: 1px solid #d1d1d1;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 500;
-            color: #666;
-            cursor: pointer;
-            transition: all 0.15s ease;
-            font-family: 'Akkurat Mono', monospace;
-            text-align: center;
-        }
-
-        .census-data-btn:hover {
-            background: #ebebeb;
-            border-color: #b8b8b8;
-        }
-
         .filter-group {
             margin-bottom: 14px;
         }
@@ -591,12 +502,12 @@
         }
 
         .filter-label {
-            font-size: 13px;
+            font-size: 11px;
             color: #666;
             margin-bottom: 4px;
             display: block;
             font-weight: 500;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
         }
 
         .filter-label.inline {
@@ -634,7 +545,7 @@
         select, button.filter-button {
             padding: 5px 12px;
             border: 1px solid #eaeaea;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 13px;
             font-family: inherit;
             background: #fff;
@@ -718,7 +629,7 @@
             font-size: 12px;
             color: #666;
             font-weight: 500;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
             white-space: nowrap;
         }
 
@@ -726,7 +637,7 @@
             display: flex;
             gap: 2px;
             background: #f5f5f5;
-            border-radius: 40px;
+            border-radius: 8px;
             padding: 4px;
             border: none;
         }
@@ -737,7 +648,7 @@
             background: transparent;
             font-size: 13px;
             cursor: pointer;
-            border-radius: 40px;
+            border-radius: 6px;
             font-family: inherit;
             color: #666;
             font-weight: 500;
@@ -793,7 +704,7 @@
             width: 60px;
             padding: 5px 12px;
             border: 1px solid #eaeaea;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 13px;
             font-family: inherit;
             transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
@@ -838,7 +749,7 @@
             width: 40px;
             height: 22px;
             background: #eaeaea;
-            border-radius: 40px;
+            border-radius: 11px;
             cursor: pointer;
             transition: background-color 0.2s ease;
             border: 1px solid #d4d4d4;
@@ -881,7 +792,7 @@
             padding: 14px 16px;
             background: transparent;
             border: 1px solid #eaeaea;
-            border-radius: 6px;
+            border-radius: 8px;
             display: flex;
             flex-direction: column;
             align-items: stretch;
@@ -902,7 +813,7 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
         }
 
         .advanced-filters-icon {
@@ -925,7 +836,7 @@
             transition: all 0.15s ease;
             white-space: nowrap;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
             width: 100%;
             text-align: center;
         }
@@ -1038,7 +949,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             border-bottom: 1px solid #eaeaea;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
             vertical-align: top;
             line-height: 1.3;
             white-space: normal;
@@ -1092,7 +1003,7 @@
         .sparkline-bar {
             flex: 1;
             background: linear-gradient(180deg, rgba(59, 130, 246, 0.6) 0%, rgba(59, 130, 246, 0.3) 100%);
-            border-radius: 6px 2px 0 0;
+            border-radius: 2px 2px 0 0;
             min-height: 3px;
             transition: all 0.3s ease;
         }
@@ -1138,7 +1049,7 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 6px;
+            border-radius: 22px;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
             overflow: hidden;
             transition: all 0.3s ease;
@@ -1153,7 +1064,7 @@
             font-size: 10px;
             font-weight: 500;
             color: rgba(0, 0, 0, 0.7);
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             padding: 12px 12px 12px 16px;
@@ -1168,7 +1079,7 @@
             width: 44px;
             height: 44px;
             cursor: pointer;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
             font-weight: 500;
             display: flex;
             align-items: center;
@@ -1198,7 +1109,7 @@
             width: 100%;
             height: 1.5px;
             background: #000;
-            border-radius: 6px;
+            border-radius: 2px;
             transition: all 0.3s ease;
             transform-origin: center;
         }
@@ -1212,16 +1123,16 @@
         }
 
         .menu-dropdown {
-            position: fixed;
+            position: absolute;
             top: 68px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(40px) saturate(180%);
-            -webkit-backdrop-filter: blur(40px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            right: 16px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: none;
             border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08);
-            z-index: 10000;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            z-index: 100;
             min-width: 800px;
             opacity: 0;
             visibility: hidden;
@@ -1256,21 +1167,21 @@
         .menu-dropdown-heading h2 {
             font-size: 48px;
             font-weight: 700;
-            color: #EF4400;
+            color: rgba(255, 255, 255, 0.15);
             line-height: 1.2;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
             letter-spacing: -0.02em;
             text-align: right;
         }
 
         .menu-dropdown-item {
             padding: 20px 0;
-            color: rgba(0, 0, 0, 0.7);
+            color: rgba(255, 255, 255, 0.8);
             font-size: 18px;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.15s ease;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             text-decoration: none;
             display: block;
             width: 100%;
@@ -1281,7 +1192,7 @@
         }
 
         .menu-dropdown-item:hover {
-            color: #000;
+            color: #fff;
         }
 
         /* Floating Legend */
@@ -1292,7 +1203,7 @@
             width: 300px;
             background: white;
             border: 1px solid #eaeaea;
-            border-radius: 6px;
+            border-radius: 8px;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
             z-index: 10;
             overflow: visible;
@@ -1304,7 +1215,7 @@
             padding: 16px 20px;
             border-top: 1px solid #eaeaea;
             background: white;
-            border-radius: 0 0 6px 6px;
+            border-radius: 0 0 8px 8px;
         }
 
         .sidebar-section {
@@ -1324,11 +1235,11 @@
         }
 
         .section-title {
-            font-size: 13px;
+            font-size: 11px;
             font-weight: 400;
             color: #666;
             margin-bottom: 12px;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
         }
 
         .legend-item {
@@ -1343,7 +1254,7 @@
         .gradient-bar {
             height: 16px;
             background: linear-gradient(90deg, #e8e4f3 0%, #7c3aed 100%);
-            border-radius: 6px;
+            border-radius: 3px;
             margin-top: 8px;
             position: relative;
         }
@@ -1390,18 +1301,18 @@
             display: inline-block;
             width: 12px;
             height: 12px;
-            border-radius: 6px;
+            border-radius: 2px;
             margin-right: 8px;
             vertical-align: middle;
         }
 
-        .color-commercial { background: #9E8722; }
-        .color-single { background: #2879AE; }
-        .color-multi { background: #15226B; }
-        .color-2-4 { background: #787E9E; }
-        .color-multiuse { background: #3F1E5C; }
-        .color-vacant { background: #6E4B13; }
-        .color-other { background: #501A0D; }
+        .color-commercial { background: #b8813d; }
+        .color-single { background: #999; }
+        .color-multi { background: #333; }
+        .color-2-4 { background: #666; }
+        .color-multiuse { background: #888; }
+        .color-vacant { background: #ccc; }
+        .color-other { background: #aaa; }
 
         .legend-toggle {
             display: flex;
@@ -1420,7 +1331,7 @@
             font-size: 13px;
             font-weight: 600;
             color: #000;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -1444,7 +1355,7 @@
             transition: max-height 0.3s ease, padding 0.3s ease;
             padding: 20px;
             background: white;
-            border-radius: 6px 8px 0 0;
+            border-radius: 8px 8px 0 0;
         }
 
         .legend-content.collapsed {
@@ -1465,7 +1376,7 @@
 
         ::-webkit-scrollbar-thumb {
             background: #eaeaea;
-            border-radius: 6px;
+            border-radius: 5px;
             border: 2px solid transparent;
             background-clip: padding-box;
         }
@@ -1496,7 +1407,7 @@
         /* Advanced Filters Modal */
         .advanced-modal {
             background: #fff;
-            border-radius: 6px;
+            border-radius: 12px;
             width: 95%;
             max-width: 1400px;
             max-height: 85vh;
@@ -1512,7 +1423,7 @@
             justify-content: space-between;
             align-items: flex-start;
             background: #000;
-            border-radius: 6px 12px 0 0;
+            border-radius: 12px 12px 0 0;
         }
 
         .modal-header-content h2 {
@@ -1564,7 +1475,7 @@
             letter-spacing: 0.8px;
             color: #666;
             margin-bottom: 24px;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
         }
 
         .filter-grid {
@@ -1606,7 +1517,7 @@
             width: 18px;
             height: 18px;
             border: 1px solid #eaeaea;
-            border-radius: 6px;
+            border-radius: 5px;
             cursor: pointer;
             position: relative;
             background: #fff;
@@ -1656,7 +1567,7 @@
             width: 70px;
             padding: 5px 12px;
             border: 1px solid #eaeaea;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 13px;
             font-family: inherit;
             transition: border-color 0.15s ease, box-shadow 0.15s ease;
@@ -1757,13 +1668,13 @@
 
         .modal-button {
             padding: 8px 20px;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 14px;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.15s ease;
             border: 1px solid #eaeaea;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
             height: 36px;
         }
 
@@ -1809,7 +1720,7 @@
             gap: 4px;
             padding: 12px 12px;
             border: 1px solid #eaeaea;
-            border-radius: 6px;
+            border-radius: 8px;
             background: #fff;
             transition: all 0.15s ease;
         }
@@ -1841,7 +1752,7 @@
             font-weight: 500;
             color: #000;
             flex: 1;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
         }
 
         .property-actions {
@@ -1862,7 +1773,7 @@
             cursor: pointer;
             transition: all 0.15s ease;
             white-space: nowrap;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
             font-weight: 400;
             flex-shrink: 1;
             min-width: 0;
@@ -1875,7 +1786,7 @@
         }
 
         .property-action-btn:first-child {
-            border-radius: 6px 0 0 6px;
+            border-radius: 4px 0 0 4px;
             flex: 0.6;
         }
 
@@ -1884,7 +1795,7 @@
         }
 
         .property-action-btn:last-child {
-            border-radius: 0 6px 6px 0;
+            border-radius: 0 4px 4px 0;
             flex: 1.2;
         }
 
@@ -1918,7 +1829,7 @@
             padding: 10px 16px;
             background: linear-gradient(180deg, #1a1a1a 0%, #000 100%);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 13px;
             font-weight: 500;
             color: #fff;
@@ -1928,7 +1839,7 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
@@ -1941,220 +1852,6 @@
         .compare-locations-btn:active {
             transform: translateY(0);
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-
-        /* Compare View Styles */
-        .compare-view {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: transparent;
-            z-index: 2000;
-            display: none;
-            pointer-events: none;
-        }
-
-        .compare-view.active {
-            display: block;
-        }
-
-        .compare-view-header {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 0;
-            border: none;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            gap: 12px;
-            background: transparent;
-            pointer-events: auto;
-        }
-
-        .compare-view-grid-btn {
-            background: #fff;
-            border: none;
-            cursor: pointer;
-            padding: 8px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.15s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-        }
-
-        .compare-view-grid-btn:hover {
-            background: #fafafa;
-        }
-
-        .compare-view-grid-btn svg {
-            width: 18px;
-            height: 18px;
-            fill: #666;
-        }
-
-        .compare-view-title {
-            display: none;
-        }
-
-        .compare-view-close {
-            background: #fff;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            padding: 0;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            transition: all 0.15s ease;
-            border-radius: 50%;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-        }
-
-        .compare-view-close:hover {
-            color: #000;
-            background: #fafafa;
-        }
-
-        .compare-view-body {
-            position: absolute;
-            left: 373px;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            display: flex;
-            gap: 0;
-            overflow-x: auto;
-            padding: 0;
-            pointer-events: auto;
-        }
-
-        .compare-property-panel {
-            flex: 1;
-            background: #fff;
-            border-right: 1px solid #eaeaea;
-            border-radius: 0;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            box-shadow: none;
-        }
-
-        .compare-property-panel:last-child {
-            border-right: none;
-        }
-
-        .compare-property-header {
-            padding: 20px;
-            border-bottom: 1px solid #eaeaea;
-            background: #fafafa;
-            position: relative;
-        }
-
-        .compare-property-header-actions {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .compare-condense-btn {
-            background: none;
-            border: none;
-            color: #666;
-            cursor: pointer;
-            padding: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: color 0.15s ease;
-        }
-
-        .compare-condense-btn:hover {
-            color: #000;
-        }
-
-        .compare-property-close {
-            background: none;
-            border: none;
-            color: #666;
-            cursor: pointer;
-            padding: 0;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            transition: color 0.15s ease;
-        }
-
-        .compare-property-close:hover {
-            color: #000;
-        }
-
-        .compare-property-address {
-            font-size: 16px;
-            font-weight: 600;
-            color: #000;
-            margin-bottom: 8px;
-            font-family: 'Akkurat', sans-serif;
-            padding-right: 60px;
-        }
-
-        .compare-property-content {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-        }
-
-        .compare-info-section {
-            margin-bottom: 24px;
-        }
-
-        .compare-section-title {
-            font-size: 13px;
-            font-weight: 600;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 12px;
-            font-family: 'Akkurat', sans-serif;
-        }
-
-        .compare-info-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .compare-info-row:last-child {
-            border-bottom: none;
-        }
-
-        .compare-info-label {
-            font-size: 13px;
-            color: #666;
-            font-family: 'Akkurat', sans-serif;
-        }
-
-        .compare-info-value {
-            font-size: 13px;
-            color: #000;
-            font-weight: 500;
-            font-family: 'Akkurat Mono', monospace;
         }
 
         .clear-all-btn {
@@ -2268,7 +1965,7 @@
         .property-card {
             background: #fff;
             border: 1px solid #333;
-            border-radius: 6px;
+            border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
@@ -2276,7 +1973,6 @@
         .property-card-header {
             padding: 18px 20px;
             border-bottom: 1px solid #333;
-            border-top: 4px solid #22c55e;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -2285,15 +1981,15 @@
             position: relative;
             z-index: 10;
             margin: -1px -1px 0 -1px;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
         }
 
         .property-card-title {
             font-size: 13px;
             font-weight: 600;
             color: #fff;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
             letter-spacing: 0.5px;
             flex: 1;
             text-transform: uppercase;
@@ -2347,16 +2043,15 @@
         .property-card-link {
             width: 100%;
             padding: 10px 16px;
-            background: linear-gradient(180deg, #EF4400 0%, #D63D00 100%);
-            border: 2px solid;
-            border-image: linear-gradient(90deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%) 1;
-            border-radius: 6px;
+            background: linear-gradient(180deg, #E84E0F 0%, #D63D00 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
             font-size: 13px;
             font-weight: 500;
             color: #fff;
             cursor: pointer;
             transition: all 0.15s ease;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
             margin-bottom: 16px;
             display: block;
             text-align: center;
@@ -2365,7 +2060,7 @@
         }
 
         .property-card-link:hover {
-            background: linear-gradient(180deg, #FF5A1A 0%, #EF4400 100%);
+            background: linear-gradient(180deg, #F55A1A 0%, #E84E0F 100%);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
             transform: translateY(-1px);
         }
@@ -2386,13 +2081,11 @@
         }
 
         .property-section-label {
-            font-size: 12px;
-            font-weight: 600;
-            color: #000;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 12px;
-            font-family: 'Akkurat', sans-serif;
+            font-size: 11px;
+            font-weight: 400;
+            color: #666;
+            margin-bottom: 8px;
+            font-family: 'Aspekta', sans-serif;
         }
 
         .property-value {
@@ -2415,17 +2108,15 @@
         }
 
         .property-detail-label {
-            font-size: 13px;
+            font-size: 11px;
             font-weight: 400;
             color: #666;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
         }
 
         .property-detail-value {
-            font-size: 14px !important;
+            font-size: 14px;
             color: #000;
-            font-weight: 600;
-            font-family: 'Akkurat Mono', monospace;
         }
 
         .property-action-button {
@@ -2433,13 +2124,13 @@
             padding: 10px 16px;
             background: #f5f5f5;
             border: 1px solid #eaeaea;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 13px;
             font-weight: 500;
             color: #000;
             cursor: pointer;
             transition: all 0.15s ease;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
             margin-bottom: 16px;
         }
 
@@ -2474,7 +2165,7 @@
             margin-bottom: 12px;
             padding: 8px;
             background: #f9f9f9;
-            border-radius: 6px;
+            border-radius: 8px;
         }
 
         .landlord-marker-dot {
@@ -2502,26 +2193,20 @@
             font-size: 11px;
             font-weight: 400;
             color: #666;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
         }
 
         .landlord-stat-value {
             font-size: 28px;
             font-weight: 600;
             color: #000;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
         }
 
         .landlord-link-text {
             font-size: 12px;
             color: #666;
             margin-bottom: 8px;
-            cursor: pointer;
-            transition: color 0.15s ease;
-        }
-
-        .landlord-link-text:hover {
-            color: #000;
         }
 
         .property-finances-desc {
@@ -2548,33 +2233,27 @@
             font-size: 11px;
             font-weight: 400;
             color: #666;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
         }
 
         .property-finances-item-value {
-            font-size: 28px;
+            font-size: 19px;
             font-weight: 600;
             color: #000;
-            font-family: 'Akkurat Mono', monospace;
         }
 
         .property-mortgage-card {
             border: 1px solid #eaeaea;
-            border-radius: 6px;
+            border-radius: 8px;
             padding: 12px;
             background: #fafafa;
-        }
-
-        .property-finances-grid.mortgage-grid {
-            grid-template-columns: 1fr;
-            gap: 12px;
         }
 
         .property-mortgage-title {
             font-size: 11px;
             font-weight: 400;
             color: #666;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
             margin-bottom: 12px;
         }
 
@@ -2597,10 +2276,9 @@
         }
 
         .property-mortgage-detail-value {
-            font-size: 28px;
+            font-size: 12px;
             color: #000;
-            font-weight: 600;
-            font-family: 'Akkurat Mono', monospace;
+            font-weight: 500;
         }
 
         /* Landlord Page Modal */
@@ -2661,14 +2339,14 @@
             );
             background-size: 1000px 100%;
             animation: shimmer 2s infinite linear;
-            border-radius: 6px;
+            border-radius: 4px;
         }
 
         .skeleton-stat-card {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.8);
-            border-radius: 6px;
+            border-radius: 12px;
             padding: 28px;
             min-height: 200px;
         }
@@ -2676,7 +2354,7 @@
         .skeleton-text {
             height: 16px;
             margin-bottom: 12px;
-            border-radius: 6px;
+            border-radius: 4px;
         }
 
         .skeleton-text.large {
@@ -2714,7 +2392,7 @@
             background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(26, 26, 26, 0.98) 100%);
             color: #fff;
             padding: 16px;
-            border-radius: 6px;
+            border-radius: 12px;
             font-size: 12px;
             font-weight: 400;
             white-space: nowrap;
@@ -2797,11 +2475,11 @@
             padding: 2px 6px;
             background: linear-gradient(180deg, #fff 0%, #f5f5f5 100%);
             border: 1px solid #d1d1d1;
-            border-radius: 6px;
+            border-radius: 4px;
             font-size: 10px;
             font-weight: 600;
             color: #666;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8);
             min-width: 20px;
         }
@@ -2832,7 +2510,7 @@
         /* Enhanced button states */
         button {
             position: relative;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
         }
 
         button:disabled {
@@ -2884,7 +2562,7 @@
             background: rgba(0, 0, 0, 0.9);
             color: #fff;
             padding: 12px 16px;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(8px);
@@ -2912,229 +2590,36 @@
 
         .landlord-map-header {
             height: 33vh;
-            background: #555;
-            background-image: url('Desktop - 4.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             position: relative;
             flex-shrink: 0;
-        }
-
-        .landlord-map-header::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%);
-            pointer-events: none;
-        }
-
-        /* Modal Headers */
-        .modal-header-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 48px;
-            z-index: 1000;
-            pointer-events: none;
-            background: transparent;
-            border-bottom: none;
-            transition: all 0.3s ease;
-        }
-
-        .modal-header-bar.scrolled {
-            background: #fff;
-            border-bottom: 1px solid #eaeaea;
-        }
-
-        .modal-logo-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .modal-logo {
-            width: 24px;
-            height: 24px;
-            background: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .modal-logo::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: #000;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-
-        .modal-logo-text {
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            font-family: 'Akkurat', sans-serif;
-            flex-shrink: 0;
-            color: #fff;
-            line-height: 1.3;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-        }
-
-        /* Scrolled state - invert colors */
-        .modal-header-bar.scrolled .modal-logo {
-            background: #000;
-        }
-
-        .modal-header-bar.scrolled .modal-logo::before {
-            background: #fff;
-        }
-
-        .modal-header-bar.scrolled .modal-logo-text {
-            color: #000;
-        }
-
-        .modal-menu-container {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: transparent;
-            backdrop-filter: none;
-            -webkit-backdrop-filter: none;
-            border: none;
-            border-radius: 0;
-            box-shadow: none;
-            overflow: visible;
-            transition: none;
-            pointer-events: auto;
-            margin-right: -4px;
-        }
-
-        .modal-menu-container:hover {
-            box-shadow: none;
-            background: transparent;
-        }
-
-        .modal-menu-label {
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            color: #fff;
-            font-family: 'Akkurat', sans-serif;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-        }
-
-        .modal-header-bar.scrolled .modal-menu-label {
-            color: #000;
-        }
-
-        .modal-menu-button {
-            background: transparent;
-            color: #fff;
-            border: none;
-            padding: 0;
-            border-radius: 0;
-            width: 44px;
-            height: 44px;
-            cursor: pointer;
-            font-family: 'Akkurat Mono', monospace;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .modal-header-bar.scrolled .modal-menu-button {
-            color: #000;
-        }
-
-        .modal-menu-button:hover {
-            background: transparent;
-        }
-
-        .modal-menu-button:active {
-            background: transparent;
-        }
-
-        .modal-menu-icon {
-            width: 18px;
-            height: 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-        }
-
-        .modal-menu-icon span {
-            display: block;
-            width: 100%;
-            height: 1.5px;
-            background: #fff;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            transform-origin: center;
-        }
-
-        .modal-header-bar.scrolled .modal-menu-icon span {
-            background: #000;
-        }
-
-        .modal-menu-button.active .modal-menu-icon span:nth-child(1) {
-            transform: translateY(4px) rotate(45deg);
-        }
-
-        .modal-menu-button.active .modal-menu-icon span:nth-child(2) {
-            transform: translateY(-4px) rotate(-45deg);
         }
 
         .landlord-close-btn {
-            display: none;
+            z-index: 1;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #fff;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 24px;
+            color: #666;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         }
 
         .landlord-close-btn:hover {
             color: #000;
             background: #fafafa;
-        }
-
-        .landlord-back-btn {
-            position: absolute;
-            top: 75px;
-            left: 48px;
-            padding: 8px 16px;
-            font-size: 12px;
-            color: #fff;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 6px;
-            cursor: pointer;
-            font-family: 'Akkurat Mono', monospace;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            color: rgba(0, 0, 0, 0.7);
-            z-index: 2;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .landlord-back-btn:hover {
-            background: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
         }
 
         .landlord-content {
@@ -3152,7 +2637,7 @@
             background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
             border-bottom: 1px solid #eaeaea;
             position: sticky;
-            top: 60px;
+            top: 0;
             z-index: 100;
             backdrop-filter: blur(8px);
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -3169,7 +2654,7 @@
             font-size: 24px;
             font-weight: 700;
             color: #000;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
         }
 
         .banner-kpi-label {
@@ -3178,7 +2663,7 @@
             color: #666;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
         }
 
         .banner-divider {
@@ -3194,19 +2679,10 @@
             gap: 8px;
             padding: 12px 48px;
             background: #fff;
+            border-bottom: 1px solid #eaeaea;
             position: sticky;
-            top: 60px;
-            z-index: 999;
-        }
-
-        .jump-to-nav::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 48px;
-            right: 48px;
-            height: 1px;
-            background: #eaeaea;
+            top: 0;
+            z-index: 99;
         }
 
         .jump-to-label {
@@ -3215,7 +2691,7 @@
             color: #999;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
             margin-right: 8px;
         }
 
@@ -3227,7 +2703,7 @@
 
         .jump-to-link {
             padding: 6px 12px;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 500;
             color: #666;
             background: transparent;
@@ -3249,7 +2725,7 @@
         }
 
         .landlord-header-section {
-            padding: 0 48px 48px 48px;
+            padding: 48px 48px;
             border-bottom: 1px solid #eaeaea;
         }
 
@@ -3258,7 +2734,6 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 12px;
-            padding-top: 48px;
         }
 
         .landlord-label {
@@ -3267,7 +2742,7 @@
             text-transform: uppercase;
             letter-spacing: 0.8px;
             color: #666;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
         }
 
         .landlord-title-row {
@@ -3308,7 +2783,7 @@
             border-radius: 6px;
             font-size: 11px;
             font-weight: 600;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
             text-transform: uppercase;
             letter-spacing: 0.3px;
         }
@@ -3348,13 +2823,13 @@
             color: #666;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
         }
 
         .year-selector-tabs {
             display: inline-flex;
             background: #f5f5f5;
-            border-radius: 6px;
+            border-radius: 8px;
             padding: 4px;
             gap: 2px;
         }
@@ -3369,7 +2844,7 @@
             border-radius: 6px;
             cursor: pointer;
             transition: all 0.2s ease;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
         }
 
         .year-tab:hover {
@@ -3396,7 +2871,7 @@
             appearance: none;
             -webkit-appearance: none;
             -moz-appearance: none;
-            border-radius: 6px;
+            border-radius: 8px;
             background-image: url("data:image/svg+xml,%3Csvg fill='none' stroke='%23999' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 6px center;
@@ -3435,7 +2910,7 @@
             gap: 8px;
             background: #fafafa;
             padding: 8px;
-            border-radius: 6px;
+            border-radius: 10px;
             border: 1px solid #eaeaea;
             align-self: flex-start;
         }
@@ -3444,13 +2919,13 @@
             padding: 10px 16px;
             background: #fff;
             border: 1px solid #d1d1d1;
-            border-radius: 6px;
+            border-radius: 7px;
             font-size: 13px;
             font-weight: 600;
             color: #000;
             cursor: pointer;
             transition: all 0.2s ease;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: inherit;
             display: inline-flex;
             align-items: center;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -3540,10 +3015,9 @@
         }
 
         .landlord-action-btn.share {
-            background: linear-gradient(180deg, #EF4400 0%, #D63D00 100%);
+            background: linear-gradient(180deg, #FF7A3D 0%, #D63D00 100%);
             color: #fff;
-            border: 2px solid;
-            border-image: linear-gradient(90deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%) 1;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
@@ -3552,7 +3026,7 @@
         }
 
         .landlord-action-btn.share:hover {
-            background: linear-gradient(180deg, #FF5A1A 0%, #EF4400 100%);
+            background: linear-gradient(180deg, #FF8C57 0%, #E84E0F 100%);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
             transform: translateY(-1px);
         }
@@ -3569,7 +3043,7 @@
             background: #fafafa;
             border: 1px solid #eaeaea;
             padding: 20px;
-            border-radius: 6px;
+            border-radius: 10px;
             display: flex;
             flex-direction: column;
             gap: 16px;
@@ -3597,7 +3071,7 @@
             color: #000;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
         }
 
         .landlord-description-text {
@@ -3625,13 +3099,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 2px,
-                rgba(0, 0, 0, 0.02) 2px,
-                rgba(0, 0, 0, 0.02) 3px
-            );
+            background-image: radial-gradient(circle at 2px 2px, rgba(0, 0, 0, 0.015) 1px, transparent 0);
+            background-size: 32px 32px;
             pointer-events: none;
         }
 
@@ -3648,7 +3117,7 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.8);
-            border-radius: 6px;
+            border-radius: 12px;
             padding: 28px;
             box-shadow:
                 0 1px 3px rgba(0, 0, 0, 0.02),
@@ -3673,7 +3142,7 @@
             margin-bottom: 20px;
             padding-bottom: 12px;
             border-bottom: 1px solid #eaeaea;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
         }
 
         .landlord-stat-card-grid {
@@ -3696,7 +3165,7 @@
             font-size: 11px;
             font-weight: 600;
             margin-top: 4px;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
             padding: 4px 8px;
             border-radius: 6px;
             width: fit-content;
@@ -3730,7 +3199,7 @@
         .sparkline-bar {
             flex: 1;
             background: linear-gradient(180deg, rgba(59, 130, 246, 0.5) 0%, rgba(59, 130, 246, 0.2) 100%);
-            border-radius: 6px 2px 0 0;
+            border-radius: 2px 2px 0 0;
             min-height: 4px;
             transition: all 0.3s ease;
         }
@@ -3740,10 +3209,10 @@
         }
 
         .landlord-stat-item-label {
-            font-size: 13px;
+            font-size: 11px;
             font-weight: 400;
             color: #666;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
             line-height: 1.4;
         }
 
@@ -3753,7 +3222,7 @@
             color: #000;
             font-variant-numeric: tabular-nums;
             letter-spacing: -0.01em;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
         }
 
         .landlord-links-section {
@@ -3776,7 +3245,7 @@
             padding: 20px;
             background: #fafafa;
             border: 1px solid #eaeaea;
-            border-radius: 6px;
+            border-radius: 10px;
             cursor: pointer;
             transition: all 0.2s ease;
             font-family: inherit;
@@ -3803,7 +3272,7 @@
             font-weight: 600;
             color: #000;
             line-height: 1.5;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -3828,7 +3297,7 @@
         .timeline-preview-bar {
             flex: 1;
             background: linear-gradient(180deg, #FFB399 0%, #FF9966 100%);
-            border-radius: 6px 2px 0 0;
+            border-radius: 2px 2px 0 0;
             min-height: 6px;
             transition: all 0.3s ease;
         }
@@ -3843,7 +3312,7 @@
             gap: 16px;
             background: #fafafa;
             padding: 20px;
-            border-radius: 6px;
+            border-radius: 10px;
             border: 1px solid #eaeaea;
         }
 
@@ -3866,7 +3335,7 @@
             font-size: 12px;
             color: #000;
             font-weight: 600;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -3880,7 +3349,7 @@
             padding: 8px 16px;
             background: #fff;
             border: 1px solid #eaeaea;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 13px;
             font-weight: 500;
             color: #000;
@@ -3889,7 +3358,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: inherit;
             position: relative;
             overflow: hidden;
         }
@@ -3955,7 +3424,7 @@
             color: #000;
             display: flex;
             align-items: center;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
         }
 
         .landlord-properties-title svg {
@@ -3980,13 +3449,13 @@
         .landlord-show-label {
             font-size: 13px;
             color: #666;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
         }
 
         .landlord-show-all {
             padding: 6px 12px;
             border: 1px solid #eaeaea;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 13px;
             background: #fff;
             background-image: url("data:image/svg+xml,%3Csvg fill='none' stroke='%23666' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
@@ -4013,7 +3482,7 @@
         .landlord-pagination-btn {
             background: #fff;
             border: 1px solid #eaeaea;
-            border-radius: 6px;
+            border-radius: 8px;
             color: #666;
             cursor: pointer;
             font-size: 16px;
@@ -4037,7 +3506,7 @@
         .landlord-pagination-page {
             background: #fff;
             border: 1px solid #eaeaea;
-            border-radius: 6px;
+            border-radius: 8px;
             color: #666;
             cursor: pointer;
             font-size: 13px;
@@ -4097,7 +3566,7 @@
             vertical-align: top;
             white-space: normal;
             line-height: 1.3;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
             position: sticky;
             top: 0;
             background: linear-gradient(180deg, #fafafa 0%, #f5f5f5 100%);
@@ -4152,7 +3621,7 @@
         .landlord-properties-table td:nth-child(5),
         .landlord-properties-table td:nth-child(7) {
             text-align: right;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
         }
 
         .landlord-properties-table th:nth-child(3),
@@ -4200,10 +3669,9 @@
 
         .landlord-view-property-btn {
             padding: 10px 20px;
-            background: linear-gradient(180deg, #EF4400 0%, #D63D00 100%);
-            border: 2px solid;
-            border-image: linear-gradient(90deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%) 1;
-            border-radius: 6px;
+            background: linear-gradient(180deg, #E64500 0%, #D63D00 100%);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
             font-size: 13px;
             font-weight: 600;
             color: #fff;
@@ -4214,7 +3682,7 @@
         }
 
         .landlord-view-property-btn:hover {
-            background: linear-gradient(180deg, #FF5A1A 0%, #EF4400 100%);
+            background: linear-gradient(180deg, #D63D00 0%, #C43700 100%);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
             transform: translateY(-1px);
         }
@@ -4253,7 +3721,7 @@
         .landlord-timeline-chart {
             background: #fff;
             border: 1px solid #eaeaea;
-            border-radius: 6px;
+            border-radius: 8px;
             padding: 24px;
             transition: all 0.2s ease;
         }
@@ -4270,7 +3738,7 @@
             margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
         }
 
         .landlord-timeline-chart-content {
@@ -4300,7 +3768,7 @@
         .timeline-bar {
             flex: 1;
             background: linear-gradient(180deg, #D63D00 0%, #C43700 100%);
-            border-radius: 6px 6px 0 0;
+            border-radius: 4px 4px 0 0;
             min-height: 4px;
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
@@ -4331,14 +3799,14 @@
             background: rgba(0, 0, 0, 0.9);
             color: #fff;
             padding: 4px 8px;
-            border-radius: 6px;
+            border-radius: 4px;
             font-size: 11px;
             font-weight: 600;
             white-space: nowrap;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.2s ease;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
         }
 
         .timeline-bar:hover {
@@ -4358,7 +3826,7 @@
             transform: translateX(-50%);
             font-size: 10px;
             color: #999;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
         }
 
         .timeline-chart-axis {
@@ -4380,7 +3848,7 @@
         .timeline-chart-label {
             font-size: 10px;
             color: #999;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
         }
 
         .landlord-timeline-chart-title {
@@ -4391,7 +3859,7 @@
 
         .landlord-timeline-chart-placeholder {
             border: 1px solid #eaeaea;
-            border-radius: 6px;
+            border-radius: 8px;
             padding: 16px;
             background: #fafafa;
             display: flex;
@@ -4423,72 +3891,32 @@
             border-bottom: 1px solid #1a1a1a;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             padding: 0 24px;
             flex-shrink: 0;
-            position: relative;
         }
 
         .network-graph-header-left {
             display: flex;
             align-items: center;
             gap: 16px;
-            flex: 0 0 auto;
         }
 
         .network-graph-back-btn {
             padding: 8px 16px;
             background: #1a1a1a;
             border: 1px solid #333;
-            border-radius: 6px;
+            border-radius: 8px;
             color: #ededed;
             font-size: 13px;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.15s ease;
-            font-family: 'Akkurat Mono', monospace;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            white-space: nowrap;
+            font-family: inherit;
         }
 
         .network-graph-back-btn:hover {
             background: #2a2a2a;
-        }
-
-        .network-graph-header-right {
-            position: absolute;
-            right: 24px;
-            display: flex;
-            align-items: center;
-            gap: 400px;
-        }
-
-        .network-graph-header .menu-container {
-            position: static;
-            background: transparent;
-            backdrop-filter: none;
-            -webkit-backdrop-filter: none;
-            border: none;
-            border-radius: 0;
-            box-shadow: none;
-        }
-
-        .network-graph-header .menu-container:hover {
-            box-shadow: none;
-            background: transparent;
-        }
-
-        .network-graph-header .menu-label {
-            color: #fff;
-        }
-
-        .network-graph-header .menu-button {
-            color: #fff;
-        }
-
-        .network-graph-header .menu-icon span {
-            background: #fff;
         }
 
         .network-graph-view-toggle {
@@ -4501,24 +3929,21 @@
             color: #999;
             font-size: 13px;
             margin-right: 8px;
-            font-family: 'Akkurat', sans-serif;
         }
 
         .network-view-btn {
-            padding: 8px 16px;
-            background: transparent;
+            padding: 6px 14px;
+            background: #1a1a1a;
             border: 1px solid #333;
-            color: #999;
+            color: #ededed;
             font-size: 13px;
             cursor: pointer;
             transition: all 0.15s ease;
-            font-family: 'Akkurat Mono', monospace;
-            font-weight: 500;
+            font-family: inherit;
         }
 
         .network-view-btn:first-of-type {
             border-radius: 6px 0 0 6px;
-            border-right: none;
         }
 
         .network-view-btn:last-of-type {
@@ -4526,14 +3951,12 @@
         }
 
         .network-view-btn.active {
-            background: #1a1a1a;
+            background: #333;
             color: #fff;
-            border-color: #333;
         }
 
         .network-view-btn:hover:not(.active) {
-            background: rgba(255, 255, 255, 0.05);
-            color: #ccc;
+            background: #2a2a2a;
         }
 
         .network-graph-content {
@@ -4561,7 +3984,6 @@
             font-size: 14px;
             color: #999;
             line-height: 1.6;
-            font-family: 'Akkurat', sans-serif;
         }
 
         .network-graph-info {
@@ -4570,11 +3992,12 @@
         }
 
         .network-graph-label {
-            font-size: 13px;
+            font-size: 11px;
             color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             margin-bottom: 8px;
-            font-family: 'Akkurat', sans-serif;
-            font-weight: 400;
+            font-family: 'Geist Mono', monospace;
         }
 
         .network-graph-landlord-name {
@@ -4583,7 +4006,6 @@
             color: #ededed;
             margin-bottom: 24px;
             line-height: 1.3;
-            font-family: 'Akkurat', sans-serif;
         }
 
         .network-graph-stat {
@@ -4591,18 +4013,18 @@
         }
 
         .network-graph-stat-label {
-            font-size: 13px;
+            font-size: 11px;
             color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             margin-bottom: 6px;
-            font-family: 'Akkurat', sans-serif;
-            font-weight: 400;
+            font-family: 'Geist Mono', monospace;
         }
 
         .network-graph-stat-value {
             font-size: 24px;
             font-weight: 600;
             color: #ededed;
-            font-family: 'Akkurat', sans-serif;
         }
 
         .network-graph-stats-grid {
@@ -4614,43 +4036,29 @@
 
         .network-graph-share-btn {
             padding: 10px 16px;
-            background: linear-gradient(180deg, #EF4400 0%, #D63D00 100%);
-            border: 2px solid;
-            border-image: linear-gradient(90deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%) 1;
-            border-radius: 6px;
-            color: #fff;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: #ededed;
             font-size: 13px;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.15s ease;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: inherit;
             width: 100%;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
         .network-graph-share-btn:hover {
-            background: linear-gradient(180deg, #FF5A1A 0%, #EF4400 100%);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            transform: translateY(-1px);
-        }
-
-        .network-graph-share-btn:active {
-            transform: translateY(0);
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            background: #2a2a2a;
         }
 
         .network-graph-canvas {
             flex: 1;
             position: relative;
-            background: #0D0D0D;
-            background-image:
-                repeating-linear-gradient(0deg, transparent, transparent 172.8px, rgba(42, 42, 42, 1) 172.8px, rgba(42, 42, 42, 1) 173.3px),
-                repeating-linear-gradient(90deg, transparent, transparent 117px, rgba(42, 42, 42, 1) 117px, rgba(42, 42, 42, 1) 117.5px);
-            background-size: 117px 172.8px;
+            background: #000;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
         }
 
         .network-graph-placeholder {
@@ -4661,26 +4069,6 @@
             justify-content: center;
             color: #333;
             font-size: 14px;
-            cursor: grab;
-        }
-
-        .network-graph-placeholder:active {
-            cursor: grabbing;
-        }
-
-        .network-graph-placeholder svg {
-            pointer-events: all;
-        }
-
-        .network-graph-placeholder circle,
-        .network-graph-placeholder rect {
-            cursor: pointer;
-            transition: opacity 0.2s ease;
-        }
-
-        .network-graph-placeholder circle:hover,
-        .network-graph-placeholder rect:hover {
-            opacity: 1;
         }
 
         .network-graph-controls {
@@ -4697,7 +4085,7 @@
             height: 40px;
             background: #1a1a1a;
             border: 1px solid #333;
-            border-radius: 6px;
+            border-radius: 8px;
             color: #ededed;
             font-size: 18px;
             cursor: pointer;
@@ -4713,12 +4101,12 @@
 
         .network-graph-legend {
             position: absolute;
-            top: 24px;
+            bottom: 24px;
             right: 24px;
             width: 280px;
             background: #1a1a1a;
             border: 1px solid #333;
-            border-radius: 6px;
+            border-radius: 8px;
             overflow: hidden;
         }
 
@@ -4776,22 +4164,15 @@
         }
 
         .network-legend-dot.individual {
-            background: #3E51FF;
-            opacity: 0.6;
-            border: 1px solid #3E51FF;
+            background: #999;
         }
 
         .network-legend-dot.company {
-            background: #EF4400;
-            opacity: 0.6;
-            border: 1px solid #EF4400;
+            background: #FFD700;
         }
 
         .network-legend-dot.property {
-            background: #00E2AD;
-            opacity: 0.6;
-            border: 1px solid #00E2AD;
-            border-radius: 2px;
+            background: #666;
         }
 
         .network-graph-header .logo {
@@ -4803,7 +4184,7 @@
         }
 
         .network-graph-header .logo-text {
-            color: #ededed;
+            color: #000;
         }
 
         /* Full Page Property View Modal */
@@ -4825,7 +4206,7 @@
 
         /* Hero Section with Map */
         .property-hero {
-            height: 400px;
+            height: 33vh;
             background: #555;
             position: relative;
             background-image: url('Desktop - 4.jpg');
@@ -4834,32 +4215,40 @@
             background-repeat: no-repeat;
         }
 
-        .property-hero::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 50%;
-            background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
-            pointer-events: none;
-            z-index: 1;
-        }
-
         .property-hero::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 50%;
-            background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%);
             pointer-events: none;
-            z-index: 1;
         }
 
         .property-close-btn {
-            display: none;
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            width: 44px;
+            height: 44px;
+            border-radius: 22px;
+            font-size: 20px;
+            line-height: 1;
+            color: rgba(0, 0, 0, 0.7);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            padding: 0;
+            z-index: 1;
+            font-family: 'Geist Mono', monospace;
         }
 
         .property-close-btn:hover {
@@ -4869,22 +4258,21 @@
 
         /* Property Header Section */
         .property-header-section {
-            position: relative;
-            padding: 40px 48px 0 48px;
-            background: #fff;
+            padding: 48px 48px;
+            border-bottom: 1px solid #eaeaea;
         }
 
         .property-label-row {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
 
         .property-back-btn {
             position: absolute;
-            top: 75px;
-            left: 48px;
+            top: 16px;
+            left: 16px;
             padding: 8px 16px;
             font-size: 12px;
             color: #fff;
@@ -4892,13 +4280,13 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 6px;
+            border-radius: 22px;
             cursor: pointer;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
             transition: all 0.3s ease;
             font-weight: 500;
             color: rgba(0, 0, 0, 0.7);
-            z-index: 2;
+            z-index: 1;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
         }
 
@@ -4910,11 +4298,10 @@
         .property-label {
             font-size: 10px;
             font-weight: 600;
-            color: rgba(0, 0, 0, 0.5);
+            color: #666;
             text-transform: uppercase;
             letter-spacing: 0.8px;
-            font-family: 'Akkurat', sans-serif;
-            margin-bottom: 4px;
+            font-family: 'Aspekta', sans-serif;
         }
 
         .property-year {
@@ -4926,22 +4313,22 @@
         .property-year-label {
             font-size: 11px;
             font-weight: 600;
-            color: rgba(0, 0, 0, 0.5);
+            color: #666;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
         }
 
         .property-year-dropdown {
             font-size: 12px;
-            color: #000;
+            color: #666;
             font-weight: 500;
             padding: 4px 24px 4px 8px;
-            border: 1px solid #d1d1d1;
-            border-radius: 6px;
+            border: 1px solid #eaeaea;
+            border-radius: 8px;
             background: #fff;
             cursor: pointer;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
             appearance: none;
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -4966,6 +4353,7 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
+            margin-bottom: 24px;
         }
 
         .property-name-wrapper {
@@ -4973,17 +4361,13 @@
         }
 
         .property-name {
-            font-size: 48px;
+            font-size: 32px;
             font-weight: 600;
             color: #000;
-            margin: 0;
+            margin: 0 0 16px 0;
             line-height: 1.2;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
             text-transform: none;
-        }
-
-        .property-name-wrapper .status-badges {
-            margin-bottom: 12px;
         }
 
         .property-header-section .property-actions {
@@ -4995,37 +4379,28 @@
             padding: 10px 20px;
             background: #fff;
             border: 1px solid #eaeaea;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 13px;
             font-weight: 500;
             color: #000;
             cursor: pointer;
             transition: all 0.15s ease;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
             display: inline-flex;
             align-items: center;
             gap: 8px;
             text-decoration: none;
         }
 
-        .property-header-section .property-action-btn svg {
-            flex-shrink: 0;
-        }
-
-        .property-header-section .property-action-btn:first-child {
-            padding: 10px 24px;
-        }
-
         .property-header-section .property-action-btn.primary {
-            background: linear-gradient(180deg, #EF4400 0%, #D63D00 100%);
+            background: linear-gradient(180deg, #E84E0F 0%, #D63D00 100%);
             color: #fff;
-            border: 2px solid;
-            border-image: linear-gradient(90deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%) 1;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
         .property-header-section .property-action-btn.primary:hover {
-            background: linear-gradient(180deg, #FF5A1A 0%, #EF4400 100%);
+            background: linear-gradient(180deg, #F55A1A 0%, #E84E0F 100%);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
             transform: translateY(-1px);
         }
@@ -5051,10 +4426,10 @@
             align-items: center;
             gap: 6px;
             padding: 8px 12px;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 12px;
             font-weight: 600;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
         }
 
         .status-badge.warning {
@@ -5081,24 +4456,15 @@
             gap: 8px;
             padding: 12px 48px;
             background: #fff;
+            border-bottom: 1px solid #eaeaea;
             position: sticky;
-            top: 60px;
+            top: 0;
             z-index: 99;
-        }
-
-        .property-nav-sidebar::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 48px;
-            right: 48px;
-            height: 1px;
-            background: #eaeaea;
         }
 
         .property-nav-link {
             padding: 6px 12px;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 500;
             color: #666;
             background: transparent;
@@ -5106,7 +4472,7 @@
             border-radius: 6px;
             cursor: pointer;
             transition: all 0.2s ease;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
             text-decoration: none;
         }
 
@@ -5141,20 +4507,15 @@
         .full-page-section {
             margin-bottom: 60px;
             background: #fafafa;
-            padding: 40px;
-            border-radius: 6px;
-        }
-
-        /* Diagonal pattern for overview section only */
-        .full-page-section#overview {
-            background: #fafafa;
             background-image: repeating-linear-gradient(
                 45deg,
                 transparent,
-                transparent 2px,
-                rgba(0, 0, 0, 0.02) 2px,
-                rgba(0, 0, 0, 0.02) 3px
+                transparent 20px,
+                rgba(0, 0, 0, 0.02) 20px,
+                rgba(0, 0, 0, 0.02) 21px
             );
+            padding: 40px;
+            border-radius: 12px;
         }
 
         /* Dark mode for ownership section */
@@ -5185,7 +4546,7 @@
             font-size: 26px;
             font-weight: 600;
             color: #000;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
             margin-bottom: 8px;
             letter-spacing: -0.02em;
         }
@@ -5196,7 +4557,7 @@
             line-height: 1.6;
             margin-bottom: 24px;
             max-width: 90ch;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
         }
 
         /* Improved Card Layouts */
@@ -5208,9 +4569,9 @@
         }
 
         .property-info-card {
-            background: #fff;
+            background: #fafafa;
             border: 1px solid #eaeaea;
-            border-radius: 6px;
+            border-radius: 12px;
             padding: 20px;
             transition: all 0.2s ease;
         }
@@ -5221,32 +4582,26 @@
         }
 
         .property-info-card-label {
-            font-size: 13px;
+            font-size: 11px;
             font-weight: 400;
             color: #666;
             margin-bottom: 8px;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
         }
 
         .property-info-card-value {
             font-size: 28px;
             font-weight: 600;
             color: #000;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
             line-height: 1.2;
-        }
-
-        /* Specific smaller sizes for property type and landlord name */
-        #overview .property-info-card:first-child .property-info-card-value,
-        #landlord .property-info-card:first-child .property-info-card-value {
-            font-size: 14px;
         }
 
         .property-info-card-subtext {
             font-size: 12px;
             color: #999;
             margin-top: 4px;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
         }
 
         /* Status Badges */
@@ -5258,7 +4613,7 @@
             border-radius: 6px;
             font-size: 11px;
             font-weight: 600;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -5284,7 +4639,7 @@
         /* Comparison Cards */
         .comparison-section {
             background: #f5f5f5;
-            border-radius: 6px;
+            border-radius: 12px;
             padding: 24px;
             margin-bottom: 24px;
         }
@@ -5294,7 +4649,7 @@
             font-weight: 600;
             color: #666;
             margin-bottom: 16px;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -5307,22 +4662,22 @@
 
         .comparison-item {
             background: #fff;
-            border-radius: 6px;
+            border-radius: 8px;
             padding: 16px;
         }
 
         .comparison-item-label {
-            font-size: 13px;
+            font-size: 11px;
             color: #999;
             margin-bottom: 6px;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
         }
 
         .comparison-item-value {
             font-size: 20px;
             font-weight: 600;
             color: #000;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -5331,7 +4686,7 @@
         .comparison-item-diff {
             font-size: 11px;
             font-weight: 600;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
             padding: 4px 8px;
             border-radius: 6px;
             width: fit-content;
@@ -5356,7 +4711,7 @@
         .chart-container {
             background: #fff;
             border: 1px solid #eaeaea;
-            border-radius: 6px;
+            border-radius: 12px;
             padding: 24px;
             margin-bottom: 20px;
         }
@@ -5366,107 +4721,19 @@
             font-weight: 600;
             color: #000;
             margin-bottom: 16px;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
         }
 
         .chart-placeholder {
             height: 200px;
             background: #fafafa;
-            border-radius: 6px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #999;
             font-size: 13px;
-            font-family: 'Akkurat', sans-serif;
-        }
-
-        /* Landlord Action Cards and Links */
-        .landlord-actions-container {
-            margin-top: 24px;
-        }
-
-        .landlord-properties-card {
-            width: 100%;
-            background: #fff;
-            border: 1px solid #eaeaea;
-            border-radius: 6px;
-            padding: 20px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            transition: all 0.2s ease;
-            cursor: pointer;
-        }
-
-        .landlord-properties-card:hover {
-            border-color: #ddd;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        .landlord-properties-card-content {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .landlord-properties-card-title {
-            font-size: 14px;
-            font-weight: 500;
-            color: #000;
-            font-family: 'Akkurat', sans-serif;
-        }
-
-        .landlord-properties-card-subtitle {
-            font-size: 12px;
-            color: #666;
-            font-family: 'Akkurat', sans-serif;
-        }
-
-        .landlord-properties-card-icon {
-            width: 20px;
-            height: 20px;
-            color: #666;
-            transition: transform 0.2s ease;
-        }
-
-        .landlord-properties-card:hover .landlord-properties-card-icon {
-            transform: translateX(4px);
-        }
-
-        .landlord-details-link {
-            flex: 1;
-            background: transparent;
-            border: 1px solid #eaeaea;
-            border-radius: 6px;
-            padding: 20px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            color: #000;
-            font-family: 'Akkurat', sans-serif;
-        }
-
-        .landlord-details-link:hover {
-            border-color: #000;
-            background: #fafafa;
-        }
-
-        .landlord-details-link-arrow {
-            width: 16px;
-            height: 16px;
-            transition: transform 0.2s ease;
-        }
-
-        .landlord-details-link:hover .landlord-details-link-arrow {
-            transform: translateX(4px);
+            font-family: 'Aspekta', sans-serif;
         }
 
         /* Timeline Grid */
@@ -5479,7 +4746,7 @@
         /* Progressive Disclosure */
         .expandable-section {
             border: 1px solid #eaeaea;
-            border-radius: 6px;
+            border-radius: 12px;
             overflow: hidden;
             margin-bottom: 16px;
         }
@@ -5502,7 +4769,7 @@
             font-size: 14px;
             font-weight: 600;
             color: #000;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
         }
 
         .expandable-icon {
@@ -5553,25 +4820,23 @@
 
         .property-action-bar-btn {
             padding: 10px 20px;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 13px;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.2s ease;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
             border: none;
         }
 
         .property-action-bar-btn.primary {
-            background: linear-gradient(180deg, #EF4400 0%, #D63D00 100%);
+            background: linear-gradient(180deg, #FF7A3D 0%, #D63D00 100%);
             color: #fff;
-            border: 2px solid;
-            border-image: linear-gradient(90deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%) 1;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
         .property-action-bar-btn.primary:hover {
-            background: linear-gradient(180deg, #FF5A1A 0%, #EF4400 100%);
             transform: translateY(-1px);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
@@ -5592,13 +4857,13 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s ease;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
             border: none;
             background: linear-gradient(180deg, #1a1a1a 0%, #000 100%);
             color: #fff;
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            border-radius: 6px;
+            border-radius: 8px;
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -5622,7 +4887,7 @@
             letter-spacing: -0.02em;
             color: #000;
             margin-bottom: 8px;
-            font-family: 'Akkurat', sans-serif;
+            font-family: 'Aspekta', sans-serif;
         }
 
         .full-page-grid {
@@ -5635,7 +4900,7 @@
         .full-page-detail-card {
             padding: 20px;
             border: 1px solid #eaeaea;
-            border-radius: 6px;
+            border-radius: 8px;
             background: #fafafa;
         }
 
@@ -5646,7 +4911,7 @@
             letter-spacing: 0.5px;
             color: #666;
             margin-bottom: 8px;
-            font-family: 'Akkurat Mono', monospace;
+            font-family: 'Geist Mono', monospace;
         }
 
         .full-page-detail-value {
@@ -5666,7 +4931,7 @@
             background: linear-gradient(180deg, #1a1a1a 0%, #000 100%);
             color: #fff;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 14px;
             font-weight: 500;
             cursor: pointer;
@@ -5791,17 +5056,8 @@
         </div>
 
         <div class="sidebar-content">
-            <!-- Area Data and Time Controls Accordion -->
-            <div class="accordion-section collapsed" id="area-data-accordion">
-                <div class="accordion-header">
-                    <div>
-                        <div class="accordion-title">Area data and time controls</div>
-                        <div class="accordion-summary">Showing <strong>2022</strong> property data and <strong>poverty rate</strong> for <strong>ZIP codes</strong></div>
-                    </div>
-                    <span class="accordion-chevron">▼</span>
-                </div>
-                <div class="accordion-content">
-                    <div class="filters-section">
+            <!-- Time & Data Category -->
+            <div class="filters-section">
                         <div class="filter-group inline" style="gap: 8px;">
                             <label class="filter-label inline">Show data for</label>
                             <select style="width: 60px; padding-left: 8px; padding-right: 4px;">
@@ -5848,21 +5104,12 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Property Filters Accordion -->
-            <div class="accordion-section collapsed" id="property-filters-accordion">
-                <div class="accordion-header">
-                    <div>
-                        <div class="accordion-title">Property filters</div>
-                        <div class="accordion-summary">Showing <strong>Commercial</strong> (1-4 unit) properties with <strong>1 to 50 units</strong>, owned by <strong>Private Organizations</strong> and landlords who are <strong>Private Organizations</strong>, with 23 advanced filters applied</div>
+                        <div class="filter-divider" style="margin-bottom: 8px;"></div>
                     </div>
-                    <span class="accordion-chevron">▼</span>
-                </div>
-                <div class="accordion-content">
-                    <div class="filters-section" style="padding-top: 0;">
+
+            <!-- Property Filters Category -->
+            <div class="filters-section" style="padding-top: 0;">
                         <div class="filter-row" style="margin-bottom: 14px;">
                             <div class="filter-group">
                                 <label class="filter-label">Property types</label>
@@ -5906,22 +5153,20 @@
                             <label class="filter-label inline">Filter to selected areas</label>
                             <div class="toggle-switch"></div>
                         </div>
-
-                        <div class="advanced-filters-info">
-                            <span class="advanced-filters-text">
-                                <svg class="advanced-filters-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M2 3h12M2 6h12M2 9h12M2 12h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.3"/>
-                                    <circle cx="11" cy="3" r="1.5" fill="currentColor"/>
-                                    <circle cx="5" cy="6" r="1.5" fill="currentColor"/>
-                                    <circle cx="9" cy="9" r="1.5" fill="currentColor"/>
-                                    <circle cx="7" cy="12" r="1.5" fill="currentColor"/>
-                                </svg>
-                                23 advanced filters applied
-                            </span>
-                            <button class="edit-advanced-filters-btn" id="open-advanced-filters">Edit advanced filters</button>
-                        </div>
                     </div>
-                </div>
+
+            <div class="advanced-filters-info">
+                <span class="advanced-filters-text">
+                    <svg class="advanced-filters-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 3h12M2 6h12M2 9h12M2 12h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.3"/>
+                        <circle cx="11" cy="3" r="1.5" fill="currentColor"/>
+                        <circle cx="5" cy="6" r="1.5" fill="currentColor"/>
+                        <circle cx="9" cy="9" r="1.5" fill="currentColor"/>
+                        <circle cx="7" cy="12" r="1.5" fill="currentColor"/>
+                    </svg>
+                    23 advanced filters applied
+                </span>
+                <button class="edit-advanced-filters-btn" id="open-advanced-filters">Edit advanced filters</button>
             </div>
 
             <!-- Display Options Category -->
@@ -6111,7 +5356,7 @@
                 <a href="#" class="menu-dropdown-item">Contact</a>
             </div>
             <div class="menu-dropdown-heading">
-                <h2>Mapping property ownership across America</h2>
+                <h2>Mapping Property Ownership Across America</h2>
             </div>
         </div>
 
@@ -6160,6 +5405,10 @@
                         <div class="property-detail-item">
                             <div class="property-detail-label">Number of evictions over entire time period</div>
                             <div class="property-detail-value">234</div>
+                        </div>
+                        <div class="property-detail-item">
+                            <div class="property-detail-label">Current mortgage information</div>
+                            <div class="property-detail-value">Lorem ipsum</div>
                         </div>
                     </div>
 
@@ -6210,7 +5459,7 @@
                             </div>
                         </div>
 
-                        <div class="property-finances-grid mortgage-grid" style="margin-top: 16px;">
+                        <div class="property-finances-grid" style="margin-top: 16px;">
                             <div class="property-mortgage-card">
                                 <div class="property-mortgage-title">Mortgage 1</div>
                                 <div class="property-mortgage-details">
@@ -6295,6 +5544,10 @@
                             <div class="property-detail-label">Number of evictions over entire time period</div>
                             <div class="property-detail-value">234</div>
                         </div>
+                        <div class="property-detail-item">
+                            <div class="property-detail-label">Current mortgage information</div>
+                            <div class="property-detail-value">Lorem ipsum</div>
+                        </div>
                     </div>
 
                     <button class="property-action-button">Zoom in on property</button>
@@ -6344,7 +5597,7 @@
                             </div>
                         </div>
 
-                        <div class="property-finances-grid mortgage-grid" style="margin-top: 16px;">
+                        <div class="property-finances-grid" style="margin-top: 16px;">
                             <div class="property-mortgage-card">
                                 <div class="property-mortgage-title">Mortgage 1</div>
                                 <div class="property-mortgage-details">
@@ -6428,6 +5681,10 @@
                             <div class="property-detail-label">Number of evictions over entire time period</div>
                             <div class="property-detail-value">234</div>
                         </div>
+                        <div class="property-detail-item">
+                            <div class="property-detail-label">Current mortgage information</div>
+                            <div class="property-detail-value">Lorem ipsum</div>
+                        </div>
                     </div>
 
                     <button class="property-action-button">Zoom in on property</button>
@@ -6477,7 +5734,7 @@
                             </div>
                         </div>
 
-                        <div class="property-finances-grid mortgage-grid" style="margin-top: 16px;">
+                        <div class="property-finances-grid" style="margin-top: 16px;">
                             <div class="property-mortgage-card">
                                 <div class="property-mortgage-title">Mortgage 1</div>
                                 <div class="property-mortgage-details">
@@ -6582,23 +5839,6 @@
 
     <!-- Full Page Property View Modal -->
     <div class="full-page-modal" id="full-page-property-modal">
-        <!-- Header Bar -->
-        <div class="modal-header-bar">
-            <div class="modal-logo-container">
-                <div class="modal-logo"></div>
-                <div class="modal-logo-text">Who Owns<br>America</div>
-            </div>
-            <div class="modal-menu-container">
-                <span class="modal-menu-label">Menu</span>
-                <button class="modal-menu-button" id="property-modal-menu-button">
-                    <div class="modal-menu-icon">
-                        <span></span>
-                        <span></span>
-                    </div>
-                </button>
-            </div>
-        </div>
-
         <!-- Hero Section with Full-Width Map -->
         <div class="property-hero">
             <button class="property-back-btn" id="property-back-btn">← Go back</button>
@@ -6622,7 +5862,7 @@
                 </div>
                 <div class="property-title-row">
                     <div class="property-name-wrapper">
-                        <h1 class="property-name">205 Elm St, Houston TX</h1>
+                        <h1 class="property-name">195 Main St Brockton MA</h1>
                         <div class="status-badges">
                             <div class="status-badge warning">
                                 <svg class="status-badge-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -6646,15 +5886,11 @@
                             <span>Share this page</span>
                         </button>
                         <button class="property-action-btn primary" onclick="document.getElementById('landlord-panel-modal').classList.add('active')">
-                            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-                            </svg>
                             <span>View landlord details</span>
                         </button>
                     </div>
                 </div>
             </div>
-
             <!-- Sticky Navigation Header -->
             <nav class="property-nav-sidebar">
                 <a href="#overview" class="property-nav-link active">Overview</a>
@@ -6761,16 +5997,9 @@
                         </div>
                     </div>
 
-                    <div class="landlord-actions-container">
-                        <a href="#" class="landlord-properties-card">
-                            <div class="landlord-properties-card-content">
-                                <div class="landlord-properties-card-title">View all of landlord's properties</div>
-                                <div class="landlord-properties-card-subtitle">95 properties across Houston</div>
-                            </div>
-                            <svg class="landlord-properties-card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                            </svg>
-                        </a>
+                    <div style="margin-top: 20px; display: flex; gap: 12px; align-items: center;">
+                        <a href="#" style="font-size: 13px; color: #666; text-decoration: none; font-family: 'Aspekta', sans-serif;">View all of landlord's properties</a>
+                        <button class="property-action-bar-btn primary" onclick="document.getElementById('landlord-panel-modal').classList.add('active')">View landlord details</button>
                     </div>
                 </div>
 
@@ -6834,7 +6063,7 @@
                             <div class="expandable-body">
                                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
                                     <div>
-                                        <h3 style="font-size: 13px; font-weight: 600; color: #000; margin-bottom: 16px; font-family: 'Akkurat Mono', monospace;">PRIMARY MORTGAGE</h3>
+                                        <h3 style="font-size: 13px; font-weight: 600; color: #000; margin-bottom: 16px; font-family: 'Geist Mono', monospace;">PRIMARY MORTGAGE</h3>
                                         <div class="property-info-grid" style="grid-template-columns: 1fr;">
                                             <div class="property-info-card">
                                                 <div class="property-info-card-label">Origination year</div>
@@ -6855,7 +6084,7 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <h3 style="font-size: 13px; font-weight: 600; color: #000; margin-bottom: 16px; font-family: 'Akkurat Mono', monospace;">SECOND MORTGAGE</h3>
+                                        <h3 style="font-size: 13px; font-weight: 600; color: #000; margin-bottom: 16px; font-family: 'Geist Mono', monospace;">SECOND MORTGAGE</h3>
                                         <div class="property-info-grid" style="grid-template-columns: 1fr;">
                                             <div class="property-info-card">
                                                 <div class="property-info-card-label">Origination year</div>
@@ -6967,7 +6196,7 @@
                         This diagram traces ownership from the property up through the LLCs and individuals that control it. Each node represents a connected entity, revealing how ownership is structured and where it ultimately leads.
                     </p>
 
-                    <div style="padding: 40px; border: 1px solid #333; border-radius: 6px; background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); min-height: 400px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                    <div style="padding: 40px; border: 1px solid #333; border-radius: 12px; background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); min-height: 400px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
                         <svg width="100%" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
                             <!-- Connection Lines -->
                             <line x1="400" y1="320" x2="400" y2="240" stroke="#555" stroke-width="2"/>
@@ -7254,25 +6483,7 @@
 
     <!-- Landlord Page Modal -->
     <div class="landlord-page-modal" id="landlord-page-modal">
-        <!-- Header Bar -->
-        <div class="modal-header-bar">
-            <div class="modal-logo-container">
-                <div class="modal-logo"></div>
-                <div class="modal-logo-text">Who Owns<br>America</div>
-            </div>
-            <div class="modal-menu-container">
-                <span class="modal-menu-label">Menu</span>
-                <button class="modal-menu-button" id="landlord-modal-menu-button">
-                    <div class="modal-menu-icon">
-                        <span></span>
-                        <span></span>
-                    </div>
-                </button>
-            </div>
-        </div>
-
         <div class="landlord-map-header">
-            <button class="landlord-back-btn" id="landlord-back-btn">← Go back</button>
             <button class="landlord-close-btn" id="close-landlord-page">×</button>
         </div>
 
@@ -7726,32 +6937,24 @@
     <div class="network-graph-modal" id="network-graph-modal">
         <div class="network-graph-header">
             <div class="network-graph-header-left">
-                <div class="logo-section">
-                    <div class="logo"></div>
-                    <span class="logo-text">WHO OWNS<br>AMERICA</span>
+                <div class="logo">
+                    <div class="logo-text">WHO OWNS<br>AMERICA</div>
                 </div>
-                <button class="network-graph-back-btn" id="close-network-graph">
-                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-                    </svg>
-                    Back to map
-                </button>
+                <button class="network-graph-back-btn" id="close-network-graph">Back to map</button>
             </div>
-            <div class="network-graph-header-right">
-                <div class="network-graph-view-toggle">
-                    <span class="network-graph-view-label">Show as</span>
-                    <button class="network-view-btn active">hierarchy</button>
-                    <button class="network-view-btn">network</button>
-                </div>
-                <div class="menu-container">
-                    <span class="menu-label">Menu</span>
-                    <button class="menu-button" id="network-menu-button">
-                        <div class="menu-icon">
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </button>
-                </div>
+            <div class="network-graph-view-toggle">
+                <span class="network-graph-view-label">Show as</span>
+                <button class="network-view-btn active">hierarchy</button>
+                <button class="network-view-btn">network</button>
+            </div>
+            <div class="menu-container">
+                <span class="menu-label">Menu</span>
+                <button class="menu-button" id="network-menu-button">
+                    <div class="menu-icon">
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
             </div>
         </div>
 
@@ -7763,21 +6966,21 @@
                     </p>
                 </div>
                 <div class="network-graph-info">
-                    <div class="network-graph-label">Landlord</div>
+                    <div class="network-graph-label">LANDLORD</div>
                     <div class="network-graph-landlord-name">Genesis Land Holdings Incorporated</div>
 
                     <div class="network-graph-stat">
-                        <div class="network-graph-stat-label">Landlord ID</div>
+                        <div class="network-graph-stat-label">ID</div>
                         <div class="network-graph-stat-value">100481547022</div>
                     </div>
 
                     <div class="network-graph-stats-grid">
                         <div class="network-graph-stat">
-                            <div class="network-graph-stat-label">Total units</div>
+                            <div class="network-graph-stat-label">TOTAL UNITS</div>
                             <div class="network-graph-stat-value">165</div>
                         </div>
                         <div class="network-graph-stat">
-                            <div class="network-graph-stat-label">Total parcels</div>
+                            <div class="network-graph-stat-label">TOTAL PARCELS</div>
                             <div class="network-graph-stat-value">95</div>
                         </div>
                     </div>
@@ -7788,72 +6991,61 @@
 
             <div class="network-graph-canvas">
                 <div class="network-graph-placeholder">
-                    <svg width="1200" height="700" viewBox="0 0 1200 700" style="position: relative; z-index: 1;">
-                        <!-- Gray curved connection lines from central to middle nodes -->
-                        <path d="M600 150V260C600 460 900 430 900 520" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M600 150V260C600 460 820 430 820 520" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M600 150V260C600 460 740 430 740 520" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M600 150V260C600 460 660 430 660 520" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M600 150V260C600 460 320 430 320 520" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M600 150V260C600 460 400 430 400 520" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M600 150V260C600 460 480 430 480 520" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M600 150V260C600 460 560 430 560 520" stroke="#8B8B8B" stroke-width="0.2"/>
+                    <svg width="800" height="600" viewBox="0 0 800 600">
+                        <!-- Central highlighted node -->
+                        <circle cx="400" cy="150" r="20" fill="#FFD700"/>
+                        <text x="400" y="130" text-anchor="middle" fill="#FFD700" font-size="10" font-weight="600">GENESIS LAND HOLDINGS</text>
+                        <text x="400" y="142" text-anchor="middle" fill="#FFD700" font-size="10" font-weight="600">INCORPORATED</text>
 
-                        <!-- White curved connection lines from top nodes to middle -->
-                        <path d="M600 150V240C600 390 900 370 900 520" stroke="white" stroke-width="0.2"/>
-                        <path d="M600 150V240C600 390 820 370 820 520" stroke="white" stroke-width="0.2"/>
-                        <path d="M600 150V240C600 390 740 370 740 520" stroke="white" stroke-width="0.2"/>
-                        <path d="M600 150V240C600 390 660 370 660 520" stroke="white" stroke-width="0.2"/>
-                        <path d="M600 150V240C600 390 320 370 320 520" stroke="white" stroke-width="0.2"/>
-                        <path d="M720 150V240C600 390 900 370 900 520" stroke="white" stroke-width="0.2"/>
-                        <path d="M680 150V240C600 390 660 370 660 520" stroke="white" stroke-width="0.2"/>
-                        <path d="M650 150V240C600 390 820 370 820 520" stroke="white" stroke-width="0.2"/>
-                        <path d="M550 150V240C600 390 740 370 740 520" stroke="white" stroke-width="0.2"/>
-                        <path d="M520 150V240C600 390 480 370 480 520" stroke="white" stroke-width="0.2"/>
-                        <path d="M480 150V240C600 390 560 370 560 520" stroke="white" stroke-width="0.2"/>
+                        <!-- Top level nodes -->
+                        <circle cx="250" cy="150" r="12" fill="#999"/>
+                        <circle cx="300" cy="150" r="12" fill="#999"/>
+                        <circle cx="350" cy="150" r="12" fill="#999"/>
+                        <circle cx="450" cy="150" r="12" fill="#999"/>
+                        <circle cx="500" cy="150" r="12" fill="#999"/>
+                        <circle cx="550" cy="150" r="12" fill="#999"/>
 
-                        <!-- Gray curved lines from middle to bottom properties -->
-                        <path d="M320 530V580C320 650 280 640 280 680" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M320 530V580C320 650 350 640 350 680" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M400 530V580C400 650 420 640 420 680" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M480 530V580C480 650 490 640 490 680" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M560 530V580C560 650 560 640 560 680" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M660 530V580C660 650 630 640 630 680" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M740 530V580C740 650 700 640 700 680" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M820 530V580C820 650 770 640 770 680" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M900 530V580C900 650 840 640 840 680" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M900 530V580C900 650 910 640 910 680" stroke="#8B8B8B" stroke-width="0.2"/>
+                        <!-- Middle level nodes (companies) -->
+                        <circle cx="200" cy="300" r="10" fill="#999"/>
+                        <circle cx="250" cy="300" r="10" fill="#999"/>
+                        <circle cx="300" cy="300" r="10" fill="#999"/>
+                        <circle cx="350" cy="300" r="10" fill="#999"/>
+                        <circle cx="400" cy="300" r="10" fill="#999"/>
+                        <circle cx="450" cy="300" r="10" fill="#999"/>
+                        <circle cx="500" cy="300" r="10" fill="#999"/>
+                        <circle cx="550" cy="300" r="10" fill="#999"/>
+                        <circle cx="600" cy="300" r="10" fill="#999"/>
 
-                        <!-- Top level nodes (individuals - blue) -->
-                        <circle cx="600" cy="130" r="18" fill="#3E51FF" fill-opacity="0.4" stroke="#3E51FF"/>
-                        <circle cx="650" cy="130" r="7.5" fill="#3E51FF" fill-opacity="0.4" stroke="#3E51FF"/>
-                        <circle cx="720" cy="130" r="4.5" fill="#3E51FF" fill-opacity="0.4" stroke="#3E51FF"/>
-                        <circle cx="680" cy="130" r="4.5" fill="#3E51FF" fill-opacity="0.4" stroke="#3E51FF"/>
-                        <circle cx="550" cy="130" r="4.5" fill="#3E51FF" fill-opacity="0.4" stroke="#3E51FF"/>
-                        <circle cx="520" cy="130" r="4.5" fill="#3E51FF" fill-opacity="0.4" stroke="#3E51FF"/>
-                        <circle cx="480" cy="130" r="7.5" fill="#3E51FF" fill-opacity="0.4" stroke="#3E51FF"/>
+                        <!-- Bottom level nodes (properties) -->
+                        <rect x="190" y="480" width="8" height="8" fill="#666"/>
+                        <rect x="240" y="480" width="8" height="8" fill="#666"/>
+                        <rect x="290" y="480" width="8" height="8" fill="#666"/>
+                        <rect x="340" y="480" width="8" height="8" fill="#666"/>
+                        <rect x="390" y="480" width="8" height="8" fill="#666"/>
+                        <rect x="440" y="480" width="8" height="8" fill="#666"/>
+                        <rect x="490" y="480" width="8" height="8" fill="#666"/>
+                        <rect x="540" y="480" width="8" height="8" fill="#666"/>
+                        <rect x="590" y="480" width="8" height="8" fill="#666"/>
 
-                        <!-- Middle level nodes (companies - orange) -->
-                        <circle cx="320" cy="520" r="9.5" fill="#EF4400" fill-opacity="0.4" stroke="#EF4400"/>
-                        <circle cx="400" cy="520" r="5.5" fill="#EF4400" fill-opacity="0.4" stroke="#EF4400"/>
-                        <circle cx="480" cy="520" r="5.5" fill="#EF4400" fill-opacity="0.4" stroke="#EF4400"/>
-                        <circle cx="560" cy="520" r="5.5" fill="#EF4400" fill-opacity="0.4" stroke="#EF4400"/>
-                        <circle cx="660" cy="520" r="5.5" fill="#EF4400" fill-opacity="0.4" stroke="#EF4400"/>
-                        <circle cx="740" cy="520" r="5.5" fill="#EF4400" fill-opacity="0.4" stroke="#EF4400"/>
-                        <circle cx="820" cy="520" r="5.5" fill="#EF4400" fill-opacity="0.4" stroke="#EF4400"/>
-                        <circle cx="900" cy="520" r="5.5" fill="#3E51FF" fill-opacity="0.4" stroke="#3E51FF"/>
+                        <!-- Connection lines from top to middle -->
+                        <line x1="250" y1="162" x2="200" y2="290" stroke="#333" stroke-width="1" opacity="0.3"/>
+                        <line x1="300" y1="162" x2="250" y2="290" stroke="#333" stroke-width="1" opacity="0.3"/>
+                        <line x1="350" y1="162" x2="300" y2="290" stroke="#333" stroke-width="1" opacity="0.3"/>
+                        <line x1="400" y1="170" x2="400" y2="290" stroke="#FFD700" stroke-width="2" opacity="0.5"/>
+                        <line x1="450" y1="162" x2="450" y2="290" stroke="#333" stroke-width="1" opacity="0.3"/>
+                        <line x1="500" y1="162" x2="500" y2="290" stroke="#333" stroke-width="1" opacity="0.3"/>
+                        <line x1="550" y1="162" x2="550" y2="290" stroke="#333" stroke-width="1" opacity="0.3"/>
 
-                        <!-- Bottom level nodes (properties - teal squares) -->
-                        <rect x="275" y="675" width="11" height="11" fill="#00E2AD" fill-opacity="0.4" stroke="#00E2AD"/>
-                        <rect x="345" y="675" width="11" height="11" fill="#00E2AD" fill-opacity="0.4" stroke="#00E2AD"/>
-                        <rect x="415" y="675" width="11" height="11" fill="#00E2AD" fill-opacity="0.4" stroke="#00E2AD"/>
-                        <rect x="485" y="675" width="11" height="11" fill="#00E2AD" fill-opacity="0.4" stroke="#00E2AD"/>
-                        <rect x="555" y="675" width="11" height="11" fill="#00E2AD" fill-opacity="0.4" stroke="#00E2AD"/>
-                        <rect x="625" y="675" width="11" height="11" fill="#00E2AD" fill-opacity="0.4" stroke="#00E2AD"/>
-                        <rect x="695" y="675" width="11" height="11" fill="#00E2AD" fill-opacity="0.4" stroke="#00E2AD"/>
-                        <rect x="765" y="675" width="11" height="11" fill="#00E2AD" fill-opacity="0.4" stroke="#00E2AD"/>
-                        <rect x="835" y="675" width="11" height="11" fill="#00E2AD" fill-opacity="0.4" stroke="#00E2AD"/>
-                        <rect x="905" y="675" width="11" height="11" fill="#00E2AD" fill-opacity="0.4" stroke="#00E2AD"/>
+                        <!-- Connection lines from middle to bottom -->
+                        <line x1="200" y1="310" x2="194" y2="480" stroke="#333" stroke-width="1" opacity="0.3"/>
+                        <line x1="250" y1="310" x2="244" y2="480" stroke="#333" stroke-width="1" opacity="0.3"/>
+                        <line x1="300" y1="310" x2="294" y2="480" stroke="#333" stroke-width="1" opacity="0.3"/>
+                        <line x1="350" y1="310" x2="344" y2="480" stroke="#333" stroke-width="1" opacity="0.3"/>
+                        <line x1="400" y1="310" x2="394" y2="480" stroke="#FFD700" stroke-width="1.5" opacity="0.4"/>
+                        <line x1="450" y1="310" x2="444" y2="480" stroke="#333" stroke-width="1" opacity="0.3"/>
+                        <line x1="500" y1="310" x2="494" y2="480" stroke="#333" stroke-width="1" opacity="0.3"/>
+                        <line x1="550" y1="310" x2="544" y2="480" stroke="#333" stroke-width="1" opacity="0.3"/>
+                        <line x1="600" y1="310" x2="594" y2="480" stroke="#333" stroke-width="1" opacity="0.3"/>
                     </svg>
                 </div>
 
@@ -8130,14 +7322,6 @@
         // Tab switching - initial setup
         attachTabListeners();
 
-        // Accordion functionality
-        document.querySelectorAll('.accordion-header').forEach(header => {
-            header.addEventListener('click', function() {
-                const section = this.parentElement;
-                section.classList.toggle('collapsed');
-            });
-        });
-
         // Toggle buttons
         document.querySelectorAll('.toggle-btn').forEach(btn => {
             btn.addEventListener('click', function() {
@@ -8219,9 +7403,6 @@
         // Menu dropdown
         const menuButton = document.getElementById('menu-button');
         const menuDropdown = document.getElementById('menu-dropdown');
-        const propertyModalMenuButton = document.getElementById('property-modal-menu-button');
-        const landlordModalMenuButton = document.getElementById('landlord-modal-menu-button');
-        const networkMenuButton = document.getElementById('network-menu-button');
 
         menuButton.addEventListener('click', function(e) {
             e.stopPropagation();
@@ -8229,41 +7410,10 @@
             menuDropdown.classList.toggle('active');
         });
 
-        // Modal menu buttons
-        if (propertyModalMenuButton) {
-            propertyModalMenuButton.addEventListener('click', function(e) {
-                e.stopPropagation();
-                this.classList.toggle('active');
-                menuDropdown.classList.toggle('active');
-            });
-        }
-
-        if (landlordModalMenuButton) {
-            landlordModalMenuButton.addEventListener('click', function(e) {
-                e.stopPropagation();
-                this.classList.toggle('active');
-                menuDropdown.classList.toggle('active');
-            });
-        }
-
-        if (networkMenuButton) {
-            networkMenuButton.addEventListener('click', function(e) {
-                e.stopPropagation();
-                this.classList.toggle('active');
-                menuDropdown.classList.toggle('active');
-            });
-        }
-
         // Close menu dropdown when clicking outside
         document.addEventListener('click', function(e) {
-            if (!menuButton.contains(e.target) && !menuDropdown.contains(e.target) &&
-                (!propertyModalMenuButton || !propertyModalMenuButton.contains(e.target)) &&
-                (!landlordModalMenuButton || !landlordModalMenuButton.contains(e.target)) &&
-                (!networkMenuButton || !networkMenuButton.contains(e.target))) {
+            if (!menuButton.contains(e.target) && !menuDropdown.contains(e.target)) {
                 menuButton.classList.remove('active');
-                if (propertyModalMenuButton) propertyModalMenuButton.classList.remove('active');
-                if (landlordModalMenuButton) landlordModalMenuButton.classList.remove('active');
-                if (networkMenuButton) networkMenuButton.classList.remove('active');
                 menuDropdown.classList.remove('active');
             }
         });
@@ -8295,8 +7445,31 @@
         // Fan toggle - using event delegation (set up once)
         document.addEventListener('click', function(e) {
             if (e.target.classList.contains('fan-toggle')) {
-                e.preventDefault();
-                openCompareView();
+                const container = document.getElementById('property-cards-container');
+                const isFanned = container.classList.contains('fanned');
+                const allFanToggles = container.querySelectorAll('.fan-toggle');
+
+                if (isFanned) {
+                    // Fan in (stack)
+                    container.classList.remove('fanned');
+                    container.classList.add('stacked');
+                    allFanToggles.forEach(btn => {
+                        btn.textContent = '☰';
+                        btn.title = 'Fan out cards';
+                    });
+                    // Remove synchronized scrolling
+                    removeSyncScroll();
+                } else {
+                    // Fan out
+                    container.classList.remove('stacked');
+                    container.classList.add('fanned');
+                    allFanToggles.forEach(btn => {
+                        btn.textContent = '▤';
+                        btn.title = 'Stack cards';
+                    });
+                    // Enable synchronized scrolling
+                    setupSyncScroll();
+                }
             }
         });
 
@@ -8395,21 +7568,6 @@
                 // Show modal
                 fullPageModal.classList.add('active');
             }
-
-            // Handle "View property" buttons in landlord details table
-            if (e.target.classList.contains('landlord-view-property-btn')) {
-                e.preventDefault();
-                const row = e.target.closest('tr');
-                const addressCell = row.querySelector('.address-column');
-                const title = addressCell ? addressCell.textContent.trim().replace(/\n/g, ' ').toUpperCase() : '205 ELM ST HOUSTON TX';
-
-                // Update property name
-                const propertyName = document.querySelector('.property-name');
-                if (propertyName) propertyName.textContent = title;
-
-                // Show modal
-                fullPageModal.classList.add('active');
-            }
         });
 
         // Close full page modal
@@ -8435,7 +7593,6 @@
         // Property details page navigation
         const propertyNavLinks = document.querySelectorAll('.property-nav-link');
         const propertyModalBody = document.querySelector('.full-page-modal-body');
-        const propertyModal = document.getElementById('full-page-property-modal');
 
         // Handle navigation link clicks
         propertyNavLinks.forEach(link => {
@@ -8444,15 +7601,18 @@
                 const targetId = this.getAttribute('href').substring(1);
                 const targetSection = document.getElementById(targetId);
 
-                if (targetSection && propertyModal) {
+                if (targetSection && propertyModalBody) {
                     // Update active state
                     propertyNavLinks.forEach(l => l.classList.remove('active'));
                     this.classList.add('active');
 
                     // Smooth scroll to section
-                    const offset = targetSection.offsetTop - 80;
+                    const modalBodyRect = propertyModalBody.getBoundingClientRect();
+                    const sectionRect = targetSection.getBoundingClientRect();
+                    const scrollTop = propertyModalBody.scrollTop;
+                    const offset = sectionRect.top - modalBodyRect.top + scrollTop - 20;
 
-                    propertyModal.scrollTo({
+                    propertyModalBody.scrollTo({
                         top: offset,
                         behavior: 'smooth'
                     });
@@ -8461,20 +7621,10 @@
         });
 
         // Update active navigation on scroll
-        if (propertyModal) {
-            propertyModal.addEventListener('scroll', function() {
+        if (propertyModalBody) {
+            propertyModalBody.addEventListener('scroll', function() {
                 const sections = document.querySelectorAll('.property-main-content .full-page-section');
-                const scrollPosition = propertyModal.scrollTop + 100;
-
-                // Update header background on scroll
-                const propertyHeader = propertyModal.querySelector('.modal-header-bar');
-                if (propertyHeader) {
-                    if (propertyModal.scrollTop > 50) {
-                        propertyHeader.classList.add('scrolled');
-                    } else {
-                        propertyHeader.classList.remove('scrolled');
-                    }
-                }
+                const scrollPosition = propertyModalBody.scrollTop + 100;
 
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
@@ -8514,35 +7664,12 @@
             landlordPageModal.classList.remove('active');
         });
 
-        // Landlord back button
-        const landlordBackBtn = document.getElementById('landlord-back-btn');
-        if (landlordBackBtn) {
-            landlordBackBtn.addEventListener('click', function() {
-                landlordPageModal.classList.remove('active');
-            });
-        }
-
         // Close landlord page on escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && landlordPageModal.classList.contains('active')) {
                 landlordPageModal.classList.remove('active');
             }
         });
-
-        // Update landlord header background on scroll
-        const landlordContent = document.querySelector('.landlord-content');
-        if (landlordContent) {
-            landlordContent.addEventListener('scroll', function() {
-                const landlordHeader = landlordPageModal ? landlordPageModal.querySelector('.modal-header-bar') : null;
-                if (landlordHeader) {
-                    if (landlordContent.scrollTop > 50) {
-                        landlordHeader.classList.add('scrolled');
-                    } else {
-                        landlordHeader.classList.remove('scrolled');
-                    }
-                }
-            });
-        }
 
         // Jump-to navigation
         document.querySelectorAll('.jump-to-link').forEach(link => {
@@ -8576,8 +7703,7 @@
 
         // Open network graph when clicking "View network graph" button
         document.addEventListener('click', function(e) {
-            const btn = e.target.closest('.landlord-action-btn');
-            if (btn && btn.textContent.includes('View network graph')) {
+            if (e.target.classList.contains('landlord-action-btn') && e.target.textContent === 'View network graph') {
                 e.preventDefault();
                 networkGraphModal.classList.add('active');
             }
@@ -8589,12 +7715,10 @@
         });
 
         // Toggle network legend
-        if (networkLegendToggle && networkLegendContent) {
-            networkLegendToggle.addEventListener('click', function() {
-                this.classList.toggle('collapsed');
-                networkLegendContent.classList.toggle('collapsed');
-            });
-        }
+        networkLegendToggle.addEventListener('click', function() {
+            this.classList.toggle('collapsed');
+            networkLegendContent.classList.toggle('collapsed');
+        });
 
         // Close network graph on escape key
         document.addEventListener('keydown', function(e) {
@@ -8610,186 +7734,6 @@
                 category.classList.toggle('collapsed');
             });
         });
-
-        // Compare Locations functionality
-        function openCompareView() {
-            const compareView = document.getElementById('compare-view');
-            const compareBody = document.getElementById('compare-view-body');
-
-            // Clear previous content
-            compareBody.innerHTML = '';
-
-            // Create panels for each selected property
-            selectedPropertiesData.forEach((property, index) => {
-                const panel = document.createElement('div');
-                panel.className = 'compare-property-panel';
-                const isFirst = index === 0;
-                panel.innerHTML = `
-                    <div class="compare-property-header">
-                        <div class="compare-property-address">${property.address}</div>
-                        <div style="font-size: 12px; color: #666; font-family: 'Akkurat Mono', monospace;">${property.id}</div>
-                        <div class="compare-property-header-actions">
-                            ${isFirst ? `
-                            <button class="compare-condense-btn" title="Condense all">
-                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                    <rect x="0" y="3" width="3" height="10" rx="0.5"/>
-                                    <rect x="4.5" y="3" width="3" height="10" rx="0.5"/>
-                                    <rect x="9" y="3" width="3" height="10" rx="0.5"/>
-                                    <rect x="13.5" y="3" width="2.5" height="10" rx="0.5"/>
-                                </svg>
-                            </button>
-                            ` : ''}
-                            <button class="compare-property-close" data-property-id="${property.id}">×</button>
-                        </div>
-                    </div>
-                    <div class="compare-property-content">
-                        <div class="compare-info-section">
-                            <div class="compare-section-title">Property Information</div>
-                            <div class="compare-info-row">
-                                <div class="compare-info-label">Property Type</div>
-                                <div class="compare-info-value">Single family residential</div>
-                            </div>
-                            <div class="compare-info-row">
-                                <div class="compare-info-label">Year Built</div>
-                                <div class="compare-info-value">1985</div>
-                            </div>
-                            <div class="compare-info-row">
-                                <div class="compare-info-label">Square Footage</div>
-                                <div class="compare-info-value">2,400 sq ft</div>
-                            </div>
-                            <div class="compare-info-row">
-                                <div class="compare-info-label">Lot Size</div>
-                                <div class="compare-info-value">0.25 acres</div>
-                            </div>
-                        </div>
-
-                        <div class="compare-info-section">
-                            <div class="compare-section-title">Ownership</div>
-                            <div class="compare-info-row">
-                                <div class="compare-info-label">Current Owner</div>
-                                <div class="compare-info-value">${property.landlord}</div>
-                            </div>
-                            <div class="compare-info-row">
-                                <div class="compare-info-label">Purchase Year</div>
-                                <div class="compare-info-value">${property.year}</div>
-                            </div>
-                            <div class="compare-info-row">
-                                <div class="compare-info-label">Purchase Price</div>
-                                <div class="compare-info-value">$2.2M</div>
-                            </div>
-                        </div>
-
-                        <div class="compare-info-section">
-                            <div class="compare-section-title">Financial Metrics</div>
-                            <div class="compare-info-row">
-                                <div class="compare-info-label">Assessed Value</div>
-                                <div class="compare-info-value">$2.8M</div>
-                            </div>
-                            <div class="compare-info-row">
-                                <div class="compare-info-label">Market Value</div>
-                                <div class="compare-info-value">$3.1M</div>
-                            </div>
-                            <div class="compare-info-row">
-                                <div class="compare-info-label">Annual Tax</div>
-                                <div class="compare-info-value">$12,500</div>
-                            </div>
-                        </div>
-
-                        <div class="compare-info-section">
-                            <div class="compare-section-title">Units & Occupancy</div>
-                            <div class="compare-info-row">
-                                <div class="compare-info-label">Total Units</div>
-                                <div class="compare-info-value">${property.units}</div>
-                            </div>
-                            <div class="compare-info-row">
-                                <div class="compare-info-label">Occupied Units</div>
-                                <div class="compare-info-value">92</div>
-                            </div>
-                            <div class="compare-info-row">
-                                <div class="compare-info-label">Occupancy Rate</div>
-                                <div class="compare-info-value">96.8%</div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                compareBody.appendChild(panel);
-            });
-
-            compareView.classList.add('active');
-        }
-
-        function closeCompareView() {
-            document.getElementById('compare-view').classList.remove('active');
-        }
-
-        // Event delegation for compare button (since it's dynamically created)
-        document.addEventListener('click', function(e) {
-            if (e.target.closest('.compare-locations-btn')) {
-                e.preventDefault();
-                openCompareView();
-            }
-
-            if (e.target.closest('.landlord-link-text')) {
-                e.preventDefault();
-                openCompareView();
-            }
-
-            if (e.target.closest('#close-compare-view')) {
-                closeCompareView();
-            }
-
-            // Grid button - close compare view and show selected properties in sidebar
-            if (e.target.closest('#compare-view-to-sidebar')) {
-                closeCompareView();
-                currentTab = 'selected';
-
-                // Switch to selected properties tab
-                const tabs = document.querySelectorAll('.tab');
-                tabs.forEach(tab => {
-                    tab.classList.remove('active');
-                    if (tab.textContent.trim() === 'Selected properties') {
-                        tab.classList.add('active');
-                    }
-                });
-
-                // Render selected properties in sidebar
-                renderSelectedProperties();
-            }
-
-            // Handle individual property close in compare view
-            const propertyCloseBtn = e.target.closest('.compare-property-close');
-            if (propertyCloseBtn) {
-                const propertyId = parseInt(propertyCloseBtn.dataset.propertyId);
-                const index = selectedPropertiesData.findIndex(p => p.id === propertyId);
-                if (index > -1) {
-                    selectedPropertiesData.splice(index, 1);
-                    if (selectedPropertiesData.length === 0) {
-                        closeCompareView();
-                    } else {
-                        openCompareView(); // Refresh the view
-                    }
-                }
-            }
-        });
     </script>
-
-    <!-- Compare View Modal -->
-    <div class="compare-view" id="compare-view">
-        <div class="compare-view-header">
-            <div class="compare-view-title">Compare Properties</div>
-            <button class="compare-view-grid-btn" id="compare-view-to-sidebar">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <rect x="3" y="3" width="8" height="8" rx="1"/>
-                    <rect x="13" y="3" width="8" height="8" rx="1"/>
-                    <rect x="3" y="13" width="8" height="8" rx="1"/>
-                    <rect x="13" y="13" width="8" height="8" rx="1"/>
-                </svg>
-            </button>
-            <button class="compare-view-close" id="close-compare-view">×</button>
-        </div>
-        <div class="compare-view-body" id="compare-view-body">
-            <!-- Property panels will be dynamically inserted here -->
-        </div>
-    </div>
 </body>
 </html>

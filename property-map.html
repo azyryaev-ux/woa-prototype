@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Ownership Map</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #ffffff;
+            color: #171717;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Left Sidebar */
+        .left-sidebar {
+            width: 360px;
+            background: #f8f8f8;
+            border-right: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            padding: 20px 24px;
+            background: white;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .logo {
+            width: 32px;
+            height: 32px;
+            background: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+            font-size: 14px;
+        }
+
+        .logo-text {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border: 1px solid #d0d0d0;
+            border-radius: 6px;
+            background: white;
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            flex: 1;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .search-icon {
+            width: 16px;
+            height: 16px;
+            color: #666;
+        }
+
+        /* Filters Section */
+        .filters-section {
+            padding: 20px 24px;
+            background: white;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .filter-group {
+            margin-bottom: 16px;
+        }
+
+        .filter-label {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .filter-control {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        select, button.filter-button {
+            padding: 6px 12px;
+            border: 1px solid #d0d0d0;
+            border-radius: 4px;
+            font-size: 13px;
+            font-family: inherit;
+            background: white;
+            cursor: pointer;
+        }
+
+        select {
+            flex: 1;
+        }
+
+        .toggle-group {
+            display: flex;
+            gap: 4px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            padding: 2px;
+        }
+
+        .toggle-btn {
+            padding: 4px 12px;
+            border: none;
+            background: transparent;
+            font-size: 12px;
+            cursor: pointer;
+            border-radius: 3px;
+            font-family: inherit;
+        }
+
+        .toggle-btn.active {
+            background: white;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .info-text {
+            font-size: 12px;
+            color: #999;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .range-inputs {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .range-inputs input {
+            width: 60px;
+            padding: 6px 8px;
+            border: 1px solid #d0d0d0;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 40px;
+            height: 20px;
+            background: #d0d0d0;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: left 0.2s;
+        }
+
+        .advanced-filters {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        .edit-link {
+            color: #0066cc;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        /* Table Section */
+        .table-section {
+            flex: 1;
+            background: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .table-tabs {
+            display: flex;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 0 24px;
+        }
+
+        .tab {
+            padding: 12px 16px;
+            border: none;
+            background: none;
+            font-size: 13px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            font-family: inherit;
+            color: #666;
+        }
+
+        .tab.active {
+            color: #000;
+            border-bottom-color: #000;
+        }
+
+        .table-controls {
+            padding: 16px 24px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .table-info {
+            font-size: 12px;
+            color: #666;
+            margin-top: 12px;
+            line-height: 1.5;
+        }
+
+        .data-table {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            position: sticky;
+            top: 0;
+            background: #f8f8f8;
+            z-index: 1;
+        }
+
+        th {
+            text-align: left;
+            padding: 12px 24px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        td {
+            padding: 14px 24px;
+            font-size: 13px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .rank-cell {
+            color: #999;
+            font-weight: 500;
+        }
+
+        .owner-name {
+            font-weight: 500;
+            color: #000;
+        }
+
+        .owner-type {
+            font-size: 11px;
+            color: #999;
+            display: block;
+            margin-top: 2px;
+        }
+
+        .units-cell {
+            font-weight: 600;
+            color: #000;
+        }
+
+        /* Map Area */
+        .map-area {
+            flex: 1;
+            position: relative;
+            background: #1a1537;
+            overflow: hidden;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .menu-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            font-family: inherit;
+            z-index: 10;
+        }
+
+        /* Simulated map with grid */
+        .map-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                repeating-linear-gradient(0deg, transparent, transparent 49px, #2d2654 49px, #2d2654 50px),
+                repeating-linear-gradient(90deg, transparent, transparent 49px, #2d2654 49px, #2d2654 50px);
+        }
+
+        .property-block {
+            position: absolute;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .property-block.residential {
+            background: #8b3a9c;
+        }
+
+        .property-block.commercial {
+            background: #b8813d;
+        }
+
+        .property-block.other {
+            background: #4a4270;
+        }
+
+        .street-label {
+            position: absolute;
+            color: #666;
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        /* Right Sidebar */
+        .right-sidebar {
+            width: 280px;
+            background: white;
+            border-left: 1px solid #e0e0e0;
+            overflow-y: auto;
+            padding: 24px 20px;
+        }
+
+        .sidebar-section {
+            margin-bottom: 28px;
+        }
+
+        .section-title {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+        }
+
+        .gradient-bar {
+            height: 20px;
+            background: linear-gradient(90deg, #e8e4f3 0%, #7c3aed 100%);
+            border-radius: 3px;
+            margin-top: 8px;
+            position: relative;
+        }
+
+        .gradient-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #999;
+            margin-top: 4px;
+        }
+
+        .zoom-text {
+            font-size: 12px;
+            color: #999;
+            margin-top: 4px;
+        }
+
+        .bullet-list {
+            list-style: none;
+        }
+
+        .bullet-list li {
+            padding-left: 16px;
+            position: relative;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+
+        .bullet-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #999;
+        }
+
+        .color-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        .color-commercial { background: #b8813d; }
+        .color-single { background: #8b3a9c; }
+        .color-multi { background: #6b4c8a; }
+        .color-2-4 { background: #5a3d7a; }
+        .color-multiuse { background: #4a3666; }
+        .color-vacant { background: #999; }
+        .color-other { background: #666; }
+
+        .legend-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 8px 0;
+        }
+
+        .legend-toggle::after {
+            content: '▼';
+            font-size: 10px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <!-- Left Sidebar -->
+    <div class="left-sidebar">
+        <div class="sidebar-header">
+            <div class="logo-section">
+                <div class="logo">●</div>
+                <span class="logo-text">LOGO</span>
+            </div>
+            <div class="search-bar">
+                <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <input type="text" placeholder="Search">
+            </div>
+        </div>
+
+        <div class="filters-section">
+            <div class="filter-group">
+                <label class="filter-label">Show data for</label>
+                <select>
+                    <option>2019</option>
+                    <option>2020</option>
+                    <option>2021</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label class="filter-label">View area data</label>
+                <div class="filter-control">
+                    <div class="toggle-group">
+                        <button class="toggle-btn active">Auto</button>
+                        <button class="toggle-btn">On</button>
+                        <button class="toggle-btn">Off</button>
+                    </div>
+                    <span class="info-text">ⓘ Zoom out to view</span>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <label class="filter-label">Geography</label>
+                <div class="filter-control">
+                    <select style="flex: 0 0 auto; width: 110px;">
+                        <option>ZIP code</option>
+                    </select>
+                    <button class="filter-button">Metric</button>
+                    <select style="flex: 1;">
+                        <option>Poverty rate</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <label class="filter-label">Property types</label>
+                <select>
+                    <option>Commercial ...</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label class="filter-label">Number of units</label>
+                <div class="range-inputs">
+                    <input type="number" value="1">
+                    <span>to</span>
+                    <input type="number" value="50">
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <label class="filter-label">Owner types</label>
+                <select>
+                    <option>Private Organization</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label class="filter-label">Landlord types</label>
+                <select>
+                    <option>Private Organization</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <div class="filter-control">
+                    <label class="filter-label" style="flex: 1; margin-bottom: 0;">Filter to selected areas</label>
+                    <div class="toggle-switch"></div>
+                </div>
+            </div>
+
+            <div class="advanced-filters">and 23 advanced filters applied</div>
+            <a href="#" class="edit-link">Edit advanced filters</a>
+
+            <div class="filter-group" style="margin-top: 16px;">
+                <label class="filter-label">Color properties by</label>
+                <select>
+                    <option>Property type</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="table-section">
+            <div class="table-tabs">
+                <button class="tab active">Top 10 landlords</button>
+                <button class="tab">Top 10 Properties</button>
+                <button class="tab">Selected properties</button>
+            </div>
+
+            <div class="table-controls">
+                <label class="filter-label">Show top 10 by</label>
+                <select>
+                    <option>units</option>
+                </select>
+                <div class="table-info">
+                    These are top 10 landlords based on the filter selection.
+                </div>
+            </div>
+
+            <div class="data-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>RANK</th>
+                            <th>PRIMARY OWNER<br>NAME AND TYPE</th>
+                            <th>NUMBER<br>OF UNITS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="rank-cell">1</td>
+                            <td>
+                                <div class="owner-name">Peabody Properties, Inc</div>
+                                <div class="owner-type">Private Organization</div>
+                            </td>
+                            <td class="units-cell">1345</td>
+                        </tr>
+                        <tr>
+                            <td class="rank-cell">2</td>
+                            <td>
+                                <div class="owner-name">Oakwood</div>
+                                <div class="owner-type">Private Organization</div>
+                            </td>
+                            <td class="units-cell">1345</td>
+                        </tr>
+                        <tr>
+                            <td class="rank-cell">3</td>
+                            <td>
+                                <div class="owner-name">Lorem LLC</div>
+                                <div class="owner-type">Private Organization</div>
+                            </td>
+                            <td class="units-cell">1345</td>
+                        </tr>
+                        <tr>
+                            <td class="rank-cell">4</td>
+                            <td>
+                                <div class="owner-name">Lorem 2 LLC</div>
+                                <div class="owner-type">Private Organization</div>
+                            </td>
+                            <td class="units-cell">1345</td>
+                        </tr>
+                        <tr>
+                            <td class="rank-cell">5</td>
+                            <td>
+                                <div class="owner-name">Berkshire Residential Inv...</div>
+                                <div class="owner-type">Private Organization</div>
+                            </td>
+                            <td class="units-cell">1345</td>
+                        </tr>
+                        <tr>
+                            <td class="rank-cell">6</td>
+                            <td>
+                                <div class="owner-name">Lorem 3 LLC</div>
+                                <div class="owner-type">Private Organization</div>
+                            </td>
+                            <td class="units-cell">1345</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Map Area -->
+    <div class="map-area">
+        <button class="menu-button">MENU ⋮</button>
+        <div class="map-container">
+            <div class="map-grid"></div>
+
+            <!-- Street Labels -->
+            <div class="street-label" style="top: 15%; right: 10%; transform: rotate(-15deg);">Willow Glen Dr</div>
+            <div class="street-label" style="top: 18%; right: 5%; writing-mode: vertical-rl;">Martin Luther King Jr Blvd</div>
+            <div class="street-label" style="top: 35%; left: 20%; writing-mode: vertical-rl;">Sharon Rd</div>
+            <div class="street-label" style="bottom: 35%; left: 5%; writing-mode: vertical-rl;">Noel St</div>
+            <div class="street-label" style="top: 30%; right: 8%;">Bellfort St</div>
+            <div class="street-label" style="top: 55%; right: 20%;">Flamingo Dr</div>
+            <div class="street-label" style="bottom: 28%; right: 22%;">Thrush Dr</div>
+            <div class="street-label" style="bottom: 20%; right: 25%;">Heron Dr</div>
+
+            <!-- Property Blocks -->
+            <div class="property-block residential" style="top: 20%; left: 15%; width: 100px; height: 80px;"></div>
+            <div class="property-block commercial" style="top: 22%; right: 25%; width: 120px; height: 60px;"></div>
+            <div class="property-block commercial" style="top: 25%; right: 18%; width: 80px; height: 70px;"></div>
+            <div class="property-block other" style="top: 28%; left: 28%; width: 60px; height: 50px;"></div>
+            <div class="property-block residential" style="bottom: 40%; left: 10%; width: 150px; height: 100px;"></div>
+            <div class="property-block commercial" style="bottom: 35%; right: 15%; width: 100px; height: 90px;"></div>
+            <div class="property-block residential" style="bottom: 25%; left: 40%; width: 90px; height: 70px;"></div>
+            <div class="property-block commercial" style="bottom: 20%; right: 30%; width: 110px; height: 80px;"></div>
+        </div>
+    </div>
+
+    <!-- Right Sidebar -->
+    <div class="right-sidebar">
+        <div class="sidebar-section">
+            <h3 class="section-title">Geography</h3>
+            <div class="checkbox-item">
+                <input type="checkbox" id="zip">
+                <label for="zip">ZIP codes</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="poverty">
+                <label for="poverty">Poverty rate</label>
+            </div>
+            <div class="zoom-text">Zoom out to view</div>
+            <div class="gradient-bar"></div>
+            <div class="gradient-labels">
+                <span>0%</span>
+                <span>45%</span>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <h3 class="section-title">Selected Properties</h3>
+            <ul class="bullet-list">
+                <li>Selected</li>
+                <li>Owned by same landlord</li>
+            </ul>
+        </div>
+
+        <div class="sidebar-section">
+            <h3 class="section-title">Property Types</h3>
+            <div class="checkbox-item">
+                <input type="checkbox" id="commercial" checked>
+                <label for="commercial"><span class="color-indicator color-commercial"></span>Commercial</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="single">
+                <label for="single"><span class="color-indicator color-single"></span>Single family residential</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="multi">
+                <label for="multi"><span class="color-indicator color-multi"></span>Multifamily residential</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="2-4">
+                <label for="2-4"><span class="color-indicator color-2-4"></span>2-4 unit residential</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="multiuse">
+                <label for="multiuse"><span class="color-indicator color-multiuse"></span>Multi-use</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="vacant">
+                <label for="vacant"><span class="color-indicator color-vacant"></span>Vacant</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="other">
+                <label for="other"><span class="color-indicator color-other"></span>Other</label>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="legend-toggle">
+                <h3 class="section-title" style="margin-bottom: 0;">Legend</h3>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add basic interactivity
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        document.querySelectorAll('.toggle-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.parentElement.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        document.querySelector('.toggle-switch').addEventListener('click', function() {
+            const after = window.getComputedStyle(this, '::after');
+            const currentLeft = after.getPropertyValue('left');
+            this.style.background = currentLeft === '2px' ? '#0066cc' : '#d0d0d0';
+        });
+    </script>
+</body>
+</html>
