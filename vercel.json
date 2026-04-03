@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/woa-vercel-style.html" }
+  ]
+}
