@@ -3127,9 +3127,8 @@
         /* Breadcrumb inside modal header bar */
         .modal-breadcrumb {
             margin-bottom: 0;
+            margin-left: 24px;
             pointer-events: auto;
-            flex: 1;
-            justify-content: center;
         }
 
         .modal-breadcrumb .breadcrumb-link {
@@ -3140,12 +3139,12 @@
         .modal-breadcrumb .breadcrumb-link,
         .modal-breadcrumb .breadcrumb-separator,
         .modal-breadcrumb .breadcrumb-current {
-            color: rgba(255, 255, 255, 0.85);
+            color: #666;
             transition: color 0.3s ease;
         }
 
         .modal-breadcrumb .breadcrumb-link:hover {
-            color: #fff;
+            color: #000;
         }
 
         .modal-header-bar.scrolled .modal-breadcrumb .breadcrumb-link,
@@ -3231,7 +3230,8 @@
             padding: 0 48px;
             z-index: 1000;
             pointer-events: none;
-            background: transparent;
+            background: #ffffff;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.06);
             border-bottom: none;
             transition: all 0.3s ease;
         }
@@ -3250,7 +3250,7 @@
         .modal-logo {
             width: 24px;
             height: 24px;
-            background: #fff;
+            background: #000;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -3262,7 +3262,7 @@
             content: '';
             width: 8px;
             height: 8px;
-            background: #000;
+            background: #fff;
             border-radius: 50%;
             transition: all 0.3s ease;
         }
@@ -3273,7 +3273,7 @@
             letter-spacing: 0.5px;
             font-family: 'Akkurat', sans-serif;
             flex-shrink: 0;
-            color: #fff;
+            color: #000;
             line-height: 1.3;
             text-transform: uppercase;
             transition: all 0.3s ease;
@@ -5989,7 +5989,7 @@
     <header class="app-header" id="app-header">
         <a class="app-header-logo" href="#">
             <div class="app-header-logo-mark"></div>
-            <span class="app-header-logo-text">Who Owns<br>America</span>
+            <span class="app-header-logo-text">Logo</span>
         </a>
 
         <div class="app-header-search">
@@ -6927,7 +6927,7 @@
         <div class="modal-header-bar">
             <div class="modal-logo-container">
                 <div class="modal-logo"></div>
-                <div class="modal-logo-text">Who Owns<br>America</div>
+                <div class="modal-logo-text">Logo</div>
             </div>
             <nav class="breadcrumb modal-breadcrumb">
                 <div class="breadcrumb-item">
@@ -7461,7 +7461,7 @@
         <div class="modal-header-bar">
             <div class="modal-logo-container">
                 <div class="modal-logo"></div>
-                <div class="modal-logo-text">Who Owns<br>America</div>
+                <div class="modal-logo-text">Logo</div>
             </div>
             <div class="modal-menu-container">
                 <span class="modal-menu-label">Menu</span>
