@@ -87,17 +87,7 @@
 
         /* Left Sidebar */
         .left-sidebar {
-            width: 370px;
-            background: #fff;
-            border-right: 1px solid #eaeaea;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            position: fixed;
-            top: 70px;
-            left: 0;
-            bottom: 0;
-            z-index: 10;
+            display: none;
         }
 
         .sidebar-header {
@@ -1122,7 +1112,8 @@
         .map-area {
             position: fixed;
             top: 70px;
-            left: 370px;
+            left: 48px;
+            transition: left 0.25s cubic-bezier(0.4,0,0.2,1);
             right: 0;
             bottom: 0;
             background: #000;
@@ -5982,6 +5973,420 @@
         .full-page-action-btn.secondary:hover {
             background: #eaeaea;
         }
+
+        /* ═══════════════════════════════════════════════
+           ICON RAIL + SUB-PANEL SYSTEM
+           ═══════════════════════════════════════════════ */
+
+        /* Icon rail — narrow strip on the far left */
+        .icon-rail {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            bottom: 0;
+            width: 48px;
+            background: #fff;
+            border-right: 1px solid #eaeaea;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px 0;
+            gap: 2px;
+            z-index: 20;
+        }
+
+        .icon-rail-btn {
+            width: 36px;
+            height: 36px;
+            border: none;
+            border-radius: 8px;
+            background: transparent;
+            color: #888;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.15s ease, color 0.15s ease;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .icon-rail-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .icon-rail-btn:hover {
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .icon-rail-btn.active {
+            background: #000;
+            color: #fff;
+        }
+
+        /* Step numbers for workflow order */
+        .icon-rail-btn .step-badge {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: #e8e8e8;
+            color: #888;
+            font-size: 7px;
+            font-weight: 700;
+            font-family: 'Akkurat Mono', monospace;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        .icon-rail-btn.active .step-badge {
+            background: rgba(255,255,255,0.25);
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* Tooltip to the right of icon */
+        .icon-rail-btn[data-tooltip]::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            left: calc(100% + 10px);
+            top: 50%;
+            transform: translateY(-50%);
+            background: #111;
+            color: #fff;
+            font-size: 11px;
+            font-family: 'Akkurat', sans-serif;
+            white-space: nowrap;
+            padding: 5px 9px;
+            border-radius: 5px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.15s ease;
+            z-index: 100;
+        }
+
+        .icon-rail-btn[data-tooltip]:hover::after {
+            opacity: 1;
+        }
+
+        .icon-rail-divider {
+            width: 24px;
+            height: 1px;
+            background: #eaeaea;
+            margin: 6px 0;
+            flex-shrink: 0;
+        }
+
+        /* Sub-panel — slides out to the right of the icon rail */
+        .sub-panel {
+            position: fixed;
+            top: 70px;
+            left: 48px;
+            bottom: 0;
+            width: 0;
+            background: #fff;
+            border-right: 1px solid #eaeaea;
+            overflow: hidden;
+            z-index: 15;
+            transition: width 0.25s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        .sub-panel.open {
+            width: 340px;
+        }
+
+        .sub-panel-inner {
+            width: 340px;
+            height: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        /* Individual sections inside sub-panel */
+        .sub-panel-section {
+            display: none;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .sub-panel-section.active {
+            display: flex;
+        }
+
+        /* Sub-panel header */
+        .sub-panel-header {
+            padding: 16px 20px 12px;
+            border-bottom: 1px solid #eaeaea;
+            flex-shrink: 0;
+        }
+
+        .sub-panel-title {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: #000;
+            font-family: 'Akkurat Mono', monospace;
+        }
+
+        .sub-panel-subtitle {
+            font-size: 11px;
+            color: #888;
+            margin-top: 2px;
+            font-family: 'Akkurat', sans-serif;
+        }
+
+        .sub-panel-body {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        /* ═══════════════════════════════════════════════
+           REDESIGNED "VIEW AREA DATA" PROMINENT CARD
+           ═══════════════════════════════════════════════ */
+
+        .area-overlay-card {
+            margin: 14px 16px;
+            border-radius: 8px;
+            background: #F0F6FF;
+            border: 1.5px solid #C5DEFF;
+            overflow: hidden;
+        }
+
+        .area-overlay-card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 14px 10px;
+        }
+
+        .area-overlay-icon-wrap {
+            width: 32px;
+            height: 32px;
+            border-radius: 7px;
+            background: #1A6FD8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .area-overlay-icon-wrap svg {
+            width: 17px;
+            height: 17px;
+            color: #fff;
+        }
+
+        .area-overlay-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #0A2D5A;
+            font-family: 'Akkurat', sans-serif;
+        }
+
+        .area-overlay-desc {
+            font-size: 11px;
+            color: #4A7DB8;
+            margin-top: 1px;
+        }
+
+        .area-overlay-controls {
+            padding: 0 14px 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .area-overlay-toggle-group {
+            display: flex;
+            background: #fff;
+            border: 1.5px solid #C5DEFF;
+            border-radius: 6px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .area-overlay-toggle {
+            padding: 6px 14px;
+            border: none;
+            background: transparent;
+            font-size: 12px;
+            font-weight: 600;
+            font-family: 'Akkurat', sans-serif;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .area-overlay-toggle:not(:last-child) {
+            border-right: 1px solid #C5DEFF;
+        }
+
+        .area-overlay-toggle.active {
+            background: #1A6FD8;
+            color: #fff;
+        }
+
+        .area-overlay-toggle:hover:not(.active) {
+            background: #E4EFFF;
+            color: #1A6FD8;
+        }
+
+        .area-overlay-status {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 11px;
+            color: #6699CC;
+            font-family: 'Akkurat', sans-serif;
+        }
+
+        .area-overlay-status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #6699CC;
+            flex-shrink: 0;
+        }
+
+        /* Status dot states */
+        .area-overlay-status.status-on .area-overlay-status-dot { background: #22C55E; }
+        .area-overlay-status.status-on { color: #166534; }
+        .area-overlay-status.status-off .area-overlay-status-dot { background: #D1D5DB; }
+        .area-overlay-status.status-off { color: #9CA3AF; }
+
+        /* ═══════════════════════════════════════════════
+           SELECTED PROPERTIES PANEL (in sub-panel)
+           ═══════════════════════════════════════════════ */
+
+        .sel-prop-list {
+            display: flex;
+            flex-direction: column;
+            padding: 8px 0;
+        }
+
+        .sel-prop-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+            transition: background 0.12s;
+        }
+
+        .sel-prop-row:hover { background: #fafafa; }
+
+        .sel-prop-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .sel-prop-address {
+            flex: 1;
+            font-size: 12px;
+            font-weight: 600;
+            color: #111;
+        }
+
+        .sel-prop-actions {
+            display: flex;
+            gap: 4px;
+        }
+
+        .sel-prop-action-btn {
+            font-size: 10px;
+            padding: 3px 7px;
+            border: 1px solid #d1d1d1;
+            border-radius: 4px;
+            background: #fff;
+            color: #444;
+            cursor: pointer;
+            font-family: 'Akkurat', sans-serif;
+            white-space: nowrap;
+        }
+
+        .sel-prop-action-btn:hover { background: #f5f5f5; }
+
+        .sel-prop-remove {
+            width: 20px;
+            height: 20px;
+            border: none;
+            background: transparent;
+            color: #bbb;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            font-size: 14px;
+            line-height: 1;
+        }
+
+        .sel-prop-remove:hover { background: #fef2f2; color: #e53e3e; }
+
+        .sel-prop-count {
+            font-size: 11px;
+            color: #888;
+            padding: 10px 16px 0;
+            font-family: 'Akkurat Mono', monospace;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sel-prop-clear-btn {
+            font-size: 11px;
+            color: #666;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Akkurat', sans-serif;
+            text-decoration: underline;
+        }
+
+        .sel-prop-compare-btn {
+            margin: 12px 16px;
+            width: calc(100% - 32px);
+            padding: 10px;
+            background: #000;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            font-family: 'Akkurat', sans-serif;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .sel-prop-compare-btn:hover { background: #222; }
+
+        /* ═══════════════════════════════════════════════
+           TABLE SECTION (in sub-panel)
+           ═══════════════════════════════════════════════ */
+
+        /* Keep existing table styles, adjust padding slightly */
+        .sub-panel-body .table-section {
+            flex: 1;
+        }
+
+        .sub-panel-body .table-section .table-tabs {
+            padding: 0 16px;
+        }
+
     </style>
 </head>
 <body>
@@ -6023,109 +6428,107 @@
         </button>
     </header>
 
-    <!-- Left Sidebar -->
-    <div class="left-sidebar">
-        <div class="sidebar-header">
-            <div class="logo-section">
-                <div class="logo"></div>
-                <span class="logo-text">WHO OWNS<br>AMERICA</span>
-                <div class="search-bar-wrapper">
-                    <div class="search-bar">
-                        <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <circle cx="11" cy="11" r="8" stroke-width="2"></circle>
-                            <path d="m21 21-4.35-4.35" stroke-width="2" stroke-linecap="round"></path>
-                        </svg>
-                        <input type="text" placeholder="Search">
-                    </div>
-                    <div class="search-dropdown">
-                        <div class="search-dropdown-header">
-                            Search by address, owner/landlord name, or area name
-                        </div>
-                        <div class="search-section">
-                            <div class="search-section-title">Addresses</div>
-                            <div class="search-item">
-                                <div class="search-item-icon">📍</div>
-                                <span>123 Tremont St, Boston, MA 02108</span>
-                            </div>
-                            <div class="search-item">
-                                <div class="search-item-icon">📍</div>
-                                <span>456 Boylston St, Boston, MA 02116</span>
-                            </div>
-                            <div class="search-item">
-                                <div class="search-item-icon">📍</div>
-                                <span>789 Commonwealth Ave, Boston, MA 02215</span>
-                            </div>
-                            <div class="search-item">
-                                <div class="search-item-icon">📍</div>
-                                <span>321 Newbury St, Boston, MA 02115</span>
-                            </div>
-                            <div class="search-item">
-                                <div class="search-item-icon">📍</div>
-                                <span>654 Beacon St, Boston, MA 02215</span>
-                            </div>
-                        </div>
-                        <div class="search-section">
-                            <div class="search-section-title">Landlords</div>
-                            <div class="search-item">
-                                <div class="search-item-icon">🏢</div>
-                                <span>Boston Properties Inc</span>
-                            </div>
-                            <div class="search-item">
-                                <div class="search-item-icon">🏢</div>
-                                <span>WinnResidential</span>
-                            </div>
-                            <div class="search-item">
-                                <div class="search-item-icon">🏢</div>
-                                <span>Related Beal LLC</span>
-                            </div>
-                            <div class="search-item">
-                                <div class="search-item-icon">🏢</div>
-                                <span>The Druker Company</span>
-                            </div>
-                            <div class="search-item">
-                                <div class="search-item-icon">🏢</div>
-                                <span>Beacon Capital Partners</span>
-                            </div>
-                        </div>
-                        <div class="search-section">
-                            <div class="search-section-title">Areas</div>
-                            <div class="search-item">
-                                <div class="search-item-icon">🗺️</div>
-                                <span>Back Bay</span>
-                            </div>
-                            <div class="search-item">
-                                <div class="search-item-icon">🗺️</div>
-                                <span>South End</span>
-                            </div>
-                            <div class="search-item">
-                                <div class="search-item-icon">🗺️</div>
-                                <span>Beacon Hill</span>
-                            </div>
-                            <div class="search-item">
-                                <div class="search-item-icon">🗺️</div>
-                                <span>North End</span>
-                            </div>
-                            <div class="search-item">
-                                <div class="search-item-icon">🗺️</div>
-                                <span>Fenway-Kenmore</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- Icon Rail (workflow-ordered navigation) -->
+    <aside class="icon-rail" id="icon-rail">
 
-        <div class="sidebar-content">
-            <!-- Area Data and Time Controls Accordion -->
-            <div class="accordion-section collapsed" id="area-data-accordion">
-                <div class="accordion-header">
-                    <div>
-                        <div class="accordion-title">Area data and time controls</div>
-                        <div class="accordion-summary">Showing <strong>2022</strong> property data and <strong>poverty rate</strong> for <strong>ZIP codes</strong></div>
-                    </div>
-                    <span class="accordion-chevron">▼</span>
+        <!-- Step 1: Area data & time -->
+        <button class="icon-rail-btn" id="rail-area-data" data-panel="area-data" data-tooltip="Area data &amp; time">
+            <span class="step-badge">1</span>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="14" height="13" rx="2"/>
+                <path d="M7 2v4M13 2v4"/>
+                <path d="M3 9h14"/>
+                <circle cx="10" cy="13.5" r="1.5" fill="currentColor" stroke="none"/>
+            </svg>
+        </button>
+
+        <!-- Step 2: Property filters -->
+        <button class="icon-rail-btn" id="rail-filters" data-panel="filters" data-tooltip="Property filters">
+            <span class="step-badge">2</span>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+                <path d="M3 5h14"/>
+                <path d="M5 10h10"/>
+                <path d="M7 15h6"/>
+                <circle cx="13" cy="5" r="1.5" fill="currentColor" stroke="none"/>
+                <circle cx="7" cy="10" r="1.5" fill="currentColor" stroke="none"/>
+                <circle cx="11" cy="15" r="1.5" fill="currentColor" stroke="none"/>
+            </svg>
+        </button>
+
+        <div class="icon-rail-divider"></div>
+
+        <!-- Step 3: Top landlords -->
+        <button class="icon-rail-btn" id="rail-landlords" data-panel="landlords" data-tooltip="Top 10 landlords">
+            <span class="step-badge">3</span>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="8" cy="6" r="2.5"/>
+                <path d="M3 16c0-3 2.5-5 5-5s5 2 5 5"/>
+                <circle cx="14.5" cy="7" r="2"/>
+                <path d="M17 16c0-2.5-1.5-4-3.5-4"/>
+            </svg>
+        </button>
+
+        <!-- Step 4: Top properties -->
+        <button class="icon-rail-btn" id="rail-properties" data-panel="properties" data-tooltip="Top 10 properties">
+            <span class="step-badge">4</span>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 17V9l6-5 6 5v8H2z"/>
+                <rect x="6" y="12" width="4" height="5"/>
+                <path d="M14 17V8"/>
+                <path d="M14 8h4v9h-4"/>
+            </svg>
+        </button>
+
+        <!-- Step 5: Selected properties -->
+        <button class="icon-rail-btn" id="rail-selected" data-panel="selected" data-tooltip="Selected properties">
+            <span class="step-badge">5</span>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 2l2.4 4.8 5.3.8-3.85 3.75.91 5.3L10 14.25l-4.76 2.48.91-5.3L2.3 7.6l5.3-.8L10 2z"/>
+            </svg>
+        </button>
+
+    </aside>
+
+    <!-- Sub-panel (flies out to the right of the icon rail) -->
+    <div class="sub-panel" id="sub-panel">
+        <div class="sub-panel-inner" id="sub-panel-inner">
+
+            <!-- ── Panel 1: Area data & time ── -->
+            <div class="sub-panel-section active" id="panel-area-data">
+                <div class="sub-panel-header">
+                    <div class="sub-panel-title">Area data &amp; time</div>
+                    <div class="sub-panel-subtitle">Set temporal context and overlay data</div>
                 </div>
-                <div class="accordion-content">
+                <div class="sub-panel-body">
+
+                    <!-- PROMINENT View area data card -->
+                    <div class="area-overlay-card">
+                        <div class="area-overlay-card-header">
+                            <div class="area-overlay-icon-wrap">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M2 4l5 2 6-3 5 2v11l-5-2-6 3-5-2V4z"/>
+                                    <path d="M7 6v11M13 3v11"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="area-overlay-label">Area Data Overlay</div>
+                                <div class="area-overlay-desc">Show socioeconomic data on the map</div>
+                            </div>
+                        </div>
+                        <div class="area-overlay-controls">
+                            <div class="area-overlay-toggle-group" id="area-overlay-toggle-group">
+                                <button class="area-overlay-toggle active" data-value="auto">Auto</button>
+                                <button class="area-overlay-toggle" data-value="on">On</button>
+                                <button class="area-overlay-toggle" data-value="off">Off</button>
+                            </div>
+                            <span class="area-overlay-status" id="area-overlay-status">
+                                <span class="area-overlay-status-dot"></span>
+                                Zoom out to activate
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Existing area data controls -->
                     <div class="filters-section">
                         <div class="filter-group inline" style="gap: 8px;">
                             <label class="filter-label inline">Show data for</label>
@@ -6157,38 +6560,18 @@
                 </div>
             </div>
 
-            <!-- View area data (always visible) -->
-            <div class="filters-section">
-                <div class="filter-group" style="margin-bottom: 10px;">
-                    <label class="filter-label">View area data</label>
-                    <div class="filter-control">
-                        <div class="toggle-group">
-                            <button class="toggle-btn active">Auto</button>
-                            <button class="toggle-btn">On</button>
-                            <button class="toggle-btn">Off</button>
-                        </div>
-                        <span class="info-text">
-                            <svg class="info-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="8" cy="8" r="7" stroke-width="1.5"/>
-                                <path d="M8 7.5V11.5M8 5V5.5" stroke="#999" stroke-width="1.5" stroke-linecap="round"/>
-                            </svg>
-                            Zoom out to view
-                        </span>
-                    </div>
+            <!-- ── Panel 2: Property filters ── -->
+            <div class="sub-panel-section" id="panel-filters">
+                <div class="sub-panel-header">
+                    <div class="sub-panel-title">Property filters</div>
+                    <div class="sub-panel-subtitle">Filter by type, ownership, and more</div>
                 </div>
-            </div>
-
-            <!-- Property Filters Accordion -->
-            <div class="accordion-section collapsed" id="property-filters-accordion">
-                <div class="accordion-header">
-                    <div>
-                        <div class="accordion-title">Property filters</div>
-                        <div class="accordion-summary">Showing <strong>Commercial</strong> (1-4 unit) properties with <strong>1 to 50 units</strong>, owned by <strong>Private Organizations</strong> and landlords who are <strong>Private Organizations</strong>, with 23 advanced filters applied</div>
-                    </div>
-                    <span class="accordion-chevron">▼</span>
-                </div>
-                <div class="accordion-content">
+                <div class="sub-panel-body">
                     <div class="filters-section" style="padding-top: 0;">
+                        <div class="accordion-summary" style="padding: 10px 0 8px; font-size: 11px; color: #888;">
+                            Showing <strong>all types</strong> of properties with <strong>any number</strong> of units belonging to <strong>all types</strong> of landlords, with no other <strong>advanced filters</strong> applied
+                        </div>
+
                         <div class="filter-row" style="margin-bottom: 14px;">
                             <div class="filter-group">
                                 <label class="filter-label">Property types</label>
@@ -6242,18 +6625,15 @@
                                     <circle cx="9" cy="9" r="1.5" fill="currentColor"/>
                                     <circle cx="7" cy="12" r="1.5" fill="currentColor"/>
                                 </svg>
-                                23 advanced filters applied
+                                No advanced filters applied
                             </span>
                             <button class="edit-advanced-filters-btn" id="open-advanced-filters">Edit advanced filters</button>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- Display Options Category -->
-            <div class="filters-section" style="padding-top: 8px;">
-                        <div class="filter-divider"></div>
+                    <div class="filter-divider"></div>
 
+                    <div class="filters-section" style="padding-top: 8px;">
                         <div class="filter-group inline" style="margin-bottom: 4px;">
                             <label class="filter-label inline">Color properties by</label>
                             <select class="narrow-dropdown">
@@ -6263,154 +6643,165 @@
                             </select>
                         </div>
                     </div>
-
-            <!-- Table Section -->
-            <div class="table-section">
-            <div class="table-tabs">
-                <button class="tab active">Top 10 landlords</button>
-                <button class="tab">Top 10 Properties</button>
-                <button class="tab">Selected properties</button>
-            </div>
-
-            <div class="table-controls">
-                <label class="filter-label">Show top 10 by</label>
-                <select id="top10-dropdown">
-                    <option>units</option>
-                    <option>properties</option>
-                    <option>value</option>
-                </select>
-                <div class="table-info" id="table-info-text">
-                    These are top 10 landlords based on the filter selection.
                 </div>
             </div>
 
-            <div class="data-table">
-                <table>
-                    <thead id="table-header">
-                        <tr>
-                            <th>RANK</th>
-                            <th>PRIMARY OWNER NAME AND TYPE</th>
-                            <th style="text-align: right;">NUMBER OF<br>UNITS</th>
-                        </tr>
-                    </thead>
-                    <tbody id="table-body">
-                        <tr>
-                            <td class="rank-cell">1</td>
-                            <td class="owner-cell">
-                                <div class="owner-cell-wrapper">
-                                    <div>
-                                        <span class="owner-name">Peabody Properties, Inc</span>
-                                        <span class="owner-type">Private Organization</span>
-                                    </div>
-                                    <div class="table-sparkline">
-                                        <div class="sparkline-bar" style="height: 40%;"></div>
-                                        <div class="sparkline-bar" style="height: 55%;"></div>
-                                        <div class="sparkline-bar" style="height: 70%;"></div>
-                                        <div class="sparkline-bar" style="height: 85%;"></div>
-                                        <div class="sparkline-bar" style="height: 100%;"></div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="units-cell">1345</td>
-                        </tr>
-                        <tr>
-                            <td class="rank-cell">2</td>
-                            <td class="owner-cell">
-                                <div class="owner-cell-wrapper">
-                                    <div>
-                                        <span class="owner-name">Oakwood</span>
-                                        <span class="owner-type">Private Organization</span>
-                                    </div>
-                                    <div class="table-sparkline">
-                                        <div class="sparkline-bar" style="height: 60%;"></div>
-                                        <div class="sparkline-bar" style="height: 65%;"></div>
-                                        <div class="sparkline-bar" style="height: 70%;"></div>
-                                        <div class="sparkline-bar" style="height: 68%;"></div>
-                                        <div class="sparkline-bar" style="height: 72%;"></div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="units-cell">1345</td>
-                        </tr>
-                        <tr>
-                            <td class="rank-cell">3</td>
-                            <td class="owner-cell">
-                                <div class="owner-cell-wrapper">
-                                    <div>
-                                        <span class="owner-name">Lorem LLC</span>
-                                        <span class="owner-type">Private Organization</span>
-                                    </div>
-                                    <div class="table-sparkline">
-                                        <div class="sparkline-bar" style="height: 90%;"></div>
-                                        <div class="sparkline-bar" style="height: 85%;"></div>
-                                        <div class="sparkline-bar" style="height: 75%;"></div>
-                                        <div class="sparkline-bar" style="height: 70%;"></div>
-                                        <div class="sparkline-bar" style="height: 65%;"></div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="units-cell">1345</td>
-                        </tr>
-                        <tr>
-                            <td class="rank-cell">4</td>
-                            <td class="owner-cell">
-                                <span class="owner-name">Lorem 2 LLC</span>
-                                <span class="owner-type">Private Organization</span>
-                            </td>
-                            <td class="units-cell">1345</td>
-                        </tr>
-                        <tr>
-                            <td class="rank-cell">5</td>
-                            <td class="owner-cell">
-                                <span class="owner-name">Berkshire Residential Inv...</span>
-                                <span class="owner-type">Private Organization</span>
-                            </td>
-                            <td class="units-cell">1345</td>
-                        </tr>
-                        <tr>
-                            <td class="rank-cell">6</td>
-                            <td class="owner-cell">
-                                <span class="owner-name">Lorem 3 LLC</span>
-                                <span class="owner-type">Private Organization</span>
-                            </td>
-                            <td class="units-cell">1345</td>
-                        </tr>
-                        <tr>
-                            <td class="rank-cell">7</td>
-                            <td class="owner-cell">
-                                <span class="owner-name">Sample Properties LLC</span>
-                                <span class="owner-type">Private Organization</span>
-                            </td>
-                            <td class="units-cell">1234</td>
-                        </tr>
-                        <tr>
-                            <td class="rank-cell">8</td>
-                            <td class="owner-cell">
-                                <span class="owner-name">Real Estate Holdings Inc</span>
-                                <span class="owner-type">Private Organization</span>
-                            </td>
-                            <td class="units-cell">1198</td>
-                        </tr>
-                        <tr>
-                            <td class="rank-cell">9</td>
-                            <td class="owner-cell">
-                                <span class="owner-name">Property Management Co</span>
-                                <span class="owner-type">Private Organization</span>
-                            </td>
-                            <td class="units-cell">1156</td>
-                        </tr>
-                        <tr>
-                            <td class="rank-cell">10</td>
-                            <td class="owner-cell">
-                                <span class="owner-name">Investment Properties LLC</span>
-                                <span class="owner-type">Private Organization</span>
-                            </td>
-                            <td class="units-cell">1089</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <!-- ── Panel 3: Top landlords ── -->
+            <div class="sub-panel-section" id="panel-landlords">
+                <div class="sub-panel-header">
+                    <div class="sub-panel-title">Top 10 landlords</div>
+                    <div class="sub-panel-subtitle">Based on active filter selection</div>
+                </div>
+                <div class="sub-panel-body">
+                    <div class="table-section" style="border-top: none;">
+                        <div class="table-controls" style="border-top: none; padding-top: 10px;">
+                            <label class="filter-label">Show top 10 by</label>
+                            <select id="top10-dropdown-landlords">
+                                <option>filings</option>
+                                <option>units</option>
+                                <option>properties</option>
+                                <option>value</option>
+                            </select>
+                            <div class="table-info">
+                                These are top 10 landlords based on the filter selection.
+                            </div>
+                        </div>
+
+                        <div class="data-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>RANK</th>
+                                        <th>PRIMARY OWNER NAME AND TYPE</th>
+                                        <th style="text-align: right;">NUMBER OF<br>FILINGS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td class="rank-cell">1</td><td class="owner-cell"><div class="owner-cell-wrapper"><div><span class="owner-name">Peabody Properties, Inc</span><span class="owner-type">Private Organization</span></div><div class="table-sparkline"><div class="sparkline-bar" style="height:40%"></div><div class="sparkline-bar" style="height:55%"></div><div class="sparkline-bar" style="height:70%"></div><div class="sparkline-bar" style="height:85%"></div><div class="sparkline-bar" style="height:100%"></div></div></div></td><td class="units-cell">1345</td></tr>
+                                    <tr><td class="rank-cell">2</td><td class="owner-cell"><span class="owner-name">Oakwood</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1345</td></tr>
+                                    <tr><td class="rank-cell">3</td><td class="owner-cell"><span class="owner-name">Lorem LLC</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1345</td></tr>
+                                    <tr><td class="rank-cell">4</td><td class="owner-cell"><span class="owner-name">Lorem 2 LLC</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1345</td></tr>
+                                    <tr><td class="rank-cell">5</td><td class="owner-cell"><span class="owner-name">Berkshire Residential Inv...</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1345</td></tr>
+                                    <tr><td class="rank-cell">6</td><td class="owner-cell"><span class="owner-name">Lorem 3 LLC</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1345</td></tr>
+                                    <tr><td class="rank-cell">7</td><td class="owner-cell"><span class="owner-name">Sample Properties LLC</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1234</td></tr>
+                                    <tr><td class="rank-cell">8</td><td class="owner-cell"><span class="owner-name">Real Estate Holdings Inc</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1198</td></tr>
+                                    <tr><td class="rank-cell">9</td><td class="owner-cell"><span class="owner-name">Property Management Co</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1156</td></tr>
+                                    <tr><td class="rank-cell">10</td><td class="owner-cell"><span class="owner-name">Investment Properties LLC</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1089</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+
+            <!-- ── Panel 4: Top properties ── -->
+            <div class="sub-panel-section" id="panel-properties">
+                <div class="sub-panel-header">
+                    <div class="sub-panel-title">Top 10 properties</div>
+                    <div class="sub-panel-subtitle">Based on active filter selection</div>
+                </div>
+                <div class="sub-panel-body">
+                    <div class="table-section" style="border-top: none;">
+                        <div class="table-controls" style="border-top: none; padding-top: 10px;">
+                            <label class="filter-label">Show top 10 by</label>
+                            <select id="top10-dropdown-properties">
+                                <option>filings</option>
+                                <option>units</option>
+                                <option>value</option>
+                            </select>
+                            <div class="table-info">
+                                These are top 10 properties based on the filter selection.
+                            </div>
+                        </div>
+
+                        <div class="data-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>RANK</th>
+                                        <th>ADDRESS, OWNER NAME AND TYPE</th>
+                                        <th style="text-align: right;">NUMBER OF<br>FILINGS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td class="rank-cell">1</td><td class="owner-cell"><span class="owner-name">192 main st</span><span class="owner-type">Fannin and Rusk Associates LP · Condominium</span></td><td class="units-cell">1500</td></tr>
+                                    <tr><td class="rank-cell">2</td><td class="owner-cell"><span class="owner-name">193 main st</span><span class="owner-type">Fannin and Rusk Associates LP · Condominium</span></td><td class="units-cell">1345</td></tr>
+                                    <tr><td class="rank-cell">3</td><td class="owner-cell"><span class="owner-name">194 main st</span><span class="owner-type">Fannin and Rusk Associates LP · Condominium</span></td><td class="units-cell">1200</td></tr>
+                                    <tr><td class="rank-cell">4</td><td class="owner-cell"><span class="owner-name">195 main st</span><span class="owner-type">Genesis Land Holdings Inc · Condominium</span></td><td class="units-cell">1155</td></tr>
+                                    <tr><td class="rank-cell">5</td><td class="owner-cell"><span class="owner-name">196 main st</span><span class="owner-type">Fannin and Rusk Associates LP · Condominium</span></td><td class="units-cell">1000</td></tr>
+                                    <tr><td class="rank-cell">6</td><td class="owner-cell"><span class="owner-name">197 main st</span><span class="owner-type">Property Holdings LLC · Condominium</span></td><td class="units-cell">985</td></tr>
+                                    <tr><td class="rank-cell">7</td><td class="owner-cell"><span class="owner-name">198 main st</span><span class="owner-type">Real Estate Group Inc · Condominium</span></td><td class="units-cell">950</td></tr>
+                                    <tr><td class="rank-cell">8</td><td class="owner-cell"><span class="owner-name">199 main st</span><span class="owner-type">Investment Properties Co · Condominium</span></td><td class="units-cell">920</td></tr>
+                                    <tr><td class="rank-cell">9</td><td class="owner-cell"><span class="owner-name">200 main st</span><span class="owner-type">Development Associates LP · Condominium</span></td><td class="units-cell">890</td></tr>
+                                    <tr><td class="rank-cell">10</td><td class="owner-cell"><span class="owner-name">201 main st</span><span class="owner-type">Urban Holdings Inc · Condominium</span></td><td class="units-cell">850</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Panel 5: Selected properties ── -->
+            <div class="sub-panel-section" id="panel-selected">
+                <div class="sub-panel-header">
+                    <div class="sub-panel-title">Selected properties</div>
+                    <div class="sub-panel-subtitle">Properties you've pinned on the map</div>
+                </div>
+                <div class="sub-panel-body">
+                    <div class="sel-prop-count">
+                        <span>4 selected</span>
+                        <button class="sel-prop-clear-btn">Clear all</button>
+                    </div>
+
+                    <div class="sel-prop-list">
+                        <div class="sel-prop-row">
+                            <span class="sel-prop-dot" style="background:#E8524A;"></span>
+                            <span class="sel-prop-address">195 main st</span>
+                            <div class="sel-prop-actions">
+                                <button class="sel-prop-action-btn">Map</button>
+                                <button class="sel-prop-action-btn">Full view</button>
+                            </div>
+                            <button class="sel-prop-remove">×</button>
+                        </div>
+                        <div class="sel-prop-row">
+                            <span class="sel-prop-dot" style="background:#4AACB8;"></span>
+                            <span class="sel-prop-address">195 cedar st</span>
+                            <div class="sel-prop-actions">
+                                <button class="sel-prop-action-btn">Map</button>
+                                <button class="sel-prop-action-btn">Full view</button>
+                            </div>
+                            <button class="sel-prop-remove">×</button>
+                        </div>
+                        <div class="sel-prop-row">
+                            <span class="sel-prop-dot" style="background:#7B68EE;"></span>
+                            <span class="sel-prop-address">199 cedar st</span>
+                            <div class="sel-prop-actions">
+                                <button class="sel-prop-action-btn">Map</button>
+                                <button class="sel-prop-action-btn">Full view</button>
+                            </div>
+                            <button class="sel-prop-remove">×</button>
+                        </div>
+                        <div class="sel-prop-row">
+                            <span class="sel-prop-dot" style="background:#9B59B6;"></span>
+                            <span class="sel-prop-address">195 elm st</span>
+                            <div class="sel-prop-actions">
+                                <button class="sel-prop-action-btn">Map</button>
+                                <button class="sel-prop-action-btn">Full view</button>
+                            </div>
+                            <button class="sel-prop-remove">×</button>
+                        </div>
+                    </div>
+
+                    <button class="sel-prop-compare-btn">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                            <path d="M2 7h10M9 4l3 3-3 3"/>
+                            <path d="M5 2v10"/>
+                        </svg>
+                        Compare Locations
+                    </button>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -9541,6 +9932,70 @@
     // Also draw on load in case modal is already open
     window.addEventListener('load', initCharts);
 })();
+
+    // ── Icon Rail ──
+    (function () {
+        const rail = document.getElementById('icon-rail');
+        const subPanel = document.getElementById('sub-panel');
+        const mapArea = document.querySelector('.map-area');
+        const btns = Array.from(rail.querySelectorAll('.icon-rail-btn'));
+        let activePanel = null;
+
+        function openPanel(panelId) {
+            // Hide all sections
+            document.querySelectorAll('.sub-panel-section').forEach(s => s.classList.remove('active'));
+            btns.forEach(b => b.classList.remove('active'));
+
+            if (activePanel === panelId) {
+                // Toggle off
+                subPanel.classList.remove('open');
+                if (mapArea) mapArea.style.left = '48px';
+                activePanel = null;
+                return;
+            }
+
+            const section = document.getElementById('panel-' + panelId);
+            const btn = rail.querySelector('[data-panel="' + panelId + '"]');
+            if (section) section.classList.add('active');
+            if (btn) btn.classList.add('active');
+            subPanel.classList.add('open');
+            if (mapArea) mapArea.style.left = '388px';
+            activePanel = panelId;
+        }
+
+        btns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                openPanel(btn.dataset.panel);
+            });
+        });
+
+        // Area overlay toggle
+        const toggleGroup = document.getElementById('area-overlay-toggle-group');
+        const statusEl = document.getElementById('area-overlay-status');
+        if (toggleGroup && statusEl) {
+            toggleGroup.addEventListener('click', e => {
+                const btn = e.target.closest('.area-overlay-toggle');
+                if (!btn) return;
+                toggleGroup.querySelectorAll('.area-overlay-toggle').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const val = btn.dataset.value;
+                statusEl.className = 'area-overlay-status';
+                if (val === 'auto') {
+                    statusEl.classList.add('');
+                    statusEl.innerHTML = '<span class="area-overlay-status-dot"></span>Zoom out to activate';
+                } else if (val === 'on') {
+                    statusEl.classList.add('status-on');
+                    statusEl.innerHTML = '<span class="area-overlay-status-dot"></span>Overlay active';
+                } else {
+                    statusEl.classList.add('status-off');
+                    statusEl.innerHTML = '<span class="area-overlay-status-dot"></span>Overlay hidden';
+                }
+            });
+        }
+
+        // Open area-data by default
+        openPanel('area-data');
+    })();
 </script>
 </body>
 </html>
