@@ -538,6 +538,12 @@
             color: #000;
         }
 
+        .filter-summary-editable {
+            font-weight: 600;
+            color: #D96E4A;
+            cursor: pointer;
+        }
+
         .accordion-content {
             max-height: 2000px;
             overflow: hidden;
@@ -6026,28 +6032,9 @@
             color: #fff;
         }
 
-        /* Step numbers for workflow order */
+        /* Step numbers hidden */
         .icon-rail-btn .step-badge {
-            position: absolute;
-            top: 2px;
-            right: 2px;
-            width: 13px;
-            height: 13px;
-            border-radius: 50%;
-            background: #e8e8e8;
-            color: #888;
-            font-size: 7px;
-            font-weight: 700;
-            font-family: 'Akkurat Mono', monospace;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            line-height: 1;
-        }
-
-        .icon-rail-btn.active .step-badge {
-            background: rgba(255,255,255,0.25);
-            color: rgba(255,255,255,0.9);
+            display: none;
         }
 
         /* Tooltip to the right of icon */
@@ -6530,16 +6517,6 @@
 
                     <!-- Existing area data controls -->
                     <div class="filters-section">
-                        <div class="filter-group inline" style="gap: 8px;">
-                            <label class="filter-label inline">Show data for</label>
-                            <select style="width: 60px; padding-left: 8px; padding-right: 4px;">
-                                <option>2019</option>
-                                <option>2020</option>
-                                <option>2021</option>
-                                <option selected>2022</option>
-                            </select>
-                        </div>
-
                         <div class="filter-row" style="margin-bottom: 10px;">
                             <div class="filter-group">
                                 <label class="filter-label">Geography</label>
@@ -6569,7 +6546,7 @@
                 <div class="sub-panel-body">
                     <div class="filters-section" style="padding-top: 0;">
                         <div class="accordion-summary" style="padding: 10px 0 8px; font-size: 11px; color: #888;">
-                            Showing <strong>all types</strong> of properties with <strong>any number</strong> of units belonging to <strong>all types</strong> of landlords, with no other <strong>advanced filters</strong> applied
+                            Showing <span class="filter-summary-editable">all types</span> of properties with <span class="filter-summary-editable">any number</span> of units belonging to <span class="filter-summary-editable">all types</span> of landlords, with no other <span class="filter-summary-editable">advanced filters</span> applied
                         </div>
 
                         <div class="filter-row" style="margin-bottom: 14px;">
