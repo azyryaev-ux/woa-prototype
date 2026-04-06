@@ -3010,6 +3010,69 @@
 
         .app-header-spacer { flex: 1; }
 
+        .app-header-overlay {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+            margin-right: 20px;
+            padding: 0 16px 0 12px;
+            border-right: 1px solid #e8e8e8;
+        }
+
+        .app-header-overlay-label {
+            font-size: 11px;
+            font-weight: 500;
+            color: #555;
+            font-family: 'Akkurat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .app-header-overlay-label svg {
+            width: 14px;
+            height: 14px;
+            color: #3B6FE0;
+            flex-shrink: 0;
+        }
+
+        .app-header-overlay-toggle-group {
+            display: flex;
+            background: #f0f0f0;
+            border-radius: 6px;
+            padding: 2px;
+            gap: 1px;
+        }
+
+        .app-header-overlay-toggle {
+            font-size: 12px;
+            font-weight: 600;
+            font-family: 'Akkurat', sans-serif;
+            color: #666;
+            background: transparent;
+            border: none;
+            border-radius: 4px;
+            padding: 4px 10px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            white-space: nowrap;
+        }
+
+        .app-header-overlay-toggle:hover:not(.active) {
+            background: rgba(0,0,0,0.06);
+            color: #333;
+        }
+
+        .app-header-overlay-toggle.active {
+            background: #3B6FE0;
+            color: #fff;
+            box-shadow: 0 1px 3px rgba(59,111,224,0.3);
+        }
+
         .app-header-year {
             display: flex;
             align-items: center;
@@ -6395,6 +6458,21 @@
         </div>
 
         <div class="app-header-spacer"></div>
+
+        <div class="app-header-overlay">
+            <span class="app-header-overlay-label">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="16" height="12" rx="1.5"/>
+                    <path d="M6 9h8M6 12h5"/>
+                </svg>
+                Area Data
+            </span>
+            <div class="app-header-overlay-toggle-group" id="header-overlay-toggle-group">
+                <button class="app-header-overlay-toggle active" data-value="auto">Auto</button>
+                <button class="app-header-overlay-toggle" data-value="on">On</button>
+                <button class="app-header-overlay-toggle" data-value="off">Off</button>
+            </div>
+        </div>
 
         <div class="app-header-year">
             <span class="app-header-year-label">Viewing data for</span>
@@ -9946,9 +10024,42 @@
             });
         });
 
-        // Area overlay toggle
+        // Area overlay toggle — keep header and sidebar in sync
         const toggleGroup = document.getElementById('area-overlay-toggle-group');
+        const headerToggleGroup = document.getElementById('header-overlay-toggle-group');
         const statusEl = document.getElementById('area-overlay-status');
+
+        function setOverlayValue(val) {
+            [toggleGroup, headerToggleGroup].forEach(grp => {
+                if (!grp) return;
+                grp.querySelectorAll('[data-value]').forEach(b => {
+                    b.classList.toggle('active', b.dataset.value === val);
+                });
+            });
+            if (statusEl) {
+                statusEl.className = 'area-overlay-status';
+                if (val === 'auto') {
+                    statusEl.innerHTML = '<span class="area-overlay-status-dot"></span>Zoom out to activate';
+                } else if (val === 'on') {
+                    statusEl.classList.add('status-on');
+                    statusEl.innerHTML = '<span class="area-overlay-status-dot"></span>Overlay active';
+                } else {
+                    statusEl.classList.add('status-off');
+                    statusEl.innerHTML = '<span class="area-overlay-status-dot"></span>Overlay hidden';
+                }
+            }
+        }
+
+        [toggleGroup, headerToggleGroup].forEach(grp => {
+            if (!grp) return;
+            grp.addEventListener('click', e => {
+                const btn = e.target.closest('[data-value]');
+                if (!btn) return;
+                const val = btn.dataset.value;
+                setOverlayValue(val);
+            });
+        });
+
         if (toggleGroup && statusEl) {
             toggleGroup.addEventListener('click', e => {
                 const btn = e.target.closest('.area-overlay-toggle');
