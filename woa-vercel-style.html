@@ -548,11 +548,9 @@
             display: inline-block;
             font-size: 1.05em;
             color: #D96E4A;
-            margin-left: 2px;
-            vertical-align: baseline;
+            margin-left: 1px;
+            vertical-align: middle;
             line-height: 1;
-            position: relative;
-            top: 0.1em;
         }
 
         .accordion-content {
@@ -917,33 +915,30 @@
         .advanced-filters-icon {
             width: 15px;
             height: 15px;
-            color: #888;
-            opacity: 0.85;
+            color: #D96E4A;
             flex-shrink: 0;
         }
 
         .edit-advanced-filters-btn {
             padding: 8px 14px;
-            background: #fafafa;
-            border: 1px solid #d1d1d1;
+            background: transparent;
+            border: 1.5px solid #D96E4A;
             border-radius: 6px;
             font-size: 12px;
-            font-weight: 500;
-            color: #666;
+            font-weight: 600;
+            color: #D96E4A;
             cursor: pointer;
             transition: all 0.15s ease;
             white-space: nowrap;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
             font-family: 'Akkurat Mono', monospace;
             width: 100%;
             text-align: center;
         }
 
         .edit-advanced-filters-btn:hover {
-            background: #fff;
-            border-color: #999;
-            color: #000;
-            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
+            background: rgba(217,110,74,0.08);
+            border-color: #C05A38;
+            color: #C05A38;
         }
 
         .edit-advanced-filters-btn:active {
@@ -6816,8 +6811,8 @@
                 </div>
                 <div class="sub-panel-body">
                     <div class="filters-section" style="padding-top: 0;">
-                        <div class="accordion-summary" style="padding: 10px 0 8px; font-size: 13px; color: #888; line-height: 1.7;">
-                            Showing <span class="filter-summary-editable">all types<span class="filter-summary-chevron">&#8964;</span></span> of properties with <span class="filter-summary-editable">any number<span class="filter-summary-chevron">&#8964;</span></span> of units belonging to <span class="filter-summary-editable">all types<span class="filter-summary-chevron">&#8964;</span></span> of landlords, with no other <span class="filter-summary-editable">advanced filters<span class="filter-summary-chevron">&#8964;</span></span> applied
+                        <div class="accordion-summary" style="padding: 10px 0 4px; font-size: 13px; color: #888; line-height: 1.4;">
+                            Showing <span class="filter-summary-editable">all types<svg class="filter-summary-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:6px;display:inline-block;vertical-align:middle;margin-left:2px;color:#D96E4A;position:relative;top:-1px;"><path d="M1 1l4 4 4-4"/></svg></span> of properties with <span class="filter-summary-editable">any number<svg class="filter-summary-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:6px;display:inline-block;vertical-align:middle;margin-left:2px;color:#D96E4A;position:relative;top:-1px;"><path d="M1 1l4 4 4-4"/></svg></span> of units belonging to <span class="filter-summary-editable">all types<svg class="filter-summary-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:6px;display:inline-block;vertical-align:middle;margin-left:2px;color:#D96E4A;position:relative;top:-1px;"><path d="M1 1l4 4 4-4"/></svg></span> of landlords, with no other <span class="filter-summary-editable">advanced filters<svg class="filter-summary-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:6px;display:inline-block;vertical-align:middle;margin-left:2px;color:#D96E4A;position:relative;top:-1px;"><path d="M1 1l4 4 4-4"/></svg></span> applied
                         </div>
 
                         <div style="border-top: 1px solid #eaeaea; margin: 42px -22px 14px;"></div>
@@ -6843,7 +6838,7 @@
                                     <circle cx="9" cy="9" r="1.5" fill="currentColor"/>
                                     <circle cx="7" cy="12" r="1.5" fill="currentColor"/>
                                 </svg>
-                                <span style="display: inline-flex; align-items: center; gap: 4px; line-height: 1.2;"><span class="filter-summary-editable" style="vertical-align: middle;">Six advanced filters</span><span style="vertical-align: middle; color: #666; font-weight: 400;">applied</span></span>
+                                <span style="display: inline-flex; align-items: center; gap: 4px; line-height: 1.2;"><span class="filter-summary-editable" style="vertical-align: middle;">Six advanced filters</span><span style="vertical-align: middle; color: #D96E4A; font-weight: 600;">applied</span></span>
                             </span>
                             <button class="edit-advanced-filters-btn" id="open-advanced-filters">Edit advanced filters</button>
                         </div>
