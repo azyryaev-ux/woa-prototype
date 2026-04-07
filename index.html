@@ -6745,7 +6745,7 @@
                 <div class="sub-panel-header">
                     <div class="sub-panel-title">Area data</div>
                     <div class="sub-panel-subtitle">This panel lets you layer socioeconomic context onto the map (things like poverty rate, median income, or renter burden) shaded across ZIP codes or census tracts.</div>
-                    <div class="accordion-summary" style="padding: 8px 0 0; font-size: 13px; color: #888; line-height: 1.4;">Showing <span class="filter-summary-editable">2019<svg class="filter-summary-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:6px;display:inline-block;vertical-align:middle;margin-left:2px;color:#D96E4A;position:relative;top:-1px;"><path d="M1 1l4 4 4-4"/></svg></span> data and <span class="filter-summary-editable">poverty rate<svg class="filter-summary-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:6px;display:inline-block;vertical-align:middle;margin-left:2px;color:#D96E4A;position:relative;top:-1px;"><path d="M1 1l4 4 4-4"/></svg></span> for <span class="filter-summary-editable">ZIP codes<svg class="filter-summary-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:6px;display:inline-block;vertical-align:middle;margin-left:2px;color:#D96E4A;position:relative;top:-1px;"><path d="M1 1l4 4 4-4"/></svg></span></div>
+                    <div class="accordion-summary" style="padding: 8px 0 0; font-size: 13px; color: #888; line-height: 1.4;">Showing <span class="filter-summary-editable" id="area-data-year-trigger">2019<svg class="filter-summary-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:6px;display:inline-block;vertical-align:middle;margin-left:2px;color:#D96E4A;position:relative;top:-1px;"><path d="M1 1l4 4 4-4"/></svg></span> data and <span class="filter-summary-editable">poverty rate<svg class="filter-summary-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:6px;display:inline-block;vertical-align:middle;margin-left:2px;color:#D96E4A;position:relative;top:-1px;"><path d="M1 1l4 4 4-4"/></svg></span> for <span class="filter-summary-editable">ZIP codes<svg class="filter-summary-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:6px;display:inline-block;vertical-align:middle;margin-left:2px;color:#D96E4A;position:relative;top:-1px;"><path d="M1 1l4 4 4-4"/></svg></span></div>
                 </div>
                 <div class="sub-panel-body">
 
@@ -6784,25 +6784,6 @@
                                 <span class="area-overlay-status-dot"></span>
                                 Zoom out to activate
                             </span>
-                        </div>
-                    </div>
-
-                    <!-- Existing area data controls -->
-                    <div class="filters-section" style="padding-top: 16px;">
-                        <div class="filter-row" style="gap: 10px; align-items: flex-end;">
-                            <div class="filter-group" style="margin-bottom: 0; flex: 1;">
-                                <label class="filter-label">Geography</label>
-                                <select style="width: 100%;">
-                                    <option>ZIP code</option>
-                                    <option>Tract</option>
-                                </select>
-                            </div>
-                            <div class="filter-group" style="margin-bottom: 0; flex: 1;">
-                                <label class="filter-label">Metric</label>
-                                <select style="width: 100%;">
-                                    <option>Poverty rate</option>
-                                </select>
-                            </div>
                         </div>
                     </div>
 
@@ -10327,6 +10308,17 @@
 
         // Open area-data by default
         openPanel('area-data');
+
+        // Clicking the "2019" year trigger in the area data summary opens the header year dropdown
+        const yearTrigger = document.getElementById('area-data-year-trigger');
+        const headerYearSelect = document.getElementById('app-header-year-select');
+        if (yearTrigger && headerYearSelect) {
+            yearTrigger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                headerYearSelect.focus();
+                headerYearSelect.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
+            });
+        }
     })();
 </script>
 </body>
