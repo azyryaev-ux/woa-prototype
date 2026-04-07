@@ -539,9 +539,18 @@
         }
 
         .filter-summary-editable {
-            font-weight: 600;
+            font-weight: 800;
             color: #D96E4A;
             cursor: pointer;
+        }
+
+        .filter-summary-chevron {
+            display: inline-block;
+            font-size: 0.75em;
+            color: #D96E4A;
+            margin-left: 1px;
+            vertical-align: middle;
+            line-height: 1;
         }
 
         .accordion-content {
@@ -878,22 +887,20 @@
         }
 
         .advanced-filters-info {
-            padding: 14px 16px;
+            padding: 0;
             background: transparent;
-            border: 1px solid #eaeaea;
-            border-radius: 6px;
+            border: none;
             display: flex;
             flex-direction: column;
             align-items: stretch;
             gap: 10px;
-            margin: 0 20px;
+            margin: 0;
             cursor: pointer;
             transition: all 0.15s ease;
         }
 
         .advanced-filters-info:hover {
-            background: #fafafa;
-            border-color: #d1d1d1;
+            background: transparent;
         }
 
         .advanced-filters-text {
@@ -6100,7 +6107,7 @@
         /* Step numbers — subtle, below icon */
         .icon-rail-btn .step-badge {
             display: block;
-            font-size: 8px;
+            font-size: 11px;
             font-family: 'Akkurat', sans-serif;
             font-weight: 600;
             letter-spacing: 0.02em;
@@ -6189,7 +6196,7 @@
         }
 
         .sub-panel-title {
-            font-size: 11px;
+            font-size: 13px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.6px;
@@ -6198,7 +6205,7 @@
         }
 
         .sub-panel-subtitle {
-            font-size: 11px;
+            font-size: 13px;
             color: #888;
             margin-top: 4px;
             font-family: 'Akkurat', sans-serif;
@@ -6389,8 +6396,8 @@
         }
 
         .sel-prop-action-btn {
-            font-size: 10px;
-            padding: 5px 6px;
+            font-size: 9.5px;
+            padding: 5px 4px;
             border: none;
             border-right: 1px solid #d1d1d1;
             background: #fff;
@@ -6400,6 +6407,9 @@
             white-space: nowrap;
             flex: 1;
             text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            min-width: 0;
         }
 
         .sel-prop-action-btn:last-child { border-right: none; }
@@ -6679,7 +6689,7 @@
 
         <!-- Step 3: Top landlords -->
         <button class="icon-rail-btn" id="rail-landlords" data-panel="landlords" data-tooltip="Top 10 landlords">
-            <span class="step-badge">3</span>
+            <span class="step-badge" style="visibility:hidden">3</span>
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="8" cy="6" r="2.5"/>
                 <path d="M3 16c0-3 2.5-5 5-5s5 2 5 5"/>
@@ -6690,7 +6700,7 @@
 
         <!-- Step 4: Top properties -->
         <button class="icon-rail-btn" id="rail-properties" data-panel="properties" data-tooltip="Top 10 properties">
-            <span class="step-badge">4</span>
+            <span class="step-badge" style="visibility:hidden">4</span>
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M2 17V9l6-5 6 5v8H2z"/>
                 <rect x="6" y="12" width="4" height="5"/>
@@ -6701,7 +6711,7 @@
 
         <!-- Step 5: Selected properties -->
         <button class="icon-rail-btn" id="rail-selected" data-panel="selected" data-tooltip="Selected properties">
-            <span class="step-badge">5</span>
+            <span class="step-badge" style="visibility:hidden">5</span>
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M14 3H6a1 1 0 00-1 1v12a1 1 0 001 1h8a1 1 0 001-1V4a1 1 0 00-1-1z"/>
                 <path d="M7.5 7.5l1.5 1.5 3-3"/>
@@ -6711,7 +6721,7 @@
 
         <!-- Step 6: Selected areas -->
         <button class="icon-rail-btn" id="rail-selected-areas" data-panel="selected-areas" data-tooltip="Selected areas">
-            <span class="step-badge">6</span>
+            <span class="step-badge" style="visibility:hidden">6</span>
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="2" y="3" width="16" height="13" rx="1.5"/>
                 <path d="M2 10h16"/>
@@ -6731,22 +6741,22 @@
             <div class="sub-panel-section active" id="panel-area-data">
                 <div class="sub-panel-header">
                     <div class="sub-panel-title">Area data</div>
-                    <div class="sub-panel-subtitle">This panel lets you layer socioeconomic context onto the map (things like poverty rate, median income, or renter burden) shaded across ZIP codes or census tracts. Use it to understand the neighborhoods where properties are concentrated and to spot patterns between ownership and community conditions. You can also use this panel to set the year you're viewing data for, so everything on the map reflects the same time period.</div>
+                    <div class="sub-panel-subtitle">This panel lets you layer socioeconomic context onto the map (things like poverty rate, median income, or renter burden) shaded across ZIP codes or census tracts. Use it to understand the neighborhoods where properties are concentrated and to spot patterns between ownership and community conditions.</div>
                 </div>
                 <div class="sub-panel-body">
 
                     <!-- PROMINENT View area data card -->
                     <div class="area-overlay-card">
                         <div class="area-overlay-card-header">
-                            <div class="area-overlay-icon-wrap">
-                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M2 4l5 2 6-3 5 2v11l-5-2-6 3-5-2V4z"/>
-                                    <path d="M7 6v11M13 3v11"/>
-                                </svg>
-                            </div>
-                            <div>
+                            <div style="display: flex; flex-direction: column; gap: 8px; width: 100%;">
+                                <div class="area-overlay-icon-wrap">
+                                    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M2 4l5 2 6-3 5 2v11l-5-2-6 3-5-2V4z"/>
+                                        <path d="M7 6v11M13 3v11"/>
+                                    </svg>
+                                </div>
                                 <div class="area-overlay-label">Area Data Overlay</div>
-                                <div class="area-overlay-desc">This overlay shades geographic areas — ZIP codes or census tracts — by a socioeconomic metric like poverty rate or median income. It helps you see how property ownership patterns intersect with community vulnerability. The overlay activates automatically when you zoom out to a level where areas are visible. You can force it on or off using the toggle below.</div>
+                                <div class="area-overlay-desc">This overlay shades geographic areas (ZIP codes or census tracts) by a socioeconomic metric like poverty rate or median income. It helps you see how property ownership patterns intersect with community vulnerability. The overlay activates automatically when you zoom out to a level where areas are visible. You can force it on or off using the toggle below.</div>
                             </div>
                         </div>
                         <div class="area-overlay-controls">
@@ -6763,8 +6773,8 @@
                     </div>
 
                     <!-- Existing area data controls -->
-                    <div class="filters-section">
-                        <div class="filter-row" style="margin-bottom: 10px;">
+                    <div class="filters-section" style="padding-top: 16px;">
+                        <div class="filter-row" style="margin-bottom: 4px; gap: 8px;">
                             <div class="filter-group">
                                 <label class="filter-label">Geography</label>
                                 <select>
@@ -6772,7 +6782,6 @@
                                     <option>Tract</option>
                                 </select>
                             </div>
-
                             <div class="filter-group">
                                 <label class="filter-label">Metric</label>
                                 <select>
@@ -6792,50 +6801,11 @@
                 </div>
                 <div class="sub-panel-body">
                     <div class="filters-section" style="padding-top: 0;">
-                        <div class="accordion-summary" style="padding: 10px 0 8px; font-size: 13px; color: #888;">
-                            Showing <span class="filter-summary-editable">all types</span> of properties with <span class="filter-summary-editable">any number</span> of units belonging to <span class="filter-summary-editable">all types</span> of landlords, with no other <span class="filter-summary-editable">advanced filters</span> applied
+                        <div class="accordion-summary" style="padding: 10px 0 16px; font-size: 13px; color: #888; line-height: 1.7;">
+                            Showing <span class="filter-summary-editable">all types<span class="filter-summary-chevron">&#8964;</span></span> of properties with <span class="filter-summary-editable">any number<span class="filter-summary-chevron">&#8964;</span></span> of units belonging to <span class="filter-summary-editable">all types<span class="filter-summary-chevron">&#8964;</span></span> of landlords, with no other <span class="filter-summary-editable">advanced filters<span class="filter-summary-chevron">&#8964;</span></span> applied
                         </div>
 
-                        <div class="filter-row" style="margin-bottom: 14px;">
-                            <div class="filter-group">
-                                <label class="filter-label">Property types</label>
-                                <select>
-                                    <option>Commercial ...</option>
-                                    <option>Residential</option>
-                                    <option>Mixed use</option>
-                                </select>
-                            </div>
-
-                            <div class="filter-group">
-                                <label class="filter-label">Number of units</label>
-                                <div class="range-inputs">
-                                    <input type="number" value="1">
-                                    <span>to</span>
-                                    <input type="number" value="50">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="filter-row" style="margin-bottom: 14px; gap: 10px;">
-                            <div class="filter-group">
-                                <label class="filter-label">Owner types</label>
-                                <select>
-                                    <option>Private Organization</option>
-                                    <option>Individual</option>
-                                    <option>Government</option>
-                                </select>
-                            </div>
-
-                            <div class="filter-group">
-                                <label class="filter-label">Landlord types</label>
-                                <select>
-                                    <option>Private Organization</option>
-                                    <option>Individual</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div style="border-top: 1px solid #eaeaea; margin: 14px 0 10px;"></div>
+                        <div style="border-top: 1px solid #eaeaea; margin: 14px -20px 10px;"></div>
                         <div style="margin-bottom: 8px;">
                             <div class="filter-label" style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #555; margin-bottom: 4px;">Filter areas</div>
                             <div style="font-size: 11px; color: #999; line-height: 1.5; margin-bottom: 10px;">Restrict results to only properties within the areas you have selected on the map.</div>
@@ -6845,8 +6815,9 @@
                             <div class="toggle-switch"></div>
                         </div>
 
-                        <div style="margin-top: 14px;">
-                            <div class="filter-label" style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #555; margin-bottom: 6px;">Advanced filters</div>
+                        <div style="border-top: 1px solid #eaeaea; margin: 14px -20px 10px;"></div>
+                        <div style="margin-bottom: 6px;">
+                            <div class="filter-label" style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #555;">Advanced filters</div>
                         </div>
                         <div class="advanced-filters-info">
                             <span class="advanced-filters-text">
@@ -7587,9 +7558,9 @@
 
                 <div class="sidebar-section">
                     <h3 class="section-title">Property Types</h3>
-                    <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 10px; flex-wrap: wrap;">
-                        <span style="font-size: 10px; color: #888; white-space: nowrap;">Color by</span>
-                        <select style="font-size: 10px; padding: 2px 4px; border: 1px solid #ddd; border-radius: 4px; background: #fff; color: #333; cursor: pointer; flex: 1; min-width: 80px;">
+                    <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 10px;">
+                        <span style="font-size: 12px; color: #555; white-space: nowrap; font-family: 'Akkurat', sans-serif;">Color by</span>
+                        <select style="font-size: 12px; padding: 3px 6px; border: 1px solid #ddd; border-radius: 4px; background: #fff; color: #333; cursor: pointer; width: auto;">
                             <option>Property type</option>
                             <option>Owner type</option>
                             <option>Year built</option>
