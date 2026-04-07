@@ -6709,24 +6709,26 @@
         </button>
 
         <!-- Step 5: Selected properties -->
+        <!-- Step 5: Selected properties — three minimalist houses stacked vertically -->
         <button class="icon-rail-btn" id="rail-selected" data-panel="selected" data-tooltip="Selected properties">
             <span class="step-badge" style="display:none">5</span>
-            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 3H6a1 1 0 00-1 1v12a1 1 0 001 1h8a1 1 0 001-1V4a1 1 0 00-1-1z"/>
-                <path d="M7.5 7.5l1.5 1.5 3-3"/>
-                <path d="M7.5 12.5l1.5 1.5 3-3"/>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <!-- house 1 (top) -->
+                <path d="M4 6.5l3-2.5 3 2.5v3H4z"/>
+                <!-- house 2 (middle) -->
+                <path d="M4 11.5l3-2.5 3 2.5v3H4z"/>
+                <!-- house 3 (bottom — offset right to suggest a row) -->
+                <path d="M10 9l3-2.5 3 2.5v3h-6z"/>
             </svg>
         </button>
 
-        <!-- Step 6: Selected areas -->
+        <!-- Step 6: Selected areas — three minimalist rectangles (area shapes) in a row -->
         <button class="icon-rail-btn" id="rail-selected-areas" data-panel="selected-areas" data-tooltip="Selected areas">
             <span class="step-badge" style="display:none">6</span>
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="3" width="16" height="13" rx="1.5"/>
-                <path d="M2 10h16"/>
-                <path d="M9.5 3v13"/>
-                <path d="M5 7.5l1 1 2-2" stroke-width="1.4"/>
-                <path d="M12.5 12l1 1 2-2" stroke-width="1.4"/>
+                <rect x="2" y="6" width="4.5" height="8" rx="1"/>
+                <rect x="7.75" y="4" width="4.5" height="10" rx="1"/>
+                <rect x="13.5" y="7" width="4.5" height="6" rx="1"/>
             </svg>
         </button>
 
@@ -6740,7 +6742,7 @@
             <div class="sub-panel-section active" id="panel-area-data">
                 <div class="sub-panel-header">
                     <div class="sub-panel-title">Area data</div>
-                    <div class="sub-panel-subtitle">This panel lets you layer socioeconomic context onto the map (things like poverty rate, median income, or renter burden) shaded across ZIP codes or census tracts. Use it to understand the neighborhoods where properties are concentrated and to spot patterns between ownership and community conditions.</div>
+                    <div class="sub-panel-subtitle">This panel lets you layer socioeconomic context onto the map (things like poverty rate, median income, or renter burden) shaded across ZIP codes or census tracts. Use it to spot patterns between ownership and community conditions.</div>
                 </div>
                 <div class="sub-panel-body">
 
