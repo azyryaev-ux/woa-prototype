@@ -6352,9 +6352,9 @@
 
         .sel-prop-row {
             display: flex;
-            align-items: flex-start;
+            flex-direction: column;
             gap: 10px;
-            padding: 16px 22px;
+            padding: 14px 16px 14px 22px;
             border-bottom: 1px solid #f0f0f0;
             cursor: pointer;
             transition: background 0.12s;
@@ -6362,19 +6362,24 @@
 
         .sel-prop-row:hover { background: #fafafa; }
 
+        .sel-prop-row-top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
         .sel-prop-dot {
             width: 10px;
             height: 10px;
             border-radius: 50%;
             flex-shrink: 0;
-            margin-top: 3px;
         }
 
         .sel-prop-row-content {
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 0;
             min-width: 0;
         }
 
@@ -6394,8 +6399,8 @@
         }
 
         .sel-prop-action-btn {
-            font-size: 9.5px;
-            padding: 5px 4px;
+            font-size: 11px;
+            padding: 6px 4px;
             border: none;
             border-right: 1px solid #d1d1d1;
             background: #fff;
@@ -6405,9 +6410,6 @@
             white-space: nowrap;
             flex: 1;
             text-align: center;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            min-width: 0;
         }
 
         .sel-prop-action-btn:last-child { border-right: none; }
@@ -6709,26 +6711,26 @@
         </button>
 
         <!-- Step 5: Selected properties -->
-        <!-- Step 5: Selected properties — three minimalist houses stacked vertically -->
+        <!-- Step 5: Selected properties — three houses in a single vertical column -->
         <button class="icon-rail-btn" id="rail-selected" data-panel="selected" data-tooltip="Selected properties">
             <span class="step-badge" style="display:none">5</span>
-            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <!-- house 1 (top) -->
-                <path d="M4 6.5l3-2.5 3 2.5v3H4z"/>
-                <!-- house 2 (middle) -->
-                <path d="M4 11.5l3-2.5 3 2.5v3H4z"/>
-                <!-- house 3 (bottom — offset right to suggest a row) -->
-                <path d="M10 9l3-2.5 3 2.5v3h-6z"/>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <!-- house 1 -->
+                <path d="M6.5 5.5L10 3l3.5 2.5V8H6.5z"/>
+                <!-- house 2 -->
+                <path d="M6.5 10L10 7.5l3.5 2.5v2.5H6.5z"/>
+                <!-- house 3 -->
+                <path d="M6.5 14.5L10 12l3.5 2.5V17H6.5z"/>
             </svg>
         </button>
 
-        <!-- Step 6: Selected areas — three minimalist rectangles (area shapes) in a row -->
+        <!-- Step 6: Selected areas — three rectangles stacked vertically -->
         <button class="icon-rail-btn" id="rail-selected-areas" data-panel="selected-areas" data-tooltip="Selected areas">
             <span class="step-badge" style="display:none">6</span>
-            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="6" width="4.5" height="8" rx="1"/>
-                <rect x="7.75" y="4" width="4.5" height="10" rx="1"/>
-                <rect x="13.5" y="7" width="4.5" height="6" rx="1"/>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="2" width="12" height="4" rx="1"/>
+                <rect x="4" y="8" width="12" height="4" rx="1"/>
+                <rect x="4" y="14" width="12" height="4" rx="1"/>
             </svg>
         </button>
 
@@ -6876,7 +6878,7 @@
                                     <tr>
                                         <th>RANK</th>
                                         <th>PRIMARY OWNER NAME AND TYPE</th>
-                                        <th style="text-align: right;">NUMBER OF<br>FILINGS</th>
+                                        <th style="text-align: right; white-space: nowrap;">NUMBER OF<br>FILINGS</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -6923,7 +6925,7 @@
                                     <tr>
                                         <th>RANK</th>
                                         <th>ADDRESS, OWNER NAME AND TYPE</th>
-                                        <th style="text-align: right;">NUMBER OF<br>FILINGS</th>
+                                        <th style="text-align: right; white-space: nowrap;">NUMBER OF<br>FILINGS</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -6958,52 +6960,52 @@
 
                     <div class="sel-prop-list">
                         <div class="sel-prop-row">
-                            <span class="sel-prop-dot" style="background:#E8524A;"></span>
-                            <div class="sel-prop-row-content">
-                                <span class="sel-prop-address">195 Main St, Houston TX 77002</span>
-                                <div class="sel-prop-actions">
-                                    <button class="sel-prop-action-btn">See on map</button>
-                                    <button class="sel-prop-action-btn">Open full page view</button>
-                                    <button class="sel-prop-action-btn">Open landlord panel</button>
-                                </div>
+                            <div class="sel-prop-row-top">
+                                <span class="sel-prop-dot" style="background:#E8524A;"></span>
+                                <span class="sel-prop-address" style="flex:1;">195 Main St, Houston TX 77002</span>
+                                <button class="sel-prop-remove">×</button>
                             </div>
-                            <button class="sel-prop-remove">×</button>
+                            <div class="sel-prop-actions">
+                                <button class="sel-prop-action-btn">See on map</button>
+                                <button class="sel-prop-action-btn">Open full page view</button>
+                                <button class="sel-prop-action-btn">Open landlord panel</button>
+                            </div>
                         </div>
                         <div class="sel-prop-row">
-                            <span class="sel-prop-dot" style="background:#4AACB8;"></span>
-                            <div class="sel-prop-row-content">
-                                <span class="sel-prop-address">195 Cedar St, Houston TX 77004</span>
-                                <div class="sel-prop-actions">
-                                    <button class="sel-prop-action-btn">See on map</button>
-                                    <button class="sel-prop-action-btn">Open full page view</button>
-                                    <button class="sel-prop-action-btn">Open landlord panel</button>
-                                </div>
+                            <div class="sel-prop-row-top">
+                                <span class="sel-prop-dot" style="background:#4AACB8;"></span>
+                                <span class="sel-prop-address" style="flex:1;">195 Cedar St, Houston TX 77004</span>
+                                <button class="sel-prop-remove">×</button>
                             </div>
-                            <button class="sel-prop-remove">×</button>
+                            <div class="sel-prop-actions">
+                                <button class="sel-prop-action-btn">See on map</button>
+                                <button class="sel-prop-action-btn">Open full page view</button>
+                                <button class="sel-prop-action-btn">Open landlord panel</button>
+                            </div>
                         </div>
                         <div class="sel-prop-row">
-                            <span class="sel-prop-dot" style="background:#7B68EE;"></span>
-                            <div class="sel-prop-row-content">
-                                <span class="sel-prop-address">199 Cedar St, Houston TX 77004</span>
-                                <div class="sel-prop-actions">
-                                    <button class="sel-prop-action-btn">See on map</button>
-                                    <button class="sel-prop-action-btn">Open full page view</button>
-                                    <button class="sel-prop-action-btn">Open landlord panel</button>
-                                </div>
+                            <div class="sel-prop-row-top">
+                                <span class="sel-prop-dot" style="background:#7B68EE;"></span>
+                                <span class="sel-prop-address" style="flex:1;">199 Cedar St, Houston TX 77004</span>
+                                <button class="sel-prop-remove">×</button>
                             </div>
-                            <button class="sel-prop-remove">×</button>
+                            <div class="sel-prop-actions">
+                                <button class="sel-prop-action-btn">See on map</button>
+                                <button class="sel-prop-action-btn">Open full page view</button>
+                                <button class="sel-prop-action-btn">Open landlord panel</button>
+                            </div>
                         </div>
                         <div class="sel-prop-row">
-                            <span class="sel-prop-dot" style="background:#9B59B6;"></span>
-                            <div class="sel-prop-row-content">
-                                <span class="sel-prop-address">195 Elm St, Houston TX 77006</span>
-                                <div class="sel-prop-actions">
-                                    <button class="sel-prop-action-btn">See on map</button>
-                                    <button class="sel-prop-action-btn">Open full page view</button>
-                                    <button class="sel-prop-action-btn">Open landlord panel</button>
-                                </div>
+                            <div class="sel-prop-row-top">
+                                <span class="sel-prop-dot" style="background:#9B59B6;"></span>
+                                <span class="sel-prop-address" style="flex:1;">195 Elm St, Houston TX 77006</span>
+                                <button class="sel-prop-remove">×</button>
                             </div>
-                            <button class="sel-prop-remove">×</button>
+                            <div class="sel-prop-actions">
+                                <button class="sel-prop-action-btn">See on map</button>
+                                <button class="sel-prop-action-btn">Open full page view</button>
+                                <button class="sel-prop-action-btn">Open landlord panel</button>
+                            </div>
                         </div>
                     </div>
 
@@ -8897,7 +8899,7 @@
                             <tr>
                                 <th>RANK</th>
                                 <th>ADDRESS, OWNER NAME AND TYPE</th>
-                                <th style="text-align: right;">NUMBER OF<br>FILINGS</th>
+                                <th style="text-align: right; white-space: nowrap;">NUMBER OF<br>FILINGS</th>
                             </tr>
                         </thead>
                         <tbody id="table-body">
