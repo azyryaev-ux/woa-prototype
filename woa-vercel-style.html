@@ -546,11 +546,13 @@
 
         .filter-summary-chevron {
             display: inline-block;
-            font-size: 0.75em;
+            font-size: 1.05em;
             color: #D96E4A;
-            margin-left: 1px;
-            vertical-align: middle;
+            margin-left: 2px;
+            vertical-align: baseline;
             line-height: 1;
+            position: relative;
+            top: 0.1em;
         }
 
         .accordion-content {
@@ -6074,7 +6076,7 @@
 
         .icon-rail-btn {
             width: 36px;
-            height: 58px;
+            height: 50px;
             border: none;
             border-radius: 8px;
             background: transparent;
@@ -6108,7 +6110,7 @@
         /* Step numbers — prominent below icon */
         .icon-rail-btn .step-badge {
             display: block;
-            font-size: 22px;
+            font-size: 15px;
             font-family: 'Akkurat Mono', monospace;
             font-weight: 700;
             letter-spacing: -0.02em;
@@ -6674,8 +6676,9 @@
         </button>
 
         <!-- Step 2: Property filters -->
-        <button class="icon-rail-btn" id="rail-filters" data-panel="filters" data-tooltip="Property filters">
+        <button class="icon-rail-btn" id="rail-filters" data-panel="filters" data-tooltip="Property filters" style="position: relative;">
             <span class="step-badge">2</span>
+            <span style="position: absolute; top: 4px; right: 4px; width: 7px; height: 7px; background: #E53E3E; border-radius: 50%; border: 1.5px solid #fff; flex-shrink: 0;"></span>
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
                 <path d="M3 5h14"/>
                 <path d="M5 10h10"/>
@@ -6690,7 +6693,7 @@
 
         <!-- Step 3: Top landlords -->
         <button class="icon-rail-btn" id="rail-landlords" data-panel="landlords" data-tooltip="Top 10 landlords">
-            <span class="step-badge" style="visibility:hidden">3</span>
+            <span class="step-badge" style="display:none">3</span>
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="8" cy="6" r="2.5"/>
                 <path d="M3 16c0-3 2.5-5 5-5s5 2 5 5"/>
@@ -6701,7 +6704,7 @@
 
         <!-- Step 4: Top properties -->
         <button class="icon-rail-btn" id="rail-properties" data-panel="properties" data-tooltip="Top 10 properties">
-            <span class="step-badge" style="visibility:hidden">4</span>
+            <span class="step-badge" style="display:none">4</span>
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M2 17V9l6-5 6 5v8H2z"/>
                 <rect x="6" y="12" width="4" height="5"/>
@@ -6712,7 +6715,7 @@
 
         <!-- Step 5: Selected properties -->
         <button class="icon-rail-btn" id="rail-selected" data-panel="selected" data-tooltip="Selected properties">
-            <span class="step-badge" style="visibility:hidden">5</span>
+            <span class="step-badge" style="display:none">5</span>
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M14 3H6a1 1 0 00-1 1v12a1 1 0 001 1h8a1 1 0 001-1V4a1 1 0 00-1-1z"/>
                 <path d="M7.5 7.5l1.5 1.5 3-3"/>
@@ -6722,7 +6725,7 @@
 
         <!-- Step 6: Selected areas -->
         <button class="icon-rail-btn" id="rail-selected-areas" data-panel="selected-areas" data-tooltip="Selected areas">
-            <span class="step-badge" style="visibility:hidden">6</span>
+            <span class="step-badge" style="display:none">6</span>
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="2" y="3" width="16" height="13" rx="1.5"/>
                 <path d="M2 10h16"/>
@@ -6786,17 +6789,17 @@
 
                     <!-- Existing area data controls -->
                     <div class="filters-section" style="padding-top: 16px;">
-                        <div class="filter-row" style="margin-bottom: 4px; gap: 8px;">
-                            <div class="filter-group">
+                        <div class="filter-row" style="gap: 10px; align-items: flex-end;">
+                            <div class="filter-group" style="margin-bottom: 0; flex: 1;">
                                 <label class="filter-label">Geography</label>
-                                <select>
+                                <select style="width: 100%;">
                                     <option>ZIP code</option>
                                     <option>Tract</option>
                                 </select>
                             </div>
-                            <div class="filter-group">
+                            <div class="filter-group" style="margin-bottom: 0; flex: 1;">
                                 <label class="filter-label">Metric</label>
-                                <select>
+                                <select style="width: 100%;">
                                     <option>Poverty rate</option>
                                 </select>
                             </div>
@@ -6813,34 +6816,34 @@
                 </div>
                 <div class="sub-panel-body">
                     <div class="filters-section" style="padding-top: 0;">
-                        <div class="accordion-summary" style="padding: 10px 0 16px; font-size: 13px; color: #888; line-height: 1.7;">
+                        <div class="accordion-summary" style="padding: 10px 0 8px; font-size: 13px; color: #888; line-height: 1.7;">
                             Showing <span class="filter-summary-editable">all types<span class="filter-summary-chevron">&#8964;</span></span> of properties with <span class="filter-summary-editable">any number<span class="filter-summary-chevron">&#8964;</span></span> of units belonging to <span class="filter-summary-editable">all types<span class="filter-summary-chevron">&#8964;</span></span> of landlords, with no other <span class="filter-summary-editable">advanced filters<span class="filter-summary-chevron">&#8964;</span></span> applied
                         </div>
 
-                        <div style="border-top: 1px solid #eaeaea; margin: 14px -20px 10px;"></div>
+                        <div style="border-top: 1px solid #eaeaea; margin: 42px -22px 14px;"></div>
                         <div style="margin-bottom: 8px;">
                             <div class="filter-label" style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #555; margin-bottom: 4px;">Filter areas</div>
                             <div style="font-size: 11px; color: #999; line-height: 1.5; margin-bottom: 10px;">Restrict results to only properties within the areas you have selected on the map.</div>
                         </div>
-                        <div class="filter-group inline" style="margin-bottom: 8px;">
+                        <div class="filter-group inline" style="margin-bottom: 24px;">
                             <label class="filter-label inline">Filter to selected areas</label>
                             <div class="toggle-switch"></div>
                         </div>
 
-                        <div style="border-top: 1px solid #eaeaea; margin: 14px -20px 10px;"></div>
-                        <div style="margin-bottom: 6px;">
+                        <div style="border-top: 1px solid #eaeaea; margin: 0 -22px 16px;"></div>
+                        <div style="margin-bottom: 10px;">
                             <div class="filter-label" style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #555;">Advanced filters</div>
                         </div>
-                        <div class="advanced-filters-info">
-                            <span class="advanced-filters-text">
-                                <svg class="advanced-filters-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <div class="advanced-filters-info" style="background: rgba(217,110,74,0.07); border: 1.5px solid rgba(217,110,74,0.2); border-radius: 8px; padding: 12px 14px;">
+                            <span class="advanced-filters-text" style="align-items: center;">
+                                <svg class="advanced-filters-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
                                     <path d="M2 3h12M2 6h12M2 9h12M2 12h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.3"/>
                                     <circle cx="11" cy="3" r="1.5" fill="currentColor"/>
                                     <circle cx="5" cy="6" r="1.5" fill="currentColor"/>
                                     <circle cx="9" cy="9" r="1.5" fill="currentColor"/>
                                     <circle cx="7" cy="12" r="1.5" fill="currentColor"/>
                                 </svg>
-                                <span class="filter-summary-editable">Six advanced filters</span> applied
+                                <span style="display: inline-flex; align-items: center; gap: 4px; line-height: 1.2;"><span class="filter-summary-editable" style="vertical-align: middle;">Six advanced filters</span><span style="vertical-align: middle; color: #666; font-weight: 400;">applied</span></span>
                             </span>
                             <button class="edit-advanced-filters-btn" id="open-advanced-filters">Edit advanced filters</button>
                         </div>
