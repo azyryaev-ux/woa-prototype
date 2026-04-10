@@ -6049,6 +6049,165 @@
         }
 
         /* ═══════════════════════════════════════════════
+           HEADER NAV TABS (data / Property / Area)
+           ═══════════════════════════════════════════════ */
+
+        .app-header-nav {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            margin-left: 20px;
+            flex-shrink: 0;
+        }
+
+        .app-header-nav-tab {
+            font-size: 13px;
+            font-weight: 500;
+            font-family: 'Akkurat', sans-serif;
+            color: #666;
+            background: transparent;
+            border: none;
+            border-radius: 6px;
+            padding: 5px 11px;
+            cursor: pointer;
+            transition: background 0.15s ease, color 0.15s ease;
+            white-space: nowrap;
+        }
+
+        .app-header-nav-tab:hover {
+            background: #f2f2f2;
+            color: #000;
+        }
+
+        .app-header-nav-tab.active {
+            background: #000;
+            color: #fff;
+        }
+
+        /* Status bar in header */
+        .app-header-status {
+            font-size: 12px;
+            color: #888;
+            font-family: 'Akkurat', sans-serif;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 320px;
+            flex-shrink: 1;
+            padding: 0 16px;
+        }
+
+        .app-header-status-year {
+            font-weight: 700;
+            color: #000;
+            font-family: 'Akkurat Mono', monospace;
+        }
+
+        /* ═══════════════════════════════════════════════
+           YEAR PICKER PANEL
+           ═══════════════════════════════════════════════ */
+
+        .year-picker {
+            padding: 24px 22px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .year-btn {
+            width: 100%;
+            padding: 16px 20px;
+            border: 1.5px solid #e8e8e8;
+            border-radius: 10px;
+            background: #fff;
+            font-size: 22px;
+            font-weight: 700;
+            font-family: 'Akkurat Mono', monospace;
+            color: #555;
+            cursor: pointer;
+            text-align: left;
+            transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+        }
+
+        .year-btn:hover {
+            border-color: #bbb;
+            color: #000;
+        }
+
+        .year-btn.active {
+            background: #000;
+            border-color: #000;
+            color: #fff;
+        }
+
+        /* ═══════════════════════════════════════════════
+           DATA PANEL INNER TABS
+           ═══════════════════════════════════════════════ */
+
+        .data-tab-strip {
+            display: flex;
+            border-bottom: 1px solid #eaeaea;
+            padding: 0 16px;
+            flex-shrink: 0;
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 2;
+        }
+
+        .data-tab {
+            font-size: 12px;
+            font-weight: 600;
+            font-family: 'Akkurat', sans-serif;
+            color: #999;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid transparent;
+            padding: 14px 10px 12px;
+            cursor: pointer;
+            transition: color 0.15s ease, border-color 0.15s ease;
+            white-space: nowrap;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+
+        .data-tab:hover {
+            color: #444;
+        }
+
+        .data-tab.active {
+            color: #000;
+            border-bottom-color: #000;
+        }
+
+        .data-tab-content {
+            display: none;
+            flex-direction: column;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .data-tab-content.active {
+            display: flex;
+        }
+
+        /* Icon rail step label (below icon, replaces step number) */
+        .step-label {
+            font-size: 9px;
+            font-family: 'Akkurat Mono', monospace;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            color: inherit;
+            opacity: 0.55;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        .icon-rail-btn.active .step-label {
+            opacity: 0.8;
+        }
+
+        /* ═══════════════════════════════════════════════
            ICON RAIL + SUB-PANEL SYSTEM
            ═══════════════════════════════════════════════ */
 
@@ -6608,6 +6767,13 @@
             <span class="app-header-logo-text">Logo</span>
         </a>
 
+        <!-- Quick-nav tabs: data / Property / Area -->
+        <nav class="app-header-nav" id="app-header-nav">
+            <button class="app-header-nav-tab active" data-open-panel="data" data-open-tab="property">data</button>
+            <button class="app-header-nav-tab" data-open-panel="data" data-open-tab="property">Property</button>
+            <button class="app-header-nav-tab" data-open-panel="data" data-open-tab="area">Area</button>
+        </nav>
+
         <div class="app-header-search">
             <div class="search-bar">
                 <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -6618,6 +6784,8 @@
             </div>
         </div>
 
+        <div class="app-header-spacer"></div>
+
         <div class="app-header-overlay">
             <span class="app-header-overlay-label">
                 <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -6627,7 +6795,7 @@
                     <rect x="3" y="4" width="5.5" height="5" rx="0.5" fill="currentColor" stroke="none" opacity="0.35"/>
                     <rect x="11" y="11.5" width="6" height="3.5" rx="0.5" fill="currentColor" stroke="none" opacity="0.35"/>
                 </svg>
-                Area Data
+                Auto on zoom
             </span>
             <div class="app-header-overlay-toggle-group" id="header-overlay-toggle-group">
                 <button class="app-header-overlay-toggle active" data-value="auto">Auto</button>
@@ -6636,16 +6804,9 @@
             </div>
         </div>
 
-        <div class="app-header-spacer"></div>
-
-        <div class="app-header-year">
-            <span class="app-header-year-label">Viewing data for</span>
-            <select class="app-header-year-select" id="app-header-year-select">
-                <option selected>2019</option>
-                <option>2020</option>
-                <option>2021</option>
-                <option>2022</option>
-            </select>
+        <!-- Status bar: shows current year + active filters -->
+        <div class="app-header-status" id="app-header-status">
+            Showing <span class="app-header-status-year" id="status-year">2019</span> area data and poverty rate for ZIP codes
         </div>
 
         <button class="app-header-menu" id="app-header-menu-btn">
@@ -6660,9 +6821,20 @@
     <!-- Icon Rail (workflow-ordered navigation) -->
     <aside class="icon-rail" id="icon-rail">
 
-        <!-- Step 1: Area data -->
-        <button class="icon-rail-btn" id="rail-area-data" data-panel="area-data" data-tooltip="Area data">
-            <span class="step-badge">1</span>
+        <!-- Year — foundational control, always first -->
+        <button class="icon-rail-btn" id="rail-year" data-panel="year" data-tooltip="Year">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="14" height="13" rx="1.5"/>
+                <path d="M3 8h14"/>
+                <path d="M7 2v4M13 2v4"/>
+                <rect x="5" y="10" width="3" height="2.5" rx="0.5" fill="currentColor" stroke="none" opacity="0.4"/>
+                <rect x="9" y="10" width="3" height="2.5" rx="0.5" fill="currentColor" stroke="none" opacity="0.4"/>
+            </svg>
+            <span class="step-label">year</span>
+        </button>
+
+        <!-- Data — Area or Property overlay, second selection -->
+        <button class="icon-rail-btn" id="rail-data" data-panel="data" data-tooltip="Data">
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="2" y="3" width="16" height="13" rx="1.5"/>
                 <path d="M2 10h16"/>
@@ -6670,68 +6842,40 @@
                 <rect x="3" y="4" width="5.5" height="5" rx="0.5" fill="currentColor" stroke="none" opacity="0.25"/>
                 <rect x="11" y="11.5" width="6" height="3.5" rx="0.5" fill="currentColor" stroke="none" opacity="0.25"/>
             </svg>
-        </button>
-
-        <!-- Step 2: Property filters -->
-        <button class="icon-rail-btn" id="rail-filters" data-panel="filters" data-tooltip="Property filters" style="position: relative;">
-            <span class="step-badge">2</span>
-            <span style="position: absolute; top: 4px; right: 4px; width: 7px; height: 7px; background: #E53E3E; border-radius: 50%; border: 1.5px solid #fff; flex-shrink: 0;"></span>
-            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
-                <path d="M3 5h14"/>
-                <path d="M5 10h10"/>
-                <path d="M7 15h6"/>
-                <circle cx="13" cy="5" r="1.5" fill="currentColor" stroke="none"/>
-                <circle cx="7" cy="10" r="1.5" fill="currentColor" stroke="none"/>
-                <circle cx="11" cy="15" r="1.5" fill="currentColor" stroke="none"/>
-            </svg>
+            <span class="step-label">data</span>
         </button>
 
         <div class="icon-rail-divider"></div>
 
-        <!-- Step 3: Top landlords -->
-        <button class="icon-rail-btn" id="rail-landlords" data-panel="landlords" data-tooltip="Top 10 landlords">
-            <span class="step-badge" style="display:none">3</span>
+        <!-- Top 10 — landlords + properties merged into one panel with tabs -->
+        <button class="icon-rail-btn" id="rail-top10" data-panel="top10" data-tooltip="Top 10">
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="8" cy="6" r="2.5"/>
-                <path d="M3 16c0-3 2.5-5 5-5s5 2 5 5"/>
-                <circle cx="14.5" cy="7" r="2"/>
-                <path d="M17 16c0-2.5-1.5-4-3.5-4"/>
+                <path d="M3 5h14M3 10h10M3 15h7"/>
+                <circle cx="16" cy="5" r="1.5" fill="currentColor" stroke="none"/>
+                <circle cx="14.5" cy="10" r="1.5" fill="currentColor" stroke="none"/>
+                <circle cx="11.5" cy="15" r="1.5" fill="currentColor" stroke="none"/>
             </svg>
+            <span class="step-label">top 10</span>
         </button>
 
-        <!-- Step 4: Top properties -->
-        <button class="icon-rail-btn" id="rail-properties" data-panel="properties" data-tooltip="Top 10 properties">
-            <span class="step-badge" style="display:none">4</span>
-            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M2 17V9l6-5 6 5v8H2z"/>
-                <rect x="6" y="12" width="4" height="5"/>
-                <path d="M14 17V8"/>
-                <path d="M14 8h4v9h-4"/>
-            </svg>
-        </button>
-
-        <!-- Step 5: Selected properties -->
-        <!-- Step 5: Selected properties — three houses in a single vertical column -->
+        <!-- Selected properties -->
         <button class="icon-rail-btn" id="rail-selected" data-panel="selected" data-tooltip="Selected properties">
-            <span class="step-badge" style="display:none">5</span>
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-                <!-- house 1 -->
                 <path d="M6.5 5.5L10 3l3.5 2.5V8H6.5z"/>
-                <!-- house 2 -->
                 <path d="M6.5 10L10 7.5l3.5 2.5v2.5H6.5z"/>
-                <!-- house 3 -->
                 <path d="M6.5 14.5L10 12l3.5 2.5V17H6.5z"/>
             </svg>
+            <span class="step-label">selected</span>
         </button>
 
-        <!-- Step 6: Selected areas — three rectangles stacked vertically -->
+        <!-- Selected areas -->
         <button class="icon-rail-btn" id="rail-selected-areas" data-panel="selected-areas" data-tooltip="Selected areas">
-            <span class="step-badge" style="display:none">6</span>
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="4" y="2" width="12" height="4" rx="1"/>
                 <rect x="4" y="8" width="12" height="4" rx="1"/>
                 <rect x="4" y="14" width="12" height="4" rx="1"/>
             </svg>
+            <span class="step-label">areas</span>
         </button>
 
     </aside>
@@ -6740,199 +6884,230 @@
     <div class="sub-panel" id="sub-panel">
         <div class="sub-panel-inner" id="sub-panel-inner">
 
-            <!-- ── Panel 1: Area data ── -->
-            <div class="sub-panel-section active" id="panel-area-data">
+            <!-- ── Panel 1: Year ── -->
+            <div class="sub-panel-section active" id="panel-year">
                 <div class="sub-panel-header">
-                    <div class="sub-panel-title">Area data</div>
-                    <div class="sub-panel-subtitle">This panel lets you layer socioeconomic context onto the map (things like poverty rate, median income, or renter burden) shaded across ZIP codes or census tracts.</div>
-                    <div class="accordion-summary" style="padding: 8px 0 0; font-size: 13px; color: #888; line-height: 1.4;">Showing <span class="filter-summary-editable" id="area-data-year-trigger">2019<svg class="filter-summary-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:6px;display:inline-block;vertical-align:middle;margin-left:2px;color:#D96E4A;position:relative;top:-1px;"><path d="M1 1l4 4 4-4"/></svg></span> data and <span class="filter-summary-editable">poverty rate<svg class="filter-summary-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:6px;display:inline-block;vertical-align:middle;margin-left:2px;color:#D96E4A;position:relative;top:-1px;"><path d="M1 1l4 4 4-4"/></svg></span> for <span class="filter-summary-editable">ZIP codes<svg class="filter-summary-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:6px;display:inline-block;vertical-align:middle;margin-left:2px;color:#D96E4A;position:relative;top:-1px;"><path d="M1 1l4 4 4-4"/></svg></span></div>
+                    <div class="sub-panel-title">Year</div>
+                    <div class="sub-panel-subtitle">Pick the dataset year. This sets the time period for everything: area overlays, property records, filter results, and top-10 rankings.</div>
                 </div>
                 <div class="sub-panel-body">
+                    <div class="year-picker">
+                        <button class="year-btn" data-year="2018">2018</button>
+                        <button class="year-btn active" data-year="2019">2019</button>
+                        <button class="year-btn" data-year="2020">2020</button>
+                        <button class="year-btn" data-year="2021">2021</button>
+                        <button class="year-btn" data-year="2022">2022</button>
+                    </div>
+                </div>
+            </div>
 
-                    <!-- PROMINENT View area data card -->
-                    <div class="area-overlay-card">
-                        <div class="area-overlay-card-header">
-                            <div style="display: flex; flex-direction: column; gap: 8px; width: 100%;">
-                                <div class="area-overlay-icon-wrap">
-                                    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-                                        <!-- Geographic area patches like a choropleth -->
-                                        <path d="M2 3.5l5 1.5 4-2 7 2.5" stroke-width="1.2" opacity="0.6"/>
-                                        <!-- Top-left area -->
-                                        <path d="M2 3.5v6l5-1V5z" fill="white" fill-opacity="0.55" stroke-width="1"/>
-                                        <!-- Top-right area -->
-                                        <path d="M7 5l4-2 7 2.5v4.5l-4-1.5-3 1.5z" fill="white" fill-opacity="0.25" stroke-width="1"/>
-                                        <!-- Bottom-left area -->
-                                        <path d="M2 9.5v7l3-1.5 4-2V8.5l-2 .5z" fill="white" fill-opacity="0.35" stroke-width="1"/>
-                                        <!-- Bottom-right large area -->
-                                        <path d="M11 9.5l3 1.5 4-1V16l-7 .5v-5.5z" fill="white" fill-opacity="0.15" stroke-width="1"/>
-                                        <!-- Area borders -->
-                                        <path d="M7 5v8.5M5 9l6-.5" stroke-width="1" opacity="0.7"/>
-                                        <path d="M2 16.5l5-1.5 4 1.5 7-1" stroke-width="1.2" opacity="0.6"/>
-                                    </svg>
+            <!-- ── Panel 2: Data (Area / Property tabs) ── -->
+            <div class="sub-panel-section" id="panel-data">
+                <!-- Inner tab strip -->
+                <div class="data-tab-strip">
+                    <button class="data-tab active" data-tab="area">Area data</button>
+                    <button class="data-tab" data-tab="property">Property data</button>
+                </div>
+
+                <!-- Tab: Area data -->
+                <div class="data-tab-content active" id="data-tab-area">
+                    <div class="sub-panel-header" style="border-top: none;">
+                        <div class="sub-panel-subtitle">This overlay shades geographic areas (ZIP codes or census tracts) by a socioeconomic metric like poverty rate or median income. It helps you see how property ownership patterns intersect with community vulnerability. The overlay activates automatically when you zoom out to a level where areas are visible.</div>
+                    </div>
+                    <div class="sub-panel-body">
+                        <div class="area-overlay-card">
+                            <div class="area-overlay-card-header">
+                                <div style="display: flex; flex-direction: column; gap: 8px; width: 100%;">
+                                    <div class="area-overlay-icon-wrap">
+                                        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M2 3.5l5 1.5 4-2 7 2.5" stroke-width="1.2" opacity="0.6"/>
+                                            <path d="M2 3.5v6l5-1V5z" fill="white" fill-opacity="0.55" stroke-width="1"/>
+                                            <path d="M7 5l4-2 7 2.5v4.5l-4-1.5-3 1.5z" fill="white" fill-opacity="0.25" stroke-width="1"/>
+                                            <path d="M2 9.5v7l3-1.5 4-2V8.5l-2 .5z" fill="white" fill-opacity="0.35" stroke-width="1"/>
+                                            <path d="M11 9.5l3 1.5 4-1V16l-7 .5v-5.5z" fill="white" fill-opacity="0.15" stroke-width="1"/>
+                                            <path d="M7 5v8.5M5 9l6-.5" stroke-width="1" opacity="0.7"/>
+                                            <path d="M2 16.5l5-1.5 4 1.5 7-1" stroke-width="1.2" opacity="0.6"/>
+                                        </svg>
+                                    </div>
+                                    <div class="area-overlay-label">Area Data Overlay</div>
                                 </div>
-                                <div class="area-overlay-label">Area Data Overlay</div>
-                                <div class="area-overlay-desc">This overlay shades geographic areas (ZIP codes or census tracts) by a socioeconomic metric like poverty rate or median income. It helps you see how property ownership patterns intersect with community vulnerability. The overlay activates automatically when you zoom out to a level where areas are visible. You can force it on or off using the toggle below.</div>
+                            </div>
+                            <div class="area-overlay-controls">
+                                <div class="area-overlay-toggle-group" id="area-overlay-toggle-group">
+                                    <button class="area-overlay-toggle active" data-value="auto">Auto</button>
+                                    <button class="area-overlay-toggle" data-value="on">On</button>
+                                    <button class="area-overlay-toggle" data-value="off">Off</button>
+                                </div>
+                                <span class="area-overlay-status" id="area-overlay-status">
+                                    <span class="area-overlay-status-dot"></span>
+                                    Zoom out to activate
+                                </span>
                             </div>
                         </div>
-                        <div class="area-overlay-controls">
-                            <div class="area-overlay-toggle-group" id="area-overlay-toggle-group">
-                                <button class="area-overlay-toggle active" data-value="auto">Auto</button>
-                                <button class="area-overlay-toggle" data-value="on">On</button>
-                                <button class="area-overlay-toggle" data-value="off">Off</button>
+
+                        <div class="filters-section" style="padding-top: 0;">
+                            <div style="border-top: 1px solid #eaeaea; margin: 0 -22px 14px;"></div>
+                            <div style="margin-bottom: 8px;">
+                                <div class="filter-label" style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #555; margin-bottom: 4px;">Socioeconomic metric</div>
                             </div>
-                            <span class="area-overlay-status" id="area-overlay-status">
-                                <span class="area-overlay-status-dot"></span>
-                                Zoom out to activate
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Filter areas — moved from property filters -->
-                    <div class="filters-section" style="padding-top: 0;">
-                        <div style="border-top: 1px solid #eaeaea; margin: 0 -22px 14px;"></div>
-                        <div style="margin-bottom: 8px;">
-                            <div class="filter-label" style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #555; margin-bottom: 4px;">Filter areas</div>
-                            <div style="font-size: 11px; color: #999; line-height: 1.5; margin-bottom: 10px;">Restrict results to only properties within the areas you have selected on the map.</div>
-                        </div>
-                        <div class="filter-group inline" style="margin-bottom: 4px;">
-                            <label class="filter-label inline">Filter to selected areas</label>
-                            <div class="toggle-switch"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ── Panel 2: Property filters ── -->
-            <div class="sub-panel-section" id="panel-filters">
-                <div class="sub-panel-header">
-                    <div class="sub-panel-title">Property filters</div>
-                    <div class="sub-panel-subtitle">Filter by property type, ownership structure, and more. These filters also apply to the Top 10 landlords and Top 10 properties panels, so changing them here updates those rankings too.</div>
-                </div>
-                <div class="sub-panel-body">
-                    <div class="filters-section" style="padding-top: 0;">
-                        <div class="accordion-summary" style="padding: 10px 0 4px; font-size: 13px; color: #888; line-height: 1.4;">
-                            Showing <span class="filter-summary-editable">all types<svg class="filter-summary-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:6px;display:inline-block;vertical-align:middle;margin-left:2px;color:#D96E4A;position:relative;top:-1px;"><path d="M1 1l4 4 4-4"/></svg></span> of properties with <span class="filter-summary-editable">any number<svg class="filter-summary-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:6px;display:inline-block;vertical-align:middle;margin-left:2px;color:#D96E4A;position:relative;top:-1px;"><path d="M1 1l4 4 4-4"/></svg></span> of units belonging to <span class="filter-summary-editable">all types<svg class="filter-summary-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:6px;display:inline-block;vertical-align:middle;margin-left:2px;color:#D96E4A;position:relative;top:-1px;"><path d="M1 1l4 4 4-4"/></svg></span> of landlords, with no other <span class="filter-summary-editable">advanced filters<svg class="filter-summary-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:6px;display:inline-block;vertical-align:middle;margin-left:2px;color:#D96E4A;position:relative;top:-1px;"><path d="M1 1l4 4 4-4"/></svg></span> applied
-                        </div>
-
-                        <div style="border-top: 1px solid #eaeaea; margin: 20px -22px 16px;"></div>
-                        <div style="margin-bottom: 10px;">
-                            <div class="filter-label" style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #555; margin-bottom: 6px;">Advanced filters</div>
-                            <div style="font-size: 11px; color: #999; line-height: 1.55;">Advanced filters let you narrow results by things like filing date range, building age, assessed value, and eviction history. They stack on top of the basic filters above.</div>
-                        </div>
-                        <div class="advanced-filters-info" style="background: rgba(217,110,74,0.07); border: 1.5px solid rgba(217,110,74,0.2); border-radius: 8px; padding: 12px 14px;">
-                            <span class="advanced-filters-text" style="align-items: center;">
-                                <svg class="advanced-filters-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
-                                    <path d="M2 3h12M2 6h12M2 9h12M2 12h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.3"/>
-                                    <circle cx="11" cy="3" r="1.5" fill="currentColor"/>
-                                    <circle cx="5" cy="6" r="1.5" fill="currentColor"/>
-                                    <circle cx="9" cy="9" r="1.5" fill="currentColor"/>
-                                    <circle cx="7" cy="12" r="1.5" fill="currentColor"/>
-                                </svg>
-                                <span style="display: inline-flex; align-items: center; gap: 4px; line-height: 1.2;"><span class="filter-summary-editable" style="vertical-align: middle;">Six advanced filters</span><span style="vertical-align: middle; color: #D96E4A; font-weight: 600;">applied</span></span>
-                            </span>
-                            <button class="edit-advanced-filters-btn" id="open-advanced-filters">Edit advanced filters</button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- ── Panel 3: Top landlords ── -->
-            <div class="sub-panel-section" id="panel-landlords">
-                <div class="sub-panel-header">
-                    <div class="sub-panel-title">Top 10 landlords</div>
-                    <div class="sub-panel-subtitle">Based on active filter selection</div>
-                </div>
-                <div class="sub-panel-body">
-                    <div class="table-section" style="border-top: none;">
-                        <div class="table-controls" style="border-top: none; padding-top: 10px;">
-                            <label class="filter-label">Show top 10 by</label>
-                            <select id="top10-dropdown-landlords">
-                                <option>filings</option>
-                                <option>units</option>
-                                <option>properties</option>
-                                <option>value</option>
+                            <select class="filter-select" style="width:100%; margin-bottom: 18px;">
+                                <option>Poverty rate</option>
+                                <option>Median income</option>
+                                <option>Renter burden</option>
+                                <option>Vacancy rate</option>
                             </select>
-                            <div class="table-info">
-                                These are top 10 landlords based on the filter selection.
+                            <div style="margin-bottom: 8px;">
+                                <div class="filter-label" style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #555; margin-bottom: 4px;">Geography</div>
                             </div>
-                        </div>
-
-                        <div class="data-table">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>RANK</th>
-                                        <th>PRIMARY OWNER NAME AND TYPE</th>
-                                        <th style="text-align: right; white-space: nowrap;">NUMBER OF<br>FILINGS</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td class="rank-cell">1</td><td class="owner-cell"><div class="owner-cell-wrapper"><div><span class="owner-name">Peabody Properties, Inc</span><span class="owner-type">Private Organization</span></div><div class="table-sparkline"><div class="sparkline-bar" style="height:40%"></div><div class="sparkline-bar" style="height:55%"></div><div class="sparkline-bar" style="height:70%"></div><div class="sparkline-bar" style="height:85%"></div><div class="sparkline-bar" style="height:100%"></div></div></div></td><td class="units-cell">1345</td></tr>
-                                    <tr><td class="rank-cell">2</td><td class="owner-cell"><span class="owner-name">Oakwood</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1345</td></tr>
-                                    <tr><td class="rank-cell">3</td><td class="owner-cell"><span class="owner-name">Lorem LLC</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1345</td></tr>
-                                    <tr><td class="rank-cell">4</td><td class="owner-cell"><span class="owner-name">Lorem 2 LLC</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1345</td></tr>
-                                    <tr><td class="rank-cell">5</td><td class="owner-cell"><span class="owner-name">Berkshire Residential Inv...</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1345</td></tr>
-                                    <tr><td class="rank-cell">6</td><td class="owner-cell"><span class="owner-name">Lorem 3 LLC</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1345</td></tr>
-                                    <tr><td class="rank-cell">7</td><td class="owner-cell"><span class="owner-name">Sample Properties LLC</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1234</td></tr>
-                                    <tr><td class="rank-cell">8</td><td class="owner-cell"><span class="owner-name">Real Estate Holdings Inc</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1198</td></tr>
-                                    <tr><td class="rank-cell">9</td><td class="owner-cell"><span class="owner-name">Property Management Co</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1156</td></tr>
-                                    <tr><td class="rank-cell">10</td><td class="owner-cell"><span class="owner-name">Investment Properties LLC</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1089</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ── Panel 4: Top properties ── -->
-            <div class="sub-panel-section" id="panel-properties">
-                <div class="sub-panel-header">
-                    <div class="sub-panel-title">Top 10 properties</div>
-                    <div class="sub-panel-subtitle">Based on active filter selection</div>
-                </div>
-                <div class="sub-panel-body">
-                    <div class="table-section" style="border-top: none;">
-                        <div class="table-controls" style="border-top: none; padding-top: 10px;">
-                            <label class="filter-label">Show top 10 by</label>
-                            <select id="top10-dropdown-properties">
-                                <option>filings</option>
-                                <option>units</option>
-                                <option>value</option>
+                            <select class="filter-select" style="width:100%; margin-bottom: 18px;">
+                                <option>ZIP code</option>
+                                <option>Census tract</option>
+                                <option>City</option>
+                                <option>County</option>
                             </select>
-                            <div class="table-info">
-                                These are top 10 properties based on the filter selection.
+                            <div style="border-top: 1px solid #eaeaea; margin: 0 -22px 14px;"></div>
+                            <div style="margin-bottom: 8px;">
+                                <div class="filter-label" style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #555; margin-bottom: 4px;">Filter areas</div>
+                                <div style="font-size: 11px; color: #999; line-height: 1.5; margin-bottom: 10px;">Restrict results to only properties within the areas you have selected on the map.</div>
+                            </div>
+                            <div class="filter-group inline" style="margin-bottom: 4px;">
+                                <label class="filter-label inline">Filter to selected areas</label>
+                                <div class="toggle-switch"></div>
                             </div>
                         </div>
+                    </div>
+                </div>
 
-                        <div class="data-table">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>RANK</th>
-                                        <th>ADDRESS, OWNER NAME AND TYPE</th>
-                                        <th style="text-align: right; white-space: nowrap;">NUMBER OF<br>FILINGS</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td class="rank-cell">1</td><td class="owner-cell"><span class="owner-name">192 main st</span><span class="owner-type">Fannin and Rusk Associates LP · Condominium</span></td><td class="units-cell">1500</td></tr>
-                                    <tr><td class="rank-cell">2</td><td class="owner-cell"><span class="owner-name">193 main st</span><span class="owner-type">Fannin and Rusk Associates LP · Condominium</span></td><td class="units-cell">1345</td></tr>
-                                    <tr><td class="rank-cell">3</td><td class="owner-cell"><span class="owner-name">194 main st</span><span class="owner-type">Fannin and Rusk Associates LP · Condominium</span></td><td class="units-cell">1200</td></tr>
-                                    <tr><td class="rank-cell">4</td><td class="owner-cell"><span class="owner-name">195 main st</span><span class="owner-type">Genesis Land Holdings Inc · Condominium</span></td><td class="units-cell">1155</td></tr>
-                                    <tr><td class="rank-cell">5</td><td class="owner-cell"><span class="owner-name">196 main st</span><span class="owner-type">Fannin and Rusk Associates LP · Condominium</span></td><td class="units-cell">1000</td></tr>
-                                    <tr><td class="rank-cell">6</td><td class="owner-cell"><span class="owner-name">197 main st</span><span class="owner-type">Property Holdings LLC · Condominium</span></td><td class="units-cell">985</td></tr>
-                                    <tr><td class="rank-cell">7</td><td class="owner-cell"><span class="owner-name">198 main st</span><span class="owner-type">Real Estate Group Inc · Condominium</span></td><td class="units-cell">950</td></tr>
-                                    <tr><td class="rank-cell">8</td><td class="owner-cell"><span class="owner-name">199 main st</span><span class="owner-type">Investment Properties Co · Condominium</span></td><td class="units-cell">920</td></tr>
-                                    <tr><td class="rank-cell">9</td><td class="owner-cell"><span class="owner-name">200 main st</span><span class="owner-type">Development Associates LP · Condominium</span></td><td class="units-cell">890</td></tr>
-                                    <tr><td class="rank-cell">10</td><td class="owner-cell"><span class="owner-name">201 main st</span><span class="owner-type">Urban Holdings Inc · Condominium</span></td><td class="units-cell">850</td></tr>
-                                </tbody>
-                            </table>
+                <!-- Tab: Property data -->
+                <div class="data-tab-content" id="data-tab-property">
+                    <div class="sub-panel-header" style="border-top: none;">
+                        <div class="sub-panel-subtitle">Filter by property type, ownership structure, and more. These filters also apply to the Top 10 landlords and Top 10 properties panels, so changing them here updates those rankings too.</div>
+                    </div>
+                    <div class="sub-panel-body">
+                        <div class="filters-section" style="padding-top: 0;">
+                            <div class="accordion-summary" style="padding: 10px 0 4px; font-size: 13px; color: #888; line-height: 1.4;">
+                                Showing <span class="filter-summary-editable">all types<svg class="filter-summary-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:6px;display:inline-block;vertical-align:middle;margin-left:2px;color:#D96E4A;position:relative;top:-1px;"><path d="M1 1l4 4 4-4"/></svg></span> of properties with <span class="filter-summary-editable">any number<svg class="filter-summary-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:6px;display:inline-block;vertical-align:middle;margin-left:2px;color:#D96E4A;position:relative;top:-1px;"><path d="M1 1l4 4 4-4"/></svg></span> of units belonging to <span class="filter-summary-editable">all types<svg class="filter-summary-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:6px;display:inline-block;vertical-align:middle;margin-left:2px;color:#D96E4A;position:relative;top:-1px;"><path d="M1 1l4 4 4-4"/></svg></span> of landlords
+                            </div>
+                            <div style="border-top: 1px solid #eaeaea; margin: 20px -22px 16px;"></div>
+                            <div style="margin-bottom: 10px;">
+                                <div class="filter-label" style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #555; margin-bottom: 6px;">Advanced filters</div>
+                                <div style="font-size: 11px; color: #999; line-height: 1.55;">Advanced filters let you narrow results by things like filing date range, building age, assessed value, and eviction history. They stack on top of the basic filters above.</div>
+                            </div>
+                            <div class="advanced-filters-info" style="background: rgba(217,110,74,0.07); border: 1.5px solid rgba(217,110,74,0.2); border-radius: 8px; padding: 12px 14px;">
+                                <span class="advanced-filters-text" style="align-items: center;">
+                                    <svg class="advanced-filters-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+                                        <path d="M2 3h12M2 6h12M2 9h12M2 12h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.3"/>
+                                        <circle cx="11" cy="3" r="1.5" fill="currentColor"/>
+                                        <circle cx="5" cy="6" r="1.5" fill="currentColor"/>
+                                        <circle cx="9" cy="9" r="1.5" fill="currentColor"/>
+                                        <circle cx="7" cy="12" r="1.5" fill="currentColor"/>
+                                    </svg>
+                                    <span style="display: inline-flex; align-items: center; gap: 4px; line-height: 1.2;"><span class="filter-summary-editable" style="vertical-align: middle;">Six advanced filters</span><span style="vertical-align: middle; color: #D96E4A; font-weight: 600;">applied</span></span>
+                                </span>
+                                <button class="edit-advanced-filters-btn" id="open-advanced-filters">Edit advanced filters</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- ── Panel 5: Selected properties ── -->
+            <!-- ── Panel 3: Top 10 (landlords + properties tabs) ── -->
+            <div class="sub-panel-section" id="panel-top10">
+                <!-- Inner tab strip -->
+                <div class="data-tab-strip">
+                    <button class="data-tab active" data-tab="landlords">Top landlords</button>
+                    <button class="data-tab" data-tab="properties">Top properties</button>
+                </div>
+
+                <!-- Tab: Top landlords -->
+                <div class="data-tab-content active" id="top10-tab-landlords">
+                    <div class="sub-panel-header" style="border-top: none;">
+                        <div class="sub-panel-subtitle">Based on active filter selection</div>
+                    </div>
+                    <div class="sub-panel-body">
+                        <div class="table-section" style="border-top: none;">
+                            <div class="table-controls" style="border-top: none; padding-top: 10px;">
+                                <label class="filter-label">Show top 10 by</label>
+                                <select id="top10-dropdown-landlords">
+                                    <option>filings</option>
+                                    <option>units</option>
+                                    <option>properties</option>
+                                    <option>value</option>
+                                </select>
+                                <div class="table-info">These are top 10 landlords based on the filter selection.</div>
+                            </div>
+                            <div class="data-table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>RANK</th>
+                                            <th>PRIMARY OWNER NAME AND TYPE</th>
+                                            <th style="text-align: right; white-space: nowrap;">NUMBER OF<br>FILINGS</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td class="rank-cell">1</td><td class="owner-cell"><div class="owner-cell-wrapper"><div><span class="owner-name">Peabody Properties, Inc</span><span class="owner-type">Private Organization</span></div><div class="table-sparkline"><div class="sparkline-bar" style="height:40%"></div><div class="sparkline-bar" style="height:55%"></div><div class="sparkline-bar" style="height:70%"></div><div class="sparkline-bar" style="height:85%"></div><div class="sparkline-bar" style="height:100%"></div></div></div></td><td class="units-cell">1345</td></tr>
+                                        <tr><td class="rank-cell">2</td><td class="owner-cell"><span class="owner-name">Oakwood</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1345</td></tr>
+                                        <tr><td class="rank-cell">3</td><td class="owner-cell"><span class="owner-name">Lorem LLC</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1345</td></tr>
+                                        <tr><td class="rank-cell">4</td><td class="owner-cell"><span class="owner-name">Lorem 2 LLC</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1345</td></tr>
+                                        <tr><td class="rank-cell">5</td><td class="owner-cell"><span class="owner-name">Berkshire Residential Inv...</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1345</td></tr>
+                                        <tr><td class="rank-cell">6</td><td class="owner-cell"><span class="owner-name">Lorem 3 LLC</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1345</td></tr>
+                                        <tr><td class="rank-cell">7</td><td class="owner-cell"><span class="owner-name">Sample Properties LLC</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1234</td></tr>
+                                        <tr><td class="rank-cell">8</td><td class="owner-cell"><span class="owner-name">Real Estate Holdings Inc</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1198</td></tr>
+                                        <tr><td class="rank-cell">9</td><td class="owner-cell"><span class="owner-name">Property Management Co</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1156</td></tr>
+                                        <tr><td class="rank-cell">10</td><td class="owner-cell"><span class="owner-name">Investment Properties LLC</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1089</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab: Top properties -->
+                <div class="data-tab-content" id="top10-tab-properties">
+                    <div class="sub-panel-header" style="border-top: none;">
+                        <div class="sub-panel-subtitle">Based on active filter selection</div>
+                    </div>
+                    <div class="sub-panel-body">
+                        <div class="table-section" style="border-top: none;">
+                            <div class="table-controls" style="border-top: none; padding-top: 10px;">
+                                <label class="filter-label">Show top 10 by</label>
+                                <select id="top10-dropdown-properties">
+                                    <option>filings</option>
+                                    <option>units</option>
+                                    <option>value</option>
+                                </select>
+                                <div class="table-info">These are top 10 properties based on the filter selection.</div>
+                            </div>
+                            <div class="data-table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>RANK</th>
+                                            <th>ADDRESS, OWNER NAME AND TYPE</th>
+                                            <th style="text-align: right; white-space: nowrap;">NUMBER OF<br>FILINGS</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td class="rank-cell">1</td><td class="owner-cell"><span class="owner-name">192 main st</span><span class="owner-type">Fannin and Rusk Associates LP · Condominium</span></td><td class="units-cell">1500</td></tr>
+                                        <tr><td class="rank-cell">2</td><td class="owner-cell"><span class="owner-name">193 main st</span><span class="owner-type">Fannin and Rusk Associates LP · Condominium</span></td><td class="units-cell">1345</td></tr>
+                                        <tr><td class="rank-cell">3</td><td class="owner-cell"><span class="owner-name">194 main st</span><span class="owner-type">Fannin and Rusk Associates LP · Condominium</span></td><td class="units-cell">1200</td></tr>
+                                        <tr><td class="rank-cell">4</td><td class="owner-cell"><span class="owner-name">195 main st</span><span class="owner-type">Genesis Land Holdings Inc · Condominium</span></td><td class="units-cell">1155</td></tr>
+                                        <tr><td class="rank-cell">5</td><td class="owner-cell"><span class="owner-name">196 main st</span><span class="owner-type">Fannin and Rusk Associates LP · Condominium</span></td><td class="units-cell">1000</td></tr>
+                                        <tr><td class="rank-cell">6</td><td class="owner-cell"><span class="owner-name">197 main st</span><span class="owner-type">Property Holdings LLC · Condominium</span></td><td class="units-cell">985</td></tr>
+                                        <tr><td class="rank-cell">7</td><td class="owner-cell"><span class="owner-name">198 main st</span><span class="owner-type">Real Estate Group Inc · Condominium</span></td><td class="units-cell">950</td></tr>
+                                        <tr><td class="rank-cell">8</td><td class="owner-cell"><span class="owner-name">199 main st</span><span class="owner-type">Investment Properties Co · Condominium</span></td><td class="units-cell">920</td></tr>
+                                        <tr><td class="rank-cell">9</td><td class="owner-cell"><span class="owner-name">200 main st</span><span class="owner-type">Development Associates LP · Condominium</span></td><td class="units-cell">890</td></tr>
+                                        <tr><td class="rank-cell">10</td><td class="owner-cell"><span class="owner-name">201 main st</span><span class="owner-type">Urban Holdings Inc · Condominium</span></td><td class="units-cell">850</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Panel 4: Selected properties ── -->
             <div class="sub-panel-section" id="panel-selected">
                 <div class="sub-panel-header">
                     <div class="sub-panel-title">Selected properties</div>
@@ -10221,13 +10396,11 @@
         const btns = Array.from(rail.querySelectorAll('.icon-rail-btn'));
         let activePanel = null;
 
-        function openPanel(panelId) {
-            // Hide all sections
+        function openPanel(panelId, innerTab) {
             document.querySelectorAll('.sub-panel-section').forEach(s => s.classList.remove('active'));
             btns.forEach(b => b.classList.remove('active'));
 
-            if (activePanel === panelId) {
-                // Toggle off
+            if (activePanel === panelId && !innerTab) {
                 subPanel.classList.remove('open');
                 if (mapArea) mapArea.style.left = '48px';
                 activePanel = null;
@@ -10241,11 +10414,53 @@
             subPanel.classList.add('open');
             if (mapArea) mapArea.style.left = '388px';
             activePanel = panelId;
+
+            // If a specific inner tab was requested, switch to it
+            if (innerTab && section) {
+                switchInnerTab(section, innerTab);
+            }
         }
 
+        function switchInnerTab(panelEl, tabId) {
+            const tabs = panelEl.querySelectorAll('.data-tab');
+            const contents = panelEl.querySelectorAll('.data-tab-content');
+            tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === tabId));
+            contents.forEach(c => {
+                // content ids follow pattern: panel-specific prefix + tabId
+                const isTarget = c.id.endsWith('-' + tabId);
+                c.classList.toggle('active', isTarget);
+            });
+        }
+
+        // Rail button clicks
         btns.forEach(btn => {
+            btn.addEventListener('click', () => openPanel(btn.dataset.panel));
+        });
+
+        // Inner tab clicks (data panel and top10 panel)
+        document.querySelectorAll('.data-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const panelEl = tab.closest('.sub-panel-section');
+                if (panelEl) switchInnerTab(panelEl, tab.dataset.tab);
+            });
+        });
+
+        // Year picker
+        const statusYear = document.getElementById('status-year');
+        document.querySelectorAll('.year-btn').forEach(btn => {
             btn.addEventListener('click', () => {
-                openPanel(btn.dataset.panel);
+                document.querySelectorAll('.year-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                if (statusYear) statusYear.textContent = btn.dataset.year;
+            });
+        });
+
+        // Header nav tabs (data / Property / Area)
+        document.querySelectorAll('.app-header-nav-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.app-header-nav-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                openPanel(tab.dataset.openPanel, tab.dataset.openTab);
             });
         });
 
@@ -10280,45 +10495,12 @@
             grp.addEventListener('click', e => {
                 const btn = e.target.closest('[data-value]');
                 if (!btn) return;
-                const val = btn.dataset.value;
-                setOverlayValue(val);
+                setOverlayValue(btn.dataset.value);
             });
         });
 
-        if (toggleGroup && statusEl) {
-            toggleGroup.addEventListener('click', e => {
-                const btn = e.target.closest('.area-overlay-toggle');
-                if (!btn) return;
-                toggleGroup.querySelectorAll('.area-overlay-toggle').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const val = btn.dataset.value;
-                statusEl.className = 'area-overlay-status';
-                if (val === 'auto') {
-                    statusEl.classList.add('');
-                    statusEl.innerHTML = '<span class="area-overlay-status-dot"></span>Zoom out to activate';
-                } else if (val === 'on') {
-                    statusEl.classList.add('status-on');
-                    statusEl.innerHTML = '<span class="area-overlay-status-dot"></span>Overlay active';
-                } else {
-                    statusEl.classList.add('status-off');
-                    statusEl.innerHTML = '<span class="area-overlay-status-dot"></span>Overlay hidden';
-                }
-            });
-        }
-
-        // Open area-data by default
-        openPanel('area-data');
-
-        // Clicking the "2019" year trigger in the area data summary opens the header year dropdown
-        const yearTrigger = document.getElementById('area-data-year-trigger');
-        const headerYearSelect = document.getElementById('app-header-year-select');
-        if (yearTrigger && headerYearSelect) {
-            yearTrigger.addEventListener('click', function(e) {
-                e.stopPropagation();
-                headerYearSelect.focus();
-                headerYearSelect.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
-            });
-        }
+        // Open year panel by default
+        openPanel('year');
     })();
 </script>
 </body>
