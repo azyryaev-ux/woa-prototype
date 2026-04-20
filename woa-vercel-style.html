@@ -6639,42 +6639,47 @@
 
         /* Year strip */
         .data-year-section {
-            padding: 14px 20px 10px;
+            padding: 12px 20px 10px;
             border-bottom: 1px solid #eaeaea;
         }
 
         .data-year-strip {
             display: flex;
+            align-items: center;
             gap: 0;
-            border: 1px solid #d0d5e8;
-            border-radius: 6px;
-            overflow: hidden;
+        }
+
+        .data-year-label {
+            font-size: 13px;
+            font-family: 'Akkurat', sans-serif;
+            color: #aaa;
+            margin-right: 8px;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
 
         .data-year-btn {
             flex: 1;
-            padding: 7px 0;
-            font-size: 12px;
+            padding: 5px 4px;
+            font-size: 13px;
             font-family: 'Akkurat', sans-serif;
-            color: #555;
-            background: #fff;
+            color: #999;
+            background: none;
             border: none;
-            border-right: 1px solid #d0d5e8;
+            border-radius: 6px;
             cursor: pointer;
+            text-align: center;
             transition: background 0.12s, color 0.12s;
         }
 
-        .data-year-btn:last-child {
-            border-right: none;
-        }
-
         .data-year-btn:hover:not(.active) {
-            background: #f5f5f5;
+            color: #555;
+            background: rgba(0,0,0,0.04);
         }
 
         .data-year-btn.active {
-            background: #d63d00;
-            color: #fff;
+            background: rgba(214,61,0,0.12);
+            color: #d63d00;
             font-weight: 700;
         }
 
@@ -7121,6 +7126,7 @@
                     <!-- Year selector -->
                     <div class="data-year-section">
                         <div class="data-year-strip">
+                            <span class="data-year-label">Year</span>
                             <button class="data-year-btn" data-year="2000">2000</button>
                             <button class="data-year-btn" data-year="2005">2005</button>
                             <button class="data-year-btn" data-year="2010">2010</button>
@@ -7262,6 +7268,7 @@
                     <!-- Year selector -->
                     <div class="data-year-section">
                         <div class="data-year-strip">
+                            <span class="data-year-label">Year</span>
                             <button class="data-year-btn" data-year="2000">2000</button>
                             <button class="data-year-btn" data-year="2005">2005</button>
                             <button class="data-year-btn" data-year="2010">2010</button>
