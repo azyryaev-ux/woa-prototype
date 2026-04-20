@@ -1335,7 +1335,7 @@
         }
 
         .gradient-bar {
-            height: 16px;
+            height: 10px;
             background: linear-gradient(90deg, #e8e4f3 0%, #7c3aed 100%);
             border-radius: 6px;
             margin-top: 8px;
@@ -1395,7 +1395,7 @@
         .color-2-4 { background: #787E9E; }
         .color-multiuse { background: #3F1E5C; }
         .color-vacant { background: #6E4B13; }
-        .color-other { background: #501A0D; }
+        .color-other { background: #296e4a; }
 
         .legend-toggle {
             display: flex;
@@ -2958,7 +2958,7 @@
         .app-header-logo-mark {
             width: 28px;
             height: 28px;
-            background: #000;
+            background: #b6b6b6;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -2982,6 +2982,8 @@
             color: #000;
             line-height: 1.3;
             text-transform: uppercase;
+            white-space: normal;
+            max-width: 68px;
         }
 
         .app-header-search {
@@ -3068,14 +3070,15 @@
         }
 
         .app-header-overlay-toggle:hover:not(.active) {
-            background: rgba(59,111,224,0.06);
-            color: #3B6FE0;
+            background: rgba(214,61,0,0.06);
+            color: #d63d00;
         }
 
         .app-header-overlay-toggle.active {
-            background: rgba(59,111,224,0.1);
-            border-color: #3B6FE0;
-            color: #3B6FE0;
+            background: rgba(214,61,0,0.1);
+            border-color: #d63d00;
+            color: #d63d00;
+            font-weight: 700;
         }
 
         .app-header-year {
@@ -6598,6 +6601,71 @@
             padding: 0 16px;
         }
 
+
+        /* Header status text */
+        .app-header-status {
+            font-size: 14px;
+            font-family: 'Akkurat', sans-serif;
+            color: #555;
+            white-space: nowrap;
+            margin-left: 16px;
+            flex-shrink: 0;
+        }
+        .app-header-status-highlight {
+            color: #d63d00;
+            font-weight: 700;
+        }
+
+        /* City list panel */
+        .city-list-header {
+            font-size: 14px;
+            font-family: 'Akkurat', sans-serif;
+            color: #555;
+            padding: 24px 20px 0;
+        }
+
+        .city-list {
+            padding: 16px 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .city-list-item {
+            position: relative;
+            font-size: 16px;
+            font-weight: 700;
+            font-family: 'Akkurat', sans-serif;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.96px;
+            line-height: 30px;
+            padding: 4px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: color 0.15s ease, background 0.15s ease;
+        }
+
+        .city-list-item:hover {
+            color: #d63d00;
+            background: rgba(214,61,0,0.06);
+        }
+
+        .city-list-item.active {
+            color: #d63d00;
+            background: rgba(214,61,0,0.1);
+        }
+
+        /* Icon rail text-label buttons (CITY, DATA) */
+        .icon-rail-btn .rail-text-label {
+            font-size: 8px;
+            font-family: 'Akkurat', sans-serif;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            color: inherit;
+            line-height: 1;
+        }
     </style>
 </head>
 <body>
@@ -6605,7 +6673,7 @@
     <header class="app-header" id="app-header">
         <a class="app-header-logo" href="#">
             <div class="app-header-logo-mark"></div>
-            <span class="app-header-logo-text">Logo</span>
+            <span class="app-header-logo-text">WHO OWNS<br>BOSTON</span>
         </a>
 
         <div class="app-header-search">
@@ -6619,34 +6687,18 @@
         </div>
 
         <div class="app-header-overlay">
-            <span class="app-header-overlay-label">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="3" width="16" height="13" rx="1.5"/>
-                    <path d="M2 10h16"/>
-                    <path d="M9.5 3v13"/>
-                    <rect x="3" y="4" width="5.5" height="5" rx="0.5" fill="currentColor" stroke="none" opacity="0.35"/>
-                    <rect x="11" y="11.5" width="6" height="3.5" rx="0.5" fill="currentColor" stroke="none" opacity="0.35"/>
-                </svg>
-                Area Data
-            </span>
+            <span class="app-header-overlay-label">DATA</span>
             <div class="app-header-overlay-toggle-group" id="header-overlay-toggle-group">
-                <button class="app-header-overlay-toggle active" data-value="auto">Auto</button>
-                <button class="app-header-overlay-toggle" data-value="on">On</button>
-                <button class="app-header-overlay-toggle" data-value="off">Off</button>
+                <button class="app-header-overlay-toggle" data-value="property">Property</button>
+                <button class="app-header-overlay-toggle active" data-value="area">Area</button>
+                <button class="app-header-overlay-toggle" data-value="auto">Auto on zoom</button>
             </div>
         </div>
 
-        <div class="app-header-spacer"></div>
-
-        <div class="app-header-year">
-            <span class="app-header-year-label">Viewing data for</span>
-            <select class="app-header-year-select" id="app-header-year-select">
-                <option selected>2019</option>
-                <option>2020</option>
-                <option>2021</option>
-                <option>2022</option>
-            </select>
+        <div class="app-header-status">
+            Showing <span class="app-header-status-highlight">2019</span> area data and <span class="app-header-status-highlight">poverty rate</span> for <span class="app-header-status-highlight">ZIP codes</span>
         </div>
+        <div class="app-header-spacer"></div>
 
         <button class="app-header-menu" id="app-header-menu-btn">
             <span class="app-header-menu-label">Menu</span>
@@ -6660,30 +6712,14 @@
     <!-- Icon Rail (workflow-ordered navigation) -->
     <aside class="icon-rail" id="icon-rail">
 
-        <!-- Step 1: Area data -->
-        <button class="icon-rail-btn" id="rail-area-data" data-panel="area-data" data-tooltip="Area data">
-            <span class="step-badge">1</span>
-            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="3" width="16" height="13" rx="1.5"/>
-                <path d="M2 10h16"/>
-                <path d="M9.5 3v13"/>
-                <rect x="3" y="4" width="5.5" height="5" rx="0.5" fill="currentColor" stroke="none" opacity="0.25"/>
-                <rect x="11" y="11.5" width="6" height="3.5" rx="0.5" fill="currentColor" stroke="none" opacity="0.25"/>
-            </svg>
+        <!-- Step 1: City select -->
+        <button class="icon-rail-btn" id="rail-area-data" data-panel="area-data" data-tooltip="Select city">
+            <span class="rail-text-label">CITY</span>
         </button>
 
-        <!-- Step 2: Property filters -->
-        <button class="icon-rail-btn" id="rail-filters" data-panel="filters" data-tooltip="Property filters" style="position: relative;">
-            <span class="step-badge">2</span>
-            <span style="position: absolute; top: 4px; right: 4px; width: 7px; height: 7px; background: #E53E3E; border-radius: 50%; border: 1.5px solid #fff; flex-shrink: 0;"></span>
-            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
-                <path d="M3 5h14"/>
-                <path d="M5 10h10"/>
-                <path d="M7 15h6"/>
-                <circle cx="13" cy="5" r="1.5" fill="currentColor" stroke="none"/>
-                <circle cx="7" cy="10" r="1.5" fill="currentColor" stroke="none"/>
-                <circle cx="11" cy="15" r="1.5" fill="currentColor" stroke="none"/>
-            </svg>
+        <!-- Step 2: Data/Area data -->
+        <button class="icon-rail-btn" id="rail-filters" data-panel="filters" data-tooltip="Area data">
+            <span class="rail-text-label">DATA</span>
         </button>
 
         <div class="icon-rail-divider"></div>
@@ -6740,14 +6776,21 @@
     <div class="sub-panel" id="sub-panel">
         <div class="sub-panel-inner" id="sub-panel-inner">
 
-            <!-- ── Panel 1: Area data ── -->
+            <!-- ── Panel 1: City select ── -->
             <div class="sub-panel-section active" id="panel-area-data">
-                <div class="sub-panel-header">
-                    <div class="sub-panel-title">Area data</div>
-                    <div class="sub-panel-subtitle">This panel lets you layer socioeconomic context onto the map (things like poverty rate, median income, or renter burden) shaded across ZIP codes or census tracts.</div>
-                    <div class="accordion-summary" style="padding: 8px 0 0; font-size: 13px; color: #888; line-height: 1.4;">Showing <span class="filter-summary-editable" id="area-data-year-trigger">2019<svg class="filter-summary-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:6px;display:inline-block;vertical-align:middle;margin-left:2px;color:#D96E4A;position:relative;top:-1px;"><path d="M1 1l4 4 4-4"/></svg></span> data and <span class="filter-summary-editable">poverty rate<svg class="filter-summary-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:6px;display:inline-block;vertical-align:middle;margin-left:2px;color:#D96E4A;position:relative;top:-1px;"><path d="M1 1l4 4 4-4"/></svg></span> for <span class="filter-summary-editable">ZIP codes<svg class="filter-summary-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:6px;display:inline-block;vertical-align:middle;margin-left:2px;color:#D96E4A;position:relative;top:-1px;"><path d="M1 1l4 4 4-4"/></svg></span></div>
+                <div class="city-list-header">Locations we currently track</div>
+                <div class="city-list">
+                    <div class="city-list-item">Bozeman</div>
+                    <div class="city-list-item">New Haven</div>
+                    <div class="city-list-item active">Boston</div>
+                    <div class="city-list-item">Chicago</div>
+                    <div class="city-list-item">Kansas City</div>
+                    <div class="city-list-item">Baltimore</div>
+                    <div class="city-list-item">Louisville</div>
+                    <div class="city-list-item">Houston</div>
+                    <div class="city-list-item">Miami</div>
                 </div>
-                <div class="sub-panel-body">
+                <div class="sub-panel-body" style="display:none">
 
                     <!-- PROMINENT View area data card -->
                     <div class="area-overlay-card">
@@ -7527,16 +7570,19 @@
         <div class="floating-legend">
             <div class="legend-header">
                 <div class="legend-toggle">
-                    <span class="legend-title">Legend</span>
+                    <span class="legend-title" style="font-family:'Akkurat Mono',monospace;font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:#666;">Legend</span>
                     <svg class="legend-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </div>
             </div>
             <div class="legend-content">
-                <div class="sidebar-section">
-                    <h3 class="section-title">Geography</h3>
-                    <div class="legend-item">ZIP codes</div>
+                <div class="sidebar-section" style="border-bottom:1px solid #eaeaea;padding-bottom:16px;">
+                    <div style="font-size:13px;color:#666;font-family:'Akkurat',sans-serif;margin-bottom:12px;">Geography</div>
+                    <div class="legend-item" style="display:flex;align-items:center;gap:8px;">
+                        <span style="width:12px;height:12px;border:1px solid #d7caf2;border-radius:2px;background:#fff;display:inline-block;flex-shrink:0;"></span>
+                        <span style="font-size:13px;font-family:'Akkurat',sans-serif;color:#000;">ZIP codes</span>
+                    </div>
                     <div class="legend-item" style="display: flex; justify-content: space-between; align-items: center;">
                         <span>Poverty rate</span>
                         <span class="zoom-text" style="margin: 0;">Zoom out to view</span>
@@ -7548,18 +7594,23 @@
                     </div>
                 </div>
 
-                <div class="sidebar-section">
-                    <h3 class="section-title">Selected Properties</h3>
-                    <ul class="bullet-list">
-                        <li>Selected</li>
-                        <li>Owned by same landlord</li>
-                    </ul>
+                <div class="sidebar-section" style="border-top:1px solid #eaeaea;padding-top:16px;">
+                    <div style="font-size:13px;color:#666;font-family:'Akkurat',sans-serif;margin-bottom:12px;">Selected properties</div>
+                    <div style="display:flex;flex-direction:column;gap:8px;">
+                        <div style="display:flex;align-items:center;padding-left:20px;position:relative;">
+                            <span style="position:absolute;left:3px;top:4px;width:10px;height:10px;background:#999;border-radius:50%;display:inline-block;"></span>
+                            <span style="font-size:13px;font-family:'Akkurat',sans-serif;color:#000;">Selected</span>
+                        </div>
+                        <div style="display:flex;align-items:center;padding-left:20px;position:relative;">
+                            <span style="position:absolute;left:5px;top:6px;width:6px;height:6px;background:#999;border-radius:50%;display:inline-block;"></span>
+                            <span style="font-size:13px;font-family:'Akkurat',sans-serif;color:#000;">Owned by same landlord</span>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="sidebar-section">
-                    <h3 class="section-title">Property Types</h3>
-                    <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 10px;">
-                        <span style="font-size: 12px; color: #555; white-space: nowrap; font-family: 'Akkurat', sans-serif;">Color by</span>
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap;">
+                        <span style="font-size: 13px; color: #666; white-space: nowrap; font-family: 'Akkurat', sans-serif;">Properties colored by</span>
                         <select style="font-size: 12px; padding: 3px 6px; border: 1px solid #ddd; border-radius: 4px; background: #fff; color: #333; cursor: pointer; width: auto;">
                             <option>Property type</option>
                             <option>Owner type</option>
@@ -7570,10 +7621,10 @@
                         <span class="color-indicator color-commercial"></span>Commercial
                     </div>
                     <div class="legend-item">
-                        <span class="color-indicator color-single"></span>Single family residential
+                        <span class="color-indicator color-multi"></span>Multifamily residential
                     </div>
                     <div class="legend-item">
-                        <span class="color-indicator color-multi"></span>Multifamily residential
+                        <span class="color-indicator color-single"></span>Single family residential
                     </div>
                     <div class="legend-item">
                         <span class="color-indicator color-2-4"></span>2-4 unit residential
