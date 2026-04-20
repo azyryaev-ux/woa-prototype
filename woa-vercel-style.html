@@ -2933,26 +2933,23 @@
         /* ── Global app header ── */
         .app-header {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             height: 70px;
-            background: #ffffff;
-            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.06);
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            padding: 0 24px;
+            background: #fff;
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.06);
             z-index: 100;
-            gap: 0;
+            display: flex;
+            align-items: center;
+            padding: 0 22px 0 24px;
         }
 
+        /* Logo: gray circle + WHO OWNS BOSTON */
         .app-header-logo {
             display: flex;
             align-items: center;
             gap: 10px;
-            flex-shrink: 0;
             text-decoration: none;
+            flex-shrink: 0;
         }
 
         .app-header-logo-mark {
@@ -2960,18 +2957,7 @@
             height: 28px;
             background: #b6b6b6;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             flex-shrink: 0;
-        }
-
-        .app-header-logo-mark::before {
-            content: '';
-            width: 10px;
-            height: 10px;
-            background: #fff;
-            border-radius: 50%;
         }
 
         .app-header-logo-text {
@@ -2983,179 +2969,127 @@
             line-height: 1.3;
             text-transform: uppercase;
             white-space: normal;
-            max-width: 68px;
+            max-width: 64px;
         }
 
-        .app-header-search {
-            flex: 1;
-            max-width: 340px;
-            margin-left: 24px;
-            position: relative;
-        }
-
-        .app-header-search .search-bar {
-            background: #f5f5f5;
-            border: 1px solid #e8e8e8;
-            height: 36px;
-            border-radius: 6px;
-            width: 100%;
-        }
-
-        .app-header-search .search-bar:hover {
-            border-color: #ccc;
-            background: #f0f0f0;
-        }
-
-        .app-header-search input {
-            color: #000;
-            font-size: 13px;
-            background: transparent;
-        }
-
-        .app-header-search input::placeholder { color: #aaa; }
-
-        .app-header-spacer { flex: 1; }
-
-        .app-header-overlay {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-shrink: 0;
-            margin-right: 20px;
-            padding: 0 16px 0 12px;
-            border-right: 1px solid #e8e8e8;
-        }
-
-        .app-header-overlay-label {
-            font-size: 11px;
-            font-weight: 500;
-            color: #555;
+        /* "DATA" micro-label */
+        .app-header-data-label {
+            font-size: 8px;
             font-family: 'Akkurat', sans-serif;
+            font-weight: 400;
+            color: #555;
             text-transform: uppercase;
             letter-spacing: 0.3px;
             white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .app-header-overlay-label svg {
-            width: 14px;
-            height: 14px;
-            color: #3B6FE0;
+            margin-left: 14px;
             flex-shrink: 0;
         }
 
-        .app-header-overlay-toggle-group {
-            display: flex;
-            background: transparent;
-            border: 1.5px solid #d0d5e8;
+        /* Toggle group: 230×33px border box */
+        .app-header-toggle-wrap {
+            position: relative;
+            width: 230px;
+            height: 33px;
+            border: 1px solid #d0d5e8;
             border-radius: 7px;
-            padding: 2px;
-            gap: 2px;
+            flex-shrink: 0;
+            margin-left: 8px;
+            display: flex;
+            align-items: center;
         }
 
-        .app-header-overlay-toggle {
+        .app-header-toggle-label {
             font-size: 12px;
-            font-weight: 600;
             font-family: 'Akkurat', sans-serif;
             color: #666;
-            background: transparent;
-            border: 1.5px solid transparent;
-            border-radius: 4px;
-            padding: 4px 11px;
-            cursor: pointer;
-            transition: all 0.15s ease;
             white-space: nowrap;
+            cursor: pointer;
+            flex: 1;
+            text-align: center;
+            padding: 0 8px;
+            user-select: none;
         }
 
-        .app-header-overlay-toggle:hover:not(.active) {
-            background: rgba(214,61,0,0.06);
-            color: #d63d00;
-        }
-
-        .app-header-overlay-toggle.active {
+        .app-header-toggle-btn {
+            width: 52px;
+            height: 25px;
             background: rgba(214,61,0,0.1);
-            border-color: #d63d00;
+            border: 1px solid #d63d00;
+            border-radius: 4px;
+            color: #d63d00;
+            font-size: 12px;
+            font-weight: 700;
+            font-family: 'Akkurat', sans-serif;
+            cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        /* Status sentence */
+        .app-header-status {
+            font-size: 14px;
+            font-family: 'Akkurat', sans-serif;
+            color: #555;
+            white-space: nowrap;
+            margin-left: 24px;
+            flex-shrink: 0;
+            line-height: 21px;
+        }
+
+        .app-header-status b {
             color: #d63d00;
             font-weight: 700;
         }
 
-        .app-header-year {
+        .app-header-spacer { flex: 1; }
+
+        /* Search icon box: 36×36 gray square */
+        .app-header-search-btn {
+            width: 36px;
+            height: 36px;
+            background: #f5f5f5;
+            border: 1px solid #e8e8e8;
+            border-radius: 6px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            flex-shrink: 0;
-            margin-right: 24px;
-        }
-
-        .app-header-year-label {
-            font-size: 11px;
-            font-weight: 500;
-            color: #888;
-            font-family: 'Akkurat', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-            white-space: nowrap;
-        }
-
-        .app-header-year-select {
-            font-size: 13px;
-            font-weight: 600;
-            color: #000;
-            font-family: 'Akkurat Mono', monospace;
-            padding: 5px 24px 5px 10px;
-            border: 1px solid #e0e0e0;
-            border-radius: 6px;
-            background: #fff;
+            justify-content: center;
             cursor: pointer;
-            appearance: none;
-            -webkit-appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg fill='none' stroke='%23999' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 6px center;
-            background-size: 14px;
+            flex-shrink: 0;
         }
 
-        .app-header-year-select:focus { outline: none; border-color: #aaa; }
+        .app-header-search-btn svg {
+            width: 14px;
+            height: 14px;
+            color: #555;
+        }
 
+        /* Hamburger: 2 lines, 18×10px, no text */
         .app-header-menu {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-shrink: 0;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 18px;
+            height: 10px;
             cursor: pointer;
-            padding: 6px 0;
             background: none;
             border: none;
-            font-family: inherit;
+            padding: 0;
+            margin-left: 16px;
+            flex-shrink: 0;
         }
 
-        .app-header-menu-label {
-            font-size: 11px;
-            font-weight: 600;
-            color: #000;
-            font-family: 'Akkurat Mono', monospace;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .app-header-menu-icon {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            width: 20px;
-        }
-
-        .app-header-menu-icon span {
+        .app-header-menu span {
             display: block;
+            width: 100%;
             height: 1.5px;
             background: #000;
-            border-radius: 1px;
-            transition: width 0.2s ease;
+            border-radius: 6px;
         }
 
-        .app-header-menu-icon span:last-child { width: 14px; }
+        /* Keep old year-select hidden (used by JS) */
+        .app-header-year { display: none; }
+        .app-header-menu-label { display: none; }
+        .app-header-menu-icon { display: none; }
 
         .breadcrumb {
             display: flex;
@@ -6602,20 +6536,6 @@
         }
 
 
-        /* Header status text */
-        .app-header-status {
-            font-size: 14px;
-            font-family: 'Akkurat', sans-serif;
-            color: #555;
-            white-space: nowrap;
-            margin-left: 16px;
-            flex-shrink: 0;
-        }
-        .app-header-status-highlight {
-            color: #d63d00;
-            font-weight: 700;
-        }
-
         /* City list panel */
         .city-list-header {
             font-size: 14px;
@@ -6671,42 +6591,54 @@
 <body>
     <!-- Global App Header -->
     <header class="app-header" id="app-header">
+
+        <!-- Logo: gray circle + WHO OWNS BOSTON -->
         <a class="app-header-logo" href="#">
             <div class="app-header-logo-mark"></div>
             <span class="app-header-logo-text">WHO OWNS<br>BOSTON</span>
         </a>
 
-        <div class="app-header-search">
-            <div class="search-bar">
-                <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <circle cx="11" cy="11" r="8" stroke-width="2"></circle>
-                    <path d="m21 21-4.35-4.35" stroke-width="2" stroke-linecap="round"></path>
-                </svg>
-                <input type="text" placeholder="Search address, owner, or area">
-            </div>
+        <!-- DATA micro-label -->
+        <span class="app-header-data-label">DATA</span>
+
+        <!-- Toggle: Property | Area | Auto on zoom -->
+        <div class="app-header-toggle-wrap" id="header-overlay-toggle-group">
+            <span class="app-header-toggle-label" data-value="property">Property</span>
+            <button class="app-header-toggle-btn" data-value="area">Area</button>
+            <span class="app-header-toggle-label" data-value="auto">Auto on zoom</span>
         </div>
 
-        <div class="app-header-overlay">
-            <span class="app-header-overlay-label">DATA</span>
-            <div class="app-header-overlay-toggle-group" id="header-overlay-toggle-group">
-                <button class="app-header-overlay-toggle" data-value="property">Property</button>
-                <button class="app-header-overlay-toggle active" data-value="area">Area</button>
-                <button class="app-header-overlay-toggle" data-value="auto">Auto on zoom</button>
-            </div>
-        </div>
-
+        <!-- Status sentence -->
         <div class="app-header-status">
-            Showing <span class="app-header-status-highlight">2019</span> area data and <span class="app-header-status-highlight">poverty rate</span> for <span class="app-header-status-highlight">ZIP codes</span>
+            Showing <b>2019</b> area data and <b>poverty rate</b> for <b>ZIP codes</b>
         </div>
+
         <div class="app-header-spacer"></div>
 
-        <button class="app-header-menu" id="app-header-menu-btn">
-            <span class="app-header-menu-label">Menu</span>
-            <div class="app-header-menu-icon">
-                <span></span>
-                <span></span>
-            </div>
+        <!-- Search icon box -->
+        <button class="app-header-search-btn" aria-label="Search">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="7" stroke-width="2"></circle>
+                <path d="m20 20-3.5-3.5" stroke-width="2" stroke-linecap="round"></path>
+            </svg>
         </button>
+
+        <!-- Hamburger: 2 lines, no text -->
+        <button class="app-header-menu" id="app-header-menu-btn" aria-label="Menu">
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Hidden year select kept for JS compatibility -->
+        <div class="app-header-year">
+            <select class="app-header-year-select" id="app-header-year-select">
+                <option selected>2019</option>
+                <option>2020</option>
+                <option>2021</option>
+                <option>2022</option>
+            </select>
+        </div>
+
     </header>
 
     <!-- Icon Rail (workflow-ordered navigation) -->
