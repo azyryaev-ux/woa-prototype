@@ -6572,6 +6572,334 @@
             background: rgba(214,61,0,0.1);
         }
 
+        .city-list-item .city-name {
+            display: block;
+        }
+
+        .city-list-item .city-state {
+            display: block;
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 0.8px;
+            opacity: 0.65;
+            margin-top: -2px;
+        }
+
+        .city-list-item.active .city-state {
+            opacity: 0.85;
+        }
+
+        /* ── DATA panel styles ── */
+
+        /* Tabs */
+        .data-panel-tabs {
+            display: flex;
+            border-bottom: 1px solid #eaeaea;
+            padding: 0 20px;
+            background: #fff;
+            flex-shrink: 0;
+        }
+
+        .data-panel-tab {
+            flex: 1;
+            padding: 14px 0 12px;
+            font-size: 13px;
+            font-family: 'Akkurat', sans-serif;
+            font-weight: 400;
+            color: #888;
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            text-align: center;
+            transition: color 0.15s, border-color 0.15s;
+            margin-bottom: -1px;
+        }
+
+        .data-panel-tab.active {
+            color: #d63d00;
+            font-weight: 700;
+            border-bottom-color: #d63d00;
+        }
+
+        .data-panel-tab:hover:not(.active) {
+            color: #333;
+        }
+
+        /* Tab content */
+        .data-tab-content {
+            display: none;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .data-tab-content.active {
+            display: block;
+        }
+
+        /* Year strip */
+        .data-year-section {
+            padding: 14px 20px 10px;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .data-year-strip {
+            display: flex;
+            gap: 0;
+            border: 1px solid #d0d5e8;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .data-year-btn {
+            flex: 1;
+            padding: 7px 0;
+            font-size: 12px;
+            font-family: 'Akkurat', sans-serif;
+            color: #555;
+            background: #fff;
+            border: none;
+            border-right: 1px solid #d0d5e8;
+            cursor: pointer;
+            transition: background 0.12s, color 0.12s;
+        }
+
+        .data-year-btn:last-child {
+            border-right: none;
+        }
+
+        .data-year-btn:hover:not(.active) {
+            background: #f5f5f5;
+        }
+
+        .data-year-btn.active {
+            background: #d63d00;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        /* Data filter accordion */
+        .data-filter-accordion {
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .data-filter-accordion-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 13px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .data-filter-accordion-header:hover {
+            background: #fafafa;
+        }
+
+        .data-filter-accordion-title {
+            font-size: 13px;
+            font-family: 'Akkurat', sans-serif;
+            font-weight: 700;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .data-filter-accordion-chevron {
+            width: 12px;
+            height: 8px;
+            color: #888;
+            transition: transform 0.15s;
+            flex-shrink: 0;
+        }
+
+        .data-filter-accordion-chevron.closed {
+            transform: rotate(-90deg);
+        }
+
+        .data-filter-accordion-body {
+            padding: 0 20px 16px;
+        }
+
+        .data-filter-desc {
+            font-size: 12px;
+            color: #888;
+            line-height: 1.55;
+            margin: 0 0 14px;
+        }
+
+        .data-filter-section-label {
+            font-size: 10px;
+            font-family: 'Akkurat', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        /* Checklist */
+        .data-checklist {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .data-check-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 0;
+            cursor: pointer;
+            font-size: 13px;
+            font-family: 'Akkurat', sans-serif;
+            color: #333;
+            line-height: 1.3;
+            user-select: none;
+        }
+
+        .data-check-item input[type="checkbox"] {
+            display: none;
+        }
+
+        .data-check-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 2px solid #d0d5e8;
+            flex-shrink: 0;
+            transition: border-color 0.12s, background 0.12s;
+        }
+
+        .data-check-dot.orange {
+            border-color: #d63d00;
+            background: #d63d00;
+        }
+
+        .data-check-item input[type="checkbox"]:not(:checked) + .data-check-dot.orange {
+            background: transparent;
+        }
+
+        .data-check-text {
+            font-size: 13px;
+            color: #333;
+        }
+
+        /* Number of units inputs */
+        .data-units-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .data-units-label {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .data-units-input {
+            width: 64px;
+            padding: 6px 8px;
+            border: 1px solid #d0d5e8;
+            border-radius: 5px;
+            font-size: 12px;
+            font-family: 'Akkurat', sans-serif;
+            color: #333;
+            background: #fff;
+        }
+
+        .data-units-input:focus {
+            outline: none;
+            border-color: #d63d00;
+        }
+
+        /* Advanced filters section */
+        .data-advanced-section {
+            margin-top: 16px;
+            border-top: 1px solid #eaeaea;
+            padding-top: 4px;
+        }
+
+        .data-advanced-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 10px 0;
+            font-size: 12px;
+            font-family: 'Akkurat', sans-serif;
+            font-weight: 700;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .data-advanced-toggle svg {
+            width: 10px;
+            height: 6px;
+            color: #888;
+        }
+
+        .data-advanced-body {
+            padding-bottom: 8px;
+        }
+
+        /* Area desc block */
+        .data-area-desc-block {
+            padding: 12px 20px 10px;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        /* Option list (metrics, geography) */
+        .data-option-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            padding: 0 20px;
+            margin-bottom: 4px;
+        }
+
+        .data-option-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 10px;
+            font-size: 13px;
+            font-family: 'Akkurat', sans-serif;
+            color: #333;
+            background: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: left;
+            transition: background 0.12s, color 0.12s;
+        }
+
+        .data-option-item:hover:not(.active) {
+            background: #f5f5f5;
+        }
+
+        .data-option-item.active {
+            color: #d63d00;
+            font-weight: 700;
+            background: rgba(214,61,0,0.07);
+        }
+
+        /* Make panel-filters scrollable and flex-column */
+        #panel-filters {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #panel-filters.sub-panel-section.active {
+            overflow: hidden;
+        }
+
         /* Icon rail text-label buttons (CITY, DATA) */
         .icon-rail-btn .rail-text-label {
             font-size: 8px;
@@ -6708,15 +7036,22 @@
             <div class="sub-panel-section active" id="panel-area-data">
                 <div class="city-list-header">Locations we currently track</div>
                 <div class="city-list">
-                    <div class="city-list-item">Bozeman</div>
-                    <div class="city-list-item">New Haven</div>
-                    <div class="city-list-item active">Boston</div>
-                    <div class="city-list-item">Chicago</div>
-                    <div class="city-list-item">Kansas City</div>
-                    <div class="city-list-item">Baltimore</div>
-                    <div class="city-list-item">Louisville</div>
-                    <div class="city-list-item">Houston</div>
-                    <div class="city-list-item">Miami</div>
+                    <div class="city-list-item active">
+                        <span class="city-name">Houston</span>
+                        <span class="city-state">TX</span>
+                    </div>
+                    <div class="city-list-item">
+                        <span class="city-name">Baltimore</span>
+                        <span class="city-state">MD</span>
+                    </div>
+                    <div class="city-list-item">
+                        <span class="city-name">Boston</span>
+                        <span class="city-state">MA</span>
+                    </div>
+                    <div class="city-list-item">
+                        <span class="city-name">Miami</span>
+                        <span class="city-state">FL</span>
+                    </div>
                 </div>
                 <div class="sub-panel-body" style="display:none">
 
@@ -6773,38 +7108,200 @@
                 </div>
             </div>
 
-            <!-- ── Panel 2: Property filters ── -->
+            <!-- ── Panel 2: Data filters ── -->
             <div class="sub-panel-section" id="panel-filters">
-                <div class="sub-panel-header">
-                    <div class="sub-panel-title">Property filters</div>
-                    <div class="sub-panel-subtitle">Filter by property type, ownership structure, and more. These filters also apply to the Top 10 landlords and Top 10 properties panels, so changing them here updates those rankings too.</div>
+                <!-- Data panel tabs -->
+                <div class="data-panel-tabs">
+                    <button class="data-panel-tab active" data-tab="property">Property data</button>
+                    <button class="data-panel-tab" data-tab="area">Area data</button>
                 </div>
-                <div class="sub-panel-body">
-                    <div class="filters-section" style="padding-top: 0;">
-                        <div class="accordion-summary" style="padding: 10px 0 4px; font-size: 13px; color: #888; line-height: 1.4;">
-                            Showing <span class="filter-summary-editable">all types<svg class="filter-summary-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:6px;display:inline-block;vertical-align:middle;margin-left:2px;color:#D96E4A;position:relative;top:-1px;"><path d="M1 1l4 4 4-4"/></svg></span> of properties with <span class="filter-summary-editable">any number<svg class="filter-summary-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:6px;display:inline-block;vertical-align:middle;margin-left:2px;color:#D96E4A;position:relative;top:-1px;"><path d="M1 1l4 4 4-4"/></svg></span> of units belonging to <span class="filter-summary-editable">all types<svg class="filter-summary-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:6px;display:inline-block;vertical-align:middle;margin-left:2px;color:#D96E4A;position:relative;top:-1px;"><path d="M1 1l4 4 4-4"/></svg></span> of landlords, with no other <span class="filter-summary-editable">advanced filters<svg class="filter-summary-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:6px;display:inline-block;vertical-align:middle;margin-left:2px;color:#D96E4A;position:relative;top:-1px;"><path d="M1 1l4 4 4-4"/></svg></span> applied
-                        </div>
 
-                        <div style="border-top: 1px solid #eaeaea; margin: 20px -22px 16px;"></div>
-                        <div style="margin-bottom: 10px;">
-                            <div class="filter-label" style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #555; margin-bottom: 6px;">Advanced filters</div>
-                            <div style="font-size: 11px; color: #999; line-height: 1.55;">Advanced filters let you narrow results by things like filing date range, building age, assessed value, and eviction history. They stack on top of the basic filters above.</div>
-                        </div>
-                        <div class="advanced-filters-info" style="background: rgba(217,110,74,0.07); border: 1.5px solid rgba(217,110,74,0.2); border-radius: 8px; padding: 12px 14px;">
-                            <span class="advanced-filters-text" style="align-items: center;">
-                                <svg class="advanced-filters-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
-                                    <path d="M2 3h12M2 6h12M2 9h12M2 12h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.3"/>
-                                    <circle cx="11" cy="3" r="1.5" fill="currentColor"/>
-                                    <circle cx="5" cy="6" r="1.5" fill="currentColor"/>
-                                    <circle cx="9" cy="9" r="1.5" fill="currentColor"/>
-                                    <circle cx="7" cy="12" r="1.5" fill="currentColor"/>
-                                </svg>
-                                <span style="display: inline-flex; align-items: center; gap: 4px; line-height: 1.2;"><span class="filter-summary-editable" style="vertical-align: middle;">Six advanced filters</span><span style="vertical-align: middle; color: #D96E4A; font-weight: 600;">applied</span></span>
-                            </span>
-                            <button class="edit-advanced-filters-btn" id="open-advanced-filters">Edit advanced filters</button>
+                <!-- Property data tab content -->
+                <div class="data-tab-content active" id="data-tab-property">
+                    <!-- Year selector -->
+                    <div class="data-year-section">
+                        <div class="data-year-strip">
+                            <button class="data-year-btn" data-year="2000">2000</button>
+                            <button class="data-year-btn" data-year="2005">2005</button>
+                            <button class="data-year-btn" data-year="2010">2010</button>
+                            <button class="data-year-btn" data-year="2015">2015</button>
+                            <button class="data-year-btn active" data-year="2019">2019</button>
                         </div>
                     </div>
 
+                    <!-- Data filters collapsible -->
+                    <div class="data-filter-accordion">
+                        <button class="data-filter-accordion-header" id="data-filters-toggle">
+                            <span class="data-filter-accordion-title">Data filters</span>
+                            <svg class="data-filter-accordion-chevron open" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l4 4 4-4"/></svg>
+                        </button>
+                        <div class="data-filter-accordion-body" id="data-filters-body">
+                            <p class="data-filter-desc">Filter properties by type and ownership structure. Filters apply across all views including the Top 10 panels.</p>
+
+                            <!-- Property type -->
+                            <div class="data-filter-section-label">Property type</div>
+                            <div class="data-checklist">
+                                <label class="data-check-item">
+                                    <input type="checkbox" checked>
+                                    <span class="data-check-dot orange"></span>
+                                    <span class="data-check-text">Commercial</span>
+                                </label>
+                                <label class="data-check-item">
+                                    <input type="checkbox" checked>
+                                    <span class="data-check-dot orange"></span>
+                                    <span class="data-check-text">Condominium</span>
+                                </label>
+                                <label class="data-check-item">
+                                    <input type="checkbox" checked>
+                                    <span class="data-check-dot orange"></span>
+                                    <span class="data-check-text">Single-family Residential</span>
+                                </label>
+                                <label class="data-check-item">
+                                    <input type="checkbox" checked>
+                                    <span class="data-check-dot orange"></span>
+                                    <span class="data-check-text">Small-building Residential</span>
+                                </label>
+                                <label class="data-check-item">
+                                    <input type="checkbox" checked>
+                                    <span class="data-check-dot orange"></span>
+                                    <span class="data-check-text">Large-building Residential</span>
+                                </label>
+                                <label class="data-check-item">
+                                    <input type="checkbox" checked>
+                                    <span class="data-check-dot orange"></span>
+                                    <span class="data-check-text">Residential Other</span>
+                                </label>
+                                <label class="data-check-item">
+                                    <input type="checkbox" checked>
+                                    <span class="data-check-dot orange"></span>
+                                    <span class="data-check-text">Multi-use</span>
+                                </label>
+                                <label class="data-check-item">
+                                    <input type="checkbox" checked>
+                                    <span class="data-check-dot orange"></span>
+                                    <span class="data-check-text">Vacant</span>
+                                </label>
+                                <label class="data-check-item">
+                                    <input type="checkbox" checked>
+                                    <span class="data-check-dot orange"></span>
+                                    <span class="data-check-text">Other</span>
+                                </label>
+                            </div>
+
+                            <!-- Number of units -->
+                            <div class="data-filter-section-label" style="margin-top:14px;">Number of units</div>
+                            <div class="data-units-row">
+                                <span class="data-units-label">Min</span>
+                                <input class="data-units-input" type="number" placeholder="0" min="0">
+                                <span class="data-units-label">to</span>
+                                <input class="data-units-input" type="number" placeholder="Max" min="0">
+                                <span class="data-units-label">Max</span>
+                            </div>
+
+                            <!-- Landlord type -->
+                            <div class="data-filter-section-label" style="margin-top:14px;">Landlord type</div>
+                            <div class="data-checklist">
+                                <label class="data-check-item">
+                                    <input type="checkbox" checked>
+                                    <span class="data-check-dot orange"></span>
+                                    <span class="data-check-text">Person</span>
+                                </label>
+                                <label class="data-check-item">
+                                    <input type="checkbox" checked>
+                                    <span class="data-check-dot orange"></span>
+                                    <span class="data-check-text">Government</span>
+                                </label>
+                                <label class="data-check-item">
+                                    <input type="checkbox" checked>
+                                    <span class="data-check-dot orange"></span>
+                                    <span class="data-check-text">REIT</span>
+                                </label>
+                                <label class="data-check-item">
+                                    <input type="checkbox" checked>
+                                    <span class="data-check-dot orange"></span>
+                                    <span class="data-check-text">Bank</span>
+                                </label>
+                                <label class="data-check-item">
+                                    <input type="checkbox" checked>
+                                    <span class="data-check-dot orange"></span>
+                                    <span class="data-check-text">Nonprofit</span>
+                                </label>
+                                <label class="data-check-item">
+                                    <input type="checkbox" checked>
+                                    <span class="data-check-dot orange"></span>
+                                    <span class="data-check-text">Out-of-state</span>
+                                </label>
+                                <label class="data-check-item">
+                                    <input type="checkbox" checked>
+                                    <span class="data-check-dot orange"></span>
+                                    <span class="data-check-text">Local corporate</span>
+                                </label>
+                                <label class="data-check-item">
+                                    <input type="checkbox" checked>
+                                    <span class="data-check-dot orange"></span>
+                                    <span class="data-check-text">Local shell</span>
+                                </label>
+                            </div>
+
+                            <!-- Advanced filters -->
+                            <div class="data-advanced-section">
+                                <button class="data-advanced-toggle" id="advanced-filters-toggle">
+                                    <span>Advanced filters</span>
+                                    <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l4 4 4-4"/></svg>
+                                </button>
+                                <div class="data-advanced-body" id="advanced-filters-body" style="display:none;">
+                                    <p style="font-size:12px; color:#888; margin:0; line-height:1.5;">Advanced filters let you narrow results by filing date range, building age, assessed value, and eviction history.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Area data tab content -->
+                <div class="data-tab-content" id="data-tab-area">
+                    <!-- Year selector -->
+                    <div class="data-year-section">
+                        <div class="data-year-strip">
+                            <button class="data-year-btn" data-year="2000">2000</button>
+                            <button class="data-year-btn" data-year="2005">2005</button>
+                            <button class="data-year-btn" data-year="2010">2010</button>
+                            <button class="data-year-btn" data-year="2015">2015</button>
+                            <button class="data-year-btn active" data-year="2019">2019</button>
+                        </div>
+                    </div>
+
+                    <!-- Area overlay description -->
+                    <div class="data-area-desc-block">
+                        <p class="data-filter-desc">This overlay shades geographic areas by a socioeconomic metric. It helps you see how property ownership patterns intersect with community vulnerability. The overlay activates automatically when you zoom out.</p>
+                    </div>
+
+                    <!-- Metric list -->
+                    <div class="data-filter-section-label" style="padding:0 20px; margin-bottom:4px;">Metric</div>
+                    <div class="data-option-list">
+                        <button class="data-option-item active">% Corporate-owned units</button>
+                        <button class="data-option-item">% Owner-occupied units</button>
+                        <button class="data-option-item">Median household income</button>
+                        <button class="data-option-item">% Below poverty line</button>
+                        <button class="data-option-item">% Cost-burdened renters</button>
+                        <button class="data-option-item">% Non-white residents</button>
+                        <button class="data-option-item">Median rent</button>
+                        <button class="data-option-item">Eviction filing rate</button>
+                        <button class="data-option-item">Eviction judgment rate</button>
+                        <button class="data-option-item">% Renter-occupied units</button>
+                        <button class="data-option-item">Population density</button>
+                        <button class="data-option-item">Median property value</button>
+                        <button class="data-option-item">% Vacant units</button>
+                        <button class="data-option-item">% REIT-owned units</button>
+                    </div>
+
+                    <!-- Geography list -->
+                    <div class="data-filter-section-label" style="padding:0 20px; margin-top:16px; margin-bottom:4px;">Geography</div>
+                    <div class="data-option-list">
+                        <button class="data-option-item active">ZIP code</button>
+                        <button class="data-option-item">Census tract</button>
+                        <button class="data-option-item">City</button>
+                        <button class="data-option-item">County</button>
+                    </div>
                 </div>
             </div>
 
@@ -10287,6 +10784,71 @@
 
         // Open area-data by default
         openPanel('area-data');
+
+        // ── Data panel tabs ──
+        document.querySelectorAll('.data-panel-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.data-panel-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.data-tab-content').forEach(c => c.classList.remove('active'));
+                tab.classList.add('active');
+                const target = document.getElementById('data-tab-' + tab.dataset.tab);
+                if (target) target.classList.add('active');
+            });
+        });
+
+        // ── Year strip buttons ──
+        document.querySelectorAll('.data-year-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Only toggle within same strip
+                btn.closest('.data-year-strip').querySelectorAll('.data-year-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // ── Data filter accordion ──
+        const dataFiltersToggle = document.getElementById('data-filters-toggle');
+        const dataFiltersBody = document.getElementById('data-filters-body');
+        if (dataFiltersToggle && dataFiltersBody) {
+            dataFiltersToggle.addEventListener('click', () => {
+                const chevron = dataFiltersToggle.querySelector('.data-filter-accordion-chevron');
+                const isOpen = dataFiltersBody.style.display !== 'none';
+                dataFiltersBody.style.display = isOpen ? 'none' : '';
+                if (chevron) {
+                    chevron.classList.toggle('open', !isOpen);
+                    chevron.classList.toggle('closed', isOpen);
+                }
+            });
+        }
+
+        // ── Advanced filters toggle ──
+        const advancedToggle = document.getElementById('advanced-filters-toggle');
+        const advancedBody = document.getElementById('advanced-filters-body');
+        if (advancedToggle && advancedBody) {
+            advancedToggle.addEventListener('click', () => {
+                const isHidden = advancedBody.style.display === 'none';
+                advancedBody.style.display = isHidden ? '' : 'none';
+            });
+        }
+
+        // ── Option list single-select (metric, geography) ──
+        document.querySelectorAll('.data-option-list').forEach(list => {
+            list.querySelectorAll('.data-option-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    list.querySelectorAll('.data-option-item').forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+                });
+            });
+        });
+
+        // ── Checkbox dot visual sync ──
+        document.querySelectorAll('.data-check-item input[type="checkbox"]').forEach(cb => {
+            cb.addEventListener('change', () => {
+                const dot = cb.nextElementSibling;
+                if (dot && dot.classList.contains('data-check-dot')) {
+                    dot.classList.toggle('orange', cb.checked);
+                }
+            });
+        });
 
         // Clicking the "2019" year trigger in the area data summary opens the header year dropdown
         const yearTrigger = document.getElementById('area-data-year-trigger');
