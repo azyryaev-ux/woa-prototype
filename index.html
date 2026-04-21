@@ -6496,6 +6496,252 @@
 
         .sel-area-remove:hover { background: #fef2f2; color: #e53e3e; }
 
+
+        /* ── Compare Areas Modal ── */
+        .compare-areas-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .compare-areas-modal {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.22);
+            width: 100%;
+            max-width: 1100px;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .compare-areas-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 24px 16px;
+            border-bottom: 1px solid #eaeaea;
+            flex-shrink: 0;
+        }
+
+        .compare-areas-modal-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #111;
+            margin: 0;
+            font-family: 'Akkurat', sans-serif;
+        }
+
+        .compare-areas-modal-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .compare-areas-get-data-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #333;
+            background: none;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-family: 'Akkurat', sans-serif;
+            transition: background 0.12s, border-color 0.12s;
+        }
+
+        .compare-areas-get-data-btn:hover {
+            background: #f5f5f5;
+            border-color: #bbb;
+        }
+
+        .compare-areas-close-btn {
+            background: none;
+            border: none;
+            font-size: 22px;
+            color: #666;
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            line-height: 1;
+            padding-bottom: 2px;
+            transition: background 0.12s, color 0.12s;
+        }
+
+        .compare-areas-close-btn:hover {
+            background: #f0f0f0;
+            color: #000;
+        }
+
+        .compare-areas-table-wrap {
+            overflow: auto;
+            flex: 1;
+        }
+
+        .compare-areas-table {
+            border-collapse: collapse;
+            width: 100%;
+            min-width: 1400px;
+            font-family: 'Akkurat', sans-serif;
+        }
+
+        .compare-areas-table thead tr {
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .compare-areas-table th {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #666;
+            padding: 10px 14px;
+            white-space: nowrap;
+            text-align: left;
+            vertical-align: bottom;
+            background: #fff;
+            font-family: 'Akkurat Mono', monospace;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .compare-areas-table th:first-child {
+            position: sticky;
+            left: 0;
+            z-index: 2;
+            background: #fff;
+            min-width: 200px;
+            border-right: 1px solid #eaeaea;
+        }
+
+        .compare-areas-table th .sort-icon {
+            display: inline-block;
+            margin-left: 3px;
+            vertical-align: middle;
+            opacity: 0.4;
+        }
+
+        .compare-areas-table th.col-name-th .sort-icon { opacity: 1; }
+
+        .compare-areas-table th.col-chart-th { min-width: 280px; }
+
+        .compare-areas-table td {
+            padding: 16px 14px;
+            font-size: 13px;
+            color: #222;
+            border-bottom: 1px solid #eaeaea;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .compare-areas-table td:first-child {
+            position: sticky;
+            left: 0;
+            background: #f9f9f9;
+            z-index: 1;
+            border-right: 1px solid #eaeaea;
+            min-width: 200px;
+        }
+
+        .compare-areas-table tbody tr:hover td {
+            background: #f2f4ff;
+        }
+
+        .compare-areas-table tbody tr:hover td:first-child {
+            background: #eaedff;
+        }
+
+        .compare-area-name-cell {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .compare-area-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: #111;
+        }
+
+        .compare-area-row-actions {
+            display: flex;
+            gap: 6px;
+        }
+
+        .compare-area-row-btn {
+            font-size: 11px;
+            font-weight: 500;
+            color: #444;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 3px 9px;
+            cursor: pointer;
+            font-family: 'Akkurat', sans-serif;
+            transition: background 0.1s;
+        }
+
+        .compare-area-row-btn:hover {
+            background: #f5f5f5;
+            border-color: #aaa;
+        }
+
+        .compare-area-dash { color: #bbb; }
+
+        .compare-area-sparkline-cell {
+            min-width: 260px;
+        }
+
+        .compare-area-sparkline {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .sparkline-chart-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 4px;
+        }
+
+        .sparkline-y-labels {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 56px;
+            font-size: 9px;
+            color: #999;
+            font-family: 'Akkurat Mono', monospace;
+        }
+
+        .sparkline-x-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 9px;
+            color: #999;
+            font-family: 'Akkurat Mono', monospace;
+            padding-top: 2px;
+        }
+
+        .sparkline-x-labels .active-year {
+            color: #7B68EE;
+            font-weight: 700;
+        }
+
         .sel-area-compare-btn {
             margin: 16px 20px;
             width: calc(100% - 40px);
@@ -7229,7 +7475,7 @@
                 <div class="city-list-header">Locations we currently track</div>
                 <div class="city-list">
                     <div class="city-list-item active">
-                        <div class="city-card-photo" style="background-image: url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=480&h=260&fit=crop&q=80');">
+                        <div class="city-card-photo" style="background-image: url('images/houston.jpg');">
                         <!-- Houston skyline -->
                             <div class="city-card-overlay">
                                 <div>
@@ -7241,7 +7487,7 @@
                         </div>
                     </div>
                     <div class="city-list-item">
-                        <div class="city-card-photo" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=480&h=260&fit=crop&q=80');">
+                        <div class="city-card-photo" style="background-image: url('images/baltimore.jpg');">
                             <div class="city-card-overlay">
                                 <div>
                                     <span class="city-name">Baltimore</span>
@@ -7252,7 +7498,7 @@
                         </div>
                     </div>
                     <div class="city-list-item">
-                        <div class="city-card-photo" style="background-image: url('https://images.unsplash.com/photo-1501614022631-f3af2ee65a86?w=480&h=260&fit=crop&q=80');">
+                        <div class="city-card-photo" style="background-image: url('images/boston.jpg');">
                             <div class="city-card-overlay">
                                 <div>
                                     <span class="city-name">Boston</span>
@@ -7263,7 +7509,7 @@
                         </div>
                     </div>
                     <div class="city-list-item">
-                        <div class="city-card-photo" style="background-image: url('https://images.unsplash.com/photo-1533106418989-88406c7cc8ca?w=480&h=260&fit=crop&q=80');">
+                        <div class="city-card-photo" style="background-image: url('images/miami.jpg');">
                             <div class="city-card-overlay">
                                 <div>
                                     <span class="city-name">Miami</span>
@@ -7753,7 +7999,7 @@
 
                     <div class="sel-area-list">
                         <div class="sel-area-row">
-                            <div class="sel-area-checkbox checked"></div>
+                            <div class="sel-area-color-dot" style="color:#E8524A;"></div>
                             <div class="sel-area-row-content">
                                 <span class="sel-area-name">ZIP code 77091</span>
                                 <div class="sel-area-actions">
@@ -7764,7 +8010,7 @@
                             <button class="sel-area-remove">×</button>
                         </div>
                         <div class="sel-area-row">
-                            <div class="sel-area-checkbox"></div>
+                            <div class="sel-area-color-dot" style="color:#4AACB8;"></div>
                             <div class="sel-area-row-content">
                                 <span class="sel-area-name">ZIP code 77091</span>
                                 <div class="sel-area-actions">
@@ -7775,7 +8021,7 @@
                             <button class="sel-area-remove">×</button>
                         </div>
                         <div class="sel-area-row">
-                            <div class="sel-area-checkbox"></div>
+                            <div class="sel-area-color-dot" style="color:#7B68EE;"></div>
                             <div class="sel-area-row-content">
                                 <span class="sel-area-name">ZIP code 77091</span>
                                 <div class="sel-area-actions">
@@ -7786,7 +8032,7 @@
                             <button class="sel-area-remove">×</button>
                         </div>
                         <div class="sel-area-row">
-                            <div class="sel-area-checkbox checked"></div>
+                            <div class="sel-area-color-dot" style="color:#F5A623;"></div>
                             <div class="sel-area-row-content">
                                 <span class="sel-area-name">ZIP code 77091</span>
                                 <div class="sel-area-actions">
@@ -11120,6 +11366,143 @@
             });
         }
     })();
+
+        // ── Compare Areas Modal ──
+        (function() {
+            var selectedAreas = [
+                { name: 'ZIP 77002', color: '#7B68EE' },
+                { name: 'ZIP 77009', color: '#E8524A' }
+            ];
+
+            function sparklineSVG(color) {
+                return '<svg width="232" height="56" viewBox="0 0 232 56" style="display:block;">'
+                    + '<line x1="0" y1="54" x2="232" y2="54" stroke="#eaeaea" stroke-width="1"/>'
+                    + '<line x1="0" y1="28" x2="232" y2="28" stroke="#eaeaea" stroke-width="1" stroke-dasharray="3,3"/>'
+                    + '<line x1="0" y1="2" x2="232" y2="2" stroke="#eaeaea" stroke-width="1"/>'
+                    + '<line x1="0" y1="2" x2="0" y2="54" stroke="' + color + '" stroke-width="1.5" stroke-dasharray="3,3"/>'
+                    + '</svg>';
+            }
+
+            function renderRows() {
+                var tbody = document.getElementById('compare-areas-tbody');
+                if (!tbody) return;
+                // Read actual selected area rows from the panel
+                var areaRows = document.querySelectorAll('.sel-area-row .sel-area-name');
+                var areas = [];
+                var colors = ['#7B68EE','#E8524A','#4AACB8','#F5A623','#7ED321','#9B59B6'];
+                areaRows.forEach(function(el, i) {
+                    areas.push({ name: el.textContent.trim(), color: colors[i % colors.length] });
+                });
+                if (areas.length === 0) areas = selectedAreas; // fallback
+
+                tbody.innerHTML = areas.map(function(area) {
+                    return '<tr>'
+                        + '<td><div class="compare-area-name-cell">'
+                        + '<span class="compare-area-label">' + area.name + '</span>'
+                        + '<div class="compare-area-row-actions">'
+                        + '<button class="compare-area-row-btn">View on map</button>'
+                        + '<button class="compare-area-row-btn">View area panel</button>'
+                        + '</div></div></td>'
+                        + '<td class="compare-area-sparkline-cell"><div class="compare-area-sparkline">'
+                        + '<div class="sparkline-chart-row">'
+                        + '<div class="sparkline-y-labels"><span>100%</span><span>50%</span><span>0</span></div>'
+                        + sparklineSVG(area.color)
+                        + '</div>'
+                        + '<div class="sparkline-x-labels"><span class="active-year">2000</span><span>2005</span><span>2010</span><span>2015</span><span>2019</span></div>'
+                        + '</div></td>'
+                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
+                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
+                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
+                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
+                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
+                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
+                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
+                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
+                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
+                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
+                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
+                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
+                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
+                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
+                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
+                        + '</tr>';
+                }).join('');
+            }
+
+            function openModal() {
+                renderRows();
+                document.getElementById('compare-areas-modal').style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                document.getElementById('compare-areas-modal').style.display = 'none';
+                document.body.style.overflow = '';
+            }
+
+            var closeBtn = document.getElementById('close-compare-areas');
+            if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+            var overlay = document.getElementById('compare-areas-modal');
+            if (overlay) overlay.addEventListener('click', function(e) {
+                if (e.target === this) closeModal();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeModal();
+            });
+
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.sel-area-compare-btn')) openModal();
+            });
+        })();
+
 </script>
+
+    <!-- Compare Areas Modal -->
+    <div class="compare-areas-modal-overlay" id="compare-areas-modal" style="display:none;">
+        <div class="compare-areas-modal">
+            <div class="compare-areas-modal-header">
+                <h2 class="compare-areas-modal-title">Compare areas</h2>
+                <div class="compare-areas-modal-actions">
+                    <button class="compare-areas-get-data-btn">
+                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6.5 1v8M3.5 6l3 3 3-3"/>
+                            <path d="M1.5 10v1a1 1 0 001 1h9a1 1 0 001-1v-1"/>
+                        </svg>
+                        Get the data
+                    </button>
+                    <button class="compare-areas-close-btn" id="close-compare-areas">&#x2715;</button>
+                </div>
+            </div>
+            <div class="compare-areas-table-wrap">
+                <table class="compare-areas-table">
+                    <thead>
+                        <tr>
+                            <th class="col-name-th">Name <svg class="sort-icon" width="9" height="9" viewBox="0 0 9 9" fill="currentColor"><path d="M4.5 1.5l3 5h-6z"/></svg></th>
+                            <th class="col-chart-th">% Out-of-metro owner units over time <svg class="sort-icon" width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4.5 1.5l3 5h-6z"/></svg></th>
+                            <th>Eviction filing rate <svg class="sort-icon" width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4.5 1.5l3 5h-6z"/></svg></th>
+                            <th>Population <svg class="sort-icon" width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4.5 1.5l3 5h-6z"/></svg></th>
+                            <th>Asian <svg class="sort-icon" width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4.5 1.5l3 5h-6z"/></svg></th>
+                            <th>Hispanic <svg class="sort-icon" width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4.5 1.5l3 5h-6z"/></svg></th>
+                            <th>White (non-Hisp.) <svg class="sort-icon" width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4.5 1.5l3 5h-6z"/></svg></th>
+                            <th>Black <svg class="sort-icon" width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4.5 1.5l3 5h-6z"/></svg></th>
+                            <th>% in poverty <svg class="sort-icon" width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4.5 1.5l3 5h-6z"/></svg></th>
+                            <th>Median household income <svg class="sort-icon" width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4.5 1.5l3 5h-6z"/></svg></th>
+                            <th>% Owner-occupied <svg class="sort-icon" width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4.5 1.5l3 5h-6z"/></svg></th>
+                            <th>Corporate <svg class="sort-icon" width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4.5 1.5l3 5h-6z"/></svg></th>
+                            <th>Government <svg class="sort-icon" width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4.5 1.5l3 5h-6z"/></svg></th>
+                            <th>Out-of-state <svg class="sort-icon" width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4.5 1.5l3 5h-6z"/></svg></th>
+                            <th>10&#x2013;50 units <svg class="sort-icon" width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4.5 1.5l3 5h-6z"/></svg></th>
+                            <th>50&#x2013;200 units <svg class="sort-icon" width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4.5 1.5l3 5h-6z"/></svg></th>
+                            <th>200+ units <svg class="sort-icon" width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4.5 1.5l3 5h-6z"/></svg></th>
+                        </tr>
+                    </thead>
+                    <tbody id="compare-areas-tbody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
