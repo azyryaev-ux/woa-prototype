@@ -2971,7 +2971,7 @@
         .app-header-data-label {
             font-size: 10px;
             font-family: 'Akkurat', sans-serif;
-            font-weight: 400;
+            font-weight: 700;
             color: #555;
             text-transform: uppercase;
             letter-spacing: 0.3px;
@@ -6080,7 +6080,7 @@
             display: block;
             font-size: 8px;
             font-family: 'Akkurat', sans-serif;
-            font-weight: 400;
+            font-weight: 700;
             color: #aaa;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -7082,7 +7082,7 @@
         .icon-rail-btn .rail-text-label {
             font-size: 10px;
             font-family: 'Akkurat', sans-serif;
-            font-weight: 400;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.3px;
             color: inherit;
@@ -10998,6 +10998,10 @@
                 headerToggleGroup.querySelectorAll('.app-header-toggle-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 updateHeaderStatus(btn.dataset.value);
+                // Sync data panel tab (property/area only — 'auto' doesn't change tab)
+                if (btn.dataset.value === 'property' || btn.dataset.value === 'area') {
+                    switchDataTab(btn.dataset.value);
+                }
             });
         }
 
@@ -11028,15 +11032,27 @@
         // Open area-data by default
         openPanel('area-data');
 
-        // ── Data panel tabs ──
+        // ── Data panel tabs ── (also syncs header toggle)
+        function switchDataTab(tabValue) {
+            document.querySelectorAll('.data-panel-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.data-tab-content').forEach(c => c.classList.remove('active'));
+            const activeTab = document.querySelector(`.data-panel-tab[data-tab="${tabValue}"]`);
+            if (activeTab) activeTab.classList.add('active');
+            const target = document.getElementById('data-tab-' + tabValue);
+            if (target) target.classList.add('active');
+            // Sync header toggle (property→Properties btn, area→Areas btn)
+            const headerGroup = document.getElementById('header-overlay-toggle-group');
+            if (headerGroup) {
+                const matchVal = tabValue === 'property' ? 'property' : 'area';
+                headerGroup.querySelectorAll('.app-header-toggle-btn').forEach(b => {
+                    b.classList.toggle('active', b.dataset.value === matchVal);
+                });
+                updateHeaderStatus(matchVal);
+            }
+        }
+
         document.querySelectorAll('.data-panel-tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                document.querySelectorAll('.data-panel-tab').forEach(t => t.classList.remove('active'));
-                document.querySelectorAll('.data-tab-content').forEach(c => c.classList.remove('active'));
-                tab.classList.add('active');
-                const target = document.getElementById('data-tab-' + tab.dataset.tab);
-                if (target) target.classList.add('active');
-            });
+            tab.addEventListener('click', () => switchDataTab(tab.dataset.tab));
         });
 
         // ── Year strip buttons ──
