@@ -3070,9 +3070,10 @@
             cursor: pointer;
             background: none;
             border: none;
-            padding: 0;
-            margin-left: 16px;
+            padding: 12px;
+            margin-left: 4px;
             flex-shrink: 0;
+            box-sizing: content-box;
         }
 
         .app-header-menu span {
@@ -3081,6 +3082,14 @@
             height: 1.5px;
             background: #000;
             border-radius: 6px;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            transform-origin: center;
+        }
+        .app-header-menu.active span:nth-child(1) {
+            transform: translateY(4.25px) rotate(45deg);
+        }
+        .app-header-menu.active span:nth-child(2) {
+            transform: translateY(-4.25px) rotate(-45deg);
         }
 
         /* Keep old year-select hidden (used by JS) */
@@ -11572,12 +11581,181 @@
                     });
                 });
             }
+
+            // ── Synchronized sparkline crosshair ──────────────────────────
+            var CA_YEARS = [2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2019];
+            var CA_SPARK_META = {
+                '77002': { bottomY: 28.4298, topY: 0.4, maxPct: 70,  color: '#FFD04D' },
+                '77003': { bottomY: 29.3532, topY: 0.4, maxPct: 80,  color: '#4DC4A0' },
+                '77004': { bottomY: 26.3501, topY: 0.4, maxPct: 40,  color: '#8AA233' },
+                '77011': { bottomY: 19.6024, topY: 0.4, maxPct: 10,  color: '#761B06' },
+                '77020': { bottomY: 19.3072, topY: 0.4, maxPct: 20,  color: '#D46033' },
+                '77023': { bottomY: 24.4053, topY: 0.4, maxPct: 10,  color: '#4D9FFF' }
+            };
+
+            function caGetZipFromRow(el) {
+                var row = el.closest('tr');
+                if (!row) return null;
+                var lbl = row.querySelector('.ca-name-label');
+                return lbl ? lbl.textContent.replace('ZIP','').trim() : null;
+            }
+
+            function caInitCrosshairs() {
+                var ns = 'http://www.w3.org/2000/svg';
+                document.querySelectorAll('.ca-spark-chart svg').forEach(function(svg) {
+                    if (svg.querySelector('.ca-xhair-line')) return; // already done
+                    var zip = caGetZipFromRow(svg);
+                    var meta = zip ? CA_SPARK_META[zip] : null;
+
+                    // Parse path points
+                    var pathEl = svg.querySelector('path');
+                    var pts = [];
+                    if (pathEl) {
+                        var matches = pathEl.getAttribute('d').match(/[ML]([\d.]+)[\s,]+([\d.]+)/g) || [];
+                        matches.forEach(function(m) {
+                            var p = m.slice(1).trim().split(/[\s,]+/);
+                            pts.push({ x: parseFloat(p[0]), y: parseFloat(p[1]) });
+                        });
+                    }
+                    svg._caPts = pts;
+                    svg._caMeta = meta;
+
+                    // Vertical crosshair line
+                    var vb = svg.getAttribute('viewBox').split(' ');
+                    var vh = parseFloat(vb[3]);
+                    var line = document.createElementNS(ns, 'line');
+                    line.setAttribute('class', 'ca-xhair-line');
+                    line.setAttribute('stroke', '#777');
+                    line.setAttribute('stroke-width', '0.7');
+                    line.setAttribute('stroke-dasharray', '2 1.5');
+                    line.setAttribute('y1', '-6');
+                    line.setAttribute('y2', String(vh));
+                    line.style.display = 'none';
+                    svg.appendChild(line);
+
+                    // Dot
+                    var dot = document.createElementNS(ns, 'circle');
+                    dot.setAttribute('class', 'ca-xhair-dot');
+                    dot.setAttribute('r', '2.5');
+                    dot.setAttribute('fill', meta ? meta.color : '#aaa');
+                    dot.style.display = 'none';
+                    svg.appendChild(dot);
+
+                    // Value label
+                    var vlabel = document.createElementNS(ns, 'text');
+                    vlabel.setAttribute('class', 'ca-xhair-vlabel');
+                    vlabel.setAttribute('font-size', '7');
+                    vlabel.setAttribute('fill', meta ? meta.color : '#aaa');
+                    vlabel.setAttribute('font-weight', '700');
+                    vlabel.setAttribute('text-anchor', 'middle');
+                    vlabel.setAttribute('dy', '-4');
+                    vlabel.style.display = 'none';
+                    svg.appendChild(vlabel);
+                });
+            }
+
+            function caUpdateCrosshairs(svgX) {
+                document.querySelectorAll('.ca-spark-chart svg').forEach(function(svg) {
+                    var pts = svg._caPts;
+                    var meta = svg._caMeta;
+                    if (!pts || !pts.length) return;
+
+                    // Nearest data point
+                    var nearest = pts[0];
+                    pts.forEach(function(pt) {
+                        if (Math.abs(pt.x - svgX) < Math.abs(nearest.x - svgX)) nearest = pt;
+                    });
+
+                    var line = svg.querySelector('.ca-xhair-line');
+                    var dot  = svg.querySelector('.ca-xhair-dot');
+                    var vlbl = svg.querySelector('.ca-xhair-vlabel');
+                    if (!line) return;
+
+                    line.setAttribute('x1', nearest.x);
+                    line.setAttribute('x2', nearest.x);
+                    line.style.display = '';
+
+                    if (meta) {
+                        var pct = Math.round((meta.bottomY - nearest.y) / (meta.bottomY - meta.topY) * meta.maxPct);
+                        dot.setAttribute('cx', nearest.x);
+                        dot.setAttribute('cy', nearest.y);
+                        dot.style.display = '';
+                        vlbl.setAttribute('x', nearest.x);
+                        vlbl.setAttribute('y', nearest.y);
+                        vlbl.textContent = pct + '%';
+                        vlbl.style.display = '';
+                    }
+                });
+
+                // Highlight year in x-label rows
+                var idx = 0;
+                var allSvgs = document.querySelectorAll('.ca-spark-chart svg');
+                if (allSvgs.length) {
+                    var pts0 = allSvgs[0]._caPts;
+                    if (pts0 && pts0.length) {
+                        var near0 = pts0[0];
+                        pts0.forEach(function(pt,i) {
+                            if (Math.abs(pt.x - svgX) < Math.abs(near0.x - svgX)) { near0 = pt; idx = i; }
+                        });
+                    }
+                }
+                document.querySelectorAll('.ca-spark-xlabels').forEach(function(xlbl) {
+                    var zip = caGetZipFromRow(xlbl);
+                    var color = (zip && CA_SPARK_META[zip]) ? CA_SPARK_META[zip].color : '#aaa';
+                    var spans = xlbl.querySelectorAll('span');
+                    // map data idx to label idx: labels at pts 0,5,10,15,16
+                    var labelPts = [0, 5, 10, 15, 16];
+                    var closestLabel = 0;
+                    labelPts.forEach(function(lp, li) {
+                        if (Math.abs(lp - idx) < Math.abs(labelPts[closestLabel] - idx)) closestLabel = li;
+                    });
+                    spans.forEach(function(s, si) {
+                        s.style.color = (si === closestLabel) ? color : '#aaa';
+                        s.style.fontWeight = (si === closestLabel) ? '700' : '400';
+                    });
+                });
+            }
+
+            function caClearCrosshairs() {
+                document.querySelectorAll('.ca-xhair-line, .ca-xhair-dot, .ca-xhair-vlabel').forEach(function(el) {
+                    el.style.display = 'none';
+                });
+                // Reset year labels to original colors
+                document.querySelectorAll('.ca-spark-xlabels').forEach(function(xlbl) {
+                    var zip = caGetZipFromRow(xlbl);
+                    var color = (zip && CA_SPARK_META[zip]) ? CA_SPARK_META[zip].color : '#aaa';
+                    var spans = xlbl.querySelectorAll('span');
+                    spans.forEach(function(s, si) {
+                        s.style.color = si === 0 ? color : '';
+                        s.style.fontWeight = '';
+                    });
+                });
+            }
+
+            var caHoverSetup = false;
+            function caSetupHover() {
+                if (caHoverSetup) return; caHoverSetup = true;
+                var wrap = document.querySelector('.compare-areas-table-wrap');
+                if (!wrap) return;
+                wrap.addEventListener('mousemove', function(e) {
+                    // Find the nearest ca-spark-chart svg to get reference rect
+                    var firstSvg = wrap.querySelector('.ca-spark-chart svg');
+                    if (!firstSvg) return;
+                    var rect = firstSvg.getBoundingClientRect();
+                    var xFrac = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+                    var svgX = 1 + xFrac * 276;
+                    caUpdateCrosshairs(svgX);
+                });
+                wrap.addEventListener('mouseleave', caClearCrosshairs);
+            }
+
             function openModal() {
                 renderRows();
                 setupSortHeaders();
                 updateHeaders();
                 document.getElementById('compare-areas-modal').style.display = 'flex';
                 document.body.style.overflow = 'hidden';
+                setTimeout(function() { caInitCrosshairs(); caSetupHover(); }, 50);
             }
 
             function closeModal() {
