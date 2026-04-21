@@ -6535,27 +6535,28 @@
         }
         .compare-props-header {
             display: flex; align-items: center; justify-content: space-between;
-            padding: 14px 20px; border-bottom: 1px solid #eaeaea; flex-shrink: 0;
+            padding: 20px 24px; border-bottom: 1px solid #000; flex-shrink: 0;
+            background: #000; border-radius: 6px 6px 0 0;
         }
         .compare-props-title {
-            font-size: 13px; font-weight: 400; color: #111; margin: 0;
+            font-size: 16px; font-weight: 600; color: #ededed; margin: 0;
             font-family: 'Akkurat', sans-serif;
         }
         .compare-props-actions { display: flex; align-items: center; gap: 6px; }
         .compare-props-get-data-btn {
             display: flex; align-items: center; gap: 5px;
-            font-size: 11px; color: #444; background: none; border: none;
+            font-size: 11px; color: #999; background: none; border: none;
             border-radius: 4px; padding: 4px 8px; cursor: pointer;
             font-family: 'Akkurat', sans-serif; transition: background 0.12s;
         }
-        .compare-props-get-data-btn:hover { background: rgba(0,0,0,0.05); }
+        .compare-props-get-data-btn:hover { background: rgba(255,255,255,0.08); }
         .compare-props-close-btn {
-            background: none; border: none; color: #888; cursor: pointer;
+            background: none; border: none; color: #999; cursor: pointer;
             width: 26px; height: 26px; display: flex; align-items: center;
             justify-content: center; border-radius: 4px;
             transition: background 0.12s, color 0.12s; padding: 0;
         }
-        .compare-props-close-btn:hover { background: rgba(0,0,0,0.06); color: #333; }
+        .compare-props-close-btn:hover { background: rgba(255,255,255,0.12); color: #fff; }
         .compare-props-table-wrap { overflow: auto; flex: 1 1 auto; }
         .compare-props-table {
             border-collapse: collapse; width: auto;
@@ -6573,7 +6574,7 @@
             background: #fff; min-width: 210px;
         }
         .compare-props-sort-arrow {
-            display: inline-block; margin-left: 3px; font-size: 18px;
+            display: inline-block; margin-left: 4px; font-size: 11px;
             color: #ccc; transition: color 0.1s; vertical-align: middle; line-height: 1;
         }
         .compare-props-table th.cp-th-active { font-weight: 600; color: #111; }
@@ -6588,7 +6589,7 @@
         .compare-props-table tbody tr:nth-child(odd) td { background: #f9f9f9; }
         .compare-props-table tbody tr:nth-child(even) td { background: #fff; }
         .cp-addr-cell { display: flex; flex-direction: column; gap: 7px; }
-        .cp-addr-label { font-size: 12px; font-weight: 500; color: #111; }
+        .cp-addr-label { font-size: 13px; font-weight: 500; color: #111; }
         .cp-row-actions { display: flex; align-items: center; }
         .cp-row-btn {
             font-size: 10px; color: #555; background: none; border: none;
@@ -6629,14 +6630,16 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 14px 20px;
-            border-bottom: 1px solid #eaeaea;
+            padding: 20px 24px;
+            border-bottom: 1px solid #000;
             flex-shrink: 0;
+            background: #000;
+            border-radius: 6px 6px 0 0;
         }
         .compare-areas-modal-title {
-            font-size: 13px;
-            font-weight: 400;
-            color: #111;
+            font-size: 16px;
+            font-weight: 600;
+            color: #ededed;
             margin: 0;
             font-family: 'Akkurat', sans-serif;
         }
@@ -6651,7 +6654,7 @@
             gap: 5px;
             font-size: 11px;
             font-weight: 400;
-            color: #444;
+            color: #999;
             background: none;
             border: none;
             border-radius: 4px;
@@ -6660,11 +6663,11 @@
             font-family: 'Akkurat', sans-serif;
             transition: background 0.12s;
         }
-        .compare-areas-get-data-btn:hover { background: rgba(0,0,0,0.05); }
+        .compare-areas-get-data-btn:hover { background: rgba(255,255,255,0.08); }
         .compare-areas-close-btn {
             background: none;
             border: none;
-            color: #888;
+            color: #999;
             cursor: pointer;
             width: 26px;
             height: 26px;
@@ -6675,7 +6678,7 @@
             transition: background 0.12s, color 0.12s;
             padding: 0;
         }
-        .compare-areas-close-btn:hover { background: rgba(0,0,0,0.06); color: #333; }
+        .compare-areas-close-btn:hover { background: rgba(255,255,255,0.12); color: #fff; }
         .compare-areas-table-wrap { overflow: auto; flex: 1 1 auto; }
         .compare-areas-table {
             border-collapse: collapse;
@@ -6706,8 +6709,8 @@
         .compare-areas-table th.col-chart-th { min-width: 340px; }
         .ca-sort-arrow {
             display: inline-block;
-            margin-left: 3px;
-            font-size: 18px;
+            margin-left: 4px;
+            font-size: 11px;
             color: #ccc;
             transition: color 0.1s;
             vertical-align: middle;
@@ -6731,7 +6734,7 @@
         .compare-areas-table tbody tr:nth-child(odd) td { background: #f9f9f9; }
         .compare-areas-table tbody tr:nth-child(even) td { background: #fff; }
         .ca-name-cell { display: flex; flex-direction: column; gap: 7px; }
-        .ca-name-label { font-size: 11.5px; font-weight: 400; color: #111; font-family: 'Akkurat Mono', monospace; }
+        .ca-name-label { font-size: 13px; font-weight: 500; color: #111; font-family: 'Akkurat Mono', monospace; }
         .ca-row-actions { display: flex; align-items: center; }
         .ca-row-btn {
             font-size: 10px; color: #555; background: none; border: none;
@@ -11348,10 +11351,10 @@
                     var arrow = th.querySelector('.compare-props-sort-arrow');
                     if (cpSortState.col === th.getAttribute('data-cp-sort')) {
                         th.classList.add('cp-th-active');
-                        if (arrow) arrow.innerHTML = cpSortState.dir === 'asc' ? '&#x2191;' : '&#x2193;';
+                        if (arrow) arrow.innerHTML = cpSortState.dir === 'asc' ? '&#x25B2;' : '&#x25BC;';
                     } else {
                         th.classList.remove('cp-th-active');
-                        if (arrow) arrow.innerHTML = '&#x2191;';
+                        if (arrow) arrow.innerHTML = '&#x25B2;';
                     }
                 });
             }
@@ -11455,10 +11458,10 @@
                     var arrow = th.querySelector('.ca-sort-arrow');
                     if (sortState.col === col) {
                         th.classList.add('ca-th-active');
-                        if (arrow) arrow.innerHTML = sortState.dir === 'asc' ? '&#x2191;' : '&#x2193;';
+                        if (arrow) arrow.innerHTML = sortState.dir === 'asc' ? '&#x25B2;' : '&#x25BC;';
                     } else {
                         th.classList.remove('ca-th-active');
-                        if (arrow) arrow.innerHTML = '&#x2191;';
+                        if (arrow) arrow.innerHTML = '&#x25B2;';
                     }
                 });
             }
@@ -11589,23 +11592,23 @@
                 <table class="compare-areas-table">
                     <thead>
                         <tr>
-                            <th class="col-name-th" data-sort-col="name">Name <span class="ca-sort-arrow">&#x2191;</span></th>
+                            <th class="col-name-th" data-sort-col="name">Name <span class="ca-sort-arrow">&#x25B2;</span></th>
                             <th class="col-chart-th">% Out-of-metro owner units over time</th>
-                            <th data-sort-col="efr">Eviction filing rate <span class="ca-sort-arrow">&#x2191;</span></th>
-                            <th data-sort-col="pop">Population <span class="ca-sort-arrow">&#x2191;</span></th>
-                            <th data-sort-col="asian">Asian <span class="ca-sort-arrow">&#x2191;</span></th>
-                            <th data-sort-col="hispanic">Hispanic <span class="ca-sort-arrow">&#x2191;</span></th>
-                            <th data-sort-col="white">White (non-Hisp.) <span class="ca-sort-arrow">&#x2191;</span></th>
-                            <th data-sort-col="black">Black <span class="ca-sort-arrow">&#x2191;</span></th>
-                            <th data-sort-col="poverty">% in poverty <span class="ca-sort-arrow">&#x2191;</span></th>
-                            <th data-sort-col="income">Median household income <span class="ca-sort-arrow">&#x2191;</span></th>
-                            <th data-sort-col="owner">% Owner-occupied <span class="ca-sort-arrow">&#x2191;</span></th>
-                            <th data-sort-col="corp">Corporate <span class="ca-sort-arrow">&#x2191;</span></th>
-                            <th data-sort-col="gov">Government <span class="ca-sort-arrow">&#x2191;</span></th>
-                            <th data-sort-col="out">Out-of-state <span class="ca-sort-arrow">&#x2191;</span></th>
-                            <th data-sort-col="u1050">10&#x2013;50 units <span class="ca-sort-arrow">&#x2191;</span></th>
-                            <th data-sort-col="u50200">50&#x2013;200 units <span class="ca-sort-arrow">&#x2191;</span></th>
-                            <th data-sort-col="u200">200+ units <span class="ca-sort-arrow">&#x2191;</span></th>
+                            <th data-sort-col="efr">Eviction filing rate <span class="ca-sort-arrow">&#x25B2;</span></th>
+                            <th data-sort-col="pop">Population <span class="ca-sort-arrow">&#x25B2;</span></th>
+                            <th data-sort-col="asian">Asian <span class="ca-sort-arrow">&#x25B2;</span></th>
+                            <th data-sort-col="hispanic">Hispanic <span class="ca-sort-arrow">&#x25B2;</span></th>
+                            <th data-sort-col="white">White (non-Hisp.) <span class="ca-sort-arrow">&#x25B2;</span></th>
+                            <th data-sort-col="black">Black <span class="ca-sort-arrow">&#x25B2;</span></th>
+                            <th data-sort-col="poverty">% in poverty <span class="ca-sort-arrow">&#x25B2;</span></th>
+                            <th data-sort-col="income">Median household income <span class="ca-sort-arrow">&#x25B2;</span></th>
+                            <th data-sort-col="owner">% Owner-occupied <span class="ca-sort-arrow">&#x25B2;</span></th>
+                            <th data-sort-col="corp">Corporate <span class="ca-sort-arrow">&#x25B2;</span></th>
+                            <th data-sort-col="gov">Government <span class="ca-sort-arrow">&#x25B2;</span></th>
+                            <th data-sort-col="out">Out-of-state <span class="ca-sort-arrow">&#x25B2;</span></th>
+                            <th data-sort-col="u1050">10&#x2013;50 units <span class="ca-sort-arrow">&#x25B2;</span></th>
+                            <th data-sort-col="u50200">50&#x2013;200 units <span class="ca-sort-arrow">&#x25B2;</span></th>
+                            <th data-sort-col="u200">200+ units <span class="ca-sort-arrow">&#x25B2;</span></th>
                         </tr>
                     </thead>
                     <tbody id="compare-areas-tbody"></tbody>
