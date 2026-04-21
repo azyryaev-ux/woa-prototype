@@ -10206,18 +10206,19 @@
                 fullPageModal.classList.add('active');
             }
 
-            // Handle "Open full page view" from selected properties tab
-            const fullPageBtn = e.target.closest('.property-action-btn');
+            // Handle "Open full page view" from selected properties panel
+            const fullPageBtn = e.target.closest('.property-action-btn, .sel-prop-action-btn');
             if (fullPageBtn && fullPageBtn.textContent.replace(/\s+/g, ' ').trim() === 'Open full page view') {
                 e.preventDefault();
-                const propertyItem = fullPageBtn.closest('.property-item');
-                const title = propertyItem ? propertyItem.querySelector('strong').textContent : '195 MAIN ST BROCKTON MA';
-
-                // Update property name
+                // Get address from nearby sibling
+                let title = '195 MAIN ST BROCKTON MA';
+                const propRow = fullPageBtn.closest('.property-item, .sel-prop-row');
+                if (propRow) {
+                    const addr = propRow.querySelector('strong, .sel-prop-address');
+                    if (addr) title = addr.textContent.trim().toUpperCase();
+                }
                 const propertyName = document.querySelector('.property-name');
                 if (propertyName) propertyName.textContent = title;
-
-                // Show modal
                 fullPageModal.classList.add('active');
             }
 
