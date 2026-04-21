@@ -988,9 +988,8 @@
         }
 
         .table-controls {
-            padding: 16px 20px;
+            padding: 16px 20px 0;
             background: #fff;
-            border-bottom: 1px solid #eaeaea;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -998,21 +997,35 @@
         }
 
         .table-controls .filter-label {
+            font-size: 13px;
+            color: #555;
+            font-family: 'Akkurat', sans-serif;
             margin-bottom: 0;
+            font-weight: 400;
         }
 
         .table-controls select {
             flex: 0 0 auto;
             width: auto;
+            font-size: 13px;
+            padding: 4px 24px 4px 8px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: #fff url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2210%22 height=%226%22 viewBox=%220 0 10 6%22 fill=%22none%22><path d=%22M1 1l4 4 4-4%22 stroke=%22%23888%22 stroke-width=%221.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/></svg>') no-repeat right 7px center;
+            -webkit-appearance: none;
+            appearance: none;
+            color: #333;
+            cursor: pointer;
+            font-family: 'Akkurat', sans-serif;
         }
 
         .table-info {
-            font-size: 12px;
-            color: #666;
-            margin-top: 0;
+            font-size: 13px;
+            color: #888;
             line-height: 1.5;
             flex-basis: 100%;
-            margin-top: 12px;
+            padding: 10px 0 16px;
+            border-bottom: 1px solid #eaeaea;
         }
 
         .data-table {
@@ -1049,13 +1062,14 @@
         }
 
         td {
-            padding: 10px 20px;
+            padding: 14px 20px;
             font-size: 13px;
-            border-bottom: 1px solid #fafafa;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: top;
         }
 
         tbody tr {
-            transition: all 0.2s ease;
+            transition: background 0.15s;
         }
 
         tbody tr:hover {
@@ -1063,9 +1077,11 @@
         }
 
         .rank-cell {
-            color: #999;
-            font-weight: 500;
-            width: 40px;
+            color: #aaa;
+            font-weight: 400;
+            font-size: 13px;
+            width: 36px;
+            padding-right: 0;
         }
 
         .owner-cell {
@@ -1073,49 +1089,32 @@
         }
 
         .owner-name {
-            font-weight: 500;
-            color: #000;
+            font-weight: 700;
+            font-size: 14px;
+            color: #111;
             display: block;
-            margin-bottom: 2px;
+            margin-bottom: 3px;
+            line-height: 1.3;
         }
 
         .owner-cell-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 6px;
-        }
-
-        .table-sparkline {
-            display: flex;
-            align-items: flex-end;
-            gap: 2px;
-            height: 20px;
-            margin-top: 4px;
-        }
-
-        .sparkline-bar {
-            flex: 1;
-            background: linear-gradient(180deg, rgba(59, 130, 246, 0.6) 0%, rgba(59, 130, 246, 0.3) 100%);
-            border-radius: 6px 2px 0 0;
-            min-height: 3px;
-            transition: all 0.3s ease;
-        }
-
-        .sparkline-bar:hover {
-            background: linear-gradient(180deg, rgba(59, 130, 246, 0.9) 0%, rgba(59, 130, 246, 0.6) 100%);
         }
 
         .owner-type {
-            font-size: 11px;
-            color: #999;
+            font-size: 12px;
+            color: #888;
             display: block;
             line-height: 1.4;
         }
 
         .units-cell {
-            font-weight: 600;
-            color: #000;
+            font-weight: 700;
+            font-size: 14px;
+            color: #111;
             text-align: right;
+            white-space: nowrap;
         }
 
         /* Map Area */
@@ -7389,7 +7388,7 @@
             <!-- ── Panel 3: Top landlords ── -->
             <div class="sub-panel-section" id="panel-landlords">
                 <div class="sub-panel-header">
-                    <div class="sub-panel-title">Top 10 landlords</div>
+                    <div class="sub-panel-title">Top 10 Landlords</div>
                     <div class="sub-panel-subtitle">Based on active filter selection</div>
                 </div>
                 <div class="sub-panel-body">
@@ -7417,7 +7416,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr><td class="rank-cell">1</td><td class="owner-cell"><div class="owner-cell-wrapper"><div><span class="owner-name">Peabody Properties, Inc</span><span class="owner-type">Private Organization</span></div><div class="table-sparkline"><div class="sparkline-bar" style="height:40%"></div><div class="sparkline-bar" style="height:55%"></div><div class="sparkline-bar" style="height:70%"></div><div class="sparkline-bar" style="height:85%"></div><div class="sparkline-bar" style="height:100%"></div></div></div></td><td class="units-cell">1345</td></tr>
+                                    <tr><td class="rank-cell">1</td><td class="owner-cell"><span class="owner-name">Peabody Properties, Inc</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1345</td></tr>
                                     <tr><td class="rank-cell">2</td><td class="owner-cell"><span class="owner-name">Oakwood</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1345</td></tr>
                                     <tr><td class="rank-cell">3</td><td class="owner-cell"><span class="owner-name">Lorem LLC</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1345</td></tr>
                                     <tr><td class="rank-cell">4</td><td class="owner-cell"><span class="owner-name">Lorem 2 LLC</span><span class="owner-type">Private Organization</span></td><td class="units-cell">1345</td></tr>
@@ -7437,7 +7436,7 @@
             <!-- ── Panel 4: Top properties ── -->
             <div class="sub-panel-section" id="panel-properties">
                 <div class="sub-panel-header">
-                    <div class="sub-panel-title">Top 10 properties</div>
+                    <div class="sub-panel-title">Top 10 Properties</div>
                     <div class="sub-panel-subtitle">Based on active filter selection</div>
                 </div>
                 <div class="sub-panel-body">
