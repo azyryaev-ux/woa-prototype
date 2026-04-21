@@ -6167,10 +6167,10 @@
         }
 
         .sub-panel-title {
-            font-size: 18px;
+            font-size: 14px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
             color: #000;
             font-family: 'Akkurat', sans-serif;
         }
@@ -6364,29 +6364,38 @@
 
         .sel-prop-actions {
             display: flex;
-            border: 1px solid #d8d8d8;
-            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+            border-radius: 7px;
             overflow: hidden;
             width: 100%;
+            background: #fff;
         }
 
         .sel-prop-action-btn {
             font-size: 11px;
-            padding: 7px 4px;
+            padding: 8px 10px;
             border: none;
-            border-right: 1px solid #d8d8d8;
-            background: #fff;
-            color: #555;
+            border-right: 1px solid #e8e8e8;
+            background: transparent;
+            color: #444;
             cursor: pointer;
             font-family: 'Akkurat', sans-serif;
             white-space: nowrap;
             flex: 1;
             text-align: center;
+            line-height: 1;
+            transition: background 0.1s, color 0.1s;
+        }
+
+        .sel-prop-action-btn:first-child {
+            flex: 0 0 auto;
+            padding: 8px 14px;
+            color: #666;
         }
 
         .sel-prop-action-btn:last-child { border-right: none; }
 
-        .sel-prop-action-btn:hover { background: #f5f5f5; }
+        .sel-prop-action-btn:hover { background: #f5f5f5; color: #111; }
 
         .sel-prop-remove {
             width: 22px;
@@ -7942,7 +7951,7 @@
                             <div class="sel-prop-actions">
                                 <button class="sel-prop-action-btn">Fly to</button>
                                 <button class="sel-prop-action-btn">Open full page view</button>
-                                <button class="sel-prop-action-btn">Open landlord panel</button>
+                                <button class="sel-prop-action-btn">Open landlord page</button>
                             </div>
                         </div>
                         <div class="sel-prop-row">
@@ -7954,7 +7963,7 @@
                             <div class="sel-prop-actions">
                                 <button class="sel-prop-action-btn">Fly to</button>
                                 <button class="sel-prop-action-btn">Open full page view</button>
-                                <button class="sel-prop-action-btn">Open landlord panel</button>
+                                <button class="sel-prop-action-btn">Open landlord page</button>
                             </div>
                         </div>
                         <div class="sel-prop-row">
@@ -7966,7 +7975,7 @@
                             <div class="sel-prop-actions">
                                 <button class="sel-prop-action-btn">Fly to</button>
                                 <button class="sel-prop-action-btn">Open full page view</button>
-                                <button class="sel-prop-action-btn">Open landlord panel</button>
+                                <button class="sel-prop-action-btn">Open landlord page</button>
                             </div>
                         </div>
                         <div class="sel-prop-row">
@@ -7978,7 +7987,7 @@
                             <div class="sel-prop-actions">
                                 <button class="sel-prop-action-btn">Fly to</button>
                                 <button class="sel-prop-action-btn">Open full page view</button>
-                                <button class="sel-prop-action-btn">Open landlord panel</button>
+                                <button class="sel-prop-action-btn">Open landlord page</button>
                             </div>
                         </div>
                     </div>
@@ -9918,7 +9927,7 @@
                             <div class="property-actions">
                                 <button class="property-action-btn">Fly to</button>
                                 <button class="property-action-btn">Open full page view</button>
-                                <button class="property-action-btn">Open landlord panel</button>
+                                <button class="property-action-btn">Open landlord page</button>
                             </div>
                         </div>
                     `).join('')}
@@ -10371,13 +10380,13 @@
         const landlordPageModal = document.getElementById('landlord-page-modal');
         const closeLandlordPage = document.getElementById('close-landlord-page');
 
-        // Open landlord page when clicking "View landlord details" or "Open landlord panel" buttons
+        // Open landlord page when clicking "View landlord details" or "Open landlord page" buttons
         document.addEventListener('click', function(e) {
             const actionBtn = e.target.closest('.property-action-btn');
             const actionButton = e.target.closest('.property-action-button');
 
             if ((actionButton && actionButton.textContent === 'View landlord details') ||
-                (actionBtn && actionBtn.textContent.replace(/\s+/g, ' ').trim() === 'Open landlord panel')) {
+                (actionBtn && actionBtn.textContent.replace(/\s+/g, ' ').trim() === 'Open landlord page')) {
                 e.preventDefault();
                 landlordPageModal.classList.add('active');
             }
