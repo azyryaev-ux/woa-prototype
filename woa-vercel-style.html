@@ -7001,12 +7001,7 @@
             flex-shrink: 0;
         }
 
-        /* Make panel-filters scrollable and flex-column */
-        #panel-filters {
-            display: flex;
-            flex-direction: column;
-        }
-
+        /* panel-filters: overflow hidden when active, flex-direction already set by .sub-panel-section */
         #panel-filters.sub-panel-section.active {
             overflow: hidden;
         }
