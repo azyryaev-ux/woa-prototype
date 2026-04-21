@@ -6105,19 +6105,22 @@
         .sub-panel-inner {
             width: 340px;
             height: 100%;
-            overflow-y: auto;
-            overflow-x: hidden;
+            overflow: hidden;
         }
 
         /* Individual sections inside sub-panel */
         .sub-panel-section {
             display: none;
             flex-direction: column;
+            width: 100%;
             height: 100%;
+            overflow: hidden;
         }
 
         .sub-panel-section.active {
             display: flex;
+            overflow-y: auto;
+            overflow-x: hidden;
         }
 
         /* Sub-panel header */
@@ -6999,11 +7002,6 @@
             height: 5px;
             margin-right: 8px;
             flex-shrink: 0;
-        }
-
-        /* panel-filters: overflow hidden when active, flex-direction already set by .sub-panel-section */
-        #panel-filters.sub-panel-section.active {
-            overflow: hidden;
         }
 
         /* Icon rail text-label buttons (CITY, DATA) */
