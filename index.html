@@ -2981,10 +2981,9 @@
             flex-shrink: 0;
         }
 
-        /* Toggle group: 230×33px border box */
+        /* Toggle group */
         .app-header-toggle-wrap {
             position: relative;
-            width: 230px;
             height: 33px;
             border: 1px solid #d0d5e8;
             border-radius: 7px;
@@ -2992,33 +2991,36 @@
             margin-left: 8px;
             display: flex;
             align-items: center;
-        }
-
-        .app-header-toggle-label {
-            font-size: 12px;
-            font-family: 'Akkurat', sans-serif;
-            color: #666;
-            white-space: nowrap;
-            cursor: pointer;
-            flex: 1;
-            text-align: center;
-            padding: 0 8px;
-            user-select: none;
+            padding: 3px;
+            gap: 2px;
         }
 
         .app-header-toggle-btn {
-            width: 52px;
             height: 25px;
-            background: rgba(214,61,0,0.1);
-            border: 1px solid #d63d00;
+            padding: 0 10px;
+            background: none;
+            border: 1px solid transparent;
             border-radius: 4px;
-            color: #d63d00;
+            color: #888;
             font-size: 12px;
-            font-weight: 700;
+            font-weight: 400;
             font-family: 'Akkurat', sans-serif;
             cursor: pointer;
             white-space: nowrap;
             flex-shrink: 0;
+            transition: background 0.15s, color 0.15s, border-color 0.15s;
+        }
+
+        .app-header-toggle-btn.active {
+            background: rgba(214,61,0,0.1);
+            border-color: #d63d00;
+            color: #d63d00;
+            font-weight: 700;
+        }
+
+        .app-header-toggle-btn:hover:not(.active) {
+            color: #333;
+            background: #f5f5f5;
         }
 
         /* Status sentence */
@@ -6962,7 +6964,7 @@
         <!-- Logo: gray circle + WHO OWNS BOSTON -->
         <a class="app-header-logo" href="#">
             <div class="app-header-logo-mark"></div>
-            <span class="app-header-logo-text">WHO OWNS<br>BOSTON</span>
+            <span class="app-header-logo-text">WHO OWNS<br><span style="color:#d63d00;">BOSTON</span></span>
         </a>
 
         <!-- DATA micro-label -->
@@ -6970,13 +6972,18 @@
 
         <!-- Toggle: Property | Area | Auto on zoom -->
         <div class="app-header-toggle-wrap" id="header-overlay-toggle-group">
-            <span class="app-header-toggle-label" data-value="property">Property</span>
+            <button class="app-header-toggle-btn active" data-value="property">Property</button>
             <button class="app-header-toggle-btn" data-value="area">Area</button>
-            <span class="app-header-toggle-label" data-value="auto">Auto on zoom</span>
+            <button class="app-header-toggle-btn" data-value="auto">Auto on zoom</button>
         </div>
 
-        <!-- Status sentence -->
-        <div class="app-header-status">
+        <!-- Status sentence — property mode -->
+        <div class="app-header-status" id="header-status-property">
+            Showing <b>2019</b> data for <b>Commercial, ...</b> properties with <b>1–50</b> units belonging to <b>corporate, ...</b> landlords with <b>23 adv filters</b>
+        </div>
+
+        <!-- Status sentence — area mode (hidden by default) -->
+        <div class="app-header-status" id="header-status-area" style="display:none;">
             Showing <b>2019</b> area data and <b>poverty rate</b> for <b>ZIP codes</b>
         </div>
 
@@ -10772,41 +10779,29 @@
             });
         });
 
-        // Area overlay toggle — keep header and sidebar in sync
-        const toggleGroup = document.getElementById('area-overlay-toggle-group');
+        // Header toggle — Property / Area / Auto on zoom
         const headerToggleGroup = document.getElementById('header-overlay-toggle-group');
-        const statusEl = document.getElementById('area-overlay-status');
+        const headerStatusProperty = document.getElementById('header-status-property');
+        const headerStatusArea = document.getElementById('header-status-area');
 
-        function setOverlayValue(val) {
-            [toggleGroup, headerToggleGroup].forEach(grp => {
-                if (!grp) return;
-                grp.querySelectorAll('[data-value]').forEach(b => {
-                    b.classList.toggle('active', b.dataset.value === val);
-                });
-            });
-            if (statusEl) {
-                statusEl.className = 'area-overlay-status';
-                if (val === 'auto') {
-                    statusEl.innerHTML = '<span class="area-overlay-status-dot"></span>Zoom out to activate';
-                } else if (val === 'on') {
-                    statusEl.classList.add('status-on');
-                    statusEl.innerHTML = '<span class="area-overlay-status-dot"></span>Overlay active';
-                } else {
-                    statusEl.classList.add('status-off');
-                    statusEl.innerHTML = '<span class="area-overlay-status-dot"></span>Overlay hidden';
-                }
-            }
+        function updateHeaderStatus(val) {
+            if (headerStatusProperty) headerStatusProperty.style.display = (val === 'property') ? '' : 'none';
+            if (headerStatusArea) headerStatusArea.style.display = (val === 'area') ? '' : 'none';
         }
 
-        [toggleGroup, headerToggleGroup].forEach(grp => {
-            if (!grp) return;
-            grp.addEventListener('click', e => {
-                const btn = e.target.closest('[data-value]');
+        if (headerToggleGroup) {
+            headerToggleGroup.addEventListener('click', e => {
+                const btn = e.target.closest('.app-header-toggle-btn');
                 if (!btn) return;
-                const val = btn.dataset.value;
-                setOverlayValue(val);
+                headerToggleGroup.querySelectorAll('.app-header-toggle-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                updateHeaderStatus(btn.dataset.value);
             });
-        });
+        }
+
+        // Area overlay sidebar toggle
+        const toggleGroup = document.getElementById('area-overlay-toggle-group');
+        const statusEl = document.getElementById('area-overlay-status');
 
         if (toggleGroup && statusEl) {
             toggleGroup.addEventListener('click', e => {
@@ -10817,7 +10812,6 @@
                 const val = btn.dataset.value;
                 statusEl.className = 'area-overlay-status';
                 if (val === 'auto') {
-                    statusEl.classList.add('');
                     statusEl.innerHTML = '<span class="area-overlay-status-dot"></span>Zoom out to activate';
                 } else if (val === 'on') {
                     statusEl.classList.add('status-on');
