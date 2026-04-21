@@ -6501,21 +6501,21 @@
         .compare-areas-modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.45);
+            background: rgba(255, 255, 255, 0.72);
             z-index: 3000;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 24px;
+            padding: 37px;
         }
 
         .compare-areas-modal {
             background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 8px 40px rgba(0,0,0,0.22);
+            border-radius: 8px;
+            box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 4px 0px;
             width: 100%;
-            max-width: 1100px;
-            max-height: 80vh;
+            max-width: 1536px;
+            max-height: calc(100vh - 74px);
             display: flex;
             flex-direction: column;
             overflow: hidden;
@@ -6525,71 +6525,69 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 20px 24px 16px;
-            border-bottom: 1px solid #eaeaea;
+            padding: 16px 24px;
             flex-shrink: 0;
         }
 
         .compare-areas-modal-title {
             font-size: 16px;
-            font-weight: 700;
+            font-weight: 400;
             color: #111;
             margin: 0;
             font-family: 'Akkurat', sans-serif;
+            letter-spacing: 0.08px;
         }
 
         .compare-areas-modal-actions {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 4px;
         }
 
         .compare-areas-get-data-btn {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
             font-size: 12px;
-            font-weight: 500;
-            color: #333;
+            font-weight: 400;
+            color: #555;
             background: none;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            padding: 4px 8px;
             cursor: pointer;
             font-family: 'Akkurat', sans-serif;
-            transition: background 0.12s, border-color 0.12s;
+            transition: background 0.12s;
         }
 
         .compare-areas-get-data-btn:hover {
-            background: #f5f5f5;
-            border-color: #bbb;
+            background: rgba(0,0,0,0.04);
         }
 
         .compare-areas-close-btn {
             background: none;
             border: none;
-            font-size: 22px;
-            color: #666;
+            font-size: 18px;
+            color: #888;
             cursor: pointer;
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
             line-height: 1;
-            padding-bottom: 2px;
             transition: background 0.12s, color 0.12s;
         }
 
         .compare-areas-close-btn:hover {
-            background: #f0f0f0;
-            color: #000;
+            background: rgba(0,0,0,0.06);
+            color: #333;
         }
 
         .compare-areas-table-wrap {
             overflow: auto;
-            flex: 1;
+            flex: 0 1 auto;
         }
 
         .compare-areas-table {
@@ -6599,22 +6597,18 @@
             font-family: 'Akkurat', sans-serif;
         }
 
-        .compare-areas-table thead tr {
-            border-bottom: 1px solid #e0e0e0;
-        }
-
         .compare-areas-table th {
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 0.05em;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
             text-transform: uppercase;
             color: #666;
-            padding: 10px 14px;
-            white-space: nowrap;
+            padding: 12px 16px;
+            white-space: normal;
             text-align: left;
-            vertical-align: bottom;
+            vertical-align: top;
             background: #fff;
-            font-family: 'Akkurat Mono', monospace;
+            border-bottom: 2px solid #eaeaea;
             cursor: pointer;
             user-select: none;
         }
@@ -6625,121 +6619,85 @@
             z-index: 2;
             background: #fff;
             min-width: 200px;
-            border-right: 1px solid #eaeaea;
         }
 
         .compare-areas-table th .sort-icon {
             display: inline-block;
             margin-left: 3px;
             vertical-align: middle;
-            opacity: 0.4;
+            opacity: 0.5;
         }
 
         .compare-areas-table th.col-name-th .sort-icon { opacity: 1; }
 
-        .compare-areas-table th.col-chart-th { min-width: 280px; }
+        .compare-areas-table th.col-chart-th { min-width: 340px; }
 
         .compare-areas-table td {
-            padding: 16px 14px;
-            font-size: 13px;
-            color: #222;
-            border-bottom: 1px solid #eaeaea;
-            vertical-align: middle;
+            padding: 12px 16px;
+            font-size: 12px;
+            color: #111;
+            border-bottom: 1px solid #fcfcfc;
+            vertical-align: top;
             white-space: nowrap;
         }
 
         .compare-areas-table td:first-child {
             position: sticky;
             left: 0;
-            background: #f9f9f9;
             z-index: 1;
-            border-right: 1px solid #eaeaea;
             min-width: 200px;
         }
 
-        .compare-areas-table tbody tr:hover td {
-            background: #f2f4ff;
+        .compare-areas-table tbody tr:nth-child(odd) td {
+            background: #f8f8f8;
         }
 
-        .compare-areas-table tbody tr:hover td:first-child {
-            background: #eaedff;
+        .compare-areas-table tbody tr:nth-child(even) td {
+            background: #fff;
         }
 
         .compare-area-name-cell {
             display: flex;
             flex-direction: column;
-            gap: 7px;
+            gap: 8px;
         }
 
         .compare-area-label {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 400;
             color: #111;
         }
 
         .compare-area-row-actions {
             display: flex;
-            gap: 6px;
+            align-items: center;
         }
 
         .compare-area-row-btn {
-            font-size: 11px;
-            font-weight: 500;
+            font-size: 10px;
+            font-weight: 400;
             color: #444;
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 3px 9px;
+            background: none;
+            border: none;
+            padding: 6px 8px;
             cursor: pointer;
             font-family: 'Akkurat', sans-serif;
-            transition: background 0.1s;
+            transition: opacity 0.1s;
         }
 
-        .compare-area-row-btn:hover {
-            background: #f5f5f5;
-            border-color: #aaa;
+        .compare-area-row-btn:hover { opacity: 0.6; }
+
+        .compare-area-row-divider {
+            width: 1px;
+            height: 24px;
+            background: #d1d1d1;
+            flex-shrink: 0;
         }
 
         .compare-area-dash { color: #bbb; }
 
         .compare-area-sparkline-cell {
-            min-width: 260px;
-        }
-
-        .compare-area-sparkline {
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-        }
-
-        .sparkline-chart-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 4px;
-        }
-
-        .sparkline-y-labels {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 56px;
-            font-size: 9px;
-            color: #999;
-            font-family: 'Akkurat Mono', monospace;
-        }
-
-        .sparkline-x-labels {
-            display: flex;
-            justify-content: space-between;
-            font-size: 9px;
-            color: #999;
-            font-family: 'Akkurat Mono', monospace;
-            padding-top: 2px;
-        }
-
-        .sparkline-x-labels .active-year {
-            color: #7B68EE;
-            font-weight: 700;
+            min-width: 340px;
         }
 
         .sel-area-compare-btn {
@@ -11369,62 +11327,86 @@
 
         // ── Compare Areas Modal ──
         (function() {
-            var selectedAreas = [
-                { name: 'ZIP 77002', color: '#7B68EE' },
-                { name: 'ZIP 77009', color: '#E8524A' }
-            ];
+            // Builds a sparkline SVG matching the Eviction Lab reference design.
+            // Labels are embedded in the SVG; purple (#c44dff) marks the active year.
+            function sparklineSVG(activeYear) {
+                var W = 328, H = 100;
+                var chartTop = 0, chartBottom = 60; // line plot area
+                var years = [2000, 2005, 2010, 2015, 2019];
+                var xPositions = [0, 72.6, 145.3, 217.9, 276];
+                var purple = '#c44dff';
+                var gray = '#7c7c7c';
+                var lineGray = '#eaeaea';
 
-            function sparklineSVG(color) {
-                return '<svg width="232" height="56" viewBox="0 0 232 56" style="display:block;">'
-                    + '<line x1="0" y1="54" x2="232" y2="54" stroke="#eaeaea" stroke-width="1"/>'
-                    + '<line x1="0" y1="28" x2="232" y2="28" stroke="#eaeaea" stroke-width="1" stroke-dasharray="3,3"/>'
-                    + '<line x1="0" y1="2" x2="232" y2="2" stroke="#eaeaea" stroke-width="1"/>'
-                    + '<line x1="0" y1="2" x2="0" y2="54" stroke="' + color + '" stroke-width="1.5" stroke-dasharray="3,3"/>'
+                // horizontal grid lines at y=0 (100%), y=30 (50%), y=60 (0%)
+                var lines = ''
+                    + '<line x1="0" y1="60" x2="' + W + '" y2="60" stroke="' + lineGray + '" stroke-width="1"/>'
+                    + '<line x1="0" y1="30" x2="' + W + '" y2="30" stroke="' + lineGray + '" stroke-width="1" stroke-dasharray="3,3"/>'
+                    + '<line x1="0" y1="0" x2="' + W + '" y2="0" stroke="' + lineGray + '" stroke-width="1"/>';
+
+                // vertical dashed line at active year
+                var activeIdx = years.indexOf(activeYear);
+                var activeX = activeIdx >= 0 ? xPositions[activeIdx] : xPositions[0];
+                var activeLine = '<line x1="' + activeX + '" y1="0" x2="' + activeX + '" y2="60" stroke="' + purple + '" stroke-width="1.5" stroke-dasharray="3,3"/>';
+
+                // y-axis labels (left of chart at x=-4)
+                var yLabels = ''
+                    + '<text x="-4" y="64" fill="' + gray + '" font-size="8" text-anchor="end">0</text>'
+                    + '<text x="-4" y="34" fill="' + gray + '" font-size="8" text-anchor="end">50%</text>'
+                    + '<text x="-4" y="4" fill="' + gray + '" font-size="8" text-anchor="end">100%</text>';
+
+                // x-axis year labels (below chart at y=74)
+                var xLabels = years.map(function(yr, i) {
+                    var col = (yr === activeYear) ? purple : gray;
+                    var anchor = i === 0 ? 'start' : (i === years.length - 1 ? 'end' : 'middle');
+                    return '<text x="' + xPositions[i] + '" y="74" fill="' + col + '" font-size="9" text-anchor="' + anchor + '">' + yr + '</text>';
+                }).join('');
+
+                // flat placeholder line at 50% (no real data)
+                var flatLine = '<path d="M0,30 L' + W + ',30" stroke="' + purple + '" stroke-width="1.5" fill="transparent"/>';
+
+                return '<svg width="' + W + '" height="' + H + '" viewBox="-20 -6 ' + (W+24) + ' ' + (H+8) + '" style="display:block;overflow:visible;">'
+                    + lines + activeLine + flatLine + yLabels + xLabels
                     + '</svg>';
             }
 
             function renderRows() {
                 var tbody = document.getElementById('compare-areas-tbody');
                 if (!tbody) return;
-                // Read actual selected area rows from the panel
                 var areaRows = document.querySelectorAll('.sel-area-row .sel-area-name');
                 var areas = [];
-                var colors = ['#7B68EE','#E8524A','#4AACB8','#F5A623','#7ED321','#9B59B6'];
-                areaRows.forEach(function(el, i) {
-                    areas.push({ name: el.textContent.trim(), color: colors[i % colors.length] });
+                areaRows.forEach(function(el) {
+                    areas.push(el.textContent.trim());
                 });
-                if (areas.length === 0) areas = selectedAreas; // fallback
+                if (areas.length === 0) areas = ['ZIP 77002', 'ZIP 77009'];
 
-                tbody.innerHTML = areas.map(function(area) {
+                var dash = '<span class="compare-area-dash">&#x2014;</span>';
+
+                tbody.innerHTML = areas.map(function(name) {
                     return '<tr>'
                         + '<td><div class="compare-area-name-cell">'
-                        + '<span class="compare-area-label">' + area.name + '</span>'
+                        + '<span class="compare-area-label">' + name + '</span>'
                         + '<div class="compare-area-row-actions">'
                         + '<button class="compare-area-row-btn">View on map</button>'
+                        + '<div class="compare-area-row-divider"></div>'
                         + '<button class="compare-area-row-btn">View area panel</button>'
                         + '</div></div></td>'
-                        + '<td class="compare-area-sparkline-cell"><div class="compare-area-sparkline">'
-                        + '<div class="sparkline-chart-row">'
-                        + '<div class="sparkline-y-labels"><span>100%</span><span>50%</span><span>0</span></div>'
-                        + sparklineSVG(area.color)
-                        + '</div>'
-                        + '<div class="sparkline-x-labels"><span class="active-year">2000</span><span>2005</span><span>2010</span><span>2015</span><span>2019</span></div>'
-                        + '</div></td>'
-                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
-                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
-                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
-                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
-                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
-                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
-                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
-                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
-                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
-                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
-                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
-                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
-                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
-                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
-                        + '<td><span class="compare-area-dash">&#x2014;</span></td>'
+                        + '<td class="compare-area-sparkline-cell">' + sparklineSVG(2000) + '</td>'
+                        + '<td>' + dash + '</td>'
+                        + '<td>' + dash + '</td>'
+                        + '<td>' + dash + '</td>'
+                        + '<td>' + dash + '</td>'
+                        + '<td>' + dash + '</td>'
+                        + '<td>' + dash + '</td>'
+                        + '<td>' + dash + '</td>'
+                        + '<td>' + dash + '</td>'
+                        + '<td>' + dash + '</td>'
+                        + '<td>' + dash + '</td>'
+                        + '<td>' + dash + '</td>'
+                        + '<td>' + dash + '</td>'
+                        + '<td>' + dash + '</td>'
+                        + '<td>' + dash + '</td>'
+                        + '<td>' + dash + '</td>'
                         + '</tr>';
                 }).join('');
             }
@@ -11463,16 +11445,19 @@
     <div class="compare-areas-modal-overlay" id="compare-areas-modal" style="display:none;">
         <div class="compare-areas-modal">
             <div class="compare-areas-modal-header">
-                <h2 class="compare-areas-modal-title">Compare areas</h2>
+                <p class="compare-areas-modal-title">Compare areas</p>
                 <div class="compare-areas-modal-actions">
                     <button class="compare-areas-get-data-btn">
-                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M6.5 1v8M3.5 6l3 3 3-3"/>
-                            <path d="M1.5 10v1a1 1 0 001 1h9a1 1 0 001-1v-1"/>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 9h-4V3H9v6H5l7 7 7-7zm-8 2V5h2v6h1.17L12 13.17 9.83 11H11zm-6 7h14v2H5v-2z"/>
                         </svg>
                         Get the data
                     </button>
-                    <button class="compare-areas-close-btn" id="close-compare-areas">&#x2715;</button>
+                    <button class="compare-areas-close-btn" id="close-compare-areas">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                        </svg>
+                    </button>
                 </div>
             </div>
             <div class="compare-areas-table-wrap">
