@@ -10071,85 +10071,7 @@
             }
         });
 
-        // Menu dropdown
-        const menuButton = document.getElementById('menu-button');
-        const appHeaderMenuBtn = document.getElementById('app-header-menu-btn');
-        const menuDropdown = document.getElementById('menu-dropdown');
-        const propertyModalMenuButton = document.getElementById('property-modal-menu-button');
-        const landlordModalMenuButton = document.getElementById('landlord-modal-menu-button');
-        const networkMenuButton = document.getElementById('network-menu-button');
-
-        // Old map-area menu button (now hidden but keep for safety)
-        if (menuButton) {
-            menuButton.addEventListener('click', function(e) {
-                e.stopPropagation();
-                menuButton.classList.toggle('active');
-                menuDropdown.classList.toggle('active');
-            });
-        }
-
-        // New global header menu button
-        if (appHeaderMenuBtn) {
-            appHeaderMenuBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                appHeaderMenuBtn.classList.toggle('active');
-                menuDropdown.classList.toggle('active');
-            });
-        }
-
-        // Modal menu buttons
-        if (propertyModalMenuButton) {
-            propertyModalMenuButton.addEventListener('click', function(e) {
-                e.stopPropagation();
-                this.classList.toggle('active');
-                menuDropdown.classList.toggle('active');
-            });
-        }
-
-        if (landlordModalMenuButton) {
-            landlordModalMenuButton.addEventListener('click', function(e) {
-                e.stopPropagation();
-                this.classList.toggle('active');
-                menuDropdown.classList.toggle('active');
-            });
-        }
-
-        if (networkMenuButton) {
-            networkMenuButton.addEventListener('click', function(e) {
-                e.stopPropagation();
-                this.classList.toggle('active');
-                menuDropdown.classList.toggle('active');
-            });
-        }
-
-        // Close menu dropdown when clicking outside
-        document.addEventListener('click', function(e) {
-            const clickedOutside = 
-                (!menuButton || !menuButton.contains(e.target)) &&
-                (!appHeaderMenuBtn || !appHeaderMenuBtn.contains(e.target)) &&
-                !menuDropdown.contains(e.target) &&
-                (!propertyModalMenuButton || !propertyModalMenuButton.contains(e.target)) &&
-                (!landlordModalMenuButton || !landlordModalMenuButton.contains(e.target)) &&
-                (!networkMenuButton || !networkMenuButton.contains(e.target));
-            if (clickedOutside) {
-                if (menuButton) menuButton.classList.remove('active');
-                if (appHeaderMenuBtn) appHeaderMenuBtn.classList.remove('active');
-                if (propertyModalMenuButton) propertyModalMenuButton.classList.remove('active');
-                if (landlordModalMenuButton) landlordModalMenuButton.classList.remove('active');
-                if (networkMenuButton) networkMenuButton.classList.remove('active');
-                menuDropdown.classList.remove('active');
-            }
-        });
-
-        // Close menu dropdown when clicking a menu item
-        document.querySelectorAll('.menu-dropdown-item').forEach(item => {
-            item.addEventListener('click', function(e) {
-                e.preventDefault();
-                menuButton.classList.remove('active');
-                menuDropdown.classList.remove('active');
-                // Handle navigation here if needed
-            });
-        });
+        // Menu dropdown — wired up below the element (see script after #menu-dropdown)
 
         // Property card functionality
         function attachPropertyCardListeners() {
@@ -11884,5 +11806,46 @@
             <h2>Mapping property ownership across America</h2>
         </div>
     </div>
+    <script>
+    (function() {
+        var dropdown = document.getElementById('menu-dropdown');
+        var btns = [
+            document.getElementById('app-header-menu-btn'),
+            document.getElementById('menu-button'),
+            document.getElementById('property-modal-menu-button'),
+            document.getElementById('landlord-modal-menu-button'),
+            document.getElementById('network-menu-button')
+        ].filter(Boolean);
+
+        function openMenu() {
+            dropdown.classList.add('active');
+            btns.forEach(function(b) { b.classList.add('active'); });
+        }
+        function closeMenu() {
+            dropdown.classList.remove('active');
+            btns.forEach(function(b) { b.classList.remove('active'); });
+        }
+
+        btns.forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                dropdown.classList.contains('active') ? closeMenu() : openMenu();
+            });
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!dropdown.contains(e.target) && btns.every(function(b){ return !b.contains(e.target); })) {
+                closeMenu();
+            }
+        });
+
+        dropdown.querySelectorAll('.menu-dropdown-item').forEach(function(item) {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                closeMenu();
+            });
+        });
+    })();
+    </script>
 </body>
 </html>
