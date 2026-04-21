@@ -6517,6 +6517,92 @@
         .sel-area-remove:hover { background: #fef2f2; color: #e53e3e; }
 
 
+
+        /* ── Compare Properties Modal ── */
+        .compare-props-modal-overlay {
+            position: fixed; inset: 0;
+            background: rgba(49, 49, 49, 0.88);
+            z-index: 3000;
+            display: flex; align-items: center; justify-content: center;
+            padding: 32px 40px;
+        }
+        .compare-props-modal {
+            background: #fff; border-radius: 8px;
+            box-shadow: 0 4px 32px rgba(0,0,0,0.28);
+            width: 100%; max-width: 1400px;
+            max-height: calc(100vh - 64px);
+            display: flex; flex-direction: column; overflow: hidden;
+        }
+        .compare-props-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 14px 20px; border-bottom: 1px solid #eaeaea; flex-shrink: 0;
+        }
+        .compare-props-title {
+            font-size: 13px; font-weight: 400; color: #111; margin: 0;
+            font-family: 'Akkurat', sans-serif;
+        }
+        .compare-props-actions { display: flex; align-items: center; gap: 6px; }
+        .compare-props-get-data-btn {
+            display: flex; align-items: center; gap: 5px;
+            font-size: 11px; color: #444; background: none; border: none;
+            border-radius: 4px; padding: 4px 8px; cursor: pointer;
+            font-family: 'Akkurat', sans-serif; transition: background 0.12s;
+        }
+        .compare-props-get-data-btn:hover { background: rgba(0,0,0,0.05); }
+        .compare-props-close-btn {
+            background: none; border: none; color: #888; cursor: pointer;
+            width: 26px; height: 26px; display: flex; align-items: center;
+            justify-content: center; border-radius: 4px;
+            transition: background 0.12s, color 0.12s; padding: 0;
+        }
+        .compare-props-close-btn:hover { background: rgba(0,0,0,0.06); color: #333; }
+        .compare-props-table-wrap { overflow: auto; flex: 1 1 auto; }
+        .compare-props-table {
+            border-collapse: collapse; width: auto;
+            font-family: 'Akkurat', sans-serif; table-layout: auto;
+        }
+        .compare-props-table th {
+            font-size: 10px; font-weight: 400; letter-spacing: 0.4px;
+            text-transform: uppercase; color: #888; padding: 10px 16px;
+            white-space: nowrap; text-align: left; vertical-align: bottom;
+            background: #fff; border-bottom: 1px solid #e0e0e0;
+            position: sticky; top: 0; z-index: 1; cursor: pointer; user-select: none;
+        }
+        .compare-props-table th:first-child {
+            position: sticky; left: 0; top: 0; z-index: 3;
+            background: #fff; min-width: 210px;
+        }
+        .compare-props-sort-arrow {
+            display: inline-block; margin-left: 3px; font-size: 18px;
+            color: #ccc; transition: color 0.1s; vertical-align: middle; line-height: 1;
+        }
+        .compare-props-table th.cp-th-active { font-weight: 600; color: #111; }
+        .compare-props-table th.cp-th-active .compare-props-sort-arrow { color: #e05539; }
+        .compare-props-table td {
+            padding: 16px 16px; font-size: 12px; color: #111;
+            vertical-align: middle; white-space: nowrap;
+        }
+        .compare-props-table td:first-child {
+            position: sticky; left: 0; z-index: 1; min-width: 210px;
+        }
+        .compare-props-table tbody tr:nth-child(odd) td { background: #f9f9f9; }
+        .compare-props-table tbody tr:nth-child(even) td { background: #fff; }
+        .cp-addr-cell { display: flex; flex-direction: column; gap: 7px; }
+        .cp-addr-label { font-size: 12px; font-weight: 500; color: #111; }
+        .cp-row-actions { display: flex; align-items: center; }
+        .cp-row-btn {
+            font-size: 10px; color: #555; background: none; border: none;
+            padding: 4px 0; cursor: pointer; font-family: 'Akkurat', sans-serif;
+            text-decoration: underline; text-underline-offset: 2px;
+        }
+        .cp-row-btn:hover { color: #000; }
+        .cp-row-divider { width: 1px; height: 12px; background: #d1d1d1; flex-shrink: 0; margin: 0 8px; }
+        .cp-landlord-cell { display: flex; align-items: flex-start; gap: 7px; }
+        .cp-landlord-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 3px; }
+        .cp-landlord-name { font-size: 12px; color: #111; white-space: normal; max-width: 160px; line-height: 1.35; }
+        .cp-chart-cell { padding: 12px 16px; }
+
+
         /* ── Compare Areas Modal ── */
         .compare-areas-modal-overlay {
             position: fixed;
@@ -7859,7 +7945,7 @@
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                             <path d="M7 2v10M2 7h10"/>
                         </svg>
-                        Compare Locations
+                        Compare Properties
                     </button>
                 </div>
             </div>
@@ -9802,7 +9888,7 @@
                         <rect x="9" y="3" width="3" height="10" rx="0.5"/>
                         <rect x="13.5" y="3" width="2.5" height="10" rx="0.5"/>
                     </svg>
-                    Compare Locations
+                    Compare Properties
                 </button>
             `;
 
@@ -10356,7 +10442,7 @@
             });
         });
 
-        // Compare Locations functionality
+        // Compare Properties functionality
         function openCompareView() {
             const compareView = document.getElementById('compare-view');
             const compareBody = document.getElementById('compare-view-body');
@@ -11232,6 +11318,116 @@
             });
         }
     })();
+
+
+        // ── Compare Properties Modal ──
+        (function() {
+            var PROP_DATA = {
+            '306000012347001': {type: '–', units: '–', value: '$2,471,985', evictions: '–', landlord: 'South Shore Management Corporation', ltype: 'Local corporate', owner: '–', color: '#E8524A', chart: "<svg width='140' height='42' viewBox='-12 -2 156 46' style='display:block;overflow:visible;'><rect x='0.0' y='31.0' width='6.0' height='1.0' fill='#E8524A' rx='0.5'/><rect x='7.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='14.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='21.0' y='0.0' width='6.0' height='32.0' fill='#d0d0d0' rx='0.5'/><rect x='28.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='35.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='42.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='49.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='56.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='63.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='70.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='77.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='84.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='91.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='98.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='105.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='112.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='119.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='126.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='133.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><text x='-2' y='4' fill='#bbb' font-size='7' text-anchor='end'>1</text><text x='-2' y='32' fill='#bbb' font-size='7' text-anchor='end'>0</text><text x='0' y='40' fill='#E8524A' font-size='7' text-anchor='start'>2000</text><text x='140' y='40' fill='#bbb' font-size='7' text-anchor='end'>2019</text></svg>"},
+            '306000046879001': {type: 'Single-family Residential', units: '1', value: '$766,518', evictions: '–', landlord: 'Maddock Construction LLC', ltype: 'Local shell', owner: '–', color: '#4D9FFF', chart: "<svg width='140' height='42' viewBox='-12 -2 156 46' style='display:block;overflow:visible;'><rect x='0.0' y='31.0' width='6.0' height='1.0' fill='#4D9FFF' rx='0.5'/><rect x='7.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='14.0' y='0.0' width='6.0' height='32.0' fill='#d0d0d0' rx='0.5'/><rect x='21.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='28.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='35.0' y='0.0' width='6.0' height='32.0' fill='#d0d0d0' rx='0.5'/><rect x='42.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='49.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='56.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='63.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='70.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='77.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='84.0' y='0.0' width='6.0' height='32.0' fill='#d0d0d0' rx='0.5'/><rect x='91.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='98.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='105.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='112.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='119.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='126.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='133.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><text x='-2' y='4' fill='#bbb' font-size='7' text-anchor='end'>1</text><text x='-2' y='32' fill='#bbb' font-size='7' text-anchor='end'>0</text><text x='0' y='40' fill='#4D9FFF' font-size='7' text-anchor='start'>2000</text><text x='140' y='40' fill='#bbb' font-size='7' text-anchor='end'>2019</text></svg>"},
+            '306000434280001': {type: 'Single-family Residential', units: '1', value: '$89,886', evictions: '–', landlord: 'AEF II LLC', ltype: 'Local corporate', owner: '–', color: '#D46033', chart: "<svg width='140' height='42' viewBox='-12 -2 156 46' style='display:block;overflow:visible;'><rect x='0.0' y='0.0' width='6.0' height='32.0' fill='#D46033' rx='0.5'/><rect x='7.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='14.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='21.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='28.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='35.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='42.0' y='0.0' width='6.0' height='32.0' fill='#d0d0d0' rx='0.5'/><rect x='49.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='56.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='63.0' y='0.0' width='6.0' height='32.0' fill='#d0d0d0' rx='0.5'/><rect x='70.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='77.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='84.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='91.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='98.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='105.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='112.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='119.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='126.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='133.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><text x='-2' y='4' fill='#bbb' font-size='7' text-anchor='end'>1</text><text x='-2' y='32' fill='#bbb' font-size='7' text-anchor='end'>0</text><text x='0' y='40' fill='#D46033' font-size='7' text-anchor='start'>2000</text><text x='140' y='40' fill='#bbb' font-size='7' text-anchor='end'>2019</text></svg>"},
+            '306010011704001': {type: 'Vacant', units: '–', value: '$5,958', evictions: '–', landlord: 'Ford Estate Inc Flaye', ltype: 'Local corporate', owner: '–', color: '#4DC4A0', chart: "<svg width='140' height='42' viewBox='-12 -2 156 46' style='display:block;overflow:visible;'><rect x='0.0' y='31.0' width='6.0' height='1.0' fill='#4DC4A0' rx='0.5'/><rect x='7.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='14.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='21.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='28.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='35.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='42.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='49.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='56.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='63.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='70.0' y='0.0' width='6.0' height='32.0' fill='#d0d0d0' rx='0.5'/><rect x='77.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='84.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='91.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='98.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='105.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='112.0' y='0.0' width='6.0' height='32.0' fill='#d0d0d0' rx='0.5'/><rect x='119.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='126.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='133.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><text x='-2' y='4' fill='#bbb' font-size='7' text-anchor='end'>1</text><text x='-2' y='32' fill='#bbb' font-size='7' text-anchor='end'>0</text><text x='0' y='40' fill='#4DC4A0' font-size='7' text-anchor='start'>2000</text><text x='140' y='40' fill='#bbb' font-size='7' text-anchor='end'>2019</text></svg>"},
+            '306020442293001': {type: 'Commercial', units: '–', value: '$18,650,000', evictions: '–', landlord: 'Shipt Incorporated', ltype: 'Out-of-state', owner: '–', color: '#8AA233', chart: "<svg width='140' height='42' viewBox='-12 -2 156 46' style='display:block;overflow:visible;'><rect x='0.0' y='31.0' width='6.0' height='1.0' fill='#8AA233' rx='0.5'/><rect x='7.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='14.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='21.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='28.0' y='0.0' width='6.0' height='32.0' fill='#d0d0d0' rx='0.5'/><rect x='35.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='42.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='49.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='56.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='63.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='70.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='77.0' y='0.0' width='6.0' height='32.0' fill='#d0d0d0' rx='0.5'/><rect x='84.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='91.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='98.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='105.0' y='0.0' width='6.0' height='32.0' fill='#d0d0d0' rx='0.5'/><rect x='112.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='119.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='126.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='133.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><text x='-2' y='4' fill='#bbb' font-size='7' text-anchor='end'>1</text><text x='-2' y='32' fill='#bbb' font-size='7' text-anchor='end'>0</text><text x='0' y='40' fill='#8AA233' font-size='7' text-anchor='start'>2000</text><text x='140' y='40' fill='#bbb' font-size='7' text-anchor='end'>2019</text></svg>"},
+            '306021102038001': {type: 'Vacant', units: '–', value: '$21,476,728', evictions: '–', landlord: 'Regent Square B LLC', ltype: 'Local shell', owner: '–', color: '#E8524A', chart: "<svg width='140' height='42' viewBox='-12 -2 156 46' style='display:block;overflow:visible;'><rect x='0.0' y='31.0' width='6.0' height='1.0' fill='#E8524A' rx='0.5'/><rect x='7.0' y='0.0' width='6.0' height='32.0' fill='#d0d0d0' rx='0.5'/><rect x='14.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='21.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='28.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='35.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='42.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='49.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='56.0' y='0.0' width='6.0' height='32.0' fill='#d0d0d0' rx='0.5'/><rect x='63.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='70.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='77.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='84.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='91.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='98.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='105.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='112.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='119.0' y='0.0' width='6.0' height='32.0' fill='#d0d0d0' rx='0.5'/><rect x='126.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='133.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><text x='-2' y='4' fill='#bbb' font-size='7' text-anchor='end'>1</text><text x='-2' y='32' fill='#bbb' font-size='7' text-anchor='end'>0</text><text x='0' y='40' fill='#E8524A' font-size='7' text-anchor='start'>2000</text><text x='140' y='40' fill='#bbb' font-size='7' text-anchor='end'>2019</text></svg>"},
+            '306021594145001': {type: 'Other', units: '–', value: '$0', evictions: '–', landlord: 'Houston ISD', ltype: 'Local shell', owner: '–', color: '#FFD04D', chart: "<svg width='140' height='42' viewBox='-12 -2 156 46' style='display:block;overflow:visible;'><rect x='0.0' y='31.0' width='6.0' height='1.0' fill='#FFD04D' rx='0.5'/><rect x='7.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='14.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='21.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='28.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='35.0' y='0.0' width='6.0' height='32.0' fill='#d0d0d0' rx='0.5'/><rect x='42.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='49.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='56.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='63.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='70.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='77.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='84.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='91.0' y='0.0' width='6.0' height='32.0' fill='#d0d0d0' rx='0.5'/><rect x='98.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='105.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='112.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='119.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='126.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='133.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><text x='-2' y='4' fill='#bbb' font-size='7' text-anchor='end'>1</text><text x='-2' y='32' fill='#bbb' font-size='7' text-anchor='end'>0</text><text x='0' y='40' fill='#FFD04D' font-size='7' text-anchor='start'>2000</text><text x='140' y='40' fill='#bbb' font-size='7' text-anchor='end'>2019</text></svg>"},
+            '306021650247001': {type: 'Vacant', units: '–', value: '$8,081,480', evictions: '–', landlord: 'Kaplan Mosaic LLC', ltype: 'Local shell', owner: '–', color: '#4DC4A0', chart: "<svg width='140' height='42' viewBox='-12 -2 156 46' style='display:block;overflow:visible;'><rect x='0.0' y='31.0' width='6.0' height='1.0' fill='#4DC4A0' rx='0.5'/><rect x='7.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='14.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='21.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='28.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='35.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='42.0' y='0.0' width='6.0' height='32.0' fill='#d0d0d0' rx='0.5'/><rect x='49.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='56.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='63.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='70.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='77.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='84.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='91.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='98.0' y='0.0' width='6.0' height='32.0' fill='#d0d0d0' rx='0.5'/><rect x='105.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='112.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='119.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='126.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><rect x='133.0' y='31.0' width='6.0' height='1.0' fill='#d0d0d0' rx='0.5'/><text x='-2' y='4' fill='#bbb' font-size='7' text-anchor='end'>1</text><text x='-2' y='32' fill='#bbb' font-size='7' text-anchor='end'>0</text><text x='0' y='40' fill='#4DC4A0' font-size='7' text-anchor='start'>2000</text><text x='140' y='40' fill='#bbb' font-size='7' text-anchor='end'>2019</text></svg>"}
+            };
+            var ALL_IDS = ['306000012347001', '306000046879001', '306000434280001', '306010011704001', '306020442293001', '306021102038001', '306021594145001', '306021650247001'];
+            var cpSortState = { col: null, dir: 'asc' };
+            var cpSortSetup = false;
+
+            function cpParseVal(str) {
+                if (!str || str === '\u2013' || str === '-') return null;
+                if (str.charAt && str.charAt(0) === '$') return parseFloat(str.replace(/[$,]/g,''));
+                var n = parseFloat(str);
+                return isNaN(n) ? null : n;
+            }
+
+            function cpUpdateHeaders() {
+                document.querySelectorAll('#compare-props-modal th[data-cp-sort]').forEach(function(th) {
+                    var arrow = th.querySelector('.compare-props-sort-arrow');
+                    if (cpSortState.col === th.getAttribute('data-cp-sort')) {
+                        th.classList.add('cp-th-active');
+                        if (arrow) arrow.innerHTML = cpSortState.dir === 'asc' ? '&#x2191;' : '&#x2193;';
+                    } else {
+                        th.classList.remove('cp-th-active');
+                        if (arrow) arrow.innerHTML = '&#x2191;';
+                    }
+                });
+            }
+
+            function cpRenderRows() {
+                var tbody = document.getElementById('compare-props-tbody');
+                if (!tbody) return;
+                var ids = ALL_IDS.slice();
+                if (cpSortState.col) {
+                    ids.sort(function(a,b) {
+                        var da = PROP_DATA[a], db = PROP_DATA[b];
+                        if (cpSortState.col === 'id') {
+                            return cpSortState.dir === 'asc' ? a.localeCompare(b) : b.localeCompare(a);
+                        }
+                        var va = cpParseVal(da[cpSortState.col]);
+                        var vb = cpParseVal(db[cpSortState.col]);
+                        if (va === null && vb === null) return 0;
+                        if (va === null) return 1; if (vb === null) return -1;
+                        return cpSortState.dir === 'asc' ? va - vb : vb - va;
+                    });
+                }
+                tbody.innerHTML = ids.map(function(id) {
+                    var d = PROP_DATA[id];
+                    return '<tr>'
+                        + '<td><div class="cp-addr-cell">'
+                        + '<span class="cp-addr-label">' + id + '</span>'
+                        + '<div class="cp-row-actions">'
+                        + '<button class="cp-row-btn">View on map</button>'
+                        + '<div class="cp-row-divider"></div>'
+                        + '<button class="cp-row-btn">View property panel</button>'
+                        + '</div></div></td>'
+                        + '<td>' + d.type + '</td>'
+                        + '<td>' + d.units + '</td>'
+                        + '<td>' + d.value + '</td>'
+                        + '<td>' + d.evictions + '</td>'
+                        + '<td class="cp-chart-cell">' + d.chart + '</td>'
+                        + '<td><div class="cp-landlord-cell"><span class="cp-landlord-dot" style="background:' + d.color + '"></span><span class="cp-landlord-name">' + d.landlord + '</span></div></td>'
+                        + '<td>' + d.ltype + '</td>'
+                        + '<td>' + d.owner + '</td>'
+                        + '</tr>';
+                }).join('');
+            }
+
+            function cpSetupSort() {
+                if (cpSortSetup) return; cpSortSetup = true;
+                document.querySelectorAll('#compare-props-modal th[data-cp-sort]').forEach(function(th) {
+                    th.addEventListener('click', function() {
+                        var col = th.getAttribute('data-cp-sort');
+                        if (cpSortState.col === col) {
+                            cpSortState.dir = cpSortState.dir === 'asc' ? 'desc' : 'asc';
+                        } else { cpSortState.col = col; cpSortState.dir = 'asc'; }
+                        cpRenderRows(); cpUpdateHeaders();
+                    });
+                });
+            }
+
+            function openPropsModal() {
+                cpRenderRows(); cpSetupSort(); cpUpdateHeaders();
+                document.getElementById('compare-props-modal').style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+            function closePropsModal() {
+                document.getElementById('compare-props-modal').style.display = 'none';
+                document.body.style.overflow = '';
+            }
+
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('#close-compare-props')) closePropsModal();
+                if (e.target.id === 'compare-props-modal') closePropsModal();
+                if (e.target.closest('.sel-prop-compare-btn')) openPropsModal();
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closePropsModal();
+            });
+        })();
+
 
         // ── Compare Areas Modal ──
         (function() {
