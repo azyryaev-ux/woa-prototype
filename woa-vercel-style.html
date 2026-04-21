@@ -1126,7 +1126,7 @@
         .map-area {
             position: fixed;
             top: 70px;
-            left: 48px;
+            left: 53px;
             transition: left 0.25s cubic-bezier(0.4,0,0.2,1);
             right: 0;
             bottom: 0;
@@ -3403,7 +3403,7 @@
         .landlord-back-btn {
             position: absolute;
             top: 75px;
-            left: 48px;
+            left: 53px;
             padding: 8px 16px;
             font-size: 12px;
             color: #fff;
@@ -3492,7 +3492,7 @@
             content: '';
             position: absolute;
             bottom: 0;
-            left: 48px;
+            left: 53px;
             right: 48px;
             height: 1px;
             background: #eaeaea;
@@ -4362,7 +4362,7 @@
 
         .landlord-properties-table thead tr th:first-child,
         .landlord-properties-table tbody tr td:first-child {
-            padding-left: 48px;
+            padding-left: 53px;
         }
 
         .landlord-properties-table thead tr th:last-child,
@@ -5173,7 +5173,7 @@
         .property-back-btn {
             position: absolute;
             top: 75px;
-            left: 48px;
+            left: 53px;
             padding: 8px 16px;
             font-size: 12px;
             color: #fff;
@@ -5379,7 +5379,7 @@
             content: '';
             position: absolute;
             bottom: 0;
-            left: 48px;
+            left: 53px;
             right: 48px;
             height: 1px;
             background: #eaeaea;
@@ -5997,7 +5997,7 @@
             top: 70px;
             left: 0;
             bottom: 0;
-            width: 48px;
+            width: 53px;
             background: #fff;
             border-right: 1px solid #eaeaea;
             display: flex;
@@ -6120,7 +6120,7 @@
         .sub-panel {
             position: fixed;
             top: 70px;
-            left: 48px;
+            left: 53px;
             bottom: 0;
             width: 0;
             background: #fff;
@@ -8019,20 +8019,7 @@
             </button>
         </div>
 
-        <!-- Menu Dropdown -->
-        <div class="menu-dropdown" id="menu-dropdown">
-            <div class="menu-dropdown-nav">
-                <a href="#" class="menu-dropdown-item">About</a>
-                <a href="#" class="menu-dropdown-item">Methodology</a>
-                <a href="#" class="menu-dropdown-item">Documentation</a>
-                <a href="#" class="menu-dropdown-item">FAQs</a>
-                <a href="#" class="menu-dropdown-item">Resources</a>
-                <a href="#" class="menu-dropdown-item">Contact</a>
-            </div>
-            <div class="menu-dropdown-heading">
-                <h2>Mapping property ownership across America</h2>
-            </div>
-        </div>
+
 
         <!-- Property Cards Container -->
         <div class="property-cards-container stacked" id="property-cards-container">
@@ -11482,5 +11469,19 @@
         </div>
     </div>
 
+    <!-- Menu Dropdown (outside map-area so z-index works at root level) -->
+    <div class="menu-dropdown" id="menu-dropdown">
+        <div class="menu-dropdown-nav">
+            <a href="#" class="menu-dropdown-item">About</a>
+            <a href="#" class="menu-dropdown-item">Methodology</a>
+            <a href="#" class="menu-dropdown-item">Documentation</a>
+            <a href="#" class="menu-dropdown-item">FAQs</a>
+            <a href="#" class="menu-dropdown-item">Resources</a>
+            <a href="#" class="menu-dropdown-item">Contact</a>
+        </div>
+        <div class="menu-dropdown-heading">
+            <h2>Mapping property ownership across America</h2>
+        </div>
+    </div>
 </body>
 </html>
