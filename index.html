@@ -6542,59 +6542,99 @@
 
         /* City list panel */
         .city-list-header {
-            font-size: 14px;
+            font-size: 13px;
             font-family: 'Akkurat', sans-serif;
-            color: #555;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
             padding: 24px 20px 0;
         }
 
         .city-list {
-            padding: 16px 20px 0;
+            padding: 14px 16px 20px;
             display: flex;
             flex-direction: column;
-            gap: 0;
+            gap: 10px;
         }
 
         .city-list-item {
             position: relative;
-            font-size: 16px;
-            font-weight: 700;
-            font-family: 'Akkurat', sans-serif;
-            color: #555;
-            text-transform: uppercase;
-            letter-spacing: 0.96px;
-            line-height: 30px;
-            padding: 4px 12px;
-            border-radius: 4px;
+            border-radius: 12px;
+            overflow: hidden;
             cursor: pointer;
-            transition: color 0.15s ease, background 0.15s ease;
+            border: 2.5px solid transparent;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
         }
 
         .city-list-item:hover {
-            color: #d63d00;
-            background: rgba(214,61,0,0.06);
+            border-color: rgba(214,61,0,0.5);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.15);
         }
 
         .city-list-item.active {
-            color: #d63d00;
-            background: rgba(214,61,0,0.1);
+            border-color: #d63d00;
+            box-shadow: 0 4px 16px rgba(214,61,0,0.25);
+        }
+
+        .city-card-photo {
+            height: 130px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: block;
+        }
+
+        .city-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 28px 14px 12px;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.62) 100%);
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
         }
 
         .city-list-item .city-name {
             display: block;
+            font-size: 15px;
+            font-weight: 700;
+            font-family: 'Akkurat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #fff;
+            line-height: 1;
         }
 
         .city-list-item .city-state {
             display: block;
-            font-size: 10px;
-            font-weight: 400;
-            letter-spacing: 0.8px;
-            opacity: 0.65;
-            margin-top: -2px;
+            font-size: 11px;
+            font-weight: 500;
+            font-family: 'Akkurat', sans-serif;
+            letter-spacing: 0.6px;
+            color: rgba(255,255,255,0.8);
+            line-height: 1;
         }
 
-        .city-list-item.active .city-state {
-            opacity: 0.85;
+        .city-list-item.active .city-name {
+            color: #fff;
+        }
+
+        .city-active-dot {
+            display: none;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #d63d00;
+            border: 2px solid #fff;
+            flex-shrink: 0;
+            margin-bottom: 2px;
+        }
+
+        .city-list-item.active .city-active-dot {
+            display: block;
         }
 
         /* ── DATA panel styles ── */
@@ -7113,20 +7153,48 @@
                 <div class="city-list-header">Locations we currently track</div>
                 <div class="city-list">
                     <div class="city-list-item active">
-                        <span class="city-name">Houston</span>
-                        <span class="city-state">TX</span>
+                        <div class="city-card-photo" style="background-image: url('https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?w=480&h=260&fit=crop&q=80');">
+                            <div class="city-card-overlay">
+                                <div>
+                                    <span class="city-name">Houston</span>
+                                    <span class="city-state" style="margin-top:3px;">TX</span>
+                                </div>
+                                <div class="city-active-dot"></div>
+                            </div>
+                        </div>
                     </div>
                     <div class="city-list-item">
-                        <span class="city-name">Baltimore</span>
-                        <span class="city-state">MD</span>
+                        <div class="city-card-photo" style="background-image: url('https://images.unsplash.com/photo-1609871071840-30fdf89ef6f2?w=480&h=260&fit=crop&q=80');">
+                            <div class="city-card-overlay">
+                                <div>
+                                    <span class="city-name">Baltimore</span>
+                                    <span class="city-state" style="margin-top:3px;">MD</span>
+                                </div>
+                                <div class="city-active-dot"></div>
+                            </div>
+                        </div>
                     </div>
                     <div class="city-list-item">
-                        <span class="city-name">Boston</span>
-                        <span class="city-state">MA</span>
+                        <div class="city-card-photo" style="background-image: url('https://images.unsplash.com/photo-1501614022631-f3af2ee65a86?w=480&h=260&fit=crop&q=80');">
+                            <div class="city-card-overlay">
+                                <div>
+                                    <span class="city-name">Boston</span>
+                                    <span class="city-state" style="margin-top:3px;">MA</span>
+                                </div>
+                                <div class="city-active-dot"></div>
+                            </div>
+                        </div>
                     </div>
                     <div class="city-list-item">
-                        <span class="city-name">Miami</span>
-                        <span class="city-state">FL</span>
+                        <div class="city-card-photo" style="background-image: url('https://images.unsplash.com/photo-1514214246283-d427a95c5d2f?w=480&h=260&fit=crop&q=80');">
+                            <div class="city-card-overlay">
+                                <div>
+                                    <span class="city-name">Miami</span>
+                                    <span class="city-state" style="margin-top:3px;">FL</span>
+                                </div>
+                                <div class="city-active-dot"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="sub-panel-body" style="display:none">
