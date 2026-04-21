@@ -6598,7 +6598,17 @@
             background: #fff; min-width: 200px;
         }
         .compare-areas-table th.col-chart-th { min-width: 340px; }
-        .ca-sort-arrow { display: inline-block; margin-left: 3px; opacity: 0.6; font-size: 9px; }
+        .ca-sort-arrow {
+            display: inline-block;
+            margin-left: 3px;
+            font-size: 9px;
+            color: #ccc;
+            transition: color 0.1s;
+        }
+        .compare-areas-table th[data-sort-col] { cursor: pointer; user-select: none; }
+        .compare-areas-table th[data-sort-col]:hover .ca-sort-arrow { color: #999; }
+        .compare-areas-table th.ca-th-active { font-weight: 600 !important; color: #111; }
+        .compare-areas-table th.ca-th-active .ca-sort-arrow { color: #e05539; }
         .compare-areas-table td {
             padding: 16px 16px;
             font-size: 12px;
@@ -11212,6 +11222,29 @@
             '77023': { spark: '<div class=\'ca-spark-wrap\'><div class=\'ca-spark-badge\' style=\'color:#4D9FFF\'>9%</div><div class=\'ca-spark-body\'><div class=\'ca-spark-ylabels\'><span>10%</span><span>5%</span><span>0</span></div><div class=\'ca-spark-chart\'><svg viewBox=\'0 0 278 24.8053\' preserveAspectRatio=\'none\' style=\'overflow:visible;\'><line x1=\'0\' y1=\'0.4\' x2=\'278\' y2=\'0.4\' stroke=\'#e8e8e8\' stroke-width=\'0.6\'/><line x1=\'0\' y1=\'12.4026\' x2=\'278\' y2=\'12.4026\' stroke=\'#e8e8e8\' stroke-width=\'0.6\' stroke-dasharray=\'2 2\'/><line x1=\'0\' y1=\'24.4053\' x2=\'278\' y2=\'24.4053\' stroke=\'#e8e8e8\' stroke-width=\'0.6\'/><path d=\'M1.00022 1.00022L19.1581 5.20022L37.316 7.00022L55.4739 8.20022L73.6318 6.40022L91.7897 10.6002L109.948 11.8002L128.105 13.6002L146.263 11.8002L164.421 16.0002L182.579 17.2002L200.737 19.0002L218.895 16.6002L233.421 21.4002L247.948 22.6002L262.474 23.8002L277 22.0002\' stroke=\'#4D9FFF\' stroke-width=\'2\' fill=\'none\' stroke-linecap=\'round\'/><circle cx=\'1\' cy=\'1.00022\' r=\'2.5\' fill=\'#4D9FFF\'/></svg></div></div><div class=\'ca-spark-xlabels\'><span style=\'color:#4D9FFF\'>2000</span><span>2005</span><span>2010</span><span>2015</span><span>2019</span></div></div>', efr: '2.4%', pop: '–', asian: '1.0%', hispanic: '83.0%', white: '12.0%', black: '3.0%', poverty: '27.0%', income: '$40,450', owner: '46.0%', corp: '54.0%', gov: '0.0%', out: '1.0%', u1050: '55.0%', u50200: '44.0%', u200: '34.0%' }
         };
 
+            var sortState = { col: null, dir: 'asc' };
+
+            function parseVal(str) {
+                if (!str || str === '–' || str === '-') return null;
+                if (typeof str === 'string' && str.charAt(0) === '$') return parseFloat(str.replace(/[$,]/g, ''));
+                return parseFloat(str);
+            }
+
+            function updateHeaders() {
+                var ths = document.querySelectorAll('#compare-areas-modal th[data-sort-col]');
+                ths.forEach(function(th) {
+                    var col = th.getAttribute('data-sort-col');
+                    var arrow = th.querySelector('.ca-sort-arrow');
+                    if (sortState.col === col) {
+                        th.classList.add('ca-th-active');
+                        if (arrow) arrow.innerHTML = sortState.dir === 'asc' ? '&#x2191;' : '&#x2193;';
+                    } else {
+                        th.classList.remove('ca-th-active');
+                        if (arrow) arrow.innerHTML = '&#x2191;';
+                    }
+                });
+            }
+
             function renderRows() {
                 var tbody = document.getElementById('compare-areas-tbody');
                 if (!tbody) return;
@@ -11222,6 +11255,25 @@
                     if (DATA[txt]) zips.push(txt);
                 });
                 if (zips.length === 0) zips = ['77002','77003','77004','77011','77020','77023'];
+
+                if (sortState.col) {
+                    zips = zips.slice().sort(function(a, b) {
+                        var da = DATA[a], db = DATA[b];
+                        var va, vb;
+                        if (sortState.col === 'name') {
+                            va = a; vb = b;
+                            if (va < vb) return sortState.dir === 'asc' ? -1 : 1;
+                            if (va > vb) return sortState.dir === 'asc' ? 1 : -1;
+                            return 0;
+                        }
+                        va = parseVal(da[sortState.col]);
+                        vb = parseVal(db[sortState.col]);
+                        if (va === null && vb === null) return 0;
+                        if (va === null) return 1;
+                        if (vb === null) return -1;
+                        return sortState.dir === 'asc' ? va - vb : vb - va;
+                    });
+                }
 
                 tbody.innerHTML = zips.map(function(z) {
                     var d = DATA[z];
@@ -11254,8 +11306,29 @@
                 }).join('');
             }
 
+            var sortSetup = false;
+            function setupSortHeaders() {
+                if (sortSetup) return;
+                sortSetup = true;
+                var ths = document.querySelectorAll('#compare-areas-modal th[data-sort-col]');
+                ths.forEach(function(th) {
+                    th.addEventListener('click', function() {
+                        var col = th.getAttribute('data-sort-col');
+                        if (sortState.col === col) {
+                            sortState.dir = sortState.dir === 'asc' ? 'desc' : 'asc';
+                        } else {
+                            sortState.col = col;
+                            sortState.dir = 'asc';
+                        }
+                        renderRows();
+                        updateHeaders();
+                    });
+                });
+            }
             function openModal() {
                 renderRows();
+                setupSortHeaders();
+                updateHeaders();
                 document.getElementById('compare-areas-modal').style.display = 'flex';
                 document.body.style.overflow = 'hidden';
             }
@@ -11301,23 +11374,23 @@
                 <table class="compare-areas-table">
                     <thead>
                         <tr>
-                            <th class="col-name-th">Name <span class="ca-sort-arrow">&#x25B2;</span></th>
-                            <th class="col-chart-th">% Out-of-metro<br>owner units over time</th>
-                            <th>Eviction filing rate</th>
-                            <th>Population</th>
-                            <th>Asian</th>
-                            <th>Hispanic</th>
-                            <th>White (non-Hisp.)</th>
-                            <th>Black</th>
-                            <th>% in poverty</th>
-                            <th>Median household income</th>
-                            <th>% Owner-occupied</th>
-                            <th>Corporate</th>
-                            <th>Government</th>
-                            <th>Out-of-state</th>
-                            <th>10&#x2013;50 units</th>
-                            <th>50&#x2013;200 units</th>
-                            <th>200+ units</th>
+                            <th class="col-name-th" data-sort-col="name">Name <span class="ca-sort-arrow">&#x2191;</span></th>
+                            <th class="col-chart-th">% Out-of-metro owner units over time</th>
+                            <th data-sort-col="efr">Eviction filing rate <span class="ca-sort-arrow">&#x2191;</span></th>
+                            <th data-sort-col="pop">Population <span class="ca-sort-arrow">&#x2191;</span></th>
+                            <th data-sort-col="asian">Asian <span class="ca-sort-arrow">&#x2191;</span></th>
+                            <th data-sort-col="hispanic">Hispanic <span class="ca-sort-arrow">&#x2191;</span></th>
+                            <th data-sort-col="white">White (non-Hisp.) <span class="ca-sort-arrow">&#x2191;</span></th>
+                            <th data-sort-col="black">Black <span class="ca-sort-arrow">&#x2191;</span></th>
+                            <th data-sort-col="poverty">% in poverty <span class="ca-sort-arrow">&#x2191;</span></th>
+                            <th data-sort-col="income">Median household income <span class="ca-sort-arrow">&#x2191;</span></th>
+                            <th data-sort-col="owner">% Owner-occupied <span class="ca-sort-arrow">&#x2191;</span></th>
+                            <th data-sort-col="corp">Corporate <span class="ca-sort-arrow">&#x2191;</span></th>
+                            <th data-sort-col="gov">Government <span class="ca-sort-arrow">&#x2191;</span></th>
+                            <th data-sort-col="out">Out-of-state <span class="ca-sort-arrow">&#x2191;</span></th>
+                            <th data-sort-col="u1050">10&#x2013;50 units <span class="ca-sort-arrow">&#x2191;</span></th>
+                            <th data-sort-col="u50200">50&#x2013;200 units <span class="ca-sort-arrow">&#x2191;</span></th>
+                            <th data-sort-col="u200">200+ units <span class="ca-sort-arrow">&#x2191;</span></th>
                         </tr>
                     </thead>
                     <tbody id="compare-areas-tbody"></tbody>
