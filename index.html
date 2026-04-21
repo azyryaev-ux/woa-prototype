@@ -7243,6 +7243,70 @@
         }
 
         /* Advanced filters section */
+
+        /* Area Filter toggle */
+        .data-area-filter-section {
+            border-top: 1px solid #eaeaea;
+            padding: 16px 20px;
+        }
+        .data-area-filter-label {
+            font-size: 10px;
+            font-family: 'Akkurat', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #555;
+            margin-bottom: 12px;
+        }
+        .data-area-filter-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .area-filter-toggle {
+            position: relative;
+            width: 44px;
+            height: 26px;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+        .area-filter-toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+            position: absolute;
+        }
+        .area-filter-toggle-track {
+            position: absolute;
+            inset: 0;
+            background: #d8d8d8;
+            border-radius: 13px;
+            transition: background 0.2s;
+        }
+        .area-filter-toggle input:checked + .area-filter-toggle-track {
+            background: #2a2a2a;
+        }
+        .area-filter-toggle-thumb {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+        .area-filter-toggle input:checked ~ .area-filter-toggle-thumb {
+            transform: translateX(18px);
+        }
+        .data-area-filter-text {
+            font-size: 13px;
+            font-family: 'Akkurat', sans-serif;
+            color: #333;
+            line-height: 1.4;
+        }
+
         .data-advanced-section {
             margin-top: 24px;
             border-top: 1px solid #eaeaea;
@@ -7730,6 +7794,19 @@
                                     <span class="data-check-dot orange"></span>
                                     <span class="data-check-text">Local shell</span>
                                 </label>
+                            </div>
+
+                            <!-- Area filter -->
+                            <div class="data-area-filter-section">
+                                <div class="data-area-filter-label">Area filter</div>
+                                <div class="data-area-filter-row">
+                                    <label class="area-filter-toggle">
+                                        <input type="checkbox" id="area-filter-toggle">
+                                        <div class="area-filter-toggle-track"></div>
+                                        <div class="area-filter-toggle-thumb"></div>
+                                    </label>
+                                    <span class="data-area-filter-text">Filter properties to selected areas</span>
+                                </div>
                             </div>
 
                             <!-- Advanced filters -->
