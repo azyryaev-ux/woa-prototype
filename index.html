@@ -6578,10 +6578,9 @@
         .compare-areas-table-wrap { overflow: auto; flex: 1 1 auto; }
         .compare-areas-table {
             border-collapse: collapse;
-            width: 100%;
-            min-width: 1500px;
+            width: auto;
             font-family: 'Akkurat Mono', monospace;
-            table-layout: fixed;
+            table-layout: auto;
         }
         .compare-areas-table th {
             font-size: 10px;
@@ -6589,8 +6588,8 @@
             letter-spacing: 0.4px;
             text-transform: uppercase;
             color: #888;
-            padding: 10px 12px;
-            white-space: normal;
+            padding: 10px 16px;
+            white-space: nowrap;
             text-align: left;
             vertical-align: bottom;
             background: #fff;
@@ -6601,20 +6600,20 @@
         }
         .compare-areas-table th:first-child {
             position: sticky; left: 0; top: 0; z-index: 3;
-            background: #fff; width: 180px; min-width: 180px;
+            background: #fff; min-width: 200px;
         }
-        .compare-areas-table th.col-chart-th { width: 210px; min-width: 210px; }
+        .compare-areas-table th.col-chart-th { min-width: 340px; }
         .ca-sort-arrow { display: inline-block; margin-left: 3px; opacity: 0.6; font-size: 9px; }
         .compare-areas-table td {
-            padding: 14px 12px;
-            font-size: 11.5px;
+            padding: 16px 16px;
+            font-size: 12px;
             color: #111;
             vertical-align: middle;
             white-space: nowrap;
         }
         .compare-areas-table td:first-child {
             position: sticky; left: 0; z-index: 1;
-            width: 180px; min-width: 180px;
+            min-width: 200px;
         }
         .compare-areas-table tbody tr:nth-child(odd) td { background: #f9f9f9; }
         .compare-areas-table tbody tr:nth-child(even) td { background: #fff; }
@@ -6628,7 +6627,7 @@
         }
         .ca-row-btn:hover { color: #000; }
         .ca-row-divider { width: 1px; height: 12px; background: #d1d1d1; flex-shrink: 0; margin: 0 8px; }
-        .ca-spark-cell { padding: 12px 12px; vertical-align: middle; }
+        .ca-spark-cell { padding: 16px 16px; vertical-align: middle; min-width: 340px; }
         .ca-spark-wrap { display: flex; flex-direction: column; gap: 0; }
         .ca-spark-badge {
             font-size: 10px; font-family: 'Akkurat Mono', monospace;
@@ -6640,7 +6639,7 @@
             font-size: 8px; color: #aaa; font-family: 'Akkurat Mono', monospace;
             text-align: right; width: 28px; flex-shrink: 0; line-height: 1;
         }
-        .ca-spark-chart { flex: 1; height: 56px; }
+        .ca-spark-chart { flex: 1; height: 64px; }
         .ca-spark-chart svg { width: 100%; height: 100%; display: block; overflow: visible; }
         .ca-spark-xlabels {
             display: flex; justify-content: space-between;
@@ -11309,21 +11308,21 @@
                         <tr>
                             <th class="col-name-th">Name <span class="ca-sort-arrow">&#x25B2;</span></th>
                             <th class="col-chart-th">% Out-of-metro<br>owner units over time</th>
-                            <th>Eviction<br>filing rate</th>
+                            <th>Eviction filing rate</th>
                             <th>Population</th>
                             <th>Asian</th>
                             <th>Hispanic</th>
-                            <th>White<br>(non-Hisp.)</th>
+                            <th>White (non-Hisp.)</th>
                             <th>Black</th>
                             <th>% in poverty</th>
-                            <th>Median household<br>income</th>
-                            <th>% Owner-<br>occupied</th>
+                            <th>Median household income</th>
+                            <th>% Owner-occupied</th>
                             <th>Corporate</th>
                             <th>Government</th>
                             <th>Out-of-state</th>
-                            <th>10&#x2013;50<br>units</th>
-                            <th>50&#x2013;200<br>units</th>
-                            <th>200+<br>units</th>
+                            <th>10&#x2013;50 units</th>
+                            <th>50&#x2013;200 units</th>
+                            <th>200+ units</th>
                         </tr>
                     </thead>
                     <tbody id="compare-areas-tbody"></tbody>
