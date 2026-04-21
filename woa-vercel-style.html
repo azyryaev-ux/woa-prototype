@@ -6836,36 +6836,51 @@
 
         /* Advanced filters section */
         .data-advanced-section {
-            margin-top: 16px;
+            margin-top: 24px;
             border-top: 1px solid #eaeaea;
-            padding-top: 4px;
+            padding-top: 16px;
         }
 
-        .data-advanced-toggle {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            padding: 10px 0;
+        .data-advanced-desc {
             font-size: 12px;
             font-family: 'Akkurat', sans-serif;
-            font-weight: 700;
-            color: #555;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        .data-advanced-toggle svg {
-            width: 10px;
-            height: 6px;
             color: #888;
+            line-height: 1.55;
+            margin: 0 0 12px;
         }
 
-        .data-advanced-body {
-            padding-bottom: 8px;
+        .data-advanced-applied {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-family: 'Akkurat', sans-serif;
+            color: #d63d00;
+            margin-bottom: 10px;
+        }
+
+        .data-advanced-applied svg {
+            flex-shrink: 0;
+        }
+
+        .data-advanced-edit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px 0;
+            font-size: 13px;
+            font-family: 'Akkurat', sans-serif;
+            font-weight: 600;
+            color: #d63d00;
+            background: none;
+            border: 1.5px solid #d63d00;
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.15s;
+        }
+
+        .data-advanced-edit-btn:hover {
+            background: rgba(214,61,0,0.05);
         }
 
         /* Area desc block */
@@ -7260,12 +7275,16 @@
 
                             <!-- Advanced filters -->
                             <div class="data-advanced-section">
-                                <button class="data-advanced-toggle" id="advanced-filters-toggle">
-                                    <span>Advanced filters</span>
-                                </button>
-                                <div class="data-advanced-body" id="advanced-filters-body" style="display:none;">
-                                    <p style="font-size:12px; color:#888; margin:0; line-height:1.5;">Advanced filters let you narrow results by filing date range, building age, assessed value, and eviction history.</p>
+                                <div class="data-filter-section-label" style="margin-bottom:6px;">Advanced filters</div>
+                                <p class="data-advanced-desc">Advanced filters let you narrow results by things like filing date, building age, assessed value, and eviction history. They stack on top of the basic filters above.</p>
+                                <div class="data-advanced-applied">
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="7" cy="7" r="6.5" stroke="#d63d00"/>
+                                        <path d="M7 4v3.5l2 1.5" stroke="#d63d00" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    <span>Six advanced filters applied</span>
                                 </div>
+                                <button class="data-advanced-edit-btn" id="open-advanced-filters">Edit advanced filters</button>
                             </div>
                         </div>
                     </div>
