@@ -6748,21 +6748,21 @@
         .compare-areas-table tbody tr:nth-child(even) td { background: #fff; }
         .ca-name-cell { display: flex; flex-direction: column; gap: 4px; }
         .ca-name-label { font-size: 15px; font-weight: 900; color: #111; font-family: 'Akkurat Mono', monospace; letter-spacing: 0.5px; }
-        .ca-row-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 5px; margin-top: 6px; }
+        .ca-row-actions { display: flex; flex-direction: column; align-items: stretch; gap: 5px; margin-top: 8px; max-width: 160px; }
         .ca-row-btn-map {
-            font-size: 10px; font-weight: 600; color: #fff;
-            background: #333; border: none; border-radius: 4px;
-            padding: 5px 10px; cursor: pointer; font-family: 'Akkurat Mono', monospace;
-            transition: background 0.12s; white-space: nowrap;
+            font-size: 10px; font-weight: 500; color: #fff;
+            background: #2a2a2a; border: none; border-radius: 3px;
+            padding: 7px 12px; cursor: pointer; font-family: 'Akkurat Mono', monospace;
+            transition: background 0.12s; text-align: center; letter-spacing: 0.2px;
         }
         .ca-row-btn-map:hover { background: #111; }
         .ca-row-btn-area {
-            font-size: 10px; font-weight: 600; color: #e05539;
-            background: rgba(224,85,57,0.07); border: 1.5px solid #e05539; border-radius: 4px;
-            padding: 4px 10px; cursor: pointer; font-family: 'Akkurat Mono', monospace;
-            transition: background 0.12s, color 0.12s; white-space: nowrap;
+            font-size: 10px; font-weight: 500; color: #c84426;
+            background: rgba(224,85,57,0.06); border: 1px solid rgba(224,85,57,0.5); border-radius: 3px;
+            padding: 7px 12px; cursor: pointer; font-family: 'Akkurat Mono', monospace;
+            transition: background 0.12s, color 0.12s, border-color 0.12s; text-align: center; letter-spacing: 0.2px;
         }
-        .ca-row-btn-area:hover { background: #e05539; color: #fff; }
+        .ca-row-btn-area:hover { background: rgba(224,85,57,0.12); border-color: #e05539; color: #e05539; }
         .ca-spark-cell { padding: 16px 16px; vertical-align: middle; min-width: 340px; }
         .ca-spark-wrap { display: flex; flex-direction: column; gap: 0; }
         .ca-spark-badge {
