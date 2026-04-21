@@ -9636,12 +9636,12 @@
         });
 
         // Toggle switch
-        document.querySelector('.toggle-switch').addEventListener('click', function() {
+        document.querySelector('.toggle-switch')?.addEventListener('click', function() {
             this.classList.toggle('active');
         });
 
         // Legend toggle
-        document.querySelector('.legend-toggle').addEventListener('click', function() {
+        document.querySelector('.legend-toggle')?.addEventListener('click', function() {
             this.classList.toggle('collapsed');
             const legendHeader = this.closest('.legend-header');
             const content = legendHeader.nextElementSibling;
@@ -9653,53 +9653,44 @@
         const searchInput = document.querySelector('.search-bar input');
         const searchDropdown = document.querySelector('.search-dropdown');
 
-        // Show dropdown when clicking search bar or input
-        searchBar.addEventListener('click', function(e) {
+        searchBar?.addEventListener('click', function(e) {
             e.stopPropagation();
-            searchDropdown.classList.add('active');
+            searchDropdown?.classList.add('active');
         });
 
-        searchInput.addEventListener('focus', function() {
-            searchDropdown.classList.add('active');
+        searchInput?.addEventListener('focus', function() {
+            searchDropdown?.classList.add('active');
         });
 
-        // Hide dropdown when clicking outside
         document.addEventListener('click', function(e) {
-            if (!searchBar.contains(e.target) && !searchDropdown.contains(e.target)) {
+            if (searchBar && searchDropdown &&
+                !searchBar.contains(e.target) && !searchDropdown.contains(e.target)) {
                 searchDropdown.classList.remove('active');
             }
         });
 
-        // Handle search item clicks
         document.querySelectorAll('.search-item').forEach(item => {
             item.addEventListener('click', function() {
-                const text = this.querySelector('span').textContent;
-                searchInput.value = text;
-                searchDropdown.classList.remove('active');
+                const span = this.querySelector('span');
+                if (searchInput && span) searchInput.value = span.textContent;
+                searchDropdown?.classList.remove('active');
             });
         });
 
-        // Advanced filters modal
+        // Advanced filters modal — wire up via event delegation so it always works
         const advancedFiltersModal = document.getElementById('advanced-filters-modal');
-        const openAdvancedFilters = document.getElementById('open-advanced-filters');
-        const closeModalBtn = document.getElementById('close-modal');
-        const closeModalFooterBtn = document.getElementById('close-modal-footer');
 
-        openAdvancedFilters.addEventListener('click', function(e) {
-            e.preventDefault();
-            advancedFiltersModal.classList.add('active');
-        });
-
-        closeModalBtn.addEventListener('click', function() {
-            advancedFiltersModal.classList.remove('active');
-        });
-
-        closeModalFooterBtn.addEventListener('click', function() {
-            advancedFiltersModal.classList.remove('active');
-        });
-
-        // Close modal when clicking on overlay
-        advancedFiltersModal.addEventListener('click', function(e) {
+        document.addEventListener('click', function(e) {
+            // Open
+            if (e.target.closest('#open-advanced-filters')) {
+                e.preventDefault();
+                advancedFiltersModal?.classList.add('active');
+            }
+            // Close via X or Close button
+            if (e.target.closest('#close-modal') || e.target.closest('#close-modal-footer')) {
+                advancedFiltersModal?.classList.remove('active');
+            }
+            // Close by clicking backdrop
             if (e.target === advancedFiltersModal) {
                 advancedFiltersModal.classList.remove('active');
             }
