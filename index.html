@@ -1434,7 +1434,7 @@
 
         .legend-content {
             max-height: 500px;
-            overflow-y: auto;
+            overflow: hidden;
             transition: max-height 0.3s ease, padding 0.3s ease;
             padding: 20px;
             background: white;
@@ -6935,6 +6935,26 @@
             background: rgba(214,61,0,0.07);
         }
 
+        .data-option-item.active::before {
+            content: '';
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #d63d00;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+
+        .data-option-item:not(.active)::before {
+            content: '';
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+
         /* Make panel-filters scrollable and flex-column */
         #panel-filters {
             display: flex;
@@ -8073,7 +8093,7 @@
                     </div>
                 </div>
 
-                <div class="sidebar-section" style="border-top:1px solid #eaeaea;padding-top:16px;">
+                <div class="sidebar-section" style="padding-top:16px;">
                     <div style="font-size:13px;color:#666;font-family:'Akkurat',sans-serif;margin-bottom:12px;">Selected properties</div>
                     <div style="display:flex;flex-direction:column;gap:8px;">
                         <div style="display:flex;align-items:center;padding-left:20px;position:relative;">
@@ -8090,7 +8110,7 @@
                 <div class="sidebar-section">
                     <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap;">
                         <span style="font-size: 13px; color: #666; white-space: nowrap; font-family: 'Akkurat', sans-serif;">Properties colored by</span>
-                        <select style="font-size: 12px; padding: 3px 6px; border: 1px solid #ddd; border-radius: 4px; background: #fff; color: #333; cursor: pointer; width: auto;">
+                        <select style="font-size:12px;padding:4px 24px 4px 8px;border:1px solid #ddd;border-radius:6px;background:#fff url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2210%22 height=%226%22 viewBox=%220 0 10 6%22 fill=%22none%22><path d=%22M1 1l4 4 4-4%22 stroke=%22%23888%22 stroke-width=%221.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/></svg>') no-repeat right 7px center;-webkit-appearance:none;appearance:none;color:#333;cursor:pointer;">
                             <option>Property type</option>
                             <option>Owner type</option>
                             <option>Year built</option>
