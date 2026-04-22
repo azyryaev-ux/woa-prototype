@@ -7399,7 +7399,8 @@
         .data-area-filter-section {
             border-top: 1px solid #eaeaea;
             border-bottom: 1px solid #eaeaea;
-            padding: 12px 20px 14px;
+            padding: 16px 20px 18px;
+            margin: 16px -20px 0;
         }
         .data-area-filter-label {
             font-size: 10px;
@@ -7417,8 +7418,8 @@
         }
         .area-filter-toggle {
             position: relative;
-            width: 40px;
-            height: 24px;
+            width: 32px;
+            height: 18px;
             flex-shrink: 0;
             cursor: pointer;
         }
@@ -7432,7 +7433,7 @@
             position: absolute;
             inset: 0;
             background: #d0d0d0;
-            border-radius: 12px;
+            border-radius: 9px;
             transition: background 0.2s;
         }
         .area-filter-toggle input:checked + .area-filter-toggle-track {
@@ -7440,17 +7441,17 @@
         }
         .area-filter-toggle-thumb {
             position: absolute;
-            top: 3px;
-            left: 3px;
-            width: 18px;
-            height: 18px;
+            top: 2px;
+            left: 2px;
+            width: 14px;
+            height: 14px;
             background: #fff;
             border-radius: 50%;
             box-shadow: 0 1px 3px rgba(0,0,0,0.22);
             transition: transform 0.2s;
         }
         .area-filter-toggle input:checked ~ .area-filter-toggle-thumb {
-            transform: translateX(16px);
+            transform: translateX(14px);
         }
         .data-area-filter-text {
             font-size: 13px;
@@ -7591,6 +7592,32 @@
                 <button class="app-logo-city-option">Baltimore</button>
             </div>
         </div>
+        <script>
+        (function() {
+            var logoBtn = document.getElementById('app-logo-btn');
+            var dropdown = document.getElementById('app-logo-city-dropdown');
+            if (!logoBtn || !dropdown) return;
+            logoBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                dropdown.classList.toggle('open');
+            });
+            dropdown.querySelectorAll('.app-logo-city-option').forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    dropdown.querySelectorAll('.app-logo-city-option').forEach(function(b) { b.classList.remove('active'); });
+                    btn.classList.add('active');
+                    var citySpan = logoBtn.querySelector('.app-logo-city');
+                    if (citySpan) citySpan.textContent = btn.textContent;
+                    dropdown.classList.remove('open');
+                });
+            });
+            document.addEventListener('click', function(e) {
+                if (!logoBtn.contains(e.target) && !dropdown.contains(e.target)) {
+                    dropdown.classList.remove('open');
+                }
+            });
+        })();
+        </script>
 
         <!-- EXPLORE micro-label -->
         <span class="app-header-data-label">EXPLORE</span>
@@ -7958,7 +7985,7 @@
                             </div>
 
                             <!-- Advanced filters -->
-                            <div class="data-advanced-section">
+                            <div class="data-advanced-section" style="margin-top:8px;">
                                 <div class="data-filter-section-label" style="margin-bottom:6px;">Advanced filters</div>
                                 <p class="data-advanced-desc">Advanced filters let you narrow results by things like filing date, building age, assessed value, and eviction history. They stack on top of the basic filters above.</p>
                                 <div class="data-advanced-box">
@@ -10472,30 +10499,7 @@
 
 
 
-        // Main header city dropdown
-        (function() {
-            var logoBtn = document.getElementById('app-logo-btn');
-            var dropdown = document.getElementById('app-logo-city-dropdown');
-            if (!logoBtn || !dropdown) return;
-            logoBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                dropdown.classList.toggle('open');
-            });
-            dropdown.querySelectorAll('.app-logo-city-option').forEach(function(btn) {
-                btn.addEventListener('click', function() {
-                    dropdown.querySelectorAll('.app-logo-city-option').forEach(function(b) { b.classList.remove('active'); });
-                    btn.classList.add('active');
-                    var citySpan = logoBtn.querySelector('.app-logo-city');
-                    if (citySpan) citySpan.textContent = btn.textContent;
-                    dropdown.classList.remove('open');
-                });
-            });
-            document.addEventListener('click', function(e) {
-                if (!logoBtn.contains(e.target) && !dropdown.contains(e.target)) {
-                    dropdown.classList.remove('open');
-                }
-            });
-        })();
+        // Main header city dropdown — moved to inline script after element
 
         // City dropdown in property page header
         (function() {
