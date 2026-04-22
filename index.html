@@ -7656,12 +7656,12 @@
     <!-- Icon Rail (workflow-ordered navigation) -->
     <aside class="icon-rail" id="icon-rail">
 
-        <!-- CITY -->
+        <!-- CITY RAIL BUTTON — disabled, restore when needed
         <button class="icon-rail-btn" id="rail-area-data" data-panel="area-data" data-tooltip="Select city">
             <span class="rail-text-label">CITY</span>
         </button>
-
         <div class="icon-rail-divider"></div>
+        END CITY RAIL BUTTON -->
 
         <!-- DATA -->
         <button class="icon-rail-btn" id="rail-filters" data-panel="filters" data-tooltip="Data filters">
@@ -7717,13 +7717,14 @@
     <div class="sub-panel" id="sub-panel">
         <div class="sub-panel-inner" id="sub-panel-inner">
 
-            <!-- ── Panel 1: City select ── -->
+            <!-- CITY SELECT PANEL — disabled, restore when needed
+            <!-- ── Panel 1: City select ── - ->
             <div class="sub-panel-section active" id="panel-area-data">
                 <div class="city-list-header">Locations we currently track</div>
                 <div class="city-list">
                     <div class="city-list-item active">
                         <div class="city-card-photo" style="background-image: url('images/houston.jpg');">
-                        <!-- Houston skyline -->
+                        <!-- Houston skyline - ->
                             <div class="city-card-overlay">
                                 <div>
                                     <span class="city-name">Houston</span>
@@ -7769,23 +7770,23 @@
                 </div>
                 <div class="sub-panel-body" style="display:none">
 
-                    <!-- PROMINENT View area data card -->
+                    <!-- PROMINENT View area data card - ->
                     <div class="area-overlay-card">
                         <div class="area-overlay-card-header">
                             <div style="display: flex; flex-direction: column; gap: 8px; width: 100%;">
                                 <div class="area-overlay-icon-wrap">
                                     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-                                        <!-- Geographic area patches like a choropleth -->
+                                        <!-- Geographic area patches like a choropleth - ->
                                         <path d="M2 3.5l5 1.5 4-2 7 2.5" stroke-width="1.2" opacity="0.6"/>
-                                        <!-- Top-left area -->
+                                        <!-- Top-left area - ->
                                         <path d="M2 3.5v6l5-1V5z" fill="white" fill-opacity="0.55" stroke-width="1"/>
-                                        <!-- Top-right area -->
+                                        <!-- Top-right area - ->
                                         <path d="M7 5l4-2 7 2.5v4.5l-4-1.5-3 1.5z" fill="white" fill-opacity="0.25" stroke-width="1"/>
-                                        <!-- Bottom-left area -->
+                                        <!-- Bottom-left area - ->
                                         <path d="M2 9.5v7l3-1.5 4-2V8.5l-2 .5z" fill="white" fill-opacity="0.35" stroke-width="1"/>
-                                        <!-- Bottom-right large area -->
+                                        <!-- Bottom-right large area - ->
                                         <path d="M11 9.5l3 1.5 4-1V16l-7 .5v-5.5z" fill="white" fill-opacity="0.15" stroke-width="1"/>
-                                        <!-- Area borders -->
+                                        <!-- Area borders - ->
                                         <path d="M7 5v8.5M5 9l6-.5" stroke-width="1" opacity="0.7"/>
                                         <path d="M2 16.5l5-1.5 4 1.5 7-1" stroke-width="1.2" opacity="0.6"/>
                                     </svg>
@@ -7807,7 +7808,7 @@
                         </div>
                     </div>
 
-                    <!-- Filter areas — moved from property filters -->
+                    <!-- Filter areas — moved from property filters - ->
                     <div class="filters-section" style="padding-top: 0;">
                         <div style="border-top: 1px solid #eaeaea; margin: 0 -22px 14px;"></div>
                         <div style="margin-bottom: 8px;">
@@ -7822,8 +7823,10 @@
                 </div>
             </div>
 
-            <!-- ── Panel 2: Data filters ── -->
-            <div class="sub-panel-section" id="panel-filters">
+            END CITY SELECT PANEL -->
+
+                        <!-- ── Panel 2: Data filters ── -->
+            <div class="sub-panel-section active" id="panel-filters">
                 <!-- Data panel tabs -->
                 <div class="data-panel-tabs">
                     <button class="data-panel-tab active" data-tab="property">Property data</button>
@@ -11512,8 +11515,9 @@
             });
         }
 
-        // Open area-data by default
-        openPanel('area-data');
+        // CITY panel disabled — open filters by default
+        // openPanel('area-data');  // restore when city panel is re-enabled
+        openPanel('filters');
 
         // ── Data panel tabs ── (also syncs header toggle)
         function switchDataTab(tabValue) {

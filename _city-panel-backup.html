@@ -1,0 +1,65 @@
+<!--
+  CITY PANEL — temporarily removed from main prototype
+  To restore:
+    1. Un-comment the CITY rail button + divider in index.html (search "CITY RAIL BUTTON — disabled")
+    2. Un-comment the city select panel in index.html (search "CITY SELECT PANEL — disabled")
+    3. Change openPanel('filters') back to openPanel('area-data')
+    4. Remove "active" class from panel-filters div
+-->
+
+<!-- ICON RAIL: CITY button + divider -->
+<button class="icon-rail-btn" id="rail-area-data" data-panel="area-data" data-tooltip="Select city">
+    <span class="rail-text-label">CITY</span>
+</button>
+<div class="icon-rail-divider"></div>
+
+<!-- SUB-PANEL: City select panel -->
+<div class="sub-panel-section active" id="panel-area-data">
+    <div class="city-list-header">Locations we currently track</div>
+    <div class="city-list">
+        <div class="city-list-item active">
+            <div class="city-card-photo" style="background-image: url('images/houston.jpg');">
+                <div class="city-card-overlay">
+                    <div>
+                        <span class="city-name">Houston</span>
+                        <span class="city-state" style="margin-top:3px;">TX</span>
+                    </div>
+                    <div class="city-active-dot"></div>
+                </div>
+            </div>
+        </div>
+        <div class="city-list-item">
+            <div class="city-card-photo" style="background-image: url('images/baltimore.jpg');">
+                <div class="city-card-overlay">
+                    <div>
+                        <span class="city-name">Baltimore</span>
+                        <span class="city-state" style="margin-top:3px;">MD</span>
+                    </div>
+                    <div class="city-active-dot"></div>
+                </div>
+            </div>
+        </div>
+        <div class="city-list-item">
+            <div class="city-card-photo" style="background-image: url('images/boston.jpg');">
+                <div class="city-card-overlay">
+                    <div>
+                        <span class="city-name">Boston</span>
+                        <span class="city-state" style="margin-top:3px;">MA</span>
+                    </div>
+                    <div class="city-active-dot"></div>
+                </div>
+            </div>
+        </div>
+        <div class="city-list-item">
+            <div class="city-card-photo" style="background-image: url('images/miami.jpg');">
+                <div class="city-card-overlay">
+                    <div>
+                        <span class="city-name">Miami</span>
+                        <span class="city-state" style="margin-top:3px;">FL</span>
+                    </div>
+                    <div class="city-active-dot"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
