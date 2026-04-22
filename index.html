@@ -7633,7 +7633,7 @@
 
         <!-- Status sentence — property mode -->
         <div class="app-header-status" id="header-status-property">
-            Showing <b>2019</b> data for <b id="stat-prop-types">Commerc...</b> properties with <b>1–50</b> units belonging to <b id="stat-prop-landlords">corpor...</b> landlords
+            Showing <b>2019</b> data for <b id="stat-prop-types">Commercial, ...</b> properties with <b>1–50</b> units belonging to <b id="stat-prop-landlords">corporate, ...</b> landlords with <b id="stat-adv-count">5</b> adv filters
         </div>
 
         <!-- Status sentence — area mode (hidden by default) -->
@@ -11591,10 +11591,11 @@
 
         // ── Status sentence reactive to chip selections ──
         (function() {
-            // Helper: first word of text + "..."
-            function firstWord(text) {
-                var w = text.trim().split(/\s+/)[0];
-                return w + '...';
+            // Format label: single selection = just label; multiple = "Label, ..."
+            function fmtLabel(labels) {
+                if (labels.length === 0) return 'none';
+                if (labels.length === 1) return labels[0];
+                return labels[0] + ', ...';
             }
 
             // Area: metric chips
@@ -11603,11 +11604,9 @@
                     btn.addEventListener('click', function() {
                         var label = btn.textContent.trim();
                         if (listIdx === 0) {
-                            // Metric list
                             var el = document.getElementById('stat-area-metric');
                             if (el) el.textContent = label;
                         } else {
-                            // Geography list
                             var el = document.getElementById('stat-area-geo');
                             if (el) el.textContent = label;
                         }
@@ -11622,12 +11621,11 @@
                 ));
                 var el = document.getElementById('stat-prop-types');
                 if (!el) return;
-                if (checked.length === 0) { el.textContent = 'none'; return; }
                 var labels = checked.map(function(cb) {
                     var txt = cb.closest('.data-check-item');
                     return txt ? txt.querySelector('.data-check-text').textContent.trim() : '';
                 }).filter(Boolean);
-                el.textContent = firstWord(labels[0]);
+                el.textContent = fmtLabel(labels);
             }
 
             // Landlord: type chips
@@ -11638,12 +11636,11 @@
                 var checked = Array.from(landlordList.querySelectorAll('.data-check-item input:checked'));
                 var el = document.getElementById('stat-prop-landlords');
                 if (!el) return;
-                if (checked.length === 0) { el.textContent = 'none'; return; }
                 var labels = checked.map(function(cb) {
                     var txt = cb.closest('.data-check-item');
                     return txt ? txt.querySelector('.data-check-text').textContent.trim() : '';
                 }).filter(Boolean);
-                el.textContent = firstWord(labels[0]);
+                el.textContent = fmtLabel(labels);
             }
 
             // Wire up property type checkboxes
