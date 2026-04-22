@@ -7325,21 +7325,31 @@
         /* Checklist */
         .data-checklist {
             display: flex;
-            flex-direction: column;
-            gap: 0;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding: 4px 0 2px;
         }
 
         .data-check-item {
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 5px 0;
+            padding: 5px 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
             cursor: pointer;
-            font-size: 13px;
+            font-size: 12px;
             font-family: 'Akkurat', sans-serif;
-            color: #333;
+            color: #555;
+            background: #fff;
             line-height: 1.3;
             user-select: none;
+            transition: border-color 0.12s, background 0.12s, color 0.12s;
+        }
+
+        .data-check-item:has(input:checked) {
+            border-color: #d63d00;
+            background: rgba(214,61,0,0.07);
+            color: #d63d00;
         }
 
         .data-check-item input[type="checkbox"] {
@@ -7347,26 +7357,12 @@
         }
 
         .data-check-dot {
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            border: 2px solid #d0d5e8;
-            flex-shrink: 0;
-            transition: border-color 0.12s, background 0.12s;
-        }
-
-        .data-check-dot.orange {
-            border-color: #d63d00;
-            background: #d63d00;
-        }
-
-        .data-check-item input[type="checkbox"]:not(:checked) + .data-check-dot.orange {
-            background: transparent;
+            display: none;
         }
 
         .data-check-text {
-            font-size: 13px;
-            color: #d63d00;
+            font-size: 12px;
+            color: inherit;
         }
 
         /* Number of units inputs */
@@ -7529,55 +7525,41 @@
         /* Option list (metrics, geography) */
         .data-option-list {
             display: flex;
-            flex-direction: column;
-            gap: 0;
+            flex-wrap: wrap;
+            gap: 6px;
             padding: 0 20px;
             margin-bottom: 4px;
         }
 
         .data-option-item {
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            padding: 8px 10px;
-            font-size: 13px;
+            padding: 5px 12px;
+            font-size: 12px;
             font-family: 'Akkurat', sans-serif;
-            color: #333;
-            background: none;
-            border: none;
-            border-radius: 5px;
+            color: #555;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
             cursor: pointer;
             text-align: left;
-            transition: background 0.12s, color 0.12s;
+            transition: border-color 0.12s, background 0.12s, color 0.12s;
         }
 
         .data-option-item:hover:not(.active) {
-            background: #f5f5f5;
+            border-color: #ccc;
+            background: #f7f7f7;
         }
 
         .data-option-item.active {
             color: #d63d00;
-            font-weight: 700;
+            font-weight: 600;
             background: rgba(214,61,0,0.07);
+            border-color: #d63d00;
         }
 
-        .data-option-item.active::before {
-            content: '';
-            display: inline-block;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background: #d63d00;
-            margin-right: 8px;
-            flex-shrink: 0;
-        }
-
-        .data-option-item:not(.active)::before {
-            content: '';
-            display: inline-block;
-            width: 5px;
-            height: 5px;
-            margin-right: 8px;
-            flex-shrink: 0;
+        .data-option-item.active::before { display: none; }
+        .data-option-item:not(.active)::before { display: none; /* was dot */
         }
 
         /* Icon rail text-label buttons (CITY, DATA) */
