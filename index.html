@@ -2969,7 +2969,12 @@
             width: 8px;
             height: 6px;
             flex-shrink: 0;
-            margin-left: 3px;
+            margin-left: 0;
+        }
+        .app-logo-label-group {
+            display: flex;
+            align-items: center;
+            gap: 3px;
         }
         /* ── City selector in main header logo ── */
         .app-header-logo-wrap {
@@ -2991,13 +2996,13 @@
         }
         .app-logo-city-dropdown {
             position: absolute;
-            top: calc(100% + 12px);
+            top: calc(100% + 10px);
             left: 0;
-            background: #fff;
-            border: 1px solid #e8e8e8;
-            border-radius: 8px;
-            box-shadow: 0 6px 24px rgba(0,0,0,0.12);
-            min-width: 150px;
+            background: #ffffff;
+            border: 1px solid #ebebeb;
+            border-radius: 10px;
+            box-shadow: 0 8px 28px rgba(0,0,0,0.14), 0 2px 8px rgba(0,0,0,0.07);
+            min-width: 160px;
             display: none;
             z-index: 9999;
             overflow: hidden;
@@ -3217,7 +3222,7 @@
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 3px;
             padding: 0;
             pointer-events: auto;
         }
@@ -3244,11 +3249,11 @@
             position: absolute;
             top: calc(100% + 10px);
             left: 0;
-            background: #fff;
-            border: 1px solid #e8e8e8;
-            border-radius: 8px;
-            box-shadow: 0 6px 24px rgba(0,0,0,0.12);
-            min-width: 150px;
+            background: #ffffff;
+            border: 1px solid #ebebeb;
+            border-radius: 10px;
+            box-shadow: 0 8px 28px rgba(0,0,0,0.14), 0 2px 8px rgba(0,0,0,0.07);
+            min-width: 160px;
             display: none;
             z-index: 2000;
             overflow: hidden;
@@ -7595,13 +7600,13 @@
         <div class="app-header-logo-wrap" id="app-logo-wrap">
             <button class="app-header-logo" id="app-logo-btn">
                 <div class="app-header-logo-mark"></div>
-                <span class="app-header-logo-text">WHO OWNS <span class="app-logo-city">BOSTON</span></span><svg class="app-header-logo-chevron" viewBox="0 0 8 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.5l3 3 3-3" stroke="#d63d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="app-logo-label-group"><span class="app-header-logo-text">WHO OWNS <span class="app-logo-city">BOSTON</span></span><svg class="app-header-logo-chevron" viewBox="0 0 8 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.5l3 3 3-3" stroke="#d63d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             </button>
             <div class="app-logo-city-dropdown" id="app-logo-city-dropdown">
                 <button class="app-logo-city-option active">Boston</button>
+                <button class="app-logo-city-option">Miami</button>
                 <button class="app-logo-city-option">Houston</button>
                 <button class="app-logo-city-option">Baltimore</button>
-                <button class="app-logo-city-option">Miami</button>
             </div>
         </div>
 
@@ -8843,9 +8848,9 @@
                         </button>
                         <div class="modal-city-dropdown" id="modal-city-dropdown">
                             <button class="modal-city-option active">Boston</button>
+                            <button class="modal-city-option">Miami</button>
                             <button class="modal-city-option">Houston</button>
                             <button class="modal-city-option">Baltimore</button>
-                            <button class="modal-city-option">Miami</button>
                         </div>
                     </div>
                 </div>
