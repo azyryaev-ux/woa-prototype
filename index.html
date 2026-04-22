@@ -7461,7 +7461,7 @@
         }
 
         .data-advanced-section {
-            margin-top: 20px;
+            margin-top: 36px;
             padding-top: 0;
         }
 
@@ -7470,7 +7470,7 @@
             font-family: 'Akkurat', sans-serif;
             color: #888;
             line-height: 1.55;
-            margin: 0 0 12px;
+            margin: 10px 0 16px;
         }
 
         .data-advanced-box {
@@ -7631,12 +7631,12 @@
 
         <!-- Status sentence — property mode -->
         <div class="app-header-status" id="header-status-property">
-            Showing <b>2019</b> data for <b>Commercial, ...</b> properties with <b>1–50</b> units belonging to <b>corporate, ...</b> landlords with <b>23 adv filters</b>
+            Showing <b>2019</b> data for <b id="stat-prop-types">Commerc...</b> properties with <b>1–50</b> units belonging to <b id="stat-prop-landlords">corpor...</b> landlords
         </div>
 
         <!-- Status sentence — area mode (hidden by default) -->
         <div class="app-header-status" id="header-status-area" style="display:none;">
-            Showing <b>2019</b> area data and <b>poverty rate</b> for <b>ZIP codes</b>
+            Showing <b>2019</b> area data and <b id="stat-area-metric">% Corporate-owned units</b> for <b id="stat-area-geo">ZIP code</b>
         </div>
 
         <div class="app-header-spacer"></div>
@@ -7985,7 +7985,7 @@
                             </div>
 
                             <!-- Advanced filters -->
-                            <div class="data-advanced-section" style="margin-top:8px;">
+                            <div class="data-advanced-section">
                                 <div class="data-filter-section-label" style="margin-bottom:6px;">Advanced filters</div>
                                 <p class="data-advanced-desc">Advanced filters let you narrow results by things like filing date, building age, assessed value, and eviction history. They stack on top of the basic filters above.</p>
                                 <div class="data-advanced-box">
@@ -11587,7 +11587,77 @@
             });
         });
 
-        // Clicking the "2019" year trigger in the area data summary opens the header year dropdown
+        // ── Status sentence reactive to chip selections ──
+        (function() {
+            // Helper: first word of text + "..."
+            function firstWord(text) {
+                var w = text.trim().split(/\s+/)[0];
+                return w + '...';
+            }
+
+            // Area: metric chips
+            document.querySelectorAll('#data-tab-area .data-option-list').forEach(function(list, listIdx) {
+                list.querySelectorAll('.data-option-item').forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        var label = btn.textContent.trim();
+                        if (listIdx === 0) {
+                            // Metric list
+                            var el = document.getElementById('stat-area-metric');
+                            if (el) el.textContent = label;
+                        } else {
+                            // Geography list
+                            var el = document.getElementById('stat-area-geo');
+                            if (el) el.textContent = label;
+                        }
+                    });
+                });
+            });
+
+            // Property: type chips
+            function updatePropTypeStatus() {
+                var checked = Array.from(document.querySelectorAll(
+                    '#data-tab-property .data-checklist:first-of-type .data-check-item input:checked'
+                ));
+                var el = document.getElementById('stat-prop-types');
+                if (!el) return;
+                if (checked.length === 0) { el.textContent = 'none'; return; }
+                var labels = checked.map(function(cb) {
+                    var txt = cb.closest('.data-check-item');
+                    return txt ? txt.querySelector('.data-check-text').textContent.trim() : '';
+                }).filter(Boolean);
+                el.textContent = firstWord(labels[0]);
+            }
+
+            // Landlord: type chips
+            function updateLandlordStatus() {
+                var checklists = document.querySelectorAll('#data-tab-property .data-checklist');
+                var landlordList = checklists[checklists.length - 1];
+                if (!landlordList) return;
+                var checked = Array.from(landlordList.querySelectorAll('.data-check-item input:checked'));
+                var el = document.getElementById('stat-prop-landlords');
+                if (!el) return;
+                if (checked.length === 0) { el.textContent = 'none'; return; }
+                var labels = checked.map(function(cb) {
+                    var txt = cb.closest('.data-check-item');
+                    return txt ? txt.querySelector('.data-check-text').textContent.trim() : '';
+                }).filter(Boolean);
+                el.textContent = firstWord(labels[0]);
+            }
+
+            // Wire up property type checkboxes
+            document.querySelectorAll('#data-tab-property .data-check-item input[type="checkbox"]').forEach(function(cb) {
+                cb.addEventListener('change', function() {
+                    updatePropTypeStatus();
+                    updateLandlordStatus();
+                });
+            });
+
+            // Init on load
+            updatePropTypeStatus();
+            updateLandlordStatus();
+        })();
+
+                // Clicking the "2019" year trigger in the area data summary opens the header year dropdown
         const yearTrigger = document.getElementById('area-data-year-trigger');
         const headerYearSelect = document.getElementById('app-header-year-select');
         if (yearTrigger && headerYearSelect) {
