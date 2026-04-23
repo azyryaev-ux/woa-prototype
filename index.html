@@ -11614,11 +11614,12 @@
                 });
             });
 
-            // Property: type chips
+            // Property: type chips (index 0 = property type, last = landlord type)
             function updatePropTypeStatus() {
-                var checked = Array.from(document.querySelectorAll(
-                    '#data-tab-property .data-checklist:first-of-type .data-check-item input:checked'
-                ));
+                var lists = document.querySelectorAll('#data-tab-property .data-checklist');
+                var propList = lists[0];
+                if (!propList) return;
+                var checked = Array.from(propList.querySelectorAll('.data-check-item input:checked'));
                 var el = document.getElementById('stat-prop-types');
                 if (!el) return;
                 var labels = checked.map(function(cb) {
