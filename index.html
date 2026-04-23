@@ -9096,15 +9096,15 @@
                         <div class="timeline-chart-legend">
                             <div class="legend-item">
                                 <span class="legend-dot" style="background:#D96E4A;"></span>
-                                <span>Eviction<br>filings</span>
+                                <span>Eviction filings</span>
                             </div>
                             <div class="legend-item">
                                 <span class="legend-dot" style="background:#C4AA6A;"></span>
-                                <span>Code<br>complaints</span>
+                                <span>Code complaints</span>
                             </div>
                             <div class="legend-item">
-                                <span style="display:inline-block;background:#333;color:#fff;font-size:9px;font-weight:600;padding:2px 6px;border-radius:3px;flex-shrink:0;">P</span>
-                                <span>Property<br>purchased</span>
+                                <span style="display:inline-block;background:#111;color:#fff;font-size:11px;font-weight:600;padding:3px 8px;border-radius:4px;flex-shrink:0;font-family:'Akkurat Mono',monospace;letter-spacing:0.2px;">Purchase</span>
+                                <span>Property purchased</span>
                             </div>
                         </div>
                     </div>
@@ -9122,19 +9122,19 @@
                         <div class="timeline-chart-legend">
                             <div class="legend-item">
                                 <span class="legend-dot" style="background:#5AA0D4;"></span>
-                                <span>HUD Project-Based<br>Rental Assistance (PBRA)</span>
+                                <span>HUD Project-Based Rental Assistance (PBRA)</span>
                             </div>
                             <div class="legend-item">
                                 <span class="legend-dot" style="background:#9B8EC4;"></span>
-                                <span>Low Income Housing<br>Tax Credits (LIHTC)</span>
+                                <span>Low Income Housing Tax Credits (LIHTC)</span>
                             </div>
                             <div class="legend-item">
                                 <span class="legend-dot" style="background:#A8B8A8;"></span>
-                                <span>Section 202 Supportive<br>Housing for the Elderly</span>
+                                <span>Section 202 Supportive Housing for the Elderly</span>
                             </div>
                             <div class="legend-item">
-                                <span style="display:inline-block;background:#333;color:#fff;font-size:9px;font-weight:600;padding:2px 6px;border-radius:3px;flex-shrink:0;">P</span>
-                                <span>Property<br>purchased</span>
+                                <span style="display:inline-block;background:#111;color:#fff;font-size:11px;font-weight:600;padding:3px 8px;border-radius:4px;flex-shrink:0;font-family:'Akkurat Mono',monospace;letter-spacing:0.2px;">Purchase</span>
+                                <span>Property purchased</span>
                             </div>
                         </div>
                     </div>
@@ -11150,25 +11150,23 @@
     /* ── Changes 7 & 8: timeline chart legend ── */
     .timeline-chart-legend {
         display: flex;
-        align-items: flex-start;
+        align-items: center;
         gap: 24px;
         flex-wrap: wrap;
-        margin-top: 12px;
-        font-size: 12px;
-        color: #555;
-        max-width: 640px;
+        margin-top: 16px;
+        font-size: 13px;
+        color: #444;
     }
     .legend-item {
         display: flex;
         align-items: center;
         gap: 8px;
-        line-height: 1.4;
+        white-space: nowrap;
+        line-height: 1;
     }
     .legend-item .legend-dot,
     .legend-item .legend-dash {
         flex-shrink: 0;
-        align-self: flex-start;
-        margin-top: 3px;
     }
     .legend-dot {
         display: inline-block;
