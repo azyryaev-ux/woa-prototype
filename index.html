@@ -12449,70 +12449,7 @@
             pointer-events: none;
         }
         /* Hero inner header bar */
-        .afp-hero-header {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%;
-            height: 60px;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
-            box-sizing: border-box;
-            z-index: 2;
-        }
-        .afp-logo-area {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .afp-logo-bg {
-            width: 24px; height: 24px;
-            background: #e1e1e1;
-            border-radius: 12px;
-            flex-shrink: 0;
-        }
-        .afp-logo-text {
-            font-family: 'Akkurat', sans-serif;
-            font-weight: 700;
-            font-size: 11px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            color: black;
-        }
-        .afp-menu-btn {
-            background: rgba(255,255,255,0.9);
-            border: 1px solid rgba(255,255,255,0.3);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            padding: 1px;
-            cursor: pointer;
-        }
-        .afp-menu-label {
-            font-family: 'Akkurat Mono', monospace;
-            font-size: 10px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            color: rgba(0,0,0,0.7);
-            padding: 13px 12px;
-        }
-        .afp-menu-icon {
-            width: 44px; height: 44px;
-            display: flex; align-items: center; justify-content: center;
-        }
-        .afp-menu-icon-bars {
-            display: flex; flex-direction: column; justify-content: space-between;
-            width: 18px; height: 10px;
-        }
-        .afp-menu-icon-bars span {
-            display: block;
-            height: 1.5px;
-            background: black;
-            border-radius: 6px;
-        }
+        /* hero header replaced by modal-header-bar classes */
         /* Breadcrumb */
         .afp-breadcrumb {
             position: absolute;
@@ -12535,8 +12472,8 @@
             font-size: 10px;
             transform: rotate(-90deg);
         }
-        /* View in map button */
-        .afp-view-map-btn {
+        /* View in map removed */
+        .afp-view-map-btn-unused {
             position: absolute;
             bottom: 28px; left: 48px;
             height: 44px;
@@ -12556,8 +12493,8 @@
             font-size: 13px;
             color: white;
         }
-        /* Back button */
-        .afp-back-btn {
+        /* Back button — replaced by property-back-btn */
+        .afp-back-btn-unused {
             position: absolute;
             top: 70px; left: 20px;
             background: none;
@@ -12654,7 +12591,7 @@
         }
         .afp-header-badges {
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
             gap: 8px;
             align-items: center;
         }
@@ -12695,11 +12632,10 @@
             flex-shrink: 0;
         }
         .afp-btn-share {
-            background: linear-gradient(180deg, #ef4400 0%, #d63d00 100%);
-            border: 2px solid rgba(255,255,255,0.12);
+            background: linear-gradient(180deg, #1a1a1a 0%, #000 100%);
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 6px;
             height: 44px;
-            width: 191px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -12710,9 +12646,10 @@
             color: white;
             font-family: 'Akkurat Mono', monospace;
             font-size: 14px;
+            white-space: nowrap;
             flex-shrink: 0;
         }
-        .afp-btn-share:hover { opacity: 0.92; }
+        .afp-btn-share:hover { background: linear-gradient(180deg, #333 0%, #1a1a1a 100%); }
         .afp-btn-csv {
             background: white;
             border: 1px solid #d1d1d1;
@@ -13055,19 +12992,41 @@
 
         <!-- Hero Section -->
         <div class="afp-hero">
-            <!-- Hero header bar -->
-            <div class="afp-hero-header">
-                <div class="afp-logo-area">
-                    <div class="afp-logo-bg"></div>
-                    <span class="afp-logo-text">logo</span>
-                </div>
-                <div class="afp-menu-btn">
-                    <span class="afp-menu-label">Menu</span>
-                    <div class="afp-menu-icon">
-                        <div class="afp-menu-icon-bars">
-                            <span></span>
-                            <span></span>
+            <!-- Header bar — reuses modal-header-bar classes (same as landlord/property pages) -->
+            <div class="modal-header-bar">
+                <div class="modal-header-left">
+                    <div class="modal-logo-container">
+                        <div class="modal-logo"></div>
+                        <div class="modal-city-select-wrap">
+                            <button class="modal-city-trigger" id="afp-city-trigger">
+                                <span class="modal-logo-wordmark">WHO OWNS <span class="modal-city-name">BOSTON</span></span>
+                                <svg class="modal-city-chevron" viewBox="0 0 8 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.5l3 3 3-3" stroke="#d63d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </button>
+                            <div class="modal-city-dropdown" id="afp-city-dropdown">
+                                <button class="modal-city-option active">Boston</button>
+                                <button class="modal-city-option">Miami</button>
+                                <button class="modal-city-option">Houston</button>
+                                <button class="modal-city-option">Baltimore</button>
+                            </div>
                         </div>
+                    </div>
+                </div>
+                <div class="modal-header-right">
+                    <div class="modal-header-year">
+                        <div class="property-year modal-header-year-inner">
+                            <span class="property-year-label">Viewing data for</span>
+                            <select class="property-year-dropdown">
+                                <option selected>2019</option>
+                                <option>2020</option>
+                                <option>2021</option>
+                                <option>2022</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-menu-container">
+                        <button class="modal-menu-button" id="afp-menu-btn">
+                            <div class="modal-menu-icon"><span></span><span></span></div>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -13077,29 +13036,15 @@
                 <span class="afp-breadcrumb-sep">&#8250;</span>
                 <span class="afp-breadcrumb-text">Boston, MA</span>
             </div>
-            <!-- Back btn -->
-            <button class="afp-back-btn" id="afp-back-btn">&#8592; Go back</button>
-            <!-- View in map button -->
-            <button class="afp-view-map-btn">
-                <span>View in map</span>
-            </button>
+            <!-- Back button — frosted glass, same as landlord page -->
+            <button class="property-back-btn" id="afp-back-btn">&#8592; Go back</button>
         </div><!-- end hero -->
 
         <!-- White Header Content Section -->
         <div class="afp-header-section">
-            <!-- Row 1 -->
-            <div class="afp-header-row1">
+            <!-- "AREA" micro-label only (Viewing data for moved to header) -->
+            <div class="afp-header-row1" style="margin-bottom:12px;">
                 <span class="afp-area-micro-label">Area</span>
-                <div class="afp-row1-right">
-                    <span class="afp-row1-year-label">Viewing data for</span>
-                    <select class="afp-row1-year-select">
-                        <option>2019</option>
-                        <option>2020</option>
-                        <option>2021</option>
-                        <option>2022</option>
-                        <option>2023</option>
-                    </select>
-                </div>
             </div>
             <!-- Row 2 -->
             <div class="afp-header-row2">
@@ -13626,6 +13571,26 @@
         if (backBtn) backBtn.addEventListener('click', function() {
             document.getElementById('area-full-page-modal').classList.remove('active');
         });
+        // City dropdown
+        (function() {
+            var trigger = document.getElementById('afp-city-trigger');
+            var dropdown = document.getElementById('afp-city-dropdown');
+            if (!trigger || !dropdown) return;
+            trigger.addEventListener('click', function(e) { e.stopPropagation(); dropdown.classList.toggle('open'); });
+            dropdown.querySelectorAll('.modal-city-option').forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    dropdown.querySelectorAll('.modal-city-option').forEach(function(b) { b.classList.remove('active'); });
+                    btn.classList.add('active');
+                    var cs = trigger.querySelector('.modal-city-name');
+                    if (cs) cs.textContent = btn.textContent;
+                    dropdown.classList.remove('open');
+                });
+            });
+            document.addEventListener('click', function(e) {
+                if (!trigger.contains(e.target) && !dropdown.contains(e.target)) dropdown.classList.remove('open');
+            });
+        })();
         // Escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') document.getElementById('area-full-page-modal').classList.remove('active');
