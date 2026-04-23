@@ -12822,6 +12822,34 @@
             margin-bottom: 0;
         }
         .afp-section-title .afp-accent { color: #d63d00; }
+        /* Dropdown-style heading button */
+        .afp-heading-dropdown-wrap { position: relative; display: inline-block; }
+        .afp-heading-trigger {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: none; border: none; cursor: pointer; padding: 0;
+            font-family: 'Akkurat', sans-serif; font-weight: 700;
+            font-size: 32px; letter-spacing: -0.64px; color: #d63d00;
+            line-height: 1;
+        }
+        .afp-heading-trigger svg { flex-shrink: 0; margin-top: 2px; }
+        .afp-heading-menu {
+            position: absolute; top: calc(100% + 8px); left: 0;
+            background: #fff; border: 1px solid #ebebeb;
+            border-radius: 10px;
+            box-shadow: 0 8px 28px rgba(0,0,0,0.14), 0 2px 8px rgba(0,0,0,0.07);
+            min-width: 220px; display: none; z-index: 200; overflow: hidden;
+        }
+        .afp-heading-menu.open { display: block; }
+        .afp-heading-option {
+            display: block; width: 100%; padding: 12px 18px;
+            background: none; border: none; border-bottom: 1px solid #f2f2f2;
+            cursor: pointer; text-align: left;
+            font-size: 15px; font-family: 'Akkurat', sans-serif;
+            font-weight: 500; color: #333; transition: background 0.1s;
+        }
+        .afp-heading-option:last-child { border-bottom: none; }
+        .afp-heading-option:hover { background: #f7f7f7; }
+        .afp-heading-option.active { color: #d63d00; font-weight: 700; }
         .afp-section-desc {
             font-family: 'Akkurat', sans-serif;
             font-weight: 400;
@@ -12924,6 +12952,7 @@
             font-weight: 700;
             font-size: 32px;
             color: black;
+            display: flex; align-items: center; flex-wrap: wrap; gap: 6px;
         }
         .afp-top10-title .afp-accent { color: #d63d00; }
         .afp-table {
@@ -13168,7 +13197,20 @@
             <!-- Section: Poverty rate over time -->
             <div class="afp-section" id="afp-section-poverty">
                 <div style="display:flex; align-items:center; gap:8px; padding-bottom:0.5px;">
-                    <div class="afp-section-title">Poverty rate over time</div>
+                    <div class="afp-section-title" style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                        <span style="color:#000;">Poverty rate</span>
+                        <div class="afp-heading-dropdown-wrap">
+                            <button class="afp-heading-trigger" id="afp-poverty-trigger">
+                                <span id="afp-poverty-label">over time</span>
+                                <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 2l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </button>
+                            <div class="afp-heading-menu" id="afp-poverty-menu">
+                                <button class="afp-heading-option active" data-afp-target="afp-poverty-label">over time</button>
+                                <button class="afp-heading-option" data-afp-target="afp-poverty-label">by ZIP code</button>
+                                <button class="afp-heading-option" data-afp-target="afp-poverty-label">vs. city average</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <p class="afp-section-desc">Boston has seen a consistent rise in its poverty rate over the past two decades, driven by rising housing costs and displacement of lower-income residents from central neighborhoods.</p>
                 <div class="afp-chart-wrap" style="margin-top:24px;">
@@ -13341,7 +13383,32 @@
             <!-- Section: Top 10 landlords -->
             <div class="afp-section afp-section-top10" id="afp-section-top10" style="padding: 40px 0; background: transparent;">
                 <div class="afp-top10-header">
-                    <div class="afp-top10-title">Top 10 largest <span class="afp-accent">landlords</span> by <span class="afp-accent">units</span></div>
+                    <div class="afp-top10-title">
+                        <span>Top 10 largest</span>
+                        <div class="afp-heading-dropdown-wrap">
+                            <button class="afp-heading-trigger" id="afp-landlord-trigger">
+                                <span id="afp-landlord-label">landlords</span>
+                                <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 2l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </button>
+                            <div class="afp-heading-menu" id="afp-landlord-menu">
+                                <button class="afp-heading-option active" data-afp-target="afp-landlord-label">landlords</button>
+                                <button class="afp-heading-option" data-afp-target="afp-landlord-label">owners</button>
+                                <button class="afp-heading-option" data-afp-target="afp-landlord-label">corporations</button>
+                            </div>
+                        </div>
+                        <span>by</span>
+                        <div class="afp-heading-dropdown-wrap">
+                            <button class="afp-heading-trigger" id="afp-units-trigger">
+                                <span id="afp-units-label">units</span>
+                                <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 2l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </button>
+                            <div class="afp-heading-menu" id="afp-units-menu">
+                                <button class="afp-heading-option active" data-afp-target="afp-units-label">units</button>
+                                <button class="afp-heading-option" data-afp-target="afp-units-label">filings</button>
+                                <button class="afp-heading-option" data-afp-target="afp-units-label">properties</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div style="overflow-x:auto;">
                 <table class="afp-table">
@@ -13368,13 +13435,7 @@
                             <td class="mono right">$60,000</td>
                             <td>Out of state</td>
                             <td>
-                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24">
-                                    <rect x="2" y="10" width="8" height="12" fill="#ef4400" rx="1"/>
-                                    <rect x="13" y="6" width="8" height="16" fill="#ef4400" rx="1"/>
-                                    <rect x="24" y="8" width="8" height="14" fill="#ef4400" rx="1"/>
-                                    <rect x="35" y="4" width="8" height="18" fill="#ef4400" rx="1"/>
-                                    <rect x="46" y="2" width="8" height="20" fill="#ef4400" rx="1"/>
-                                </svg>
+                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24"><polyline points="2.0,18 11.0,16 20.0,17 29.0,13 38.0,10 47.0,12 56.0,8" fill="none" stroke="#d63d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                             </td>
                             <td style="padding-right:48px;"><button class="afp-view-landlord-btn">View landlord</button></td>
                         </tr>
@@ -13387,13 +13448,7 @@
                             <td class="mono right">$60,000</td>
                             <td>Out of state</td>
                             <td>
-                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24">
-                                    <rect x="2" y="12" width="8" height="10" fill="#ef4400" rx="1"/>
-                                    <rect x="13" y="8" width="8" height="14" fill="#ef4400" rx="1"/>
-                                    <rect x="24" y="6" width="8" height="16" fill="#ef4400" rx="1"/>
-                                    <rect x="35" y="8" width="8" height="14" fill="#ef4400" rx="1"/>
-                                    <rect x="46" y="3" width="8" height="19" fill="#ef4400" rx="1"/>
-                                </svg>
+                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24"><polyline points="2.0,20 11.0,18 20.0,16 29.0,17 38.0,13 47.0,10 56.0,7" fill="none" stroke="#d63d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                             </td>
                             <td style="padding-right:48px;"><button class="afp-view-landlord-btn">View landlord</button></td>
                         </tr>
@@ -13406,13 +13461,7 @@
                             <td class="mono right">$60,000</td>
                             <td>Out of state</td>
                             <td>
-                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24">
-                                    <rect x="2" y="14" width="8" height="8" fill="#ef4400" rx="1"/>
-                                    <rect x="13" y="10" width="8" height="12" fill="#ef4400" rx="1"/>
-                                    <rect x="24" y="7" width="8" height="15" fill="#ef4400" rx="1"/>
-                                    <rect x="35" y="5" width="8" height="17" fill="#ef4400" rx="1"/>
-                                    <rect x="46" y="2" width="8" height="20" fill="#ef4400" rx="1"/>
-                                </svg>
+                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24"><polyline points="2.0,19 11.0,18 20.0,17 29.0,14 38.0,15 47.0,11 56.0,8" fill="none" stroke="#d63d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                             </td>
                             <td style="padding-right:48px;"><button class="afp-view-landlord-btn">View landlord</button></td>
                         </tr>
@@ -13425,13 +13474,7 @@
                             <td class="mono right">$60,000</td>
                             <td>Out of state</td>
                             <td>
-                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24">
-                                    <rect x="2" y="8" width="8" height="14" fill="#ef4400" rx="1"/>
-                                    <rect x="13" y="12" width="8" height="10" fill="#ef4400" rx="1"/>
-                                    <rect x="24" y="6" width="8" height="16" fill="#ef4400" rx="1"/>
-                                    <rect x="35" y="4" width="8" height="18" fill="#ef4400" rx="1"/>
-                                    <rect x="46" y="2" width="8" height="20" fill="#ef4400" rx="1"/>
-                                </svg>
+                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24"><polyline points="2.0,20 11.0,17 20.0,15 29.0,16 38.0,12 47.0,9 56.0,6" fill="none" stroke="#d63d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                             </td>
                             <td style="padding-right:48px;"><button class="afp-view-landlord-btn">View landlord</button></td>
                         </tr>
@@ -13444,13 +13487,7 @@
                             <td class="mono right">$60,000</td>
                             <td>Out of state</td>
                             <td>
-                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24">
-                                    <rect x="2" y="16" width="8" height="6" fill="#ef4400" rx="1"/>
-                                    <rect x="13" y="10" width="8" height="12" fill="#ef4400" rx="1"/>
-                                    <rect x="24" y="8" width="8" height="14" fill="#ef4400" rx="1"/>
-                                    <rect x="35" y="5" width="8" height="17" fill="#ef4400" rx="1"/>
-                                    <rect x="46" y="2" width="8" height="20" fill="#ef4400" rx="1"/>
-                                </svg>
+                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24"><polyline points="2.0,18 11.0,17 20.0,16 29.0,14 38.0,13 47.0,10 56.0,8" fill="none" stroke="#d63d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                             </td>
                             <td style="padding-right:48px;"><button class="afp-view-landlord-btn">View landlord</button></td>
                         </tr>
@@ -13463,13 +13500,7 @@
                             <td class="mono right">$60,000</td>
                             <td>Out of state</td>
                             <td>
-                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24">
-                                    <rect x="2" y="10" width="8" height="12" fill="#ef4400" rx="1"/>
-                                    <rect x="13" y="7" width="8" height="15" fill="#ef4400" rx="1"/>
-                                    <rect x="24" y="11" width="8" height="11" fill="#ef4400" rx="1"/>
-                                    <rect x="35" y="5" width="8" height="17" fill="#ef4400" rx="1"/>
-                                    <rect x="46" y="3" width="8" height="19" fill="#ef4400" rx="1"/>
-                                </svg>
+                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24"><polyline points="2.0,19 11.0,16 20.0,18 29.0,14 38.0,12 47.0,11 56.0,7" fill="none" stroke="#d63d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                             </td>
                             <td style="padding-right:48px;"><button class="afp-view-landlord-btn">View landlord</button></td>
                         </tr>
@@ -13482,13 +13513,7 @@
                             <td class="mono right">$60,000</td>
                             <td>Out of state</td>
                             <td>
-                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24">
-                                    <rect x="2" y="12" width="8" height="10" fill="#ef4400" rx="1"/>
-                                    <rect x="13" y="9" width="8" height="13" fill="#ef4400" rx="1"/>
-                                    <rect x="24" y="7" width="8" height="15" fill="#ef4400" rx="1"/>
-                                    <rect x="35" y="4" width="8" height="18" fill="#ef4400" rx="1"/>
-                                    <rect x="46" y="2" width="8" height="20" fill="#ef4400" rx="1"/>
-                                </svg>
+                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24"><polyline points="2.0,20 11.0,18 20.0,16 29.0,15 38.0,12 47.0,9 56.0,6" fill="none" stroke="#d63d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                             </td>
                             <td style="padding-right:48px;"><button class="afp-view-landlord-btn">View landlord</button></td>
                         </tr>
@@ -13501,13 +13526,7 @@
                             <td class="mono right">$60,000</td>
                             <td>Out of state</td>
                             <td>
-                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24">
-                                    <rect x="2" y="14" width="8" height="8" fill="#ef4400" rx="1"/>
-                                    <rect x="13" y="8" width="8" height="14" fill="#ef4400" rx="1"/>
-                                    <rect x="24" y="10" width="8" height="12" fill="#ef4400" rx="1"/>
-                                    <rect x="35" y="5" width="8" height="17" fill="#ef4400" rx="1"/>
-                                    <rect x="46" y="2" width="8" height="20" fill="#ef4400" rx="1"/>
-                                </svg>
+                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24"><polyline points="2.0,17 11.0,16 20.0,15 29.0,13 38.0,14 47.0,10 56.0,7" fill="none" stroke="#d63d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                             </td>
                             <td style="padding-right:48px;"><button class="afp-view-landlord-btn">View landlord</button></td>
                         </tr>
@@ -13520,13 +13539,7 @@
                             <td class="mono right">$60,000</td>
                             <td>Out of state</td>
                             <td>
-                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24">
-                                    <rect x="2" y="11" width="8" height="11" fill="#ef4400" rx="1"/>
-                                    <rect x="13" y="8" width="8" height="14" fill="#ef4400" rx="1"/>
-                                    <rect x="24" y="6" width="8" height="16" fill="#ef4400" rx="1"/>
-                                    <rect x="35" y="4" width="8" height="18" fill="#ef4400" rx="1"/>
-                                    <rect x="46" y="2" width="8" height="20" fill="#ef4400" rx="1"/>
-                                </svg>
+                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24"><polyline points="2.0,19 11.0,17 20.0,15 29.0,16 38.0,12 47.0,10 56.0,7" fill="none" stroke="#d63d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                             </td>
                             <td style="padding-right:48px;"><button class="afp-view-landlord-btn">View landlord</button></td>
                         </tr>
@@ -13539,13 +13552,7 @@
                             <td class="mono right">$60,000</td>
                             <td>Out of state</td>
                             <td>
-                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24">
-                                    <rect x="2" y="13" width="8" height="9" fill="#ef4400" rx="1"/>
-                                    <rect x="13" y="9" width="8" height="13" fill="#ef4400" rx="1"/>
-                                    <rect x="24" y="7" width="8" height="15" fill="#ef4400" rx="1"/>
-                                    <rect x="35" y="5" width="8" height="17" fill="#ef4400" rx="1"/>
-                                    <rect x="46" y="2" width="8" height="20" fill="#ef4400" rx="1"/>
-                                </svg>
+                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24"><polyline points="2.0,20 11.0,17 20.0,16 29.0,14 38.0,13 47.0,10 56.0,6" fill="none" stroke="#d63d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                             </td>
                             <td style="padding-right:48px;"><button class="afp-view-landlord-btn">View landlord</button></td>
                         </tr>
@@ -13568,6 +13575,38 @@
             }
         });
         // Close on back btn
+        // Heading dropdowns (poverty, landlords, units)
+        (function() {
+            var triggers = ['afp-poverty-trigger','afp-landlord-trigger','afp-units-trigger'];
+            var menus    = ['afp-poverty-menu',  'afp-landlord-menu',  'afp-units-menu'];
+            triggers.forEach(function(tid, i) {
+                var btn = document.getElementById(tid);
+                var menu = document.getElementById(menus[i]);
+                if (!btn || !menu) return;
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    // close others
+                    menus.forEach(function(mid) {
+                        if (mid !== menus[i]) { var m = document.getElementById(mid); if (m) m.classList.remove('open'); }
+                    });
+                    menu.classList.toggle('open');
+                });
+                menu.querySelectorAll('.afp-heading-option').forEach(function(opt) {
+                    opt.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        menu.querySelectorAll('.afp-heading-option').forEach(function(o) { o.classList.remove('active'); });
+                        opt.classList.add('active');
+                        var labelId = opt.dataset.afpTarget;
+                        var label = document.getElementById(labelId);
+                        if (label) label.textContent = opt.textContent;
+                        menu.classList.remove('open');
+                    });
+                });
+            });
+            document.addEventListener('click', function() {
+                menus.forEach(function(mid) { var m = document.getElementById(mid); if (m) m.classList.remove('open'); });
+            });
+        })();
         var backBtn = document.getElementById('afp-back-btn');
         if (backBtn) backBtn.addEventListener('click', function() {
             document.getElementById('area-full-page-modal').classList.remove('active');
