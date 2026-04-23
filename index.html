@@ -178,84 +178,90 @@
             flex-shrink: 0;
         }
 
-        /* Search Dropdown */
-        .search-dropdown {
+        /* Legacy search classes kept for compatibility */
+        .search-dropdown { display: none; }
+        .search-bar-wrapper { position: relative; flex: 1; min-width: 0; }
+
+        /* ── New header search (light mode, Figma node 4628:138713) ── */
+        .app-search-wrap {
+            position: relative;
+            flex-shrink: 0;
+        }
+        .app-search-dropdown {
             position: absolute;
-            top: 100%;
-            left: 0;
+            top: calc(100% + 10px);
             right: 0;
-            margin-top: 8px;
-            background: #1a1a1a;
-            border: 1px solid #333;
+            width: 320px;
+            background: #ffffff;
+            border: 1px solid #eaeaea;
             border-radius: 6px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-            z-index: 100;
+            box-shadow: 0 8px 28px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+            z-index: 500;
             display: none;
-            max-height: 400px;
             overflow: hidden;
         }
-
-        .search-dropdown.active {
-            display: block;
-        }
-
-        .search-dropdown-header {
+        .app-search-dropdown.open { display: block; }
+        .app-search-input-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
             padding: 12px 16px;
-            font-size: 13px;
-            color: #888;
-            font-weight: 400;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid #eaeaea;
         }
-
-        .search-section {
-            padding: 8px;
-            max-height: 300px;
-            overflow-y: auto;
-        }
-
-        .search-section-title {
-            padding: 8px 12px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #ededed;
-            margin-bottom: 4px;
-        }
-
-        .search-item {
-            padding: 8px 12px;
-            font-size: 14px;
-            color: #ededed;
-            cursor: pointer;
-            transition: background 0.15s ease;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .search-item:hover {
-            background: #2a2a2a;
-        }
-
-        .search-item-icon {
-            width: 20px;
-            height: 20px;
-            border-radius: 6px;
-            background: #2a2a2a;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            font-weight: 600;
-            color: #888;
-        }
-
-        .search-bar-wrapper {
-            position: relative;
+        .app-search-input {
             flex: 1;
-            min-width: 0;
+            border: none;
+            outline: none;
+            font-family: 'Akkurat', sans-serif;
+            font-size: 14px;
+            color: #111;
+            background: transparent;
         }
+        .app-search-input::placeholder { color: #bbb; }
+        .app-search-results { padding: 16px 0 8px; }
+        .app-search-section { padding: 0 16px 8px; }
+        .app-search-section-label {
+            font-family: 'Akkurat Mono', monospace;
+            font-size: 11px;
+            font-weight: 400;
+            color: #999;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        .app-search-items { display: flex; flex-direction: column; gap: 2px; }
+        .app-search-item {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 6px 8px;
+            border: none;
+            background: transparent;
+            font-family: 'Akkurat', sans-serif;
+            font-size: 14px;
+            color: #222;
+            letter-spacing: 0.02em;
+            line-height: 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.1s;
+        }
+        .app-search-item:hover { background: #f5f5f5; }
+        .app-search-divider {
+            height: 1px;
+            background: #eaeaea;
+            margin: 8px 16px;
+        }
+        .app-search-empty {
+            padding: 20px 16px;
+            font-family: 'Akkurat', sans-serif;
+            font-size: 14px;
+            color: #999;
+            text-align: center;
+        }
+        .app-search-item[data-type="address"]::before { content: "📍 "; font-size: 12px; }
+        .app-search-item[data-type="landlord"]::before { content: "👤 "; font-size: 12px; }
+        .app-search-item[data-type="area"]::before { content: "🗺 "; font-size: 12px; }
 
         /* Scrollable Content Area */
         .sidebar-content {
@@ -7654,13 +7660,60 @@
 
         <div class="app-header-spacer"></div>
 
-        <!-- Search icon box -->
-        <button class="app-header-search-btn" aria-label="Search">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <circle cx="11" cy="11" r="7" stroke-width="2"></circle>
-                <path d="m20 20-3.5-3.5" stroke-width="2" stroke-linecap="round"></path>
-            </svg>
-        </button>
+        <!-- Search button + dropdown wrapper -->
+        <div class="app-search-wrap" id="app-search-wrap">
+            <button class="app-header-search-btn" id="app-search-trigger" aria-label="Search">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="7" stroke-width="2"></circle>
+                    <path d="m20 20-3.5-3.5" stroke-width="2" stroke-linecap="round"></path>
+                </svg>
+            </button>
+            <!-- Search dropdown — light mode from Figma node 4628:138713 -->
+            <div class="app-search-dropdown" id="app-search-dropdown">
+                <div class="app-search-input-row">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></svg>
+                    <input class="app-search-input" id="app-search-input" type="text" placeholder="Search addresses, landlords, areas…" autocomplete="off">
+                </div>
+                <div class="app-search-results" id="app-search-results">
+                    <!-- ADDRESSES -->
+                    <div class="app-search-section" data-group="addresses">
+                        <div class="app-search-section-label">Addresses</div>
+                        <div class="app-search-items">
+                            <button class="app-search-item" data-type="address">235 Oak St, Brockton, MA 02301</button>
+                            <button class="app-search-item" data-type="address">84 Oak St, Brockton, MA 02301</button>
+                            <button class="app-search-item" data-type="address">38 Oak St, Brockton, MA 02301</button>
+                            <button class="app-search-item" data-type="address">195 Main St, Houston TX 77002</button>
+                            <button class="app-search-item" data-type="address">412 Shawmut Ave, Boston MA</button>
+                        </div>
+                    </div>
+                    <div class="app-search-divider"></div>
+                    <!-- LANDLORDS -->
+                    <div class="app-search-section" data-group="landlords">
+                        <div class="app-search-section-label">Landlords</div>
+                        <div class="app-search-items">
+                            <button class="app-search-item" data-type="landlord">75 Oak Hill Way LLC</button>
+                            <button class="app-search-item" data-type="landlord">Oakwood Properties Inc</button>
+                            <button class="app-search-item" data-type="landlord">Genesis Land Holdings</button>
+                            <button class="app-search-item" data-type="landlord">Maddock Construction LLC</button>
+                        </div>
+                    </div>
+                    <div class="app-search-divider"></div>
+                    <!-- AREAS -->
+                    <div class="app-search-section" data-group="areas">
+                        <div class="app-search-section-label">Areas</div>
+                        <div class="app-search-items">
+                            <button class="app-search-item" data-type="area">Oakwood</button>
+                            <button class="app-search-item" data-type="area">Oak Creek</button>
+                            <button class="app-search-item" data-type="area">Downtown Boston</button>
+                            <button class="app-search-item" data-type="area">Midtown Houston</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="app-search-empty" id="app-search-empty" style="display:none;">
+                    <span>No results for "<span id="app-search-empty-term"></span>"</span>
+                </div>
+            </div>
+        </div>
 
         <!-- Hamburger: 2 lines, no text -->
         <button class="app-header-menu" id="app-header-menu-btn" aria-label="Menu">
@@ -10384,34 +10437,68 @@
             content.classList.toggle('collapsed');
         });
 
-        // Search dropdown
-        const searchBar = document.querySelector('.search-bar');
-        const searchInput = document.querySelector('.search-bar input');
-        const searchDropdown = document.querySelector('.search-dropdown');
+        // ── Header search dropdown (light mode) ──
+        (function() {
+            var trigger = document.getElementById('app-search-trigger');
+            var dropdown = document.getElementById('app-search-dropdown');
+            var input = document.getElementById('app-search-input');
+            var resultsEl = document.getElementById('app-search-results');
+            var emptyEl = document.getElementById('app-search-empty');
+            var emptyTerm = document.getElementById('app-search-empty-term');
+            if (!trigger || !dropdown) return;
 
-        searchBar?.addEventListener('click', function(e) {
-            e.stopPropagation();
-            searchDropdown?.classList.add('active');
-        });
-
-        searchInput?.addEventListener('focus', function() {
-            searchDropdown?.classList.add('active');
-        });
-
-        document.addEventListener('click', function(e) {
-            if (searchBar && searchDropdown &&
-                !searchBar.contains(e.target) && !searchDropdown.contains(e.target)) {
-                searchDropdown.classList.remove('active');
+            function openSearch() {
+                dropdown.classList.add('open');
+                setTimeout(function() { if (input) input.focus(); }, 50);
             }
-        });
+            function closeSearch() { dropdown.classList.remove('open'); if (input) input.value = ''; filterResults(''); }
 
-        document.querySelectorAll('.search-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const span = this.querySelector('span');
-                if (searchInput && span) searchInput.value = span.textContent;
-                searchDropdown?.classList.remove('active');
+            trigger.addEventListener('click', function(e) { e.stopPropagation(); dropdown.classList.contains('open') ? closeSearch() : openSearch(); });
+
+            document.addEventListener('click', function(e) {
+                var wrap = document.getElementById('app-search-wrap');
+                if (wrap && !wrap.contains(e.target)) closeSearch();
             });
-        });
+
+            document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSearch(); });
+
+            // Filtering
+            function filterResults(query) {
+                var q = query.toLowerCase().trim();
+                var sections = dropdown.querySelectorAll('.app-search-section');
+                var anyVisible = false;
+                sections.forEach(function(section) {
+                    var items = section.querySelectorAll('.app-search-item');
+                    var sectionVisible = false;
+                    items.forEach(function(item) {
+                        var text = item.textContent.toLowerCase();
+                        var match = !q || text.includes(q);
+                        item.style.display = match ? '' : 'none';
+                        if (match) sectionVisible = true;
+                    });
+                    section.style.display = sectionVisible ? '' : 'none';
+                    if (sectionVisible) anyVisible = true;
+                    // Hide divider after hidden section
+                    var divider = section.nextElementSibling;
+                    if (divider && divider.classList.contains('app-search-divider')) {
+                        divider.style.display = sectionVisible ? '' : 'none';
+                    }
+                });
+                if (emptyEl) emptyEl.style.display = anyVisible || !q ? 'none' : 'block';
+                if (emptyTerm) emptyTerm.textContent = query;
+                if (resultsEl) resultsEl.style.display = anyVisible ? '' : 'none';
+            }
+
+            if (input) input.addEventListener('input', function() { filterResults(this.value); });
+
+            // Item click
+            dropdown.querySelectorAll('.app-search-item').forEach(function(item) {
+                item.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    closeSearch();
+                });
+            });
+        })();
 
         // Advanced filters modal — wire up via event delegation so it always works
         const advancedFiltersModal = document.getElementById('advanced-filters-modal');
