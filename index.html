@@ -2935,7 +2935,7 @@
             z-index: 100;
             display: flex;
             align-items: center;
-            padding: 0 22px 0 24px;
+            padding: 0 22px 0 9px;
         }
 
         /* Logo: gray circle + WHO OWNS BOSTON */
@@ -11619,7 +11619,7 @@
                 var lists = document.querySelectorAll('#data-tab-property .data-checklist');
                 var propList = lists[0];
                 if (!propList) return;
-                var checked = Array.from(propList.querySelectorAll('.data-check-item input:checked'));
+                var checked = Array.from(propList.querySelectorAll('.data-check-item input')).filter(function(cb) { return cb.checked; });
                 var el = document.getElementById('stat-prop-types');
                 if (!el) return;
                 var labels = checked.map(function(cb) {
@@ -11634,7 +11634,7 @@
                 var checklists = document.querySelectorAll('#data-tab-property .data-checklist');
                 var landlordList = checklists[checklists.length - 1];
                 if (!landlordList) return;
-                var checked = Array.from(landlordList.querySelectorAll('.data-check-item input:checked'));
+                var checked = Array.from(landlordList.querySelectorAll('.data-check-item input')).filter(function(cb) { return cb.checked; });
                 var el = document.getElementById('stat-prop-landlords');
                 if (!el) return;
                 var labels = checked.map(function(cb) {
@@ -11652,9 +11652,8 @@
                 });
             });
 
-            // Init on load
-            updatePropTypeStatus();
-            updateLandlordStatus();
+            // Init on load — defer so all other scripts have settled
+            setTimeout(function() { updatePropTypeStatus(); updateLandlordStatus(); }, 0);
         })();
 
                 // Clicking the "2019" year trigger in the area data summary opens the header year dropdown
