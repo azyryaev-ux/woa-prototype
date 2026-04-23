@@ -10612,10 +10612,15 @@
         // Open landlord page when clicking "View landlord details" or "Open landlord page" buttons
         document.addEventListener('click', function(e) {
             const actionBtn = e.target.closest('.property-action-btn');
+            const selActionBtn = e.target.closest('.sel-prop-action-btn');
             const actionButton = e.target.closest('.property-action-button');
 
-            if ((actionButton && actionButton.textContent === 'View landlord details') ||
-                (actionBtn && actionBtn.textContent.replace(/\s+/g, ' ').trim() === 'Open landlord page')) {
+            const isOpenLandlord = (
+                (actionButton && actionButton.textContent === 'View landlord details') ||
+                (actionBtn && actionBtn.textContent.replace(/\s+/g, ' ').trim() === 'Open landlord page') ||
+                (selActionBtn && selActionBtn.textContent.trim() === 'Open landlord page')
+            );
+            if (isOpenLandlord) {
                 e.preventDefault();
                 landlordPageModal.classList.add('active');
             }
