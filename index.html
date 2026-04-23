@@ -5348,6 +5348,12 @@
             align-items: center;
             gap: 12px;
         }
+        .modal-header-year-inner {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-right: 16px;
+        }
 
         .property-year-label {
             font-size: 11px;
@@ -9389,28 +9395,43 @@
     <div class="landlord-page-modal" id="landlord-page-modal">
         <!-- Header Bar -->
         <div class="modal-header-bar">
-            <div class="modal-logo-container">
-                <div class="modal-logo"></div>
-                <div class="modal-city-select-wrap">
-                    <button class="modal-city-trigger" id="landlord-city-trigger">
-                        <span class="modal-logo-wordmark">WHO OWNS <span class="modal-city-name">BOSTON</span></span>
-                        <svg class="modal-city-chevron" viewBox="0 0 8 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.5l3 3 3-3" stroke="#d63d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </button>
-                    <div class="modal-city-dropdown" id="landlord-city-dropdown">
-                        <button class="modal-city-option active">Boston</button>
-                        <button class="modal-city-option">Miami</button>
-                        <button class="modal-city-option">Houston</button>
-                        <button class="modal-city-option">Baltimore</button>
+            <div class="modal-header-left">
+                <div class="modal-logo-container">
+                    <div class="modal-logo"></div>
+                    <div class="modal-city-select-wrap">
+                        <button class="modal-city-trigger" id="landlord-city-trigger">
+                            <span class="modal-logo-wordmark">WHO OWNS <span class="modal-city-name">BOSTON</span></span>
+                            <svg class="modal-city-chevron" viewBox="0 0 8 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.5l3 3 3-3" stroke="#d63d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <div class="modal-city-dropdown" id="landlord-city-dropdown">
+                            <button class="modal-city-option active">Boston</button>
+                            <button class="modal-city-option">Miami</button>
+                            <button class="modal-city-option">Houston</button>
+                            <button class="modal-city-option">Baltimore</button>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="modal-menu-container">
-                <button class="modal-menu-button" id="landlord-modal-menu-button">
-                    <div class="modal-menu-icon">
-                        <span></span>
-                        <span></span>
+            <div class="modal-header-right">
+                <div class="modal-header-year">
+                    <div class="property-year modal-header-year-inner">
+                        <span class="property-year-label">Viewing data for</span>
+                        <select class="property-year-dropdown">
+                            <option selected>2019</option>
+                            <option>2020</option>
+                            <option>2021</option>
+                            <option>2022</option>
+                        </select>
                     </div>
-                </button>
+                </div>
+                <div class="modal-menu-container">
+                    <button class="modal-menu-button" id="landlord-modal-menu-button">
+                        <div class="modal-menu-icon">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </button>
+                </div>
             </div>
         </div>
         <script>
@@ -10935,13 +10956,6 @@
     /* ── Change 2: year dropdown in header bar ── */
     .modal-header-year {
         pointer-events: auto;
-    }
-    .modal-header-year .property-year-label {
-        color: rgba(255,255,255,0.75);
-        transition: color 0.3s ease;
-    }
-    .modal-header-bar.scrolled .modal-header-year .property-year-label {
-        color: rgba(0,0,0,0.5);
     }
 
     /* ── Change 5: two-column overview cards ── */
