@@ -5362,22 +5362,24 @@
         }
         /* Year dropdown in full-page headers: red text + custom chevron */
         .modal-header-year .property-year-dropdown {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
             color: #d63d00;
-            border: none;
-            background: transparent;
-            padding: 0 20px 0 0;
+            border: 1px solid #ebebeb;
+            border-radius: 8px;
+            background: #fff;
+            padding: 6px 28px 6px 10px;
             cursor: pointer;
             font-family: 'Akkurat', sans-serif;
             appearance: none;
             -webkit-appearance: none;
             background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23d63d00' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
-            background-position: right 2px center;
+            background-position: right 8px center;
             background-size: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
         }
-        .modal-header-year .property-year-dropdown:focus { outline: none; }
+        .modal-header-year .property-year-dropdown:focus { outline: none; border-color: #d63d00; }
 
         .property-year-dropdown {
             font-size: 12px;
@@ -13175,7 +13177,7 @@
                 <span class="afp-breadcrumb-text">Boston, MA</span>
             </div>
             <!-- Back button — frosted glass, same as landlord page -->
-            <button class="property-back-btn" id="afp-back-btn">&#8592; Go back</button>
+            <button class="property-back-btn" id="afp-back-btn">&#8592; Back to map</button>
         </div><!-- end hero -->
 
         <!-- White Header Content Section -->
@@ -13274,8 +13276,9 @@
                             </svg>
                             <span class="afp-info-card-title">View Top 10 Landlords/Properties</span>
                         </div>
-                        <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:18px;height:18px; transform:rotate(90deg);">
-                            <polyline points="6,4 12,9 6,14" stroke="black" stroke-width="1.5" fill="none"/>
+                        <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:18px;height:18px;">
+                            <line x1="9" y1="3" x2="9" y2="14" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+                            <polyline points="5,10 9,14 13,10" stroke="black" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
                     <div class="afp-info-card-body">
