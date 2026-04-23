@@ -6528,17 +6528,20 @@
 
         .sel-prop-actions {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             gap: 5px;
             width: 100%;
+            margin-top: 8px;
         }
 
-        /* Equal-weight button base — same format, different color family */
+        /* Equal-weight buttons — horizontal row, equal flex share */
         .sel-btn-fly, .sel-btn-fullpage, .sel-btn-landlord {
-            font-size: 11px; font-weight: 500; padding: 8px 12px;
+            flex: 1;
+            font-size: 11px; font-weight: 500; padding: 7px 6px;
             border-radius: 6px; border: 1px solid;
             cursor: pointer; font-family: 'Akkurat', sans-serif;
-            text-align: center; width: 100%;
+            text-align: center; white-space: nowrap; overflow: hidden;
+            text-overflow: ellipsis;
             transition: background 0.12s, border-color 0.12s, color 0.12s;
         }
 
@@ -6666,17 +6669,19 @@
 
         .sel-area-actions {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             gap: 5px;
             width: 100%;
+            margin-top: 8px;
         }
 
-        /* Equal-weight area buttons */
+        /* Equal-weight area buttons — horizontal row */
         .sel-area-action-btn-fly, .sel-area-action-btn-page {
-            font-size: 11px; font-weight: 500; padding: 8px 12px;
+            flex: 1;
+            font-size: 11px; font-weight: 500; padding: 7px 6px;
             border-radius: 6px; border: 1px solid;
             cursor: pointer; font-family: 'Akkurat', sans-serif;
-            text-align: center; width: 100%;
+            text-align: center; white-space: nowrap;
             transition: background 0.12s, border-color 0.12s, color 0.12s;
         }
 
@@ -8331,8 +8336,8 @@
                             </div>
                             <div class="sel-prop-actions">
                                 <button class="sel-btn-fly">Fly to</button>
-                                <button class="sel-btn-fullpage">Open full page view</button>
-                                <button class="sel-btn-landlord">Open landlord page</button>
+                                <button class="sel-btn-fullpage">Full page</button>
+                                <button class="sel-btn-landlord">Landlord</button>
                             </div>
                         </div>
                         <div class="sel-prop-row">
@@ -8343,8 +8348,8 @@
                             </div>
                             <div class="sel-prop-actions">
                                 <button class="sel-btn-fly">Fly to</button>
-                                <button class="sel-btn-fullpage">Open full page view</button>
-                                <button class="sel-btn-landlord">Open landlord page</button>
+                                <button class="sel-btn-fullpage">Full page</button>
+                                <button class="sel-btn-landlord">Landlord</button>
                             </div>
                         </div>
                         <div class="sel-prop-row">
@@ -8355,8 +8360,8 @@
                             </div>
                             <div class="sel-prop-actions">
                                 <button class="sel-btn-fly">Fly to</button>
-                                <button class="sel-btn-fullpage">Open full page view</button>
-                                <button class="sel-btn-landlord">Open landlord page</button>
+                                <button class="sel-btn-fullpage">Full page</button>
+                                <button class="sel-btn-landlord">Landlord</button>
                             </div>
                         </div>
                         <div class="sel-prop-row">
@@ -8367,8 +8372,8 @@
                             </div>
                             <div class="sel-prop-actions">
                                 <button class="sel-btn-fly">Fly to</button>
-                                <button class="sel-btn-fullpage">Open full page view</button>
-                                <button class="sel-btn-landlord">Open landlord page</button>
+                                <button class="sel-btn-fullpage">Full page</button>
+                                <button class="sel-btn-landlord">Landlord</button>
                             </div>
                         </div>
                     </div>
@@ -8401,7 +8406,7 @@
                                 <span class="sel-area-name">ZIP code 77091</span>
                                 <div class="sel-area-actions">
                                     <button class="sel-area-action-btn-fly">Fly to</button>
-                                    <button class="sel-area-action-btn-page">Open full page view</button>
+                                    <button class="sel-area-action-btn-page">Full page</button>
                                 </div>
                             </div>
                             <button class="sel-area-remove">×</button>
@@ -8412,7 +8417,7 @@
                                 <span class="sel-area-name">ZIP code 77091</span>
                                 <div class="sel-area-actions">
                                     <button class="sel-area-action-btn-fly">Fly to</button>
-                                    <button class="sel-area-action-btn-page">Open full page view</button>
+                                    <button class="sel-area-action-btn-page">Full page</button>
                                 </div>
                             </div>
                             <button class="sel-area-remove">×</button>
@@ -8423,7 +8428,7 @@
                                 <span class="sel-area-name">ZIP code 77091</span>
                                 <div class="sel-area-actions">
                                     <button class="sel-area-action-btn-fly">Fly to</button>
-                                    <button class="sel-area-action-btn-page">Open full page view</button>
+                                    <button class="sel-area-action-btn-page">Full page</button>
                                 </div>
                             </div>
                             <button class="sel-area-remove">×</button>
@@ -8434,7 +8439,7 @@
                                 <span class="sel-area-name">ZIP code 77091</span>
                                 <div class="sel-area-actions">
                                     <button class="sel-area-action-btn-fly">Fly to</button>
-                                    <button class="sel-area-action-btn-page">Open full page view</button>
+                                    <button class="sel-area-action-btn-page">Full page</button>
                                 </div>
                             </div>
                             <button class="sel-area-remove">×</button>
