@@ -12415,735 +12415,847 @@
     })();
     </script>
 
-
-    <!-- ===== Area Full Page Modal — rebuilt from Figma specs ===== -->
+    <!-- ===== Area Full Page Modal — rebuilt from Figma MCP output ===== -->
     <style>
         /* ===== Area Full Page Modal (afp- prefix) ===== */
         .area-full-page-modal {
             position: fixed;
             inset: 0;
             z-index: 4000;
-            background: #fff;
-            overflow-y: auto;
+            background: white;
             display: none;
+            flex-direction: column;
+            overflow-y: auto;
+            font-family: 'Akkurat', sans-serif;
         }
         .area-full-page-modal.active {
-            display: block;
+            display: flex;
         }
 
         /* Hero */
         .afp-hero {
-            position: relative;
             height: 400px;
+            position: relative;
+            flex-shrink: 0;
             background: linear-gradient(90deg, #414141 0%, #414141 100%);
+            overflow: hidden;
         }
-        .afp-hero::after {
-            content: '';
+        .afp-hero-bg {
             position: absolute;
             inset: 0;
-            background: rgba(0,0,0,0.35);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
         }
-        .afp-hero .property-back-btn {
+        /* Hero inner header bar */
+        .afp-hero-header {
             position: absolute;
-            top: 75px;
-            left: 48px;
+            top: 0; left: 0;
+            width: 100%;
+            height: 60px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-sizing: border-box;
             z-index: 2;
         }
-        .afp-hero-breadcrumb {
+        .afp-logo-area {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .afp-logo-bg {
+            width: 24px; height: 24px;
+            background: #e1e1e1;
+            border-radius: 12px;
+            flex-shrink: 0;
+        }
+        .afp-logo-text {
+            font-family: 'Akkurat', sans-serif;
+            font-weight: 700;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: black;
+        }
+        .afp-menu-btn {
+            background: rgba(255,255,255,0.9);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            padding: 1px;
+            cursor: pointer;
+        }
+        .afp-menu-label {
+            font-family: 'Akkurat Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: rgba(0,0,0,0.7);
+            padding: 13px 12px;
+        }
+        .afp-menu-icon {
+            width: 44px; height: 44px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .afp-menu-icon-bars {
+            display: flex; flex-direction: column; justify-content: space-between;
+            width: 18px; height: 10px;
+        }
+        .afp-menu-icon-bars span {
+            display: block;
+            height: 1.5px;
+            background: black;
+            border-radius: 6px;
+        }
+        /* Breadcrumb */
+        .afp-breadcrumb {
             position: absolute;
-            left: 125px;
-            top: 22px;
+            top: 22px; left: 125px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            z-index: 2;
+        }
+        .afp-breadcrumb-text {
             font-family: 'Akkurat Mono', monospace;
             font-size: 13px;
-            color: #000;
+            color: black;
+        }
+        .afp-breadcrumb-sep {
+            width: 14px; height: 14px;
+            display: flex; align-items: center; justify-content: center;
+            color: black;
+            font-size: 10px;
+            transform: rotate(-90deg);
+        }
+        /* View in map button */
+        .afp-view-map-btn {
+            position: absolute;
+            bottom: 28px; left: 48px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 17px;
+            background: rgba(237,237,237,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 6px;
+            cursor: pointer;
             z-index: 2;
         }
+        .afp-view-map-btn span {
+            font-family: 'Akkurat Mono', monospace;
+            font-size: 13px;
+            color: white;
+        }
+        /* Back button */
+        .afp-back-btn {
+            position: absolute;
+            top: 70px; left: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Akkurat Mono', monospace;
+            font-size: 13px;
+            color: white;
+            z-index: 2;
+            padding: 6px 10px;
+        }
 
-        /* White section below hero */
+        /* White header content section */
         .afp-header-section {
+            background: white;
+            position: relative;
+            flex-shrink: 0;
+            width: 100%;
+            box-sizing: border-box;
             padding: 48px 48px 49px;
             border-bottom: 1px solid #eaeaea;
         }
+        /* Row 1: area label + viewing data for */
         .afp-header-row1 {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 12px;
         }
         .afp-area-micro-label {
-            font-family: 'Akkurat-Bold', 'Akkurat Bold', sans-serif;
+            font-family: 'Akkurat', sans-serif;
+            font-weight: 700;
             font-size: 12px;
-            color: #000;
+            letter-spacing: 0.8px;
             text-transform: uppercase;
-            letter-spacing: 0.06em;
+            color: #666;
         }
         .afp-row1-right {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
         }
         .afp-row1-year-label {
-            font-family: 'Akkurat-Bold', 'Akkurat Bold', sans-serif;
+            font-family: 'Akkurat', sans-serif;
+            font-weight: 700;
             font-size: 12px;
-            color: #000;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: #666;
         }
         .afp-row1-year-select {
-            background: #fff;
+            background: white;
             border: 1px solid #eaeaea;
             border-radius: 6px;
             height: 32px;
             width: 61px;
+            font-family: 'Akkurat', sans-serif;
             font-size: 12px;
-            padding: 0 6px;
+            color: #666;
+            padding: 0 8px;
             cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23666' stroke-width='1.5'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 7px center;
         }
+        /* Row 2: title + actions */
         .afp-header-row2 {
             display: flex;
-            justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 45px;
+            justify-content: space-between;
+            width: 100%;
         }
         .afp-header-left {
-            width: 349px;
             display: flex;
             flex-direction: column;
             gap: 12px;
+            width: 349px;
+            flex-shrink: 0;
         }
         .afp-area-title {
-            font-family: 'Akkurat-Bold', 'Akkurat Bold', sans-serif;
+            font-family: 'Akkurat', sans-serif;
+            font-weight: 700;
             font-size: 36px;
             line-height: 43.2px;
-            color: #000;
-            margin: 0;
-            font-weight: normal;
+            letter-spacing: -0.72px;
+            background: linear-gradient(107deg, #000 0%, #333 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            white-space: nowrap;
         }
         .afp-header-badges {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
+            align-items: center;
         }
         .afp-badge {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             gap: 6px;
             padding: 5px 11px;
             border-radius: 6px;
-            font-family: 'Akkurat-Bold', 'Akkurat Bold', sans-serif;
+            border: 1px solid;
+            font-family: 'Akkurat', sans-serif;
+            font-weight: 700;
             font-size: 11px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            white-space: nowrap;
         }
         .afp-badge-warning {
             background: #fffbf0;
-            border: 1px solid #ffe8cc;
-            color: #d63d00;
+            border-color: #ffe8cc;
+            color: #d97706;
         }
         .afp-badge-info {
             background: #f0f9ff;
-            border: 1px solid #cce7ff;
-            color: #0069b0;
+            border-color: #cce7ff;
+            color: #0369a1;
         }
-        .afp-badge svg {
-            width: 16px;
-            height: 16px;
-            flex-shrink: 0;
-        }
+        .afp-badge svg { width: 16px; height: 16px; flex-shrink: 0; }
+        /* Actions wrapper */
         .afp-header-actions {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 8px;
             background: #fafafa;
             border: 1px solid #eaeaea;
-            padding: 9px;
             border-radius: 6px;
+            padding: 9px;
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+            flex-shrink: 0;
         }
         .afp-btn-share {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            height: 44px;
-            padding: 12px 18px;
             background: linear-gradient(180deg, #ef4400 0%, #d63d00 100%);
             border: 2px solid rgba(255,255,255,0.12);
             border-radius: 6px;
-            color: #fff;
+            height: 44px;
+            width: 191px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 18px;
+            box-sizing: border-box;
+            cursor: pointer;
+            color: white;
             font-family: 'Akkurat Mono', monospace;
             font-size: 14px;
-            cursor: pointer;
+            flex-shrink: 0;
         }
         .afp-btn-share:hover { opacity: 0.92; }
         .afp-btn-csv {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            height: 44px;
-            padding: 12px 17px;
-            background: #fff;
+            background: white;
             border: 1px solid #d1d1d1;
             border-radius: 6px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            padding: 12px 17px;
+            box-sizing: border-box;
+            cursor: pointer;
+            gap: 4px;
             box-shadow: 0px 1px 2px rgba(0,0,0,0.05);
-            color: #666;
             font-family: 'Akkurat Mono', monospace;
             font-size: 13px;
-            cursor: pointer;
+            color: #666;
+            flex-shrink: 0;
         }
         .afp-btn-csv:hover { background: #f5f5f5; }
-
-        /* Info cards row */
+        /* Info cards section */
         .afp-info-cards {
             display: flex;
             gap: 24px;
+            align-items: flex-start;
             padding-top: 45px;
             border-top: 1px solid #eaeaea;
+            margin-top: 12px;
+            width: 100%;
+            box-sizing: border-box;
         }
         .afp-info-card {
             background: #fafafa;
             border: 1px solid #eaeaea;
             border-radius: 6px;
-            flex: 1;
+            flex: 1 0 0;
             height: 279px;
             padding: 21px;
+            box-sizing: border-box;
             display: flex;
             flex-direction: column;
+            gap: 10px;
+            overflow: hidden;
         }
         .afp-info-card-header {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             padding-bottom: 13.75px;
             border-bottom: 1px solid #eaeaea;
-            margin-bottom: 14px;
-        }
-        .afp-info-card-header svg {
-            width: 18px;
-            height: 18px;
             flex-shrink: 0;
         }
-        .afp-info-card-header-text {
-            font-family: 'Akkurat-Bold', 'Akkurat Bold', sans-serif;
+        .afp-info-card-header svg { width: 18px; height: 18px; flex-shrink: 0; }
+        .afp-info-card-title {
+            font-family: 'Akkurat', sans-serif;
+            font-weight: 700;
             font-size: 12px;
-            color: #000;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: black;
+            white-space: nowrap;
         }
-        .afp-info-card-text {
-            font-family: 'Akkurat', 'Akkurat Regular', sans-serif;
+        .afp-info-card-body {
+            font-family: 'Akkurat', sans-serif;
+            font-weight: 400;
             font-size: 14px;
             color: #555;
             line-height: 23.8px;
-            margin: 0;
         }
+        /* Metro area link buttons */
         .afp-metro-links {
             display: flex;
-            flex-direction: column;
-            gap: 0;
+            gap: 12px;
+            flex-wrap: wrap;
         }
         .afp-metro-link-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            height: 34px;
-            padding: 9px 17px;
-            background: #fff;
+            background: white;
             border: 1px solid #eaeaea;
             border-radius: 6px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 17px;
+            box-sizing: border-box;
+            cursor: pointer;
             font-family: 'Akkurat Mono', monospace;
             font-size: 13px;
-            color: #333;
-            cursor: pointer;
-            text-decoration: none;
-            margin-bottom: 8px;
+            color: black;
+            overflow: hidden;
         }
-        .afp-metro-link-btn:last-child { margin-bottom: 0; }
-        .afp-metro-link-btn svg {
-            width: 16px;
-            height: 16px;
+        .afp-metro-link-btn:hover { background: #f5f5f5; }
+        /* 3rd card: view top 10 */
+        .afp-card3 {
             flex-shrink: 0;
-        }
-        .afp-arrow-card {
-            background: #fafafa;
-            border: 1px solid #eaeaea;
-            border-radius: 6px;
-            height: 279px;
-            padding: 21px;
-            display: flex;
-            flex-direction: column;
-        }
-        .afp-arrow-card-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 8px;
-            padding-bottom: 13.75px;
-            border-bottom: 1px solid #eaeaea;
-            margin-bottom: 14px;
-        }
-        .afp-arrow-card-header-left {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .afp-arrow-card-header svg {
-            width: 18px;
-            height: 18px;
-            flex-shrink: 0;
-        }
-        .afp-arrow-card-header-text {
-            font-family: 'Akkurat-Bold', 'Akkurat Bold', sans-serif;
-            font-size: 12px;
-            color: #000;
-            line-height: 18px;
-        }
-        .afp-arrow-card-chevron {
-            width: 18px;
-            height: 18px;
-            transform: rotate(-90deg);
-            flex-shrink: 0;
-        }
-        .afp-arrow-card-text {
-            font-family: 'Akkurat', 'Akkurat Regular', sans-serif;
-            font-size: 14px;
-            color: #555;
-            line-height: 22.4px;
-            margin: 0;
+            width: 450px;
         }
 
-        /* Nav tabs */
+        /* Sticky nav tabs */
         .afp-nav {
-            position: sticky;
-            top: 60px;
-            z-index: 100;
-            background: #fff;
-            border-bottom: 1px solid #eaeaea;
-            height: 55px;
-            padding: 0 48px;
+            background: white;
             display: flex;
             align-items: center;
-            gap: 4px;
+            padding: 0 48px;
+            height: 55px;
+            border-bottom: 1px solid #eaeaea;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            gap: 8px;
+            flex-shrink: 0;
         }
         .afp-nav-label {
-            font-family: 'Akkurat-Bold', 'Akkurat Bold', sans-serif;
+            font-family: 'Akkurat Mono', monospace;
             font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
             color: #666;
-            margin-right: 8px;
+            padding-right: 8px;
             white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .afp-nav-tabs {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
         }
         .afp-nav-tab {
-            padding: 6.5px 12px;
-            font-family: 'Akkurat', 'Akkurat Regular', sans-serif;
-            font-size: 12px;
+            font-family: 'Akkurat', sans-serif;
+            font-weight: 400;
+            font-size: 14px;
             color: #666;
+            padding: 6.5px 12px;
+            border-radius: 4px;
             cursor: pointer;
-            border-radius: 4px;
-            text-decoration: none;
             white-space: nowrap;
+            background: none;
+            border: none;
         }
-        .afp-nav-tab:hover { color: #000; }
-        .afp-nav-tab.active {
-            background: #000;
-            color: #fff;
-            border-radius: 4px;
+        .afp-nav-tab.active,
+        .afp-nav-tab:hover {
+            background: black;
+            color: white;
         }
 
         /* Content sections */
         .afp-content {
-            padding: 48px 40px;
+            padding: 48px 48px 100px;
             display: flex;
             flex-direction: column;
             gap: 64px;
+            box-sizing: border-box;
+            width: 100%;
         }
         .afp-section {
+            background: #fafafa;
+            border-radius: 6px;
+            padding: 40px;
+            box-sizing: border-box;
             display: flex;
             flex-direction: column;
+            gap: 7.4px;
         }
         .afp-section-title {
-            font-family: 'Akkurat-Bold', 'Akkurat Bold', sans-serif;
+            font-family: 'Akkurat', sans-serif;
+            font-weight: 700;
             font-size: 32px;
-            color: #000;
-            margin: 0 0 12px;
-            font-weight: normal;
+            color: black;
+            letter-spacing: -0.64px;
+            margin-bottom: 0;
         }
+        .afp-section-title .afp-accent { color: #d63d00; }
         .afp-section-desc {
-            font-family: 'Akkurat', 'Akkurat Regular', sans-serif;
+            font-family: 'Akkurat', sans-serif;
+            font-weight: 400;
             font-size: 14px;
-            color: #555;
-            line-height: 23.8px;
-            margin: 0 0 24px;
-        }
-
-        /* Stat cards */
-        .afp-stat-row {
-            display: grid;
-            gap: 0;
-        }
-        .afp-stat-row-4 { grid-template-columns: repeat(4, 1fr); }
-        .afp-stat-card {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            padding: 16px 0;
-        }
-        .afp-stat-label {
-            font-family: 'Akkurat', 'Akkurat Regular', sans-serif;
-            font-size: 12px;
             color: #666;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
+            line-height: 22.4px;
+            max-width: 461px;
+            margin-bottom: 0;
+        }
+        /* Stat cards row */
+        .afp-stats-row {
+            display: flex;
+            gap: 0;
+            width: 100%;
+            margin-top: 24px;
+        }
+        .afp-stat-card {
+            background: white;
+            border: 1px solid #eaeaea;
+            border-radius: 6px;
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
+            min-height: 110px;
+        }
+        .afp-stat-card + .afp-stat-card { margin-left: 10px; }
+        .afp-stat-label {
+            font-family: 'Akkurat', sans-serif;
+            font-weight: 400;
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 6px;
         }
         .afp-stat-value {
-            font-family: 'Akkurat-Bold', 'Akkurat Bold', sans-serif;
+            font-family: 'Akkurat Mono', monospace;
             font-size: 28px;
-            color: #000;
-            line-height: 1;
+            line-height: 33.6px;
+            color: black;
         }
-        .afp-above-avg-badge {
+        .afp-stat-badge {
             display: inline-flex;
             align-items: center;
             background: #fff6ec;
             border: 1px solid #fff6ec;
-            border-radius: 4px;
+            border-radius: 6px;
             padding: 2px 8px;
-            font-family: 'Akkurat', 'Akkurat Regular', sans-serif;
+            font-family: 'Akkurat', sans-serif;
             font-size: 11px;
             color: #d63d00;
-            width: fit-content;
+            margin-top: 6px;
         }
-
-        /* Demo grid */
-        .afp-demo-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0;
-        }
-        .afp-demo-item {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            padding: 16px 0;
-        }
-        .afp-demo-label {
-            font-family: 'Akkurat', 'Akkurat Regular', sans-serif;
-            font-size: 12px;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-        }
-        .afp-demo-value {
-            font-family: 'Akkurat-Bold', 'Akkurat Bold', sans-serif;
-            font-size: 28px;
-            color: #000;
-            line-height: 1;
-        }
-
-        /* Chart */
+        /* Chart container */
         .afp-chart-wrap {
-            width: 100%;
-            background: #fafafa;
+            background: white;
             border: 1px solid #eaeaea;
             border-radius: 6px;
-            padding: 16px;
+            width: 100%;
+            margin-top: 24px;
+            padding: 20px;
             box-sizing: border-box;
+            overflow: hidden;
         }
-
+        .afp-chart-svg {
+            width: 100%;
+            display: block;
+        }
         /* Legend */
-        .afp-chart-legend {
+        .afp-legend {
             display: flex;
             gap: 24px;
             margin-top: 12px;
+            margin-bottom: 8px;
         }
         .afp-legend-item {
             display: flex;
             align-items: center;
             gap: 8px;
-            font-family: 'Akkurat', 'Akkurat Regular', sans-serif;
-            font-size: 12px;
-            color: #555;
+            font-family: 'Akkurat', sans-serif;
+            font-size: 14px;
+            color: #666;
         }
         .afp-legend-dot {
-            width: 10px;
-            height: 10px;
+            width: 8px; height: 8px;
             border-radius: 50%;
             flex-shrink: 0;
         }
 
-        /* Table */
-        .afp-table-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 16px;
+        /* Top 10 table */
+        .afp-section-top10 {
+            padding: 40px 0;
+            box-sizing: border-box;
         }
-        .afp-table-title {
-            font-family: 'Akkurat-Bold', 'Akkurat Bold', sans-serif;
+        .afp-top10-header {
+            padding: 0 48px;
+            margin-bottom: 24px;
+        }
+        .afp-top10-title {
+            font-family: 'Akkurat', sans-serif;
+            font-weight: 700;
             font-size: 32px;
-            color: #000;
-            font-weight: normal;
-            margin: 0;
+            color: black;
         }
-        .afp-table-title .afp-red {
-            color: #d63d00;
-        }
+        .afp-top10-title .afp-accent { color: #d63d00; }
         .afp-table {
             width: 100%;
             border-collapse: collapse;
-            font-family: 'Akkurat', 'Akkurat Regular', sans-serif;
+            table-layout: fixed;
         }
-        .afp-table thead th {
-            font-family: 'Akkurat-Bold', 'Akkurat Bold', sans-serif;
+        .afp-table thead tr {
+            background: linear-gradient(180deg, #fafafa 0%, #f5f5f5 100%);
+            border-bottom: 1px solid #eaeaea;
+            box-shadow: 0px 1px 0px 0px #eaeaea, 0px 2px 4px 0px rgba(0,0,0,0.02);
+        }
+        .afp-table th {
+            font-family: 'Akkurat Mono', monospace;
             font-size: 11px;
-            color: #999;
+            color: #666;
+            letter-spacing: 0.3px;
             text-transform: uppercase;
-            letter-spacing: 0.06em;
+            padding: 13px 16px 14px;
             text-align: left;
-            padding: 8px 12px;
-            border-bottom: 1px solid #eaeaea;
+            font-weight: 400;
         }
-        .afp-table tbody tr:nth-child(odd) { background: #f9f9f9; }
-        .afp-table tbody tr:nth-child(even) { background: #fff; }
-        .afp-table tbody tr:hover { background: #f0f0f0; }
-        .afp-table tbody td {
+        .afp-table th.right { text-align: right; }
+        .afp-table tbody tr:nth-child(even) { background: #f9f9f9; }
+        .afp-table tbody tr:nth-child(odd) { background: white; }
+        .afp-table tbody tr { border-bottom: 1px solid #eaeaea; }
+        .afp-table td {
+            padding: 16px;
+            font-family: 'Akkurat', sans-serif;
             font-size: 14px;
-            color: #333;
-            padding: 12px 12px;
+            color: black;
             vertical-align: middle;
-            border-bottom: 1px solid #eaeaea;
         }
-        .afp-table-rank {
-            font-size: 14px;
-            color: #999;
-            text-align: center;
-            width: 40px;
+        .afp-table td.mono {
+            font-family: 'Akkurat Mono', monospace;
         }
-        .afp-owner-name {
-            font-family: 'Akkurat-Bold', 'Akkurat Bold', sans-serif;
-            font-size: 14px;
-            color: #000;
+        .afp-table td.bold {
+            font-family: 'Akkurat', sans-serif;
+            font-weight: 700;
         }
-        .afp-owner-type-tag {
-            font-size: 12px;
-            color: #999;
-            margin-top: 2px;
+        .afp-table td.right { text-align: right; }
+        .afp-table td.rank {
+            font-family: 'Akkurat Mono', monospace;
+            text-align: right;
+            width: 50px;
         }
-        .afp-units-value {
-            font-family: 'Akkurat-Bold', 'Akkurat Bold', sans-serif;
-            font-size: 14px;
-            color: #000;
-        }
-        .afp-units-sub {
-            font-size: 12px;
-            color: #999;
-        }
-        .afp-geo-tag {
-            font-size: 12px;
-            color: #555;
-        }
-        .afp-portfolio-val {
-            font-size: 14px;
-            color: #333;
-        }
-        .afp-sparkline {
-            display: flex;
-            align-items: flex-end;
-            gap: 2px;
-            height: 24px;
-        }
-        .afp-spark-bar {
-            width: 4px;
-            background: #ef4400;
-            border-radius: 1px;
-        }
-        .afp-view-btn {
-            background: #ef4400;
-            color: #fff;
-            border: none;
+        .afp-view-landlord-btn {
+            background: linear-gradient(180deg, #ef4400 0%, #d63d00 100%);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.12);
             border-radius: 6px;
             padding: 8px 16px;
             font-family: 'Akkurat Mono', monospace;
             font-size: 13px;
             cursor: pointer;
             white-space: nowrap;
+            box-shadow: 0px 1px 2px rgba(0,0,0,0.05);
         }
-        .afp-view-btn:hover { background: #d63d00; }
+        .afp-view-landlord-btn:hover { opacity: 0.9; }
+        /* Sparkline */
+        .afp-sparkline {
+            display: block;
+        }
     </style>
 
-    <!-- Area Full Page Modal -->
-    <div class="area-full-page-modal" id="area-full-page-modal">
+    <div id="area-full-page-modal" class="area-full-page-modal">
 
-        <!-- Header Bar (reusing existing modal-header-bar classes) -->
-        <div class="modal-header-bar">
-            <div class="modal-header-left">
-                <div class="modal-logo-container">
-                    <div class="modal-logo"></div>
-                    <div class="modal-city-select-wrap">
-                        <button class="modal-city-trigger" id="afp-city-trigger">
-                            <span class="modal-logo-wordmark">WHO OWNS <span class="modal-city-name">BOSTON</span></span>
-                            <svg class="modal-city-chevron" viewBox="0 0 8 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.5l3 3 3-3" stroke="#d63d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        </button>
-                        <div class="modal-city-dropdown" id="afp-city-dropdown">
-                            <button class="modal-city-option active">Boston</button>
-                            <button class="modal-city-option">Miami</button>
-                            <button class="modal-city-option">Houston</button>
-                            <button class="modal-city-option">Baltimore</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-header-right">
-                <div class="modal-header-year">
-                    <div class="property-year modal-header-year-inner">
-                        <span class="property-year-label">Viewing data for</span>
-                        <select class="property-year-dropdown">
-                            <option selected>2019</option>
-                            <option>2020</option>
-                            <option>2021</option>
-                            <option>2022</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-menu-container">
-                    <button class="modal-menu-button" id="afp-menu-btn">
-                        <div class="modal-menu-icon">
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Hero -->
+        <!-- Hero Section -->
         <div class="afp-hero">
-            <button class="property-back-btn" id="afp-back-btn">&#8592; Go back</button>
-            <div class="afp-hero-breadcrumb">Map &rsaquo; Boston, MA</div>
-        </div>
+            <!-- Hero header bar -->
+            <div class="afp-hero-header">
+                <div class="afp-logo-area">
+                    <div class="afp-logo-bg"></div>
+                    <span class="afp-logo-text">logo</span>
+                </div>
+                <div class="afp-menu-btn">
+                    <span class="afp-menu-label">Menu</span>
+                    <div class="afp-menu-icon">
+                        <div class="afp-menu-icon-bars">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Breadcrumb -->
+            <div class="afp-breadcrumb">
+                <span class="afp-breadcrumb-text">Map</span>
+                <span class="afp-breadcrumb-sep">&#8250;</span>
+                <span class="afp-breadcrumb-text">Boston, MA</span>
+            </div>
+            <!-- Back btn -->
+            <button class="afp-back-btn" id="afp-back-btn">&#8592; Go back</button>
+            <!-- View in map button -->
+            <button class="afp-view-map-btn">
+                <span>View in map</span>
+            </button>
+        </div><!-- end hero -->
 
-        <!-- White section below hero -->
+        <!-- White Header Content Section -->
         <div class="afp-header-section">
             <!-- Row 1 -->
             <div class="afp-header-row1">
-                <div class="afp-area-micro-label">AREA</div>
+                <span class="afp-area-micro-label">Area</span>
                 <div class="afp-row1-right">
                     <span class="afp-row1-year-label">Viewing data for</span>
                     <select class="afp-row1-year-select">
-                        <option selected>2019</option>
+                        <option>2019</option>
                         <option>2020</option>
                         <option>2021</option>
                         <option>2022</option>
+                        <option>2023</option>
                     </select>
                 </div>
             </div>
             <!-- Row 2 -->
             <div class="afp-header-row2">
                 <div class="afp-header-left">
-                    <h1 class="afp-area-title">Boston, MA</h1>
+                    <div class="afp-area-title">Boston, MA</div>
                     <div class="afp-header-badges">
-                        <span class="afp-badge afp-badge-warning">
-                            <!-- amber warning icon -->
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                        <div class="afp-badge afp-badge-warning">
+                            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 2L14 13H2L8 2Z" stroke="#d97706" stroke-width="1.5" fill="none"/>
+                                <line x1="8" y1="7" x2="8" y2="10" stroke="#d97706" stroke-width="1.5"/>
+                                <circle cx="8" cy="11.5" r="0.5" fill="#d97706"/>
+                            </svg>
                             HIGH EVICTION RATE
-                        </span>
-                        <span class="afp-badge afp-badge-info">
-                            <!-- blue check icon -->
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <div class="afp-badge afp-badge-info">
+                            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="8" cy="8" r="6" stroke="#0369a1" stroke-width="1.5" fill="none"/>
+                                <line x1="8" y1="7" x2="8" y2="11" stroke="#0369a1" stroke-width="1.5"/>
+                                <circle cx="8" cy="5.5" r="0.5" fill="#0369a1"/>
+                            </svg>
                             FEDERALLY SUBSIDIZED
-                        </span>
+                        </div>
                     </div>
                 </div>
                 <div class="afp-header-actions">
                     <button class="afp-btn-share">
-                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <circle cx="13" cy="3" r="2" stroke="white" stroke-width="1.5"/>
+                            <circle cx="3" cy="8" r="2" stroke="white" stroke-width="1.5"/>
+                            <circle cx="13" cy="13" r="2" stroke="white" stroke-width="1.5"/>
+                            <line x1="5" y1="7" x2="11" y2="4" stroke="white" stroke-width="1.5"/>
+                            <line x1="5" y1="9" x2="11" y2="12" stroke="white" stroke-width="1.5"/>
+                        </svg>
                         Share this page
                     </button>
                     <button class="afp-btn-csv">
-                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M3 3h7l3 3v7H3V3Z" stroke="#666" stroke-width="1.5" fill="none"/>
+                            <path d="M10 3v3h3" stroke="#666" stroke-width="1.5" fill="none"/>
+                            <line x1="8" y1="8" x2="8" y2="12" stroke="#666" stroke-width="1.5"/>
+                            <polyline points="6,10 8,12 10,10" stroke="#666" stroke-width="1.5" fill="none"/>
+                        </svg>
                         Download CSV
                     </button>
                 </div>
             </div>
-            <!-- Row 3: info cards -->
+
+            <!-- Info cards -->
             <div class="afp-info-cards">
                 <!-- Card 1: About -->
                 <div class="afp-info-card">
                     <div class="afp-info-card-header">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                        <span class="afp-info-card-header-text">About</span>
+                        <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="9" cy="9" r="7" stroke="black" stroke-width="1.5" fill="none"/>
+                            <line x1="9" y1="8" x2="9" y2="13" stroke="black" stroke-width="1.5"/>
+                            <circle cx="9" cy="6" r="0.75" fill="black"/>
+                        </svg>
+                        <span class="afp-info-card-title">About</span>
                     </div>
-                    <p class="afp-info-card-text">Boston stands out among major U.S. cities with exceptionally high corporate ownership at 34.2%, significantly above the national average. The city also has a highly educated population, with nearly half holding college degrees or higher. Additionally, out-of-state landlord ownership is surprisingly low at 19.3%, suggesting a more locally-anchored rental market.</p>
+                    <div class="afp-info-card-body">
+                        Boston stands out among major U.S. cities with exceptionally high corporate ownership at 34.2%, significantly above the national average. The city also has a highly educated population, with nearly half holding college degrees or higher. Out-of-state landlord ownership is 19.3%, suggesting a more locally-anchored rental market compared to peer cities.
+                    </div>
                 </div>
                 <!-- Card 2: Explore Other Metro Areas -->
                 <div class="afp-info-card">
                     <div class="afp-info-card-header">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
-                        <span class="afp-info-card-header-text">explore Other Metro Areas</span>
+                        <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="9" cy="9" r="7" stroke="black" stroke-width="1.5" fill="none"/>
+                            <line x1="9" y1="3" x2="9" y2="15" stroke="black" stroke-width="1.5"/>
+                            <path d="M3 6.5 Q9 4 15 6.5" stroke="black" stroke-width="1.5" fill="none"/>
+                            <path d="M3 11.5 Q9 14 15 11.5" stroke="black" stroke-width="1.5" fill="none"/>
+                        </svg>
+                        <span class="afp-info-card-title">Explore Other Metro Areas</span>
                     </div>
-                    <div class="afp-metro-links">
-                        <a class="afp-metro-link-btn" href="#">
-                            Baltimore
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                        </a>
-                        <a class="afp-metro-link-btn" href="#">
-                            Houston
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                        </a>
+                    <div class="afp-metro-links" style="margin-top: 8px;">
+                        <button class="afp-metro-link-btn">Baltimore &#8599;</button>
+                        <button class="afp-metro-link-btn">Houston &#8599;</button>
+                        <button class="afp-metro-link-btn">Chicago &#8599;</button>
+                        <button class="afp-metro-link-btn">Detroit &#8599;</button>
                     </div>
                 </div>
                 <!-- Card 3: View Top 10 -->
-                <div class="afp-arrow-card">
-                    <div class="afp-arrow-card-header">
-                        <div class="afp-arrow-card-header-left">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-                            <span class="afp-arrow-card-header-text">View Top 10 landlords/properties</span>
+                <div class="afp-info-card afp-card3" style="flex: 0 0 auto; width: 450px;">
+                    <div class="afp-info-card-header" style="justify-content: space-between;">
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:18px;height:18px;">
+                                <rect x="2" y="4" width="14" height="2" rx="1" fill="black"/>
+                                <rect x="2" y="8" width="10" height="2" rx="1" fill="black"/>
+                                <rect x="2" y="12" width="7" height="2" rx="1" fill="black"/>
+                            </svg>
+                            <span class="afp-info-card-title">View Top 10 Landlords/Properties</span>
                         </div>
-                        <svg class="afp-arrow-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:18px;height:18px; transform:rotate(90deg);">
+                            <polyline points="6,4 12,9 6,14" stroke="black" stroke-width="1.5" fill="none"/>
+                        </svg>
                     </div>
-                    <p class="afp-arrow-card-text">Explore Boston's largest landlords by unit count, ownership type, and portfolio value. See how the top 10 landlords shape the city's rental market.</p>
+                    <div class="afp-info-card-body">
+                        View the top 10 largest landlords and property owners in this area by number of units, including ownership type and average household income data.
+                    </div>
                 </div>
+            </div>
+        </div><!-- end header section -->
+
+        <!-- Sticky Nav Tabs -->
+        <div class="afp-nav" id="afp-nav">
+            <span class="afp-nav-label">Jump to:</span>
+            <div class="afp-nav-tabs">
+                <button class="afp-nav-tab active" data-section="afp-section-poverty">Poverty rate over time</button>
+                <button class="afp-nav-tab" data-section="afp-section-housing">Housing stock</button>
+                <button class="afp-nav-tab" data-section="afp-section-demographics">Demographics</button>
+                <button class="afp-nav-tab" data-section="afp-section-landlord-comp">Landlord composition</button>
+                <button class="afp-nav-tab" data-section="afp-section-ownership-trends">Ownership trends</button>
+                <button class="afp-nav-tab" data-section="afp-section-top10">Top 10 landlords/properties</button>
             </div>
         </div>
 
-        <!-- Nav tabs -->
-        <nav class="afp-nav" id="afp-nav">
-            <span class="afp-nav-label">Jump to:</span>
-            <a class="afp-nav-tab active" href="#afp-s1" data-section="afp-s1">Poverty rate over time</a>
-            <a class="afp-nav-tab" href="#afp-s2" data-section="afp-s2">Housing stock</a>
-            <a class="afp-nav-tab" href="#afp-s3" data-section="afp-s3">Demographics</a>
-            <a class="afp-nav-tab" href="#afp-s4" data-section="afp-s4">Landlord composition</a>
-            <a class="afp-nav-tab" href="#afp-s5" data-section="afp-s5">Ownership trends</a>
-            <a class="afp-nav-tab" href="#afp-s6" data-section="afp-s6">Top 10 landlords/properties</a>
-        </nav>
+        <!-- Main Content -->
+        <div class="afp-content" id="afp-content">
 
-        <!-- Content sections -->
-        <div class="afp-content">
-
-            <!-- Section 1: Poverty rate over time -->
-            <div class="afp-section" id="afp-s1">
-                <h2 class="afp-section-title">Poverty rate over time</h2>
-                <p class="afp-section-desc">Boston's poverty rate has climbed steadily over the past two decades, reflecting broader pressures from rising housing costs, wage stagnation, and demographic shifts. The rate increased from 17.1% in 2000 to 17.5% in 2019, with sharper acceleration following the 2008 financial crisis.</p>
-                <div class="afp-chart-wrap">
-                    <svg viewBox="0 0 700 212" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:212px;display:block;">
-                        <!-- Grid lines at 20%, 40%, 60%, 80% -->
-                        <line x1="60" y1="30" x2="680" y2="30" stroke="#e4e4e4" stroke-width="1"/>
-                        <line x1="60" y1="70" x2="680" y2="70" stroke="#e4e4e4" stroke-width="1"/>
-                        <line x1="60" y1="110" x2="680" y2="110" stroke="#e4e4e4" stroke-width="1"/>
-                        <line x1="60" y1="150" x2="680" y2="150" stroke="#e4e4e4" stroke-width="1"/>
+            <!-- Section: Poverty rate over time -->
+            <div class="afp-section" id="afp-section-poverty">
+                <div style="display:flex; align-items:center; gap:8px; padding-bottom:0.5px;">
+                    <div class="afp-section-title">Poverty rate over time</div>
+                </div>
+                <p class="afp-section-desc">Boston has seen a consistent rise in its poverty rate over the past two decades, driven by rising housing costs and displacement of lower-income residents from central neighborhoods.</p>
+                <div class="afp-chart-wrap" style="margin-top:24px;">
+                    <svg class="afp-chart-svg" viewBox="0 0 1100 212" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Grid lines -->
+                        <line x1="40" y1="20" x2="1080" y2="20" stroke="#f0f0f0" stroke-width="1"/>
+                        <line x1="40" y1="60" x2="1080" y2="60" stroke="#f0f0f0" stroke-width="1"/>
+                        <line x1="40" y1="100" x2="1080" y2="100" stroke="#f0f0f0" stroke-width="1"/>
+                        <line x1="40" y1="140" x2="1080" y2="140" stroke="#f0f0f0" stroke-width="1"/>
+                        <line x1="40" y1="180" x2="1080" y2="180" stroke="#f0f0f0" stroke-width="1"/>
                         <!-- Y-axis labels -->
-                        <text x="50" y="34" text-anchor="end" font-family="Akkurat Mono, monospace" font-size="12" fill="#999">80%</text>
-                        <text x="50" y="74" text-anchor="end" font-family="Akkurat Mono, monospace" font-size="12" fill="#999">60%</text>
-                        <text x="50" y="114" text-anchor="end" font-family="Akkurat Mono, monospace" font-size="12" fill="#999">40%</text>
-                        <text x="50" y="154" text-anchor="end" font-family="Akkurat Mono, monospace" font-size="12" fill="#999">20%</text>
-                        <!-- Line chart trending upward -->
-                        <polyline points="80,155 250,145 430,135 650,130" fill="none" stroke="#ccc" stroke-width="2"/>
+                        <text x="32" y="24" font-family="Akkurat Mono,monospace" font-size="10" fill="#999" text-anchor="end">80%</text>
+                        <text x="32" y="64" font-family="Akkurat Mono,monospace" font-size="10" fill="#999" text-anchor="end">60%</text>
+                        <text x="32" y="104" font-family="Akkurat Mono,monospace" font-size="10" fill="#999" text-anchor="end">40%</text>
+                        <text x="32" y="144" font-family="Akkurat Mono,monospace" font-size="10" fill="#999" text-anchor="end">20%</text>
+                        <text x="32" y="184" font-family="Akkurat Mono,monospace" font-size="10" fill="#999" text-anchor="end">0%</text>
+                        <!-- Upward trending line (gray) -->
+                        <polyline points="50,165 200,158 350,148 500,140 650,130 800,118 950,105 1070,92" 
+                            fill="none" stroke="#c0c0c0" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
                         <!-- X-axis labels -->
-                        <text x="80" y="200" text-anchor="middle" font-family="Akkurat Mono, monospace" font-size="12" fill="#999">2000</text>
-                        <text x="250" y="200" text-anchor="middle" font-family="Akkurat Mono, monospace" font-size="12" fill="#999">2010</text>
-                        <text x="430" y="200" text-anchor="middle" font-family="Akkurat Mono, monospace" font-size="12" fill="#999">2015</text>
-                        <text x="650" y="200" text-anchor="middle" font-family="Akkurat Mono, monospace" font-size="12" fill="#999">2019</text>
+                        <text x="50" y="205" font-family="Akkurat Mono,monospace" font-size="10" fill="#999">2000</text>
+                        <text x="320" y="205" font-family="Akkurat Mono,monospace" font-size="10" fill="#999">2010</text>
+                        <text x="600" y="205" font-family="Akkurat Mono,monospace" font-size="10" fill="#999">2015</text>
+                        <text x="870" y="205" font-family="Akkurat Mono,monospace" font-size="10" fill="#999">2019</text>
                     </svg>
                 </div>
             </div>
 
-            <!-- Section 2: Housing stock -->
-            <div class="afp-section" id="afp-s2">
-                <h2 class="afp-section-title">Housing stock</h2>
-                <p class="afp-section-desc">Boston's housing market is characterized by high demand and constrained supply. Renter households make up nearly two thirds of all occupied units, driven by the city's large student and young professional population.</p>
-                <div class="afp-stat-row afp-stat-row-4">
+            <!-- Section: Housing stock -->
+            <div class="afp-section" id="afp-section-housing">
+                <div class="afp-section-title">Housing stock</div>
+                <p class="afp-section-desc">Boston's housing market is characterized by high density, aging rental stock, and significant pressure from institutional investment and new luxury development.</p>
+                <div class="afp-stats-row" style="display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:24px;">
                     <div class="afp-stat-card">
                         <div class="afp-stat-label">Population</div>
                         <div class="afp-stat-value">692,600</div>
@@ -13154,7 +13266,7 @@
                     </div>
                     <div class="afp-stat-card">
                         <div class="afp-stat-label">Median rent</div>
-                        <div class="afp-stat-value">$2845</div>
+                        <div class="afp-stat-value">$2,845</div>
                     </div>
                     <div class="afp-stat-card">
                         <div class="afp-stat-label">Housing units</div>
@@ -13163,101 +13275,81 @@
                 </div>
             </div>
 
-            <!-- Section 3: Demographics -->
-            <div class="afp-section" id="afp-s3">
-                <h2 class="afp-section-title">Demographics</h2>
-                <p class="afp-section-desc">Boston is a racially diverse city with a highly educated workforce. The city's demographic profile significantly influences housing demand patterns and displacement risk across different neighborhoods.</p>
-                <div class="afp-demo-grid">
-                    <div class="afp-demo-item">
-                        <div class="afp-demo-label">White</div>
-                        <div class="afp-demo-value">52.8%</div>
+            <!-- Section: Demographics -->
+            <div class="afp-section" id="afp-section-demographics">
+                <div class="afp-section-title">Demographics</div>
+                <p class="afp-section-desc">Boston is a diverse city with significant racial and economic disparities, particularly in access to stable housing and homeownership across communities.</p>
+                <div class="afp-stats-row" style="display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:24px;">
+                    <div class="afp-stat-card">
+                        <div class="afp-stat-label">White</div>
+                        <div class="afp-stat-value">52.8%</div>
                     </div>
-                    <div class="afp-demo-item">
-                        <div class="afp-demo-label">Black</div>
-                        <div class="afp-demo-value">22.4%</div>
+                    <div class="afp-stat-card">
+                        <div class="afp-stat-label">Black</div>
+                        <div class="afp-stat-value">22.4%</div>
                     </div>
-                    <div class="afp-demo-item">
-                        <div class="afp-demo-label">Hispanic/Latino</div>
-                        <div class="afp-demo-value">19.7%</div>
+                    <div class="afp-stat-card">
+                        <div class="afp-stat-label">Hispanic/Latino</div>
+                        <div class="afp-stat-value">19.7%</div>
                     </div>
-                    <div class="afp-demo-item">
-                        <div class="afp-demo-label">Asian</div>
-                        <div class="afp-demo-value">10.2%</div>
+                    <div class="afp-stat-card">
+                        <div class="afp-stat-label">Asian</div>
+                        <div class="afp-stat-value">10.2%</div>
                     </div>
-                    <div class="afp-demo-item">
-                        <div class="afp-demo-label">Median household income</div>
-                        <div class="afp-demo-value">$92,600</div>
+                </div>
+                <div class="afp-stats-row" style="display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px;">
+                    <div class="afp-stat-card">
+                        <div class="afp-stat-label">Median household income</div>
+                        <div class="afp-stat-value">$92,600</div>
                     </div>
-                    <div class="afp-demo-item">
-                        <div class="afp-demo-label">Poverty rate</div>
-                        <div class="afp-demo-value">17.5%</div>
+                    <div class="afp-stat-card">
+                        <div class="afp-stat-label">Poverty rate</div>
+                        <div class="afp-stat-value">17.5%</div>
                     </div>
-                    <div class="afp-demo-item">
-                        <div class="afp-demo-label">College degree or higher</div>
-                        <div class="afp-demo-value">48.6%</div>
+                    <div class="afp-stat-card">
+                        <div class="afp-stat-label">College degree or higher</div>
+                        <div class="afp-stat-value">48.6%</div>
                     </div>
-                    <div class="afp-demo-item">
-                        <div class="afp-demo-label">Unemployment rate</div>
-                        <div class="afp-demo-value">4.2%</div>
+                    <div class="afp-stat-card">
+                        <div class="afp-stat-label">Unemployment rate</div>
+                        <div class="afp-stat-value">4.2%</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Section 4: Landlord composition -->
-            <div class="afp-section" id="afp-s4">
-                <h2 class="afp-section-title">Landlord composition</h2>
-                <p class="afp-section-desc">Boston's landlord landscape is dominated by large corporate entities and institutional investors. The high share of 100+ unit landlords reflects significant consolidation in the rental market over the past decade.</p>
-                <div class="afp-stat-row afp-stat-row-4">
+            <!-- Section: Landlord composition -->
+            <div class="afp-section" id="afp-section-landlord-comp">
+                <div class="afp-section-title">Landlord composition</div>
+                <p class="afp-section-desc">Boston's rental market is dominated by large institutional and corporate landlords, with above-average concentration in the 100+ unit tier.</p>
+                <div class="afp-stats-row" style="display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:24px;">
                     <div class="afp-stat-card">
-                        <div class="afp-stat-label">Out of state owners</div>
-                        <div class="afp-stat-value">19.3%</div>
-                        <div class="afp-above-avg-badge">Above average</div>
-                    </div>
-                    <div class="afp-stat-card">
-                        <div class="afp-stat-label">Avg units per landlord</div>
-                        <div class="afp-stat-value">42.6</div>
-                        <div class="afp-above-avg-badge">Above average</div>
+                        <div class="afp-stat-label">Corporate ownership</div>
+                        <div class="afp-stat-value">36.8%</div>
+                        <div class="afp-stat-badge">Above average</div>
                     </div>
                     <div class="afp-stat-card">
                         <div class="afp-stat-label">100+ unit landlords</div>
                         <div class="afp-stat-value">26.8%</div>
-                        <div class="afp-above-avg-badge">Above average</div>
+                        <div class="afp-stat-badge">Above average</div>
                     </div>
                     <div class="afp-stat-card">
-                        <div class="afp-stat-label">Corporate ownership</div>
-                        <div class="afp-stat-value">36.8%</div>
-                        <div class="afp-above-avg-badge">Above average</div>
+                        <div class="afp-stat-label">Out of state owners</div>
+                        <div class="afp-stat-value">19.3%</div>
+                        <div class="afp-stat-badge">Above average</div>
+                    </div>
+                    <div class="afp-stat-card">
+                        <div class="afp-stat-label">Avg units per landlord</div>
+                        <div class="afp-stat-value">42.6</div>
+                        <div class="afp-stat-badge">Above average</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Section 5: Ownership trends -->
-            <div class="afp-section" id="afp-s5">
-                <h2 class="afp-section-title">Ownership trends</h2>
-                <p class="afp-section-desc">Corporate and institutional ownership in Boston has grown steadily since 2019, with accelerating consolidation among 100+ unit landlords. Out-of-state ownership has remained relatively stable over the same period.</p>
-                <div class="afp-chart-wrap">
-                    <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:200px;display:block;">
-                        <!-- Grid -->
-                        <line x1="60" y1="20" x2="680" y2="20" stroke="#e4e4e4" stroke-width="1"/>
-                        <line x1="60" y1="70" x2="680" y2="70" stroke="#e4e4e4" stroke-width="1"/>
-                        <line x1="60" y1="120" x2="680" y2="120" stroke="#e4e4e4" stroke-width="1"/>
-                        <line x1="60" y1="170" x2="680" y2="170" stroke="#e4e4e4" stroke-width="1"/>
-                        <!-- Corporate ownership: #D46033 -->
-                        <polyline points="80,130 200,120 330,108 450,100 570,90 660,80" fill="none" stroke="#D46033" stroke-width="2"/>
-                        <!-- 100+ unit ownership: #4D9FFF -->
-                        <polyline points="80,145 200,138 330,130 450,125 570,118 660,112" fill="none" stroke="#4D9FFF" stroke-width="2"/>
-                        <!-- Out-of-state: #4DC4A0 -->
-                        <polyline points="80,140 200,142 330,138 450,140 570,136 660,137" fill="none" stroke="#4DC4A0" stroke-width="2"/>
-                        <!-- X-axis labels -->
-                        <text x="80" y="190" text-anchor="middle" font-family="Akkurat Mono, monospace" font-size="12" fill="#999">2019</text>
-                        <text x="200" y="190" text-anchor="middle" font-family="Akkurat Mono, monospace" font-size="12" fill="#999">2020</text>
-                        <text x="330" y="190" text-anchor="middle" font-family="Akkurat Mono, monospace" font-size="12" fill="#999">2021</text>
-                        <text x="450" y="190" text-anchor="middle" font-family="Akkurat Mono, monospace" font-size="12" fill="#999">2022</text>
-                        <text x="570" y="190" text-anchor="middle" font-family="Akkurat Mono, monospace" font-size="12" fill="#999">2023</text>
-                        <text x="660" y="190" text-anchor="middle" font-family="Akkurat Mono, monospace" font-size="12" fill="#999">2024</text>
-                    </svg>
-                </div>
-                <div class="afp-chart-legend">
+            <!-- Section: Ownership trends -->
+            <div class="afp-section" id="afp-section-ownership-trends">
+                <div class="afp-section-title">Ownership trends</div>
+                <p class="afp-section-desc">Corporate and out-of-state ownership have both trended upward since 2019, with 100+ unit ownership showing the steepest increase over the period.</p>
+                <div class="afp-legend" style="margin-top:16px;">
                     <div class="afp-legend-item">
                         <div class="afp-legend-dot" style="background:#D46033;"></div>
                         Corporate ownership
@@ -13271,118 +13363,249 @@
                         Out-of-state ownership
                     </div>
                 </div>
+                <div class="afp-chart-wrap">
+                    <svg class="afp-chart-svg" viewBox="0 0 1100 220" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Grid lines -->
+                        <line x1="40" y1="20" x2="1080" y2="20" stroke="#f0f0f0" stroke-width="1"/>
+                        <line x1="40" y1="60" x2="1080" y2="60" stroke="#f0f0f0" stroke-width="1"/>
+                        <line x1="40" y1="100" x2="1080" y2="100" stroke="#f0f0f0" stroke-width="1"/>
+                        <line x1="40" y1="140" x2="1080" y2="140" stroke="#f0f0f0" stroke-width="1"/>
+                        <line x1="40" y1="180" x2="1080" y2="180" stroke="#f0f0f0" stroke-width="1"/>
+                        <!-- Corporate (orange-red, steepest) -->
+                        <polyline points="50,160 220,148 390,132 560,118 730,100 900,82 1070,62"
+                            fill="none" stroke="#D46033" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+                        <!-- 100+ unit (blue, moderate) -->
+                        <polyline points="50,168 220,160 390,150 560,138 730,124 900,108 1070,92"
+                            fill="none" stroke="#4D9FFF" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+                        <!-- Out-of-state (teal, slight) -->
+                        <polyline points="50,172 220,166 390,158 560,150 730,140 900,130 1070,118"
+                            fill="none" stroke="#4DC4A0" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+                        <!-- X-axis labels -->
+                        <text x="44" y="205" font-family="Akkurat Mono,monospace" font-size="10" fill="#999">2019</text>
+                        <text x="210" y="205" font-family="Akkurat Mono,monospace" font-size="10" fill="#999">2020</text>
+                        <text x="378" y="205" font-family="Akkurat Mono,monospace" font-size="10" fill="#999">2021</text>
+                        <text x="546" y="205" font-family="Akkurat Mono,monospace" font-size="10" fill="#999">2022</text>
+                        <text x="714" y="205" font-family="Akkurat Mono,monospace" font-size="10" fill="#999">2023</text>
+                        <text x="882" y="205" font-family="Akkurat Mono,monospace" font-size="10" fill="#999">2024</text>
+                        <text x="1050" y="205" font-family="Akkurat Mono,monospace" font-size="10" fill="#999">2025</text>
+                    </svg>
+                </div>
             </div>
 
-            <!-- Section 6: Top 10 largest landlords -->
-            <div class="afp-section" id="afp-s6">
-                <div class="afp-table-header">
-                    <h2 class="afp-table-title">Top 10 largest <span class="afp-red">landlords</span> &times; by <span class="afp-red">units</span> &#8964;</h2>
+            <!-- Section: Top 10 landlords -->
+            <div class="afp-section afp-section-top10" id="afp-section-top10" style="padding: 40px 0; background: transparent;">
+                <div class="afp-top10-header">
+                    <div class="afp-top10-title">Top 10 largest <span class="afp-accent">landlords</span> by <span class="afp-accent">units</span></div>
                 </div>
+                <div style="overflow-x:auto;">
                 <table class="afp-table">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Owner</th>
-                            <th>Units</th>
-                            <th>Location</th>
-                            <th>Portfolio size</th>
-                            <th>Evictions</th>
-                            <th></th>
+                            <th style="width:50px; padding-left:48px;">Rank</th>
+                            <th style="width:200px;">Primary owner name</th>
+                            <th style="width:140px;">Type</th>
+                            <th class="right" style="width:100px;">Units</th>
+                            <th class="right" style="width:120px;">Avg property size</th>
+                            <th class="right" style="width:110px;">Avg HH income</th>
+                            <th style="width:110px;">Ownership type</th>
+                            <th style="width:100px;">Portfolio</th>
+                            <th style="width:130px; padding-right:48px;"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="afp-table-rank">1</td>
-                            <td><div class="afp-owner-name">Peabody Properties Inc</div><div class="afp-owner-type-tag">Corporate LLC</div></td>
-                            <td><div class="afp-units-value">1,345</div><div class="afp-units-sub">1,345 units</div></td>
-                            <td><span class="afp-geo-tag">Out of state</span></td>
-                            <td><span class="afp-portfolio-val">$60,000</span></td>
-                            <td><div class="afp-sparkline"><div class="afp-spark-bar" style="height:8px;"></div><div class="afp-spark-bar" style="height:14px;"></div><div class="afp-spark-bar" style="height:18px;"></div><div class="afp-spark-bar" style="height:12px;"></div><div class="afp-spark-bar" style="height:22px;"></div></div></td>
-                            <td><button class="afp-view-btn">View landlord</button></td>
+                            <td class="rank" style="padding-left:48px;">1</td>
+                            <td class="bold">Peabody<br>Properties Inc</td>
+                            <td>Private Organization</td>
+                            <td class="mono right">1,345</td>
+                            <td class="mono right">124 units</td>
+                            <td class="mono right">$60,000</td>
+                            <td>Out of state</td>
+                            <td>
+                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24">
+                                    <rect x="2" y="10" width="8" height="12" fill="#ef4400" rx="1"/>
+                                    <rect x="13" y="6" width="8" height="16" fill="#ef4400" rx="1"/>
+                                    <rect x="24" y="8" width="8" height="14" fill="#ef4400" rx="1"/>
+                                    <rect x="35" y="4" width="8" height="18" fill="#ef4400" rx="1"/>
+                                    <rect x="46" y="2" width="8" height="20" fill="#ef4400" rx="1"/>
+                                </svg>
+                            </td>
+                            <td style="padding-right:48px;"><button class="afp-view-landlord-btn">View landlord</button></td>
                         </tr>
                         <tr>
-                            <td class="afp-table-rank">2</td>
-                            <td><div class="afp-owner-name">Genesis Land Holdings</div><div class="afp-owner-type-tag">Corporate LLC</div></td>
-                            <td><div class="afp-units-value">1,198</div><div class="afp-units-sub">1,198 units</div></td>
-                            <td><span class="afp-geo-tag">Out of state</span></td>
-                            <td><span class="afp-portfolio-val">$60,000</span></td>
-                            <td><div class="afp-sparkline"><div class="afp-spark-bar" style="height:10px;"></div><div class="afp-spark-bar" style="height:18px;"></div><div class="afp-spark-bar" style="height:14px;"></div><div class="afp-spark-bar" style="height:20px;"></div><div class="afp-spark-bar" style="height:16px;"></div></div></td>
-                            <td><button class="afp-view-btn">View landlord</button></td>
+                            <td class="rank" style="padding-left:48px;">2</td>
+                            <td class="bold">Oakwood<br>Properties Inc</td>
+                            <td>Private Organization</td>
+                            <td class="mono right">1,345</td>
+                            <td class="mono right">123 units</td>
+                            <td class="mono right">$60,000</td>
+                            <td>Out of state</td>
+                            <td>
+                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24">
+                                    <rect x="2" y="12" width="8" height="10" fill="#ef4400" rx="1"/>
+                                    <rect x="13" y="8" width="8" height="14" fill="#ef4400" rx="1"/>
+                                    <rect x="24" y="6" width="8" height="16" fill="#ef4400" rx="1"/>
+                                    <rect x="35" y="8" width="8" height="14" fill="#ef4400" rx="1"/>
+                                    <rect x="46" y="3" width="8" height="19" fill="#ef4400" rx="1"/>
+                                </svg>
+                            </td>
+                            <td style="padding-right:48px;"><button class="afp-view-landlord-btn">View landlord</button></td>
                         </tr>
                         <tr>
-                            <td class="afp-table-rank">3</td>
-                            <td><div class="afp-owner-name">Peabody Properties Inc</div><div class="afp-owner-type-tag">Investment Trust</div></td>
-                            <td><div class="afp-units-value">1,042</div><div class="afp-units-sub">1,042 units</div></td>
-                            <td><span class="afp-geo-tag">Out of state</span></td>
-                            <td><span class="afp-portfolio-val">$60,000</span></td>
-                            <td><div class="afp-sparkline"><div class="afp-spark-bar" style="height:6px;"></div><div class="afp-spark-bar" style="height:10px;"></div><div class="afp-spark-bar" style="height:20px;"></div><div class="afp-spark-bar" style="height:16px;"></div><div class="afp-spark-bar" style="height:24px;"></div></div></td>
-                            <td><button class="afp-view-btn">View landlord</button></td>
+                            <td class="rank" style="padding-left:48px;">3</td>
+                            <td class="bold">Peabody<br>Properties Inc</td>
+                            <td>Private Organization</td>
+                            <td class="mono right">1,345</td>
+                            <td class="mono right">124 units</td>
+                            <td class="mono right">$60,000</td>
+                            <td>Out of state</td>
+                            <td>
+                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24">
+                                    <rect x="2" y="14" width="8" height="8" fill="#ef4400" rx="1"/>
+                                    <rect x="13" y="10" width="8" height="12" fill="#ef4400" rx="1"/>
+                                    <rect x="24" y="7" width="8" height="15" fill="#ef4400" rx="1"/>
+                                    <rect x="35" y="5" width="8" height="17" fill="#ef4400" rx="1"/>
+                                    <rect x="46" y="2" width="8" height="20" fill="#ef4400" rx="1"/>
+                                </svg>
+                            </td>
+                            <td style="padding-right:48px;"><button class="afp-view-landlord-btn">View landlord</button></td>
                         </tr>
                         <tr>
-                            <td class="afp-table-rank">4</td>
-                            <td><div class="afp-owner-name">Genesis Land Holdings</div><div class="afp-owner-type-tag">Corporate LLC</div></td>
-                            <td><div class="afp-units-value">987</div><div class="afp-units-sub">987 units</div></td>
-                            <td><span class="afp-geo-tag">Out of state</span></td>
-                            <td><span class="afp-portfolio-val">$60,000</span></td>
-                            <td><div class="afp-sparkline"><div class="afp-spark-bar" style="height:12px;"></div><div class="afp-spark-bar" style="height:8px;"></div><div class="afp-spark-bar" style="height:16px;"></div><div class="afp-spark-bar" style="height:10px;"></div><div class="afp-spark-bar" style="height:18px;"></div></div></td>
-                            <td><button class="afp-view-btn">View landlord</button></td>
+                            <td class="rank" style="padding-left:48px;">4</td>
+                            <td class="bold">Oakwood<br>Properties Inc</td>
+                            <td>Private Organization</td>
+                            <td class="mono right">1,345</td>
+                            <td class="mono right">123 units</td>
+                            <td class="mono right">$60,000</td>
+                            <td>Out of state</td>
+                            <td>
+                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24">
+                                    <rect x="2" y="8" width="8" height="14" fill="#ef4400" rx="1"/>
+                                    <rect x="13" y="12" width="8" height="10" fill="#ef4400" rx="1"/>
+                                    <rect x="24" y="6" width="8" height="16" fill="#ef4400" rx="1"/>
+                                    <rect x="35" y="4" width="8" height="18" fill="#ef4400" rx="1"/>
+                                    <rect x="46" y="2" width="8" height="20" fill="#ef4400" rx="1"/>
+                                </svg>
+                            </td>
+                            <td style="padding-right:48px;"><button class="afp-view-landlord-btn">View landlord</button></td>
                         </tr>
                         <tr>
-                            <td class="afp-table-rank">5</td>
-                            <td><div class="afp-owner-name">Peabody Properties Inc</div><div class="afp-owner-type-tag">Limited Partnership</div></td>
-                            <td><div class="afp-units-value">876</div><div class="afp-units-sub">876 units</div></td>
-                            <td><span class="afp-geo-tag">Out of state</span></td>
-                            <td><span class="afp-portfolio-val">$60,000</span></td>
-                            <td><div class="afp-sparkline"><div class="afp-spark-bar" style="height:16px;"></div><div class="afp-spark-bar" style="height:22px;"></div><div class="afp-spark-bar" style="height:10px;"></div><div class="afp-spark-bar" style="height:14px;"></div><div class="afp-spark-bar" style="height:20px;"></div></div></td>
-                            <td><button class="afp-view-btn">View landlord</button></td>
+                            <td class="rank" style="padding-left:48px;">5</td>
+                            <td class="bold">Peabody<br>Properties Inc</td>
+                            <td>Private Organization</td>
+                            <td class="mono right">1,345</td>
+                            <td class="mono right">124 units</td>
+                            <td class="mono right">$60,000</td>
+                            <td>Out of state</td>
+                            <td>
+                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24">
+                                    <rect x="2" y="16" width="8" height="6" fill="#ef4400" rx="1"/>
+                                    <rect x="13" y="10" width="8" height="12" fill="#ef4400" rx="1"/>
+                                    <rect x="24" y="8" width="8" height="14" fill="#ef4400" rx="1"/>
+                                    <rect x="35" y="5" width="8" height="17" fill="#ef4400" rx="1"/>
+                                    <rect x="46" y="2" width="8" height="20" fill="#ef4400" rx="1"/>
+                                </svg>
+                            </td>
+                            <td style="padding-right:48px;"><button class="afp-view-landlord-btn">View landlord</button></td>
                         </tr>
                         <tr>
-                            <td class="afp-table-rank">6</td>
-                            <td><div class="afp-owner-name">Genesis Land Holdings</div><div class="afp-owner-type-tag">Corporate LLC</div></td>
-                            <td><div class="afp-units-value">814</div><div class="afp-units-sub">814 units</div></td>
-                            <td><span class="afp-geo-tag">In state</span></td>
-                            <td><span class="afp-portfolio-val">$60,000</span></td>
-                            <td><div class="afp-sparkline"><div class="afp-spark-bar" style="height:8px;"></div><div class="afp-spark-bar" style="height:12px;"></div><div class="afp-spark-bar" style="height:16px;"></div><div class="afp-spark-bar" style="height:18px;"></div><div class="afp-spark-bar" style="height:14px;"></div></div></td>
-                            <td><button class="afp-view-btn">View landlord</button></td>
+                            <td class="rank" style="padding-left:48px;">6</td>
+                            <td class="bold">Oakwood<br>Properties Inc</td>
+                            <td>Private Organization</td>
+                            <td class="mono right">1,345</td>
+                            <td class="mono right">123 units</td>
+                            <td class="mono right">$60,000</td>
+                            <td>Out of state</td>
+                            <td>
+                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24">
+                                    <rect x="2" y="10" width="8" height="12" fill="#ef4400" rx="1"/>
+                                    <rect x="13" y="7" width="8" height="15" fill="#ef4400" rx="1"/>
+                                    <rect x="24" y="11" width="8" height="11" fill="#ef4400" rx="1"/>
+                                    <rect x="35" y="5" width="8" height="17" fill="#ef4400" rx="1"/>
+                                    <rect x="46" y="3" width="8" height="19" fill="#ef4400" rx="1"/>
+                                </svg>
+                            </td>
+                            <td style="padding-right:48px;"><button class="afp-view-landlord-btn">View landlord</button></td>
                         </tr>
                         <tr>
-                            <td class="afp-table-rank">7</td>
-                            <td><div class="afp-owner-name">Peabody Properties Inc</div><div class="afp-owner-type-tag">Corporate LLC</div></td>
-                            <td><div class="afp-units-value">762</div><div class="afp-units-sub">762 units</div></td>
-                            <td><span class="afp-geo-tag">Out of state</span></td>
-                            <td><span class="afp-portfolio-val">$60,000</span></td>
-                            <td><div class="afp-sparkline"><div class="afp-spark-bar" style="height:20px;"></div><div class="afp-spark-bar" style="height:14px;"></div><div class="afp-spark-bar" style="height:10px;"></div><div class="afp-spark-bar" style="height:16px;"></div><div class="afp-spark-bar" style="height:22px;"></div></div></td>
-                            <td><button class="afp-view-btn">View landlord</button></td>
+                            <td class="rank" style="padding-left:48px;">7</td>
+                            <td class="bold">Peabody<br>Properties Inc</td>
+                            <td>Private Organization</td>
+                            <td class="mono right">1,345</td>
+                            <td class="mono right">124 units</td>
+                            <td class="mono right">$60,000</td>
+                            <td>Out of state</td>
+                            <td>
+                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24">
+                                    <rect x="2" y="12" width="8" height="10" fill="#ef4400" rx="1"/>
+                                    <rect x="13" y="9" width="8" height="13" fill="#ef4400" rx="1"/>
+                                    <rect x="24" y="7" width="8" height="15" fill="#ef4400" rx="1"/>
+                                    <rect x="35" y="4" width="8" height="18" fill="#ef4400" rx="1"/>
+                                    <rect x="46" y="2" width="8" height="20" fill="#ef4400" rx="1"/>
+                                </svg>
+                            </td>
+                            <td style="padding-right:48px;"><button class="afp-view-landlord-btn">View landlord</button></td>
                         </tr>
                         <tr>
-                            <td class="afp-table-rank">8</td>
-                            <td><div class="afp-owner-name">Genesis Land Holdings</div><div class="afp-owner-type-tag">Investment Trust</div></td>
-                            <td><div class="afp-units-value">698</div><div class="afp-units-sub">698 units</div></td>
-                            <td><span class="afp-geo-tag">In state</span></td>
-                            <td><span class="afp-portfolio-val">$60,000</span></td>
-                            <td><div class="afp-sparkline"><div class="afp-spark-bar" style="height:10px;"></div><div class="afp-spark-bar" style="height:16px;"></div><div class="afp-spark-bar" style="height:12px;"></div><div class="afp-spark-bar" style="height:20px;"></div><div class="afp-spark-bar" style="height:14px;"></div></div></td>
-                            <td><button class="afp-view-btn">View landlord</button></td>
+                            <td class="rank" style="padding-left:48px;">8</td>
+                            <td class="bold">Oakwood<br>Properties Inc</td>
+                            <td>Private Organization</td>
+                            <td class="mono right">1,345</td>
+                            <td class="mono right">123 units</td>
+                            <td class="mono right">$60,000</td>
+                            <td>Out of state</td>
+                            <td>
+                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24">
+                                    <rect x="2" y="14" width="8" height="8" fill="#ef4400" rx="1"/>
+                                    <rect x="13" y="8" width="8" height="14" fill="#ef4400" rx="1"/>
+                                    <rect x="24" y="10" width="8" height="12" fill="#ef4400" rx="1"/>
+                                    <rect x="35" y="5" width="8" height="17" fill="#ef4400" rx="1"/>
+                                    <rect x="46" y="2" width="8" height="20" fill="#ef4400" rx="1"/>
+                                </svg>
+                            </td>
+                            <td style="padding-right:48px;"><button class="afp-view-landlord-btn">View landlord</button></td>
                         </tr>
                         <tr>
-                            <td class="afp-table-rank">9</td>
-                            <td><div class="afp-owner-name">Peabody Properties Inc</div><div class="afp-owner-type-tag">Non-profit</div></td>
-                            <td><div class="afp-units-value">634</div><div class="afp-units-sub">634 units</div></td>
-                            <td><span class="afp-geo-tag">In state</span></td>
-                            <td><span class="afp-portfolio-val">$60,000</span></td>
-                            <td><div class="afp-sparkline"><div class="afp-spark-bar" style="height:6px;"></div><div class="afp-spark-bar" style="height:8px;"></div><div class="afp-spark-bar" style="height:6px;"></div><div class="afp-spark-bar" style="height:10px;"></div><div class="afp-spark-bar" style="height:8px;"></div></div></td>
-                            <td><button class="afp-view-btn">View landlord</button></td>
+                            <td class="rank" style="padding-left:48px;">9</td>
+                            <td class="bold">Peabody<br>Properties Inc</td>
+                            <td>Private Organization</td>
+                            <td class="mono right">1,345</td>
+                            <td class="mono right">124 units</td>
+                            <td class="mono right">$60,000</td>
+                            <td>Out of state</td>
+                            <td>
+                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24">
+                                    <rect x="2" y="11" width="8" height="11" fill="#ef4400" rx="1"/>
+                                    <rect x="13" y="8" width="8" height="14" fill="#ef4400" rx="1"/>
+                                    <rect x="24" y="6" width="8" height="16" fill="#ef4400" rx="1"/>
+                                    <rect x="35" y="4" width="8" height="18" fill="#ef4400" rx="1"/>
+                                    <rect x="46" y="2" width="8" height="20" fill="#ef4400" rx="1"/>
+                                </svg>
+                            </td>
+                            <td style="padding-right:48px;"><button class="afp-view-landlord-btn">View landlord</button></td>
                         </tr>
                         <tr>
-                            <td class="afp-table-rank">10</td>
-                            <td><div class="afp-owner-name">Genesis Land Holdings</div><div class="afp-owner-type-tag">Corporate LLC</div></td>
-                            <td><div class="afp-units-value">581</div><div class="afp-units-sub">581 units</div></td>
-                            <td><span class="afp-geo-tag">Out of state</span></td>
-                            <td><span class="afp-portfolio-val">$60,000</span></td>
-                            <td><div class="afp-sparkline"><div class="afp-spark-bar" style="height:14px;"></div><div class="afp-spark-bar" style="height:10px;"></div><div class="afp-spark-bar" style="height:18px;"></div><div class="afp-spark-bar" style="height:12px;"></div><div class="afp-spark-bar" style="height:16px;"></div></div></td>
-                            <td><button class="afp-view-btn">View landlord</button></td>
+                            <td class="rank" style="padding-left:48px;">10</td>
+                            <td class="bold">Oakwood<br>Properties Inc</td>
+                            <td>Private Organization</td>
+                            <td class="mono right">1,345</td>
+                            <td class="mono right">123 units</td>
+                            <td class="mono right">$60,000</td>
+                            <td>Out of state</td>
+                            <td>
+                                <svg class="afp-sparkline" width="60" height="24" viewBox="0 0 60 24">
+                                    <rect x="2" y="13" width="8" height="9" fill="#ef4400" rx="1"/>
+                                    <rect x="13" y="9" width="8" height="13" fill="#ef4400" rx="1"/>
+                                    <rect x="24" y="7" width="8" height="15" fill="#ef4400" rx="1"/>
+                                    <rect x="35" y="5" width="8" height="17" fill="#ef4400" rx="1"/>
+                                    <rect x="46" y="2" width="8" height="20" fill="#ef4400" rx="1"/>
+                                </svg>
+                            </td>
+                            <td style="padding-right:48px;"><button class="afp-view-landlord-btn">View landlord</button></td>
                         </tr>
                     </tbody>
                 </table>
+                </div>
             </div>
 
         </div><!-- end afp-content -->
@@ -13407,35 +13630,17 @@
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') document.getElementById('area-full-page-modal').classList.remove('active');
         });
-        // City dropdown (same IIFE pattern used in landlord page)
-        (function() {
-            var trigger = document.getElementById('afp-city-trigger');
-            var dropdown = document.getElementById('afp-city-dropdown');
-            if (!trigger || !dropdown) return;
-            trigger.addEventListener('click', function(e) { e.stopPropagation(); dropdown.classList.toggle('open'); });
-            dropdown.querySelectorAll('.modal-city-option').forEach(function(btn) {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    dropdown.querySelectorAll('.modal-city-option').forEach(function(b) { b.classList.remove('active'); });
-                    btn.classList.add('active');
-                    var cs = trigger.querySelector('.modal-city-name');
-                    if (cs) cs.textContent = btn.textContent;
-                    dropdown.classList.remove('open');
-                });
-            });
-            document.addEventListener('click', function(e) {
-                if (!trigger.contains(e.target) && !dropdown.contains(e.target)) dropdown.classList.remove('open');
-            });
-        })();
-        // Nav tab active state
+        // Nav tabs scroll behavior
         (function() {
             var areaModal = document.getElementById('area-full-page-modal');
             var nav = document.getElementById('afp-nav');
-            var tabs = nav ? nav.querySelectorAll('.afp-nav-tab[data-section]') : [];
+            if (!nav || !areaModal) return;
+            var tabs = nav.querySelectorAll('.afp-nav-tab[data-section]');
+            var sectionIds = ['afp-section-poverty','afp-section-housing','afp-section-demographics','afp-section-landlord-comp','afp-section-ownership-trends','afp-section-top10'];
             var sections = [];
-            tabs.forEach(function(tab) {
-                var sec = document.getElementById(tab.getAttribute('data-section'));
-                if (sec) sections.push({ tab: tab, section: sec });
+            sectionIds.forEach(function(id, i) {
+                var sec = document.getElementById(id);
+                if (sec) sections.push({ section: sec, tab: tabs[i] });
             });
             if (!sections.length) return;
             tabs.forEach(function(tab) {
@@ -13444,14 +13649,14 @@
                     var id = tab.getAttribute('data-section');
                     var target = document.getElementById(id);
                     if (target) {
-                        var offset = 60 + 45;
+                        var offset = 60 + 55;
                         var top = target.getBoundingClientRect().top + areaModal.scrollTop - offset;
                         areaModal.scrollTo({ top: top, behavior: 'smooth' });
                     }
                 });
             });
             areaModal.addEventListener('scroll', function() {
-                var scrollTop = areaModal.scrollTop + 60 + 50;
+                var scrollTop = areaModal.scrollTop + 60 + 60;
                 var active = null;
                 sections.forEach(function(item) {
                     if (item.section.offsetTop <= scrollTop) active = item;
@@ -13462,6 +13667,7 @@
         })();
     })();
     </script>
+
 
 </body>
 </html>
