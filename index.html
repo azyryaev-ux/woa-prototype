@@ -3085,6 +3085,13 @@
         }
 
         /* Status sentence */
+        .stat-link {
+            cursor: pointer;
+            text-decoration: none;
+            border-bottom: 1px dashed rgba(200,68,38,0.4);
+            transition: border-color 0.12s;
+        }
+        .stat-link:hover { border-bottom-color: #c84426; }
         .app-header-status {
             font-size: 14px;
             font-family: 'Akkurat', sans-serif;
@@ -7633,7 +7640,7 @@
 
         <!-- Status sentence — property mode -->
         <div class="app-header-status" id="header-status-property">
-            Showing <b>2019</b> data for <b id="stat-prop-types">Commercial, ...</b> properties with <b>1–50</b> units belonging to <b id="stat-prop-landlords">corporate, ...</b> landlords with <b id="stat-adv-count">5</b> adv filters
+            Showing <b id="stat-prop-year" class="stat-link">2019</b> data for <b id="stat-prop-types" class="stat-link">Commercial, ...</b> properties with <b id="stat-prop-units" class="stat-link">1–50</b> units belonging to <b id="stat-prop-landlords" class="stat-link">corporate, ...</b> landlords with <b id="stat-adv-count" class="stat-link">5</b> adv filters
         </div>
 
         <!-- Status sentence — area mode (hidden by default) -->
@@ -7852,7 +7859,7 @@
                 <!-- Property data tab content -->
                 <div class="data-tab-content active" id="data-tab-property">
                     <!-- Year selector -->
-                    <div class="data-year-section">
+                    <div class="data-year-section" id="stat-target-year">
                         <div class="data-year-strip">
                             <span class="data-year-label">Year</span>
                             <button class="data-year-btn" data-year="2000">2000</button>
@@ -7869,7 +7876,7 @@
                     <!-- Filters body -->
                     <div class="data-filter-accordion-body" id="data-filters-body">
                             <!-- Property type -->
-                            <div class="data-filter-section-label">Property type</div>
+                            <div class="data-filter-section-label" id="stat-target-proptype">Property type</div>
                             <div class="data-checklist">
                                 <label class="data-check-item">
                                     <input type="checkbox" checked>
@@ -7919,7 +7926,7 @@
                             </div>
 
                             <!-- Number of units -->
-                            <div class="data-filter-section-label" style="margin-top:32px;">Number of units</div>
+                            <div class="data-filter-section-label" id="stat-target-units" style="margin-top:32px;">Number of units</div>
                             <div class="data-units-row">
                                 <span class="data-units-label">Min</span>
                                 <input class="data-units-input" type="number" placeholder="0" min="0">
@@ -7929,7 +7936,7 @@
                             </div>
 
                             <!-- Landlord type -->
-                            <div class="data-filter-section-label" style="margin-top:32px;">Landlord type</div>
+                            <div class="data-filter-section-label" id="stat-target-landlord" style="margin-top:32px;">Landlord type</div>
                             <div class="data-checklist">
                                 <label class="data-check-item">
                                     <input type="checkbox" checked>
@@ -7988,7 +7995,7 @@
 
                             <!-- Advanced filters -->
                             <div class="data-advanced-section">
-                                <div class="data-filter-section-label" style="margin-bottom:6px;">Advanced filters</div>
+                                <div class="data-filter-section-label" id="stat-target-advfilters" style="margin-bottom:6px;">Advanced filters</div>
                                 <p class="data-advanced-desc">Advanced filters let you narrow results by things like filing date, building age, assessed value, and eviction history. They stack on top of the basic filters above.</p>
                                 <div class="data-advanced-box">
                                     <div class="data-advanced-applied">
@@ -8011,7 +8018,7 @@
                 <!-- Area data tab content -->
                 <div class="data-tab-content" id="data-tab-area">
                     <!-- Year selector -->
-                    <div class="data-year-section">
+                    <div class="data-year-section" id="stat-target-year">
                         <div class="data-year-strip">
                             <span class="data-year-label">Year</span>
                             <button class="data-year-btn" data-year="2000">2000</button>
@@ -11661,7 +11668,76 @@
             setTimeout(function() { updatePropTypeStatus(); updateLandlordStatus(); }, 0);
         })();
 
-                // Clicking the "2019" year trigger in the area data summary opens the header year dropdown
+        // ── Status sentence two-way wiring ──
+        (function() {
+            // Helper: open data panel and scroll to a target element
+            function openPanelAndScroll(targetId) {
+                // Open the filters panel
+                var rail = document.getElementById('rail-filters');
+                if (rail) rail.click();
+                // Scroll to section after panel opens
+                setTimeout(function() {
+                    var target = document.getElementById(targetId);
+                    var panel = document.getElementById('panel-filters');
+                    if (target && panel) {
+                        panel.scrollTo({ top: target.offsetTop - 16, behavior: 'smooth' });
+                    }
+                }, 80);
+            }
+
+            // Wire each clickable word to its panel section
+            var links = {
+                'stat-prop-year':       'stat-target-year',
+                'stat-prop-types':      'stat-target-proptype',
+                'stat-prop-units':      'stat-target-units',
+                'stat-prop-landlords':  'stat-target-landlord',
+                'stat-adv-count':       'stat-target-advfilters'
+            };
+            Object.keys(links).forEach(function(id) {
+                var el = document.getElementById(id);
+                if (el) el.addEventListener('click', function() { openPanelAndScroll(links[id]); });
+            });
+
+            // ── Year reactivity ──
+            document.querySelectorAll('#data-tab-property .data-year-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var yr = document.getElementById('stat-prop-year');
+                    if (yr) yr.textContent = btn.dataset.year || btn.textContent.trim();
+                });
+            });
+
+            // ── Units reactivity ──
+            function updateUnitsStatus() {
+                var inputs = document.querySelectorAll('#stat-target-units ~ .data-units-row .data-units-input');
+                var el = document.getElementById('stat-prop-units');
+                if (!el || inputs.length < 2) return;
+                var minVal = inputs[0].value.trim();
+                var maxVal = inputs[1].value.trim();
+                if (minVal && maxVal) {
+                    el.textContent = minVal + '–' + maxVal;
+                } else if (minVal) {
+                    el.textContent = minVal + '+';
+                } else if (maxVal) {
+                    el.textContent = '0–' + maxVal;
+                } else {
+                    el.textContent = 'any';
+                }
+            }
+            document.querySelectorAll('#stat-target-units ~ .data-units-row .data-units-input').forEach(function(inp) {
+                inp.addEventListener('input', updateUnitsStatus);
+            });
+
+            // ── Advanced filter count reactivity ──
+            document.querySelectorAll('#advanced-filters-modal input').forEach(function(inp) {
+                inp.addEventListener('change', function() {
+                    var count = document.querySelectorAll('#advanced-filters-modal input:checked').length;
+                    var el = document.getElementById('stat-adv-count');
+                    if (el) el.textContent = count;
+                });
+            });
+        })();
+
+                        // Clicking the "2019" year trigger in the area data summary opens the header year dropdown
         const yearTrigger = document.getElementById('area-data-year-trigger');
         const headerYearSelect = document.getElementById('app-header-year-select');
         if (yearTrigger && headerYearSelect) {
