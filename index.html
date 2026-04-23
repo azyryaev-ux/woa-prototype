@@ -6500,35 +6500,32 @@
             width: 100%;
         }
 
-        /* Fly to — ghost outline */
+        /* Equal-weight button base — same format, different color family */
+        .sel-btn-fly, .sel-btn-fullpage, .sel-btn-landlord {
+            font-size: 11px; font-weight: 500; padding: 8px 12px;
+            border-radius: 6px; border: 1px solid;
+            cursor: pointer; font-family: 'Akkurat', sans-serif;
+            text-align: center; width: 100%;
+            transition: background 0.12s, border-color 0.12s, color 0.12s;
+        }
+
+        /* Fly to — neutral */
         .sel-btn-fly {
-            font-size: 11px; font-weight: 500; padding: 7px 12px;
-            border: 1px solid #d0d0d0; border-radius: 6px;
-            background: transparent; color: #555;
-            cursor: pointer; font-family: 'Akkurat', sans-serif;
-            text-align: center; width: 100%; transition: background 0.1s, border-color 0.1s;
+            border-color: #c8c8c8; color: #555; background: #f8f8f8;
         }
-        .sel-btn-fly:hover { background: #f5f5f5; border-color: #aaa; }
+        .sel-btn-fly:hover { background: #efefef; border-color: #aaa; color: #333; }
 
-        /* Open full page view — orange */
+        /* Open full page view — orange family */
         .sel-btn-fullpage {
-            font-size: 11px; font-weight: 600; padding: 7px 12px;
-            border: 1px solid #e05539; border-radius: 6px;
-            background: rgba(224,85,57,0.08); color: #c84426;
-            cursor: pointer; font-family: 'Akkurat', sans-serif;
-            text-align: center; width: 100%; transition: background 0.12s, color 0.12s;
+            border-color: #d4855e; color: #b85c3a; background: #fdf2ef;
         }
-        .sel-btn-fullpage:hover { background: rgba(224,85,57,0.15); color: #e05539; }
+        .sel-btn-fullpage:hover { background: #fbe5df; border-color: #c06040; color: #a04830; }
 
-        /* Open landlord page — black */
+        /* Open landlord page — dark family */
         .sel-btn-landlord {
-            font-size: 11px; font-weight: 600; padding: 7px 12px;
-            border: none; border-radius: 6px;
-            background: #111; color: #fff;
-            cursor: pointer; font-family: 'Akkurat', sans-serif;
-            text-align: center; width: 100%; transition: background 0.1s;
+            border-color: #999; color: #222; background: #f2f2f2;
         }
-        .sel-btn-landlord:hover { background: #333; }
+        .sel-btn-landlord:hover { background: #e8e8e8; border-color: #666; color: #000; }
 
         .sel-prop-remove {
             width: 22px;
@@ -6641,25 +6638,26 @@
             width: 100%;
         }
 
-        /* Fly to — ghost outline (shared with sel-btn-fly) */
-        .sel-area-action-btn-fly {
-            font-size: 11px; font-weight: 500; padding: 7px 12px;
-            border: 1px solid #d0d0d0; border-radius: 6px;
-            background: transparent; color: #555;
+        /* Equal-weight area buttons */
+        .sel-area-action-btn-fly, .sel-area-action-btn-page {
+            font-size: 11px; font-weight: 500; padding: 8px 12px;
+            border-radius: 6px; border: 1px solid;
             cursor: pointer; font-family: 'Akkurat', sans-serif;
-            text-align: center; width: 100%; transition: background 0.1s, border-color 0.1s;
+            text-align: center; width: 100%;
+            transition: background 0.12s, border-color 0.12s, color 0.12s;
         }
-        .sel-area-action-btn-fly:hover { background: #f5f5f5; border-color: #aaa; }
 
-        /* Open full page view — orange */
-        .sel-area-action-btn-page {
-            font-size: 11px; font-weight: 600; padding: 7px 12px;
-            border: 1px solid #e05539; border-radius: 6px;
-            background: rgba(224,85,57,0.08); color: #c84426;
-            cursor: pointer; font-family: 'Akkurat', sans-serif;
-            text-align: center; width: 100%; transition: background 0.12s, color 0.12s;
+        /* Fly to — neutral */
+        .sel-area-action-btn-fly {
+            border-color: #c8c8c8; color: #555; background: #f8f8f8;
         }
-        .sel-area-action-btn-page:hover { background: rgba(224,85,57,0.15); color: #e05539; }
+        .sel-area-action-btn-fly:hover { background: #efefef; border-color: #aaa; color: #333; }
+
+        /* Open full page view — orange family */
+        .sel-area-action-btn-page {
+            border-color: #d4855e; color: #b85c3a; background: #fdf2ef;
+        }
+        .sel-area-action-btn-page:hover { background: #fbe5df; border-color: #c06040; color: #a04830; }
 
         .sel-area-remove {
             width: 22px;
