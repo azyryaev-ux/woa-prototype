@@ -6495,38 +6495,40 @@
 
         .sel-prop-actions {
             display: flex;
-            border: 1px solid #e0e0e0;
-            border-radius: 7px;
-            overflow: hidden;
+            flex-direction: column;
+            gap: 5px;
             width: 100%;
-            background: #fff;
         }
 
-        .sel-prop-action-btn {
-            font-size: 11px;
-            padding: 8px 10px;
-            border: none;
-            border-right: 1px solid #e8e8e8;
-            background: transparent;
-            color: #444;
-            cursor: pointer;
-            font-family: 'Akkurat', sans-serif;
-            white-space: nowrap;
-            flex: 1;
-            text-align: center;
-            line-height: 1;
-            transition: background 0.1s, color 0.1s;
+        /* Fly to — ghost outline */
+        .sel-btn-fly {
+            font-size: 11px; font-weight: 500; padding: 7px 12px;
+            border: 1px solid #d0d0d0; border-radius: 6px;
+            background: transparent; color: #555;
+            cursor: pointer; font-family: 'Akkurat', sans-serif;
+            text-align: center; width: 100%; transition: background 0.1s, border-color 0.1s;
         }
+        .sel-btn-fly:hover { background: #f5f5f5; border-color: #aaa; }
 
-        .sel-prop-action-btn:first-child {
-            flex: 0 0 auto;
-            padding: 8px 14px;
-            color: #666;
+        /* Open full page view — orange */
+        .sel-btn-fullpage {
+            font-size: 11px; font-weight: 600; padding: 7px 12px;
+            border: 1px solid #e05539; border-radius: 6px;
+            background: rgba(224,85,57,0.08); color: #c84426;
+            cursor: pointer; font-family: 'Akkurat', sans-serif;
+            text-align: center; width: 100%; transition: background 0.12s, color 0.12s;
         }
+        .sel-btn-fullpage:hover { background: rgba(224,85,57,0.15); color: #e05539; }
 
-        .sel-prop-action-btn:last-child { border-right: none; }
-
-        .sel-prop-action-btn:hover { background: #f5f5f5; color: #111; }
+        /* Open landlord page — black */
+        .sel-btn-landlord {
+            font-size: 11px; font-weight: 600; padding: 7px 12px;
+            border: none; border-radius: 6px;
+            background: #111; color: #fff;
+            cursor: pointer; font-family: 'Akkurat', sans-serif;
+            text-align: center; width: 100%; transition: background 0.1s;
+        }
+        .sel-btn-landlord:hover { background: #333; }
 
         .sel-prop-remove {
             width: 22px;
@@ -6634,28 +6636,30 @@
 
         .sel-area-actions {
             display: flex;
-            border: 1px solid #d8d8d8;
-            border-radius: 6px;
-            overflow: hidden;
+            flex-direction: column;
+            gap: 5px;
             width: 100%;
         }
 
-        .sel-area-action-btn {
-            font-size: 11px;
-            padding: 7px 6px;
-            border: none;
-            border-right: 1px solid #d8d8d8;
-            background: #fff;
-            color: #555;
-            cursor: pointer;
-            font-family: 'Akkurat', sans-serif;
-            white-space: nowrap;
-            flex: 1;
-            text-align: center;
+        /* Fly to — ghost outline (shared with sel-btn-fly) */
+        .sel-area-action-btn-fly {
+            font-size: 11px; font-weight: 500; padding: 7px 12px;
+            border: 1px solid #d0d0d0; border-radius: 6px;
+            background: transparent; color: #555;
+            cursor: pointer; font-family: 'Akkurat', sans-serif;
+            text-align: center; width: 100%; transition: background 0.1s, border-color 0.1s;
         }
+        .sel-area-action-btn-fly:hover { background: #f5f5f5; border-color: #aaa; }
 
-        .sel-area-action-btn:last-child { border-right: none; }
-        .sel-area-action-btn:hover { background: #f5f5f5; }
+        /* Open full page view — orange */
+        .sel-area-action-btn-page {
+            font-size: 11px; font-weight: 600; padding: 7px 12px;
+            border: 1px solid #e05539; border-radius: 6px;
+            background: rgba(224,85,57,0.08); color: #c84426;
+            cursor: pointer; font-family: 'Akkurat', sans-serif;
+            text-align: center; width: 100%; transition: background 0.12s, color 0.12s;
+        }
+        .sel-area-action-btn-page:hover { background: rgba(224,85,57,0.15); color: #e05539; }
 
         .sel-area-remove {
             width: 22px;
@@ -6704,9 +6708,9 @@
         .compare-props-actions { display: flex; align-items: center; gap: 6px; }
         .compare-props-get-data-btn {
             display: flex; align-items: center; gap: 6px;
-            font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.75);
-            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 5px; padding: 6px 12px; cursor: pointer;
+            font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.85);
+            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 5px; padding: 7px 14px; cursor: pointer;
             font-family: 'Akkurat', sans-serif; transition: background 0.15s, color 0.15s;
             letter-spacing: 0.2px;
         }
@@ -6742,7 +6746,7 @@
         .compare-props-table th.cp-th-active { font-weight: 600; color: #111; }
         .compare-props-table th.cp-th-active .compare-props-sort-arrow { color: #e05539; }
         .compare-props-table td {
-            padding: 16px 16px; font-size: 14px; color: #111;
+            padding: 22px 16px; font-size: 14px; color: #111;
             vertical-align: middle; white-space: nowrap;
         }
         .compare-props-table td:first-child {
@@ -6753,7 +6757,7 @@
         .cp-addr-cell { display: flex; flex-direction: column; gap: 7px; }
         .cp-addr-top { display: flex; align-items: flex-start; gap: 7px; }
         .cp-addr-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 3px; }
-        .cp-addr-label { font-size: 13px; font-weight: 700; color: #111; font-family: 'Akkurat Mono', monospace; letter-spacing: 0.3px; }
+        .cp-addr-label { font-size: 13px; font-weight: 900; color: #111; font-family: 'Akkurat Mono', monospace; letter-spacing: 0.3px; }
         .cp-row-actions { display: flex; flex-direction: column; align-items: stretch; gap: 5px; margin-top: 6px; max-width: 160px; }
         .cp-row-btn-map {
             font-size: 13px; font-weight: 500; color: #333;
@@ -6764,11 +6768,11 @@
         .cp-row-btn-map:hover { background: #f5f5f5; border-color: #aaa; }
         .cp-row-btn-page {
             font-size: 13px; font-weight: 500; color: #c84426;
-            background: rgba(224,85,57,0.06); border: 1px solid rgba(224,85,57,0.5); border-radius: 6px;
+            background: rgba(224,85,57,0.07); border: 1.5px solid #e05539; border-radius: 6px;
             padding: 8px 18px; cursor: pointer; font-family: 'Akkurat Mono', monospace;
-            transition: background 0.12s, color 0.12s, border-color 0.12s; text-align: center; letter-spacing: 0.2px;
+            transition: background 0.12s, color 0.12s; text-align: center; letter-spacing: 0.2px;
         }
-        .cp-row-btn-page:hover { background: rgba(224,85,57,0.12); border-color: #e05539; color: #e05539; }
+        .cp-row-btn-page:hover { background: rgba(224,85,57,0.15); color: #e05539; }
         .cp-landlord-cell { display: flex; align-items: flex-start; gap: 7px; }
         .cp-landlord-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 3px; }
         .cp-landlord-name { font-size: 12px; color: #111; white-space: normal; max-width: 160px; line-height: 1.35; }
@@ -6823,13 +6827,13 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            font-size: 11px;
+            font-size: 13px;
             font-weight: 500;
-            color: rgba(255,255,255,0.75);
+            color: rgba(255,255,255,0.85);
             background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.25);
             border-radius: 5px;
-            padding: 6px 12px;
+            padding: 7px 14px;
             cursor: pointer;
             font-family: 'Akkurat', sans-serif;
             transition: background 0.15s, color 0.15s;
@@ -8201,9 +8205,9 @@
                                 <button class="sel-prop-remove">×</button>
                             </div>
                             <div class="sel-prop-actions">
-                                <button class="sel-prop-action-btn">Fly to</button>
-                                <button class="sel-prop-action-btn">Open full page view</button>
-                                <button class="sel-prop-action-btn">Open landlord page</button>
+                                <button class="sel-btn-fly">Fly to</button>
+                                <button class="sel-btn-fullpage">Open full page view</button>
+                                <button class="sel-btn-landlord">Open landlord page</button>
                             </div>
                         </div>
                         <div class="sel-prop-row">
@@ -8213,9 +8217,9 @@
                                 <button class="sel-prop-remove">×</button>
                             </div>
                             <div class="sel-prop-actions">
-                                <button class="sel-prop-action-btn">Fly to</button>
-                                <button class="sel-prop-action-btn">Open full page view</button>
-                                <button class="sel-prop-action-btn">Open landlord page</button>
+                                <button class="sel-btn-fly">Fly to</button>
+                                <button class="sel-btn-fullpage">Open full page view</button>
+                                <button class="sel-btn-landlord">Open landlord page</button>
                             </div>
                         </div>
                         <div class="sel-prop-row">
@@ -8225,9 +8229,9 @@
                                 <button class="sel-prop-remove">×</button>
                             </div>
                             <div class="sel-prop-actions">
-                                <button class="sel-prop-action-btn">Fly to</button>
-                                <button class="sel-prop-action-btn">Open full page view</button>
-                                <button class="sel-prop-action-btn">Open landlord page</button>
+                                <button class="sel-btn-fly">Fly to</button>
+                                <button class="sel-btn-fullpage">Open full page view</button>
+                                <button class="sel-btn-landlord">Open landlord page</button>
                             </div>
                         </div>
                         <div class="sel-prop-row">
@@ -8237,9 +8241,9 @@
                                 <button class="sel-prop-remove">×</button>
                             </div>
                             <div class="sel-prop-actions">
-                                <button class="sel-prop-action-btn">Fly to</button>
-                                <button class="sel-prop-action-btn">Open full page view</button>
-                                <button class="sel-prop-action-btn">Open landlord page</button>
+                                <button class="sel-btn-fly">Fly to</button>
+                                <button class="sel-btn-fullpage">Open full page view</button>
+                                <button class="sel-btn-landlord">Open landlord page</button>
                             </div>
                         </div>
                     </div>
@@ -8271,8 +8275,8 @@
                             <div class="sel-area-row-content">
                                 <span class="sel-area-name">ZIP code 77091</span>
                                 <div class="sel-area-actions">
-                                    <button class="sel-area-action-btn">Fly to</button>
-                                    <button class="sel-area-action-btn">Open full page view</button>
+                                    <button class="sel-area-action-btn-fly">Fly to</button>
+                                    <button class="sel-area-action-btn-page">Open full page view</button>
                                 </div>
                             </div>
                             <button class="sel-area-remove">×</button>
@@ -8282,8 +8286,8 @@
                             <div class="sel-area-row-content">
                                 <span class="sel-area-name">ZIP code 77091</span>
                                 <div class="sel-area-actions">
-                                    <button class="sel-area-action-btn">Fly to</button>
-                                    <button class="sel-area-action-btn">Open full page view</button>
+                                    <button class="sel-area-action-btn-fly">Fly to</button>
+                                    <button class="sel-area-action-btn-page">Open full page view</button>
                                 </div>
                             </div>
                             <button class="sel-area-remove">×</button>
@@ -8293,8 +8297,8 @@
                             <div class="sel-area-row-content">
                                 <span class="sel-area-name">ZIP code 77091</span>
                                 <div class="sel-area-actions">
-                                    <button class="sel-area-action-btn">Fly to</button>
-                                    <button class="sel-area-action-btn">Open full page view</button>
+                                    <button class="sel-area-action-btn-fly">Fly to</button>
+                                    <button class="sel-area-action-btn-page">Open full page view</button>
                                 </div>
                             </div>
                             <button class="sel-area-remove">×</button>
@@ -8304,8 +8308,8 @@
                             <div class="sel-area-row-content">
                                 <span class="sel-area-name">ZIP code 77091</span>
                                 <div class="sel-area-actions">
-                                    <button class="sel-area-action-btn">Fly to</button>
-                                    <button class="sel-area-action-btn">Open full page view</button>
+                                    <button class="sel-area-action-btn-fly">Fly to</button>
+                                    <button class="sel-area-action-btn-page">Open full page view</button>
                                 </div>
                             </div>
                             <button class="sel-area-remove">×</button>
@@ -10516,7 +10520,7 @@
             }
 
             // Handle "Open full page view" from selected properties panel
-            const fullPageBtn = e.target.closest('.property-action-btn, .sel-prop-action-btn');
+            const fullPageBtn = e.target.closest('.property-action-btn, .sel-prop-action-btn, .sel-btn-fullpage, .sel-area-action-btn-page');
             if (fullPageBtn && fullPageBtn.textContent.replace(/\s+/g, ' ').trim() === 'Open full page view') {
                 e.preventDefault();
                 // Get address from nearby sibling
@@ -10673,7 +10677,7 @@
         // Open landlord page when clicking "View landlord details" or "Open landlord page" buttons
         document.addEventListener('click', function(e) {
             const actionBtn = e.target.closest('.property-action-btn');
-            const selActionBtn = e.target.closest('.sel-prop-action-btn');
+            const selActionBtn = e.target.closest('.sel-prop-action-btn, .sel-btn-landlord');
             const actionButton = e.target.closest('.property-action-button');
 
             const isOpenLandlord = (
@@ -13228,7 +13232,7 @@
 
         // Open modal when "Open full page view" sel-area-action-btn is clicked
         document.addEventListener('click', function(e) {
-            var btn = e.target.closest('.sel-area-action-btn');
+            var btn = e.target.closest('.sel-area-action-btn, .sel-area-action-btn-page');
             if (btn && btn.textContent.trim() === 'Open full page view') {
                 areaModal.classList.add('active');
                 areaModal.scrollTop = 0;
