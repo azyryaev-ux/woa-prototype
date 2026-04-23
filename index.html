@@ -3234,8 +3234,8 @@
             pointer-events: auto;
         }
         .modal-logo-wordmark {
-            font-size: 11px;
-            font-weight: 600;
+            font-size: 13px;
+            font-weight: 700;
             letter-spacing: 0.5px;
             font-family: 'Akkurat', sans-serif;
             text-transform: uppercase;
@@ -3246,8 +3246,8 @@
             color: #d63d00;
         }
         .modal-city-chevron {
-            width: 8px;
-            height: 6px;
+            width: 10px;
+            height: 7px;
             color: #d63d00;
             flex-shrink: 0;
             margin-top: 1px;
@@ -3405,23 +3405,15 @@
         }
 
         .modal-logo {
-            width: 24px;
-            height: 24px;
-            background: #000;
+            width: 28px;
+            height: 28px;
+            background: #b6b6b6;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
+            flex-shrink: 0;
         }
 
         .modal-logo::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: #fff;
-            border-radius: 50%;
-            transition: all 0.3s ease;
+            display: none;
         }
 
         .modal-logo-text {
@@ -3471,13 +3463,7 @@
         }
 
         .modal-menu-label {
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            color: #fff;
-            font-family: 'Akkurat', sans-serif;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
+            display: none;
         }
 
         .modal-header-bar.scrolled .modal-menu-label {
@@ -3486,7 +3472,7 @@
 
         .modal-menu-button {
             background: transparent;
-            color: #fff;
+            color: #000;
             border: none;
             padding: 0;
             border-radius: 0;
@@ -3526,15 +3512,13 @@
             display: block;
             width: 100%;
             height: 1.5px;
-            background: #fff;
+            background: #000;
             border-radius: 6px;
             transition: all 0.3s ease;
             transform-origin: center;
         }
 
-        .modal-header-bar.scrolled .modal-menu-icon span {
-            background: #000;
-        }
+        /* scrolled state — already dark, no override needed */
 
         .modal-menu-button.active .modal-menu-icon span:nth-child(1) {
             transform: translateY(4px) rotate(45deg);
@@ -8899,7 +8883,6 @@
                     </div>
                 </div>
                 <div class="modal-menu-container">
-                    <span class="modal-menu-label">Menu</span>
                     <button class="modal-menu-button" id="property-modal-menu-button">
                         <div class="modal-menu-icon">
                             <span></span>
@@ -9407,10 +9390,20 @@
         <div class="modal-header-bar">
             <div class="modal-logo-container">
                 <div class="modal-logo"></div>
-                <div class="modal-logo-text">Logo</div>
+                <div class="modal-city-select-wrap">
+                    <button class="modal-city-trigger" id="landlord-city-trigger">
+                        <span class="modal-logo-wordmark">WHO OWNS <span class="modal-city-name">BOSTON</span></span>
+                        <svg class="modal-city-chevron" viewBox="0 0 8 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.5l3 3 3-3" stroke="#d63d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="modal-city-dropdown" id="landlord-city-dropdown">
+                        <button class="modal-city-option active">Boston</button>
+                        <button class="modal-city-option">Miami</button>
+                        <button class="modal-city-option">Houston</button>
+                        <button class="modal-city-option">Baltimore</button>
+                    </div>
+                </div>
             </div>
             <div class="modal-menu-container">
-                <span class="modal-menu-label">Menu</span>
                 <button class="modal-menu-button" id="landlord-modal-menu-button">
                     <div class="modal-menu-icon">
                         <span></span>
@@ -9419,6 +9412,27 @@
                 </button>
             </div>
         </div>
+        <script>
+        (function() {
+            var trigger = document.getElementById('landlord-city-trigger');
+            var dropdown = document.getElementById('landlord-city-dropdown');
+            if (!trigger || !dropdown) return;
+            trigger.addEventListener('click', function(e) { e.stopPropagation(); dropdown.classList.toggle('open'); });
+            dropdown.querySelectorAll('.modal-city-option').forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    dropdown.querySelectorAll('.modal-city-option').forEach(function(b) { b.classList.remove('active'); });
+                    btn.classList.add('active');
+                    var cs = trigger.querySelector('.modal-city-name');
+                    if (cs) cs.textContent = btn.textContent;
+                    dropdown.classList.remove('open');
+                });
+            });
+            document.addEventListener('click', function(e) {
+                if (!trigger.contains(e.target) && !dropdown.contains(e.target)) dropdown.classList.remove('open');
+            });
+        })();
+        </script>
 
         <div class="landlord-map-header">
             <button class="landlord-back-btn" id="landlord-back-btn">← Go back</button>
