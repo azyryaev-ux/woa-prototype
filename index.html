@@ -6767,10 +6767,10 @@
             text-transform: uppercase; color: #888; padding: 20px 16px;
             white-space: nowrap; text-align: left; vertical-align: bottom;
             background: #fff; border-bottom: 1px solid #e0e0e0;
-            position: sticky; top: 0; z-index: 2; cursor: pointer; user-select: none;
+            position: sticky; top: 0; z-index: 10; cursor: pointer; user-select: none;
         }
         .compare-props-table th:first-child {
-            position: sticky; left: 0; top: 0; z-index: 4;
+            position: sticky; left: 0; top: 0; z-index: 20;
             background: #fff; min-width: 210px;
         }
         .compare-props-sort-arrow {
@@ -6785,10 +6785,12 @@
             vertical-align: middle; white-space: nowrap;
         }
         .compare-props-table td:first-child {
-            position: sticky; left: 0; z-index: 1; min-width: 210px;
+            position: sticky; left: 0; z-index: 5; min-width: 210px;
         }
         .compare-props-table tbody tr:nth-child(odd) td { background: #f9f9f9; }
         .compare-props-table tbody tr:nth-child(even) td { background: #fff; }
+        .compare-props-table tbody tr:nth-child(odd) td:first-child { background: #f9f9f9; }
+        .compare-props-table tbody tr:nth-child(even) td:first-child { background: #fff; }
         .cp-addr-cell { display: flex; flex-direction: column; gap: 8px; }
         .cp-addr-top { display: flex; align-items: flex-start; gap: 7px; }
         .cp-addr-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 3px; }
@@ -6915,10 +6917,10 @@
             border-bottom: 1px solid #e0e0e0;
             position: sticky;
             top: 0;
-            z-index: 2;
+            z-index: 10;
         }
         .compare-areas-table th:first-child {
-            position: sticky; left: 0; top: 0; z-index: 4;
+            position: sticky; left: 0; top: 0; z-index: 20;
             background: #fff; min-width: 200px;
         }
         .compare-areas-table th.col-chart-th { min-width: 340px; }
@@ -6945,11 +6947,13 @@
             white-space: nowrap;
         }
         .compare-areas-table td:first-child {
-            position: sticky; left: 0; z-index: 1;
+            position: sticky; left: 0; z-index: 5;
             min-width: 200px;
         }
         .compare-areas-table tbody tr:nth-child(odd) td { background: #f9f9f9; }
         .compare-areas-table tbody tr:nth-child(even) td { background: #fff; }
+        .compare-areas-table tbody tr:nth-child(odd) td:first-child { background: #f9f9f9; }
+        .compare-areas-table tbody tr:nth-child(even) td:first-child { background: #fff; }
         .ca-name-cell { display: flex; flex-direction: column; gap: 6px; }
         .ca-name-label { font-size: 15px; font-weight: 700; color: #111; font-family: 'Akkurat', sans-serif; letter-spacing: 0; }
         .ca-row-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; margin-top: 12px; }
