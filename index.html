@@ -12072,11 +12072,17 @@
                 wrap.addEventListener('mouseleave', function() { cpClearBarHighlight(); lastIdx = -1; });
             }
 
-            // Sticky column scroll shadow
-            document.querySelector('.compare-props-table-wrap').addEventListener('scroll', function() {
-                this.classList.toggle('is-scrolled', this.scrollLeft > 4);
-            });
+            var cpScrollListenerAttached = false;
             function openPropsModal() {
+                if (!cpScrollListenerAttached) {
+                    var wrap = document.querySelector('.compare-props-table-wrap');
+                    if (wrap) {
+                        wrap.addEventListener('scroll', function() {
+                            this.classList.toggle('is-scrolled', this.scrollLeft > 4);
+                        });
+                        cpScrollListenerAttached = true;
+                    }
+                }
                 cpRenderRows(); cpSetupSort(); cpUpdateHeaders();
                 document.getElementById('compare-props-modal').style.display = 'flex';
                 document.body.style.overflow = 'hidden';
@@ -12387,11 +12393,17 @@
             }
 
 
-            // Sticky column scroll shadow
-            document.querySelector('.compare-areas-table-wrap').addEventListener('scroll', function() {
-                this.classList.toggle('is-scrolled', this.scrollLeft > 4);
-            });
+            var caScrollListenerAttached = false;
             function openModal() {
+                if (!caScrollListenerAttached) {
+                    var wrap = document.querySelector('.compare-areas-table-wrap');
+                    if (wrap) {
+                        wrap.addEventListener('scroll', function() {
+                            this.classList.toggle('is-scrolled', this.scrollLeft > 4);
+                        });
+                        caScrollListenerAttached = true;
+                    }
+                }
                 renderRows();
                 setupSortHeaders();
                 updateHeaders();
