@@ -6811,7 +6811,7 @@
         .cp-row-btn-page:hover { background: rgba(224,85,57,0.15); color: #e05539; }
         .cp-landlord-cell { display: flex; align-items: flex-start; gap: 7px; }
         .cp-landlord-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 3px; }
-        .cp-landlord-name { font-size: 12px; color: #111; white-space: normal; max-width: 160px; line-height: 1.35; }
+        .cp-landlord-name { font-size: 14px; color: #111; white-space: normal; max-width: 220px; line-height: 1.35; }
         .cp-chart-cell { padding: 12px 16px; }
 
 
@@ -12085,6 +12085,13 @@
                 if (e.target.closest('#close-compare-props')) closePropsModal();
                 if (e.target.id === 'compare-props-modal') closePropsModal();
                 if (e.target.closest('.sel-prop-compare-btn')) openPropsModal();
+                if (e.target.closest('.cp-row-btn-map')) {
+                    closePropsModal();
+                }
+                if (e.target.closest('.cp-row-btn-page')) {
+                    closePropsModal();
+                    document.getElementById('full-page-property-modal').classList.add('active');
+                }
             });
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') closePropsModal();
@@ -12390,6 +12397,13 @@
             document.addEventListener('click', function(e) {
                 if (e.target.closest('#close-compare-areas')) closeModal();
                 if (e.target.id === 'compare-areas-modal') closeModal();
+                if (e.target.closest('.ca-row-btn-map')) {
+                    closeModal();
+                }
+                if (e.target.closest('.ca-row-btn-area')) {
+                    closeModal();
+                    document.getElementById('area-full-page-modal').classList.add('active');
+                }
             });
 
             document.addEventListener('keydown', function(e) {
