@@ -6967,6 +6967,15 @@
         }
         .ca-row-btn-area:hover { background: rgba(224,85,57,0.12); border-color: #e05539; color: #e05539; }
         .ca-spark-cell { padding: 16px 16px; vertical-align: middle; min-width: 340px; }
+        /* Sticky first-column scroll shadow */
+        .compare-props-table-wrap.is-scrolled .compare-props-table th:first-child,
+        .compare-props-table-wrap.is-scrolled .compare-props-table td:first-child {
+            box-shadow: 4px 0 10px rgba(0,0,0,0.07);
+        }
+        .compare-areas-table-wrap.is-scrolled .compare-areas-table th:first-child,
+        .compare-areas-table-wrap.is-scrolled .compare-areas-table td:first-child {
+            box-shadow: 4px 0 10px rgba(0,0,0,0.07);
+        }
         .ca-spark-wrap { display: flex; flex-direction: column; gap: 0; }
         .ca-spark-badge {
             font-size: 10px; font-family: 'Akkurat Mono', monospace;
@@ -12062,6 +12071,11 @@
                 });
                 wrap.addEventListener('mouseleave', function() { cpClearBarHighlight(); lastIdx = -1; });
             }
+
+            // Sticky column scroll shadow
+            document.querySelector('.compare-props-table-wrap').addEventListener('scroll', function() {
+                this.classList.toggle('is-scrolled', this.scrollLeft > 4);
+            });
             function openPropsModal() {
                 cpRenderRows(); cpSetupSort(); cpUpdateHeaders();
                 document.getElementById('compare-props-modal').style.display = 'flex';
@@ -12372,6 +12386,11 @@
                 wrap.addEventListener('mouseleave', caClearCrosshairs);
             }
 
+
+            // Sticky column scroll shadow
+            document.querySelector('.compare-areas-table-wrap').addEventListener('scroll', function() {
+                this.classList.toggle('is-scrolled', this.scrollLeft > 4);
+            });
             function openModal() {
                 renderRows();
                 setupSortHeaders();
