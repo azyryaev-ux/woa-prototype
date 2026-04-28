@@ -12115,6 +12115,62 @@
                     closePropsModal();
                     document.getElementById('full-page-property-modal').classList.add('active');
                 }
+
+                // ── Selected Properties panel buttons ──
+                var flyBtn = e.target.closest('.sel-btn-fly');
+                if (flyBtn) {
+                    // Fly to: close the sub-panel so map is visible, briefly flash the row
+                    var row = flyBtn.closest('.sel-prop-row');
+                    if (row) {
+                        row.style.transition = 'background 0.2s';
+                        row.style.background = '#fff8f6';
+                        setTimeout(function() { row.style.background = ''; }, 800);
+                    }
+                    // Close icon rail panel to expose map
+                    var openPanel = document.querySelector('.sub-panel-section.active');
+                    if (!openPanel) openPanel = document.querySelector('.sub-panel.active');
+                    var iconRailActive = document.querySelector('.icon-rail-btn.active');
+                    if (iconRailActive) iconRailActive.click();
+                }
+
+                if (e.target.closest('.sel-btn-fullpage')) {
+                    document.getElementById('full-page-property-modal').classList.add('active');
+                }
+
+                if (e.target.closest('.sel-btn-landlord')) {
+                    var landlordModal = document.getElementById('landlord-page-modal');
+                    if (landlordModal) landlordModal.classList.add('active');
+                }
+
+                // Remove a single property row
+                var removeBtn = e.target.closest('.sel-prop-remove');
+                if (removeBtn) {
+                    var row = removeBtn.closest('.sel-prop-row');
+                    if (row) {
+                        row.style.transition = 'opacity 0.2s, max-height 0.2s';
+                        row.style.opacity = '0';
+                        setTimeout(function() {
+                            row.remove();
+                            // Update count
+                            var list = document.querySelector('#panel-selected .sel-prop-list');
+                            if (list) {
+                                var remaining = list.querySelectorAll('.sel-prop-row').length;
+                                var countEl = document.querySelector('#panel-selected .sel-prop-count span');
+                                if (countEl) countEl.textContent = remaining + ' selected';
+                            }
+                        }, 200);
+                    }
+                }
+
+                // Clear all selected properties
+                if (e.target.closest('#panel-selected .sel-prop-clear-btn')) {
+                    var list = document.querySelector('#panel-selected .sel-prop-list');
+                    if (list) {
+                        list.querySelectorAll('.sel-prop-row').forEach(function(r) { r.remove(); });
+                        var countEl = document.querySelector('#panel-selected .sel-prop-count span');
+                        if (countEl) countEl.textContent = '0 selected';
+                    }
+                }
             });
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') closePropsModal();
