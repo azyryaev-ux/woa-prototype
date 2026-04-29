@@ -10096,77 +10096,223 @@
 
             <div class="network-graph-canvas">
                 <div class="network-graph-placeholder">
-                    <svg width="1200" height="700" viewBox="0 0 1200 700" style="position: relative; z-index: 1;">
-                        <!-- Central node label -->
-                        <text x="600" y="95" text-anchor="middle" fill="#739bfe" font-size="11" font-family="Akkurat, sans-serif" font-weight="600">Genesis Land Holdings Incorporated</text>
+                    <svg width="1100" height="760" viewBox="0 0 1100 760" style="position:relative;z-index:1;font-family:'Akkurat',sans-serif;display:block;">
 
-                        <!-- Prominent blue connection lines from central node to company nodes -->
-                        <path d="M600 150V260C600 460 900 430 900 520" stroke="rgba(89,136,252,0.8)" stroke-width="1.5" fill="none"/>
-                        <path d="M600 150V260C600 460 320 430 320 520" stroke="rgba(89,136,252,0.8)" stroke-width="1.5" fill="none"/>
+                        <!-- === CONNECTION LINES (drawn first, behind nodes) === -->
+                        <!-- Gray lines: other individuals to their company nodes -->
+                        <path d="M 260 162 C 260 280 370 330 370 428" stroke="#d4d9e6" stroke-width="0.9" fill="none"/>
+                        <path d="M 390 162 C 390 280 480 330 480 428" stroke="#d4d9e6" stroke-width="0.9" fill="none"/>
+                        <path d="M 660 162 C 660 280 600 330 600 428" stroke="#d4d9e6" stroke-width="0.9" fill="none"/>
+                        <path d="M 790 162 C 790 280 720 330 720 428" stroke="#d4d9e6" stroke-width="0.9" fill="none"/>
+                        <path d="M 920 162 C 920 280 840 330 840 428" stroke="#d4d9e6" stroke-width="0.9" fill="none"/>
 
-                        <!-- Light gray curved connection lines from central to other middle nodes -->
-                        <path d="M600 150V260C600 460 820 430 820 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
-                        <path d="M600 150V260C600 460 740 430 740 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
-                        <path d="M600 150V260C600 460 660 430 660 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
-                        <path d="M600 150V260C600 460 400 430 400 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
-                        <path d="M600 150V260C600 460 480 430 480 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
-                        <path d="M600 150V260C600 460 560 430 560 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
+                        <!-- Blue S-curve: Raymond Ferrone → Genesis Land Holdings -->
+                        <path d="M 525 162 C 525 290 220 330 220 428" stroke="#5e87f5" stroke-width="1.6" fill="none"/>
 
-                        <!-- Light gray curved lines from top individual nodes to middle -->
-                        <path d="M600 150V240C600 390 900 370 900 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
-                        <path d="M600 150V240C600 390 820 370 820 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
-                        <path d="M600 150V240C600 390 740 370 740 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
-                        <path d="M600 150V240C600 390 660 370 660 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
-                        <path d="M600 150V240C600 390 320 370 320 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
-                        <path d="M720 150V240C600 390 900 370 900 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
-                        <path d="M680 150V240C600 390 660 370 660 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
-                        <path d="M650 150V240C600 390 820 370 820 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
-                        <path d="M550 150V240C600 390 740 370 740 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
-                        <path d="M520 150V240C600 390 480 370 480 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
-                        <path d="M480 150V240C600 390 560 370 560 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
+                        <!-- Orange line: Genesis Land Holdings → 195 Main St -->
+                        <path d="M 220 440 C 220 560 290 610 290 668" stroke="#ef4400" stroke-width="1.6" fill="none"/>
 
-                        <!-- Light gray curved lines from middle to bottom properties -->
-                        <path d="M320 530V580C320 650 280 640 280 680" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
-                        <path d="M320 530V580C320 650 350 640 350 680" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
-                        <path d="M400 530V580C400 650 420 640 420 680" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
-                        <path d="M480 530V580C480 650 490 640 490 680" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
-                        <path d="M560 530V580C560 650 560 640 560 680" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
-                        <path d="M660 530V580C660 650 630 640 630 680" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
-                        <path d="M740 530V580C740 650 700 640 700 680" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
-                        <path d="M820 530V580C820 650 770 640 770 680" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
-                        <path d="M900 530V580C900 650 840 640 840 680" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
-                        <path d="M900 530V580C900 650 910 640 910 680" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
+                        <!-- === ROW 1: INDIVIDUAL NODES (y=162) === -->
+                        <!-- Gray individual: x=260 -->
+                        <g transform="translate(260,162)">
+                            <circle r="15" fill="white" stroke="#c5cde0" stroke-width="1.5"/>
+                            <circle cy="-4" r="4.5" fill="#c5cde0"/>
+                            <path d="M-8 8 Q 0 3 8 8" fill="none" stroke="#c5cde0" stroke-width="1.3" stroke-linecap="round"/>
+                        </g>
+                        <!-- Gray individual: x=390 -->
+                        <g transform="translate(390,162)">
+                            <circle r="15" fill="white" stroke="#c5cde0" stroke-width="1.5"/>
+                            <circle cy="-4" r="4.5" fill="#c5cde0"/>
+                            <path d="M-8 8 Q 0 3 8 8" fill="none" stroke="#c5cde0" stroke-width="1.3" stroke-linecap="round"/>
+                        </g>
+                        <!-- Raymond Ferrone (selected, blue) x=525 -->
+                        <g transform="translate(525,162)">
+                            <circle r="16" fill="#eef1ff" stroke="#4166c3" stroke-width="2"/>
+                            <circle cy="-4.5" r="5" fill="#4166c3"/>
+                            <path d="M-9 9 Q 0 3 9 9" fill="none" stroke="#4166c3" stroke-width="1.5" stroke-linecap="round"/>
+                            <!-- Tooltip above -->
+                            <rect x="-54" y="-62" width="108" height="34" rx="4" fill="white" stroke="#d0d5e0" stroke-width="1"/>
+                            <text x="0" y="-44" text-anchor="middle" fill="#111" font-size="9.5" font-weight="600">Raymond Ferrone</text>
+                            <text x="0" y="-32" text-anchor="middle" fill="#888" font-size="8.5">Landlord</text>
+                        </g>
+                        <!-- Gray individual: x=660 -->
+                        <g transform="translate(660,162)">
+                            <circle r="15" fill="white" stroke="#c5cde0" stroke-width="1.5"/>
+                            <circle cy="-4" r="4.5" fill="#c5cde0"/>
+                            <path d="M-8 8 Q 0 3 8 8" fill="none" stroke="#c5cde0" stroke-width="1.3" stroke-linecap="round"/>
+                        </g>
+                        <!-- Gray individual: x=790 -->
+                        <g transform="translate(790,162)">
+                            <circle r="15" fill="white" stroke="#c5cde0" stroke-width="1.5"/>
+                            <circle cy="-4" r="4.5" fill="#c5cde0"/>
+                            <path d="M-8 8 Q 0 3 8 8" fill="none" stroke="#c5cde0" stroke-width="1.3" stroke-linecap="round"/>
+                        </g>
+                        <!-- Gray individual: x=920 -->
+                        <g transform="translate(920,162)">
+                            <circle r="15" fill="white" stroke="#c5cde0" stroke-width="1.5"/>
+                            <circle cy="-4" r="4.5" fill="#c5cde0"/>
+                            <path d="M-8 8 Q 0 3 8 8" fill="none" stroke="#c5cde0" stroke-width="1.3" stroke-linecap="round"/>
+                        </g>
 
-                        <!-- Top level nodes (individuals - blue circles) -->
-                        <circle cx="600" cy="130" r="18" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1.5"/>
-                        <circle cx="650" cy="130" r="7.5" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1"/>
-                        <circle cx="720" cy="130" r="4.5" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1"/>
-                        <circle cx="680" cy="130" r="4.5" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1"/>
-                        <circle cx="550" cy="130" r="4.5" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1"/>
-                        <circle cx="520" cy="130" r="4.5" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1"/>
-                        <circle cx="480" cy="130" r="7.5" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1"/>
+                        <!-- === ROW 2: COMPANY NODES (y=428) === -->
+                        <!-- Genesis Land Holdings Inc. (selected, blue) x=220 -->
+                        <g transform="translate(220,428)">
+                            <rect x="-14" y="-10" width="28" height="21" rx="3" fill="#eef1ff" stroke="#4166c3" stroke-width="1.5"/>
+                            <rect x="-8" y="-7" width="5" height="4" rx="0.5" fill="#4166c3"/>
+                            <rect x="3" y="-7" width="5" height="4" rx="0.5" fill="#4166c3"/>
+                            <rect x="-2" y="-1" width="4" height="9" rx="0.5" fill="#4166c3"/>
+                            <!-- Tooltip to the right -->
+                            <rect x="20" y="-24" width="128" height="44" rx="4" fill="white" stroke="#4166c3" stroke-width="1"/>
+                            <text x="84" y="-9" text-anchor="middle" fill="#111" font-size="9" font-weight="600">Genesis Land</text>
+                            <text x="84" y="3" text-anchor="middle" fill="#111" font-size="9" font-weight="600">Holdings Inc.</text>
+                            <text x="84" y="16" text-anchor="middle" fill="#888" font-size="8">Owner</text>
+                        </g>
+                        <!-- Gray companies -->
+                        <g transform="translate(370,428)">
+                            <rect x="-12" y="-9" width="24" height="18" rx="2.5" fill="white" stroke="#c5cde0" stroke-width="1.3"/>
+                            <rect x="-7" y="-6" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                            <rect x="3" y="-6" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                            <rect x="-2" y="-1" width="3" height="7" rx="0.4" fill="#c5cde0"/>
+                        </g>
+                        <g transform="translate(480,428)">
+                            <rect x="-12" y="-9" width="24" height="18" rx="2.5" fill="white" stroke="#c5cde0" stroke-width="1.3"/>
+                            <rect x="-7" y="-6" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                            <rect x="3" y="-6" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                            <rect x="-2" y="-1" width="3" height="7" rx="0.4" fill="#c5cde0"/>
+                        </g>
+                        <g transform="translate(560,428)">
+                            <rect x="-12" y="-9" width="24" height="18" rx="2.5" fill="white" stroke="#c5cde0" stroke-width="1.3"/>
+                            <rect x="-7" y="-6" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                            <rect x="3" y="-6" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                            <rect x="-2" y="-1" width="3" height="7" rx="0.4" fill="#c5cde0"/>
+                        </g>
+                        <g transform="translate(600,428)">
+                            <rect x="-12" y="-9" width="24" height="18" rx="2.5" fill="white" stroke="#c5cde0" stroke-width="1.3"/>
+                            <rect x="-7" y="-6" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                            <rect x="3" y="-6" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                            <rect x="-2" y="-1" width="3" height="7" rx="0.4" fill="#c5cde0"/>
+                        </g>
+                        <g transform="translate(660,428)">
+                            <rect x="-12" y="-9" width="24" height="18" rx="2.5" fill="white" stroke="#c5cde0" stroke-width="1.3"/>
+                            <rect x="-7" y="-6" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                            <rect x="3" y="-6" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                            <rect x="-2" y="-1" width="3" height="7" rx="0.4" fill="#c5cde0"/>
+                        </g>
+                        <g transform="translate(720,428)">
+                            <rect x="-12" y="-9" width="24" height="18" rx="2.5" fill="white" stroke="#c5cde0" stroke-width="1.3"/>
+                            <rect x="-7" y="-6" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                            <rect x="3" y="-6" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                            <rect x="-2" y="-1" width="3" height="7" rx="0.4" fill="#c5cde0"/>
+                        </g>
+                        <g transform="translate(780,428)">
+                            <rect x="-12" y="-9" width="24" height="18" rx="2.5" fill="white" stroke="#c5cde0" stroke-width="1.3"/>
+                            <rect x="-7" y="-6" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                            <rect x="3" y="-6" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                            <rect x="-2" y="-1" width="3" height="7" rx="0.4" fill="#c5cde0"/>
+                        </g>
+                        <g transform="translate(840,428)">
+                            <rect x="-12" y="-9" width="24" height="18" rx="2.5" fill="white" stroke="#c5cde0" stroke-width="1.3"/>
+                            <rect x="-7" y="-6" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                            <rect x="3" y="-6" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                            <rect x="-2" y="-1" width="3" height="7" rx="0.4" fill="#c5cde0"/>
+                        </g>
+                        <g transform="translate(900,428)">
+                            <rect x="-12" y="-9" width="24" height="18" rx="2.5" fill="white" stroke="#c5cde0" stroke-width="1.3"/>
+                            <rect x="-7" y="-6" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                            <rect x="3" y="-6" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                            <rect x="-2" y="-1" width="3" height="7" rx="0.4" fill="#c5cde0"/>
+                        </g>
+                        <g transform="translate(960,428)">
+                            <rect x="-12" y="-9" width="24" height="18" rx="2.5" fill="white" stroke="#c5cde0" stroke-width="1.3"/>
+                            <rect x="-7" y="-6" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                            <rect x="3" y="-6" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                            <rect x="-2" y="-1" width="3" height="7" rx="0.4" fill="#c5cde0"/>
+                        </g>
+                        <g transform="translate(1020,428)">
+                            <rect x="-12" y="-9" width="24" height="18" rx="2.5" fill="white" stroke="#c5cde0" stroke-width="1.3"/>
+                            <rect x="-7" y="-6" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                            <rect x="3" y="-6" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                            <rect x="-2" y="-1" width="3" height="7" rx="0.4" fill="#c5cde0"/>
+                        </g>
 
-                        <!-- Middle level nodes (companies - blue rounded rects) -->
-                        <rect x="310" y="510" width="20" height="20" rx="3" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1.5"/>
-                        <rect x="390" y="514" width="12" height="12" rx="2" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1"/>
-                        <rect x="474" y="514" width="12" height="12" rx="2" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1"/>
-                        <rect x="554" y="514" width="12" height="12" rx="2" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1"/>
-                        <rect x="654" y="514" width="12" height="12" rx="2" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1"/>
-                        <rect x="734" y="514" width="12" height="12" rx="2" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1"/>
-                        <rect x="814" y="514" width="12" height="12" rx="2" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1"/>
-                        <rect x="890" y="514" width="20" height="20" rx="3" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1.5"/>
+                        <!-- === ROW 3: PROPERTY NODES (y=668) === -->
+                        <!-- 195 Main St (selected, orange) x=290 -->
+                        <g transform="translate(290,668)">
+                            <!-- House: roof + body -->
+                            <polygon points="0,-14 -12,-4 -12,10 12,10 12,-4" fill="#fff5f2" stroke="#ef4400" stroke-width="1.6" stroke-linejoin="round"/>
+                            <polygon points="0,-14 -14,-2 14,-2" fill="#ef4400" opacity="0.15"/>
+                            <rect x="-4" y="2" width="8" height="8" rx="0.5" fill="#ef4400" opacity="0.35"/>
+                            <!-- Tooltip below -->
+                            <rect x="-62" y="17" width="124" height="34" rx="4" fill="white" stroke="#ef4400" stroke-width="1.3"/>
+                            <text x="0" y="33" text-anchor="middle" fill="#ef4400" font-size="9" font-weight="600">195 Main St</text>
+                            <text x="0" y="45" text-anchor="middle" fill="#888" font-size="8">bought for $2.2M (2015)</text>
+                        </g>
+                        <!-- Gray properties -->
+                        <g transform="translate(390,668)">
+                            <polygon points="0,-13 -11,-3 -11,10 11,10 11,-3" fill="#fde8df" stroke="#e8b5a0" stroke-width="1.1" stroke-linejoin="round"/>
+                            <rect x="-3" y="2" width="6" height="8" rx="0.5" fill="#e8b5a0" opacity="0.6"/>
+                        </g>
+                        <g transform="translate(470,668)">
+                            <polygon points="0,-13 -11,-3 -11,10 11,10 11,-3" fill="#fde8df" stroke="#e8b5a0" stroke-width="1.1" stroke-linejoin="round"/>
+                            <rect x="-3" y="2" width="6" height="8" rx="0.5" fill="#e8b5a0" opacity="0.6"/>
+                        </g>
+                        <g transform="translate(550,668)">
+                            <polygon points="0,-13 -11,-3 -11,10 11,10 11,-3" fill="#fde8df" stroke="#e8b5a0" stroke-width="1.1" stroke-linejoin="round"/>
+                            <rect x="-3" y="2" width="6" height="8" rx="0.5" fill="#e8b5a0" opacity="0.6"/>
+                        </g>
+                        <g transform="translate(630,668)">
+                            <polygon points="0,-13 -11,-3 -11,10 11,10 11,-3" fill="#fde8df" stroke="#e8b5a0" stroke-width="1.1" stroke-linejoin="round"/>
+                            <rect x="-3" y="2" width="6" height="8" rx="0.5" fill="#e8b5a0" opacity="0.6"/>
+                        </g>
+                        <g transform="translate(710,668)">
+                            <polygon points="0,-13 -11,-3 -11,10 11,10 11,-3" fill="#fde8df" stroke="#e8b5a0" stroke-width="1.1" stroke-linejoin="round"/>
+                            <rect x="-3" y="2" width="6" height="8" rx="0.5" fill="#e8b5a0" opacity="0.6"/>
+                        </g>
+                        <g transform="translate(790,668)">
+                            <polygon points="0,-13 -11,-3 -11,10 11,10 11,-3" fill="#fde8df" stroke="#e8b5a0" stroke-width="1.1" stroke-linejoin="round"/>
+                            <rect x="-3" y="2" width="6" height="8" rx="0.5" fill="#e8b5a0" opacity="0.6"/>
+                        </g>
+                        <g transform="translate(870,668)">
+                            <polygon points="0,-13 -11,-3 -11,10 11,10 11,-3" fill="#fde8df" stroke="#e8b5a0" stroke-width="1.1" stroke-linejoin="round"/>
+                            <rect x="-3" y="2" width="6" height="8" rx="0.5" fill="#e8b5a0" opacity="0.6"/>
+                        </g>
+                        <g transform="translate(950,668)">
+                            <polygon points="0,-13 -11,-3 -11,10 11,10 11,-3" fill="#fde8df" stroke="#e8b5a0" stroke-width="1.1" stroke-linejoin="round"/>
+                            <rect x="-3" y="2" width="6" height="8" rx="0.5" fill="#e8b5a0" opacity="0.6"/>
+                        </g>
+                        <g transform="translate(1030,668)">
+                            <polygon points="0,-13 -11,-3 -11,10 11,10 11,-3" fill="#fde8df" stroke="#e8b5a0" stroke-width="1.1" stroke-linejoin="round"/>
+                            <rect x="-3" y="2" width="6" height="8" rx="0.5" fill="#e8b5a0" opacity="0.6"/>
+                        </g>
 
-                        <!-- Bottom level nodes (properties - orange for selected, blue for others) -->
-                        <rect x="275" y="675" width="11" height="11" rx="1" fill="rgba(239,68,0,0.15)" stroke="#ef4400" stroke-width="1.5"/>
-                        <rect x="345" y="675" width="11" height="11" rx="1" fill="rgba(65,102,195,0.15)" stroke="#4166c3" stroke-width="1"/>
-                        <rect x="415" y="675" width="11" height="11" rx="1" fill="rgba(65,102,195,0.15)" stroke="#4166c3" stroke-width="1"/>
-                        <rect x="485" y="675" width="11" height="11" rx="1" fill="rgba(65,102,195,0.15)" stroke="#4166c3" stroke-width="1"/>
-                        <rect x="555" y="675" width="11" height="11" rx="1" fill="rgba(65,102,195,0.15)" stroke="#4166c3" stroke-width="1"/>
-                        <rect x="625" y="675" width="11" height="11" rx="1" fill="rgba(65,102,195,0.15)" stroke="#4166c3" stroke-width="1"/>
-                        <rect x="695" y="675" width="11" height="11" rx="1" fill="rgba(65,102,195,0.15)" stroke="#4166c3" stroke-width="1"/>
-                        <rect x="765" y="675" width="11" height="11" rx="1" fill="rgba(65,102,195,0.15)" stroke="#4166c3" stroke-width="1"/>
-                        <rect x="835" y="675" width="11" height="11" rx="1" fill="rgba(65,102,195,0.15)" stroke="#4166c3" stroke-width="1"/>
-                        <rect x="905" y="675" width="11" height="11" rx="1" fill="rgba(65,102,195,0.15)" stroke="#4166c3" stroke-width="1"/>
+                        <!-- === LEGEND (bottom right) === -->
+                        <g transform="translate(858,560)">
+                            <rect x="0" y="0" width="216" height="172" rx="6" fill="white" stroke="#e0e0e0" stroke-width="1"/>
+                            <text x="16" y="24" fill="#111" font-size="10.5" font-weight="600" letter-spacing="0.8">LEGEND</text>
+                            <line x1="0" y1="36" x2="216" y2="36" stroke="#ebebeb" stroke-width="1"/>
+                            <!-- Individual -->
+                            <circle cx="28" cy="60" r="11" fill="white" stroke="#c5cde0" stroke-width="1.5"/>
+                            <circle cx="28" cy="57" r="3.5" fill="#c5cde0"/>
+                            <path d="M20 67 Q28 62 36 67" fill="none" stroke="#c5cde0" stroke-width="1.2" stroke-linecap="round"/>
+                            <text x="50" y="64" fill="#555" font-size="10">Individual</text>
+                            <!-- Company -->
+                            <rect x="17" y="83" width="22" height="17" rx="2.5" fill="white" stroke="#c5cde0" stroke-width="1.4"/>
+                            <rect x="20" y="86" width="5" height="3.5" rx="0.4" fill="#c5cde0"/>
+                            <rect x="28" y="86" width="5" height="3.5" rx="0.4" fill="#c5cde0"/>
+                            <rect x="23" y="91" width="4" height="7" rx="0.4" fill="#c5cde0"/>
+                            <text x="50" y="95" fill="#555" font-size="10">Company</text>
+                            <!-- Property -->
+                            <polygon points="28,108 17,117 17,126 39,126 39,117" fill="#fde8df" stroke="#e8b5a0" stroke-width="1.2" stroke-linejoin="round"/>
+                            <rect x="24" y="118" width="6" height="8" rx="0.4" fill="#e8b5a0" opacity="0.7"/>
+                            <text x="50" y="122" fill="#555" font-size="10">Property</text>
+                            <!-- Entity owns company -->
+                            <line x1="17" y1="145" x2="39" y2="145" stroke="#5e87f5" stroke-width="1.6"/>
+                            <text x="50" y="149" fill="#555" font-size="10">Entity owns company</text>
+                            <!-- Entity owns property -->
+                            <line x1="17" y1="163" x2="39" y2="163" stroke="#ef4400" stroke-width="1.6"/>
+                            <text x="50" y="167" fill="#555" font-size="10">Entity owns property</text>
+                        </g>
+
                     </svg>
                 </div>
 
