@@ -4840,7 +4840,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: #000;
+            background: #fff;
             z-index: 1002;
             display: none;
             flex-direction: column;
@@ -4852,8 +4852,9 @@
 
         .network-graph-header {
             height: 70px;
-            background: #000;
-            border-bottom: 1px solid #1a1a1a;
+            background: #fff;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
             display: flex;
             align-items: center;
             padding: 0 24px;
@@ -4869,11 +4870,11 @@
         }
 
         .network-graph-back-btn {
-            padding: 8px 16px;
-            background: #1a1a1a;
-            border: 1px solid #333;
+            padding: 8px 14px;
+            background: transparent;
+            border: 1px solid #d1d1d1;
             border-radius: 6px;
-            color: #ededed;
+            color: #333;
             font-size: 13px;
             font-weight: 500;
             cursor: pointer;
@@ -4886,7 +4887,7 @@
         }
 
         .network-graph-back-btn:hover {
-            background: #2a2a2a;
+            background: #f5f5f5;
         }
 
         .network-graph-header-right {
@@ -4913,15 +4914,15 @@
         }
 
         .network-graph-header .menu-label {
-            color: #fff;
+            color: #333;
         }
 
         .network-graph-header .menu-button {
-            color: #fff;
+            color: #333;
         }
 
         .network-graph-header .menu-icon span {
-            background: #fff;
+            background: #333;
         }
 
         .network-graph-view-toggle {
@@ -4931,7 +4932,7 @@
         }
 
         .network-graph-view-label {
-            color: #707070;
+            color: #666;
             font-size: 13px;
             margin-right: 8px;
             font-family: 'Akkurat', sans-serif;
@@ -4940,8 +4941,8 @@
         .network-view-btn {
             padding: 8px 16px;
             background: transparent;
-            border: 1px solid #333;
-            color: #707070;
+            border: 1px solid #d1d1d1;
+            color: #666;
             font-size: 13px;
             cursor: pointer;
             transition: all 0.15s ease;
@@ -4959,14 +4960,14 @@
         }
 
         .network-view-btn.active {
-            background: #1a1a1a;
-            color: #fff;
-            border-color: #333;
+            background: #f0f0f0;
+            color: #000;
+            border-color: #d1d1d1;
         }
 
         .network-view-btn:hover:not(.active) {
-            background: rgba(255, 255, 255, 0.05);
-            color: #ccc;
+            background: rgba(0,0,0,0.04);
+            color: #333;
         }
 
         .network-graph-content {
@@ -4978,8 +4979,8 @@
 
         .network-graph-sidebar {
             width: 320px;
-            background: #0a0a0a;
-            border-right: 1px solid #1a1a1a;
+            background: #fff;
+            border-right: 1px solid #e8e8e8;
             display: flex;
             flex-direction: column;
             overflow-y: auto;
@@ -4987,12 +4988,12 @@
 
         .network-graph-intro {
             padding: 32px 24px;
-            border-bottom: 1px solid #1a1a1a;
+            border-bottom: 1px solid #eaeaea;
         }
 
         .network-graph-intro-text {
             font-size: 14px;
-            color: #707070;
+            color: #000;
             line-height: 1.6;
             font-family: 'Akkurat', sans-serif;
         }
@@ -5013,7 +5014,7 @@
         .network-graph-landlord-name {
             font-size: 18px;
             font-weight: 600;
-            color: #ededed;
+            color: #000;
             margin-bottom: 24px;
             line-height: 1.3;
             font-family: 'Akkurat', sans-serif;
@@ -5034,7 +5035,7 @@
         .network-graph-stat-value {
             font-size: 24px;
             font-weight: 600;
-            color: #ededed;
+            color: #000;
             font-family: 'Akkurat', sans-serif;
         }
 
@@ -5075,11 +5076,7 @@
         .network-graph-canvas {
             flex: 1;
             position: relative;
-            background: #0D0D0D;
-            background-image:
-                repeating-linear-gradient(0deg, transparent, transparent 172.8px, rgba(42, 42, 42, 1) 172.8px, rgba(42, 42, 42, 1) 173.3px),
-                repeating-linear-gradient(90deg, transparent, transparent 117px, rgba(42, 42, 42, 1) 117px, rgba(42, 42, 42, 1) 117.5px);
-            background-size: 117px 172.8px;
+            background: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -5128,10 +5125,10 @@
         .network-zoom-btn {
             width: 40px;
             height: 40px;
-            background: #1a1a1a;
-            border: 1px solid #333;
+            background: #fff;
+            border: 1px solid #e8e8e8;
             border-radius: 6px;
-            color: #ededed;
+            color: #333;
             font-size: 18px;
             cursor: pointer;
             transition: all 0.15s ease;
@@ -5141,23 +5138,24 @@
         }
 
         .network-zoom-btn:hover {
-            background: #2a2a2a;
+            background: #f5f5f5;
         }
 
         .network-graph-legend {
             position: absolute;
-            top: 24px;
+            bottom: 24px;
             right: 24px;
-            width: 280px;
-            background: #1a1a1a;
-            border: 1px solid #333;
+            width: 277px;
+            background: #fff;
+            border: 1px solid #e8e8e8;
             border-radius: 6px;
             overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.06);
         }
 
         .network-legend-header {
             padding: 12px 16px;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid #e8e8e8;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -5165,15 +5163,16 @@
         }
 
         .network-legend-title {
-            font-size: 12px;
-            font-weight: 600;
-            color: #ededed;
+            font-size: 13px;
+            font-weight: 400;
+            color: #666;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            font-family: 'Akkurat Mono', monospace;
         }
 
         .network-legend-chevron {
-            color: #707070;
+            color: #999;
             font-size: 14px;
             transition: transform 0.2s ease;
         }
@@ -5197,8 +5196,8 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 13px;
-            color: #ededed;
+            font-size: 12px;
+            color: #545454;
         }
 
         .network-legend-dot {
@@ -5209,34 +5208,36 @@
         }
 
         .network-legend-dot.individual {
-            background: #3E51FF;
-            opacity: 0.6;
-            border: 1px solid #3E51FF;
+            background: rgba(65,102,195,0.2);
+            opacity: 1;
+            border: 1px solid #4166c3;
+            border-radius: 50%;
         }
 
         .network-legend-dot.company {
-            background: #EF4400;
-            opacity: 0.6;
-            border: 1px solid #EF4400;
+            background: rgba(65,102,195,0.2);
+            opacity: 1;
+            border: 1px solid #4166c3;
+            border-radius: 2px;
         }
 
         .network-legend-dot.property {
-            background: #00E2AD;
-            opacity: 0.6;
-            border: 1px solid #00E2AD;
+            background: rgba(239,68,0,0.15);
+            opacity: 1;
+            border: 1px solid #ef4400;
             border-radius: 2px;
         }
 
         .network-graph-header .logo {
-            background: #fff;
+            background: #333;
         }
 
         .network-graph-header .logo::before {
-            background: #000;
+            background: #fff;
         }
 
         .network-graph-header .logo-text {
-            color: #ededed;
+            color: #000;
         }
 
         /* Full Page Property View Modal */
@@ -10034,10 +10035,7 @@
                     <span class="logo-text">WHO OWNS<br>AMERICA</span>
                 </div>
                 <button class="network-graph-back-btn" id="close-network-graph">
-                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-                    </svg>
-                    Back to map
+← Back
                 </button>
             </div>
             <div class="network-graph-header-right">
@@ -10085,79 +10083,94 @@
                         </div>
                     </div>
 
-                    <button class="network-graph-share-btn">Share this page</button>
+                    <button class="network-graph-share-btn" style="display:flex;align-items:center;justify-content:center;gap:8px;height:40px;font-size:14px;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                        Share this page
+                    </button>
                 </div>
             </div>
 
             <div class="network-graph-canvas">
                 <div class="network-graph-placeholder">
                     <svg width="1200" height="700" viewBox="0 0 1200 700" style="position: relative; z-index: 1;">
-                        <!-- Gray curved connection lines from central to middle nodes -->
-                        <path d="M600 150V260C600 460 900 430 900 520" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M600 150V260C600 460 820 430 820 520" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M600 150V260C600 460 740 430 740 520" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M600 150V260C600 460 660 430 660 520" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M600 150V260C600 460 320 430 320 520" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M600 150V260C600 460 400 430 400 520" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M600 150V260C600 460 480 430 480 520" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M600 150V260C600 460 560 430 560 520" stroke="#8B8B8B" stroke-width="0.2"/>
+                        <!-- Central node label -->
+                        <text x="600" y="95" text-anchor="middle" fill="#739bfe" font-size="11" font-family="Akkurat, sans-serif" font-weight="600">Genesis Land Holdings Incorporated</text>
 
-                        <!-- White curved connection lines from top nodes to middle -->
-                        <path d="M600 150V240C600 390 900 370 900 520" stroke="white" stroke-width="0.2"/>
-                        <path d="M600 150V240C600 390 820 370 820 520" stroke="white" stroke-width="0.2"/>
-                        <path d="M600 150V240C600 390 740 370 740 520" stroke="white" stroke-width="0.2"/>
-                        <path d="M600 150V240C600 390 660 370 660 520" stroke="white" stroke-width="0.2"/>
-                        <path d="M600 150V240C600 390 320 370 320 520" stroke="white" stroke-width="0.2"/>
-                        <path d="M720 150V240C600 390 900 370 900 520" stroke="white" stroke-width="0.2"/>
-                        <path d="M680 150V240C600 390 660 370 660 520" stroke="white" stroke-width="0.2"/>
-                        <path d="M650 150V240C600 390 820 370 820 520" stroke="white" stroke-width="0.2"/>
-                        <path d="M550 150V240C600 390 740 370 740 520" stroke="white" stroke-width="0.2"/>
-                        <path d="M520 150V240C600 390 480 370 480 520" stroke="white" stroke-width="0.2"/>
-                        <path d="M480 150V240C600 390 560 370 560 520" stroke="white" stroke-width="0.2"/>
+                        <!-- Prominent blue connection lines from central node to company nodes -->
+                        <path d="M600 150V260C600 460 900 430 900 520" stroke="rgba(89,136,252,0.8)" stroke-width="1.5" fill="none"/>
+                        <path d="M600 150V260C600 460 320 430 320 520" stroke="rgba(89,136,252,0.8)" stroke-width="1.5" fill="none"/>
 
-                        <!-- Gray curved lines from middle to bottom properties -->
-                        <path d="M320 530V580C320 650 280 640 280 680" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M320 530V580C320 650 350 640 350 680" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M400 530V580C400 650 420 640 420 680" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M480 530V580C480 650 490 640 490 680" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M560 530V580C560 650 560 640 560 680" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M660 530V580C660 650 630 640 630 680" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M740 530V580C740 650 700 640 700 680" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M820 530V580C820 650 770 640 770 680" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M900 530V580C900 650 840 640 840 680" stroke="#8B8B8B" stroke-width="0.2"/>
-                        <path d="M900 530V580C900 650 910 640 910 680" stroke="#8B8B8B" stroke-width="0.2"/>
+                        <!-- Light gray curved connection lines from central to other middle nodes -->
+                        <path d="M600 150V260C600 460 820 430 820 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
+                        <path d="M600 150V260C600 460 740 430 740 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
+                        <path d="M600 150V260C600 460 660 430 660 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
+                        <path d="M600 150V260C600 460 400 430 400 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
+                        <path d="M600 150V260C600 460 480 430 480 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
+                        <path d="M600 150V260C600 460 560 430 560 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
 
-                        <!-- Top level nodes (individuals - blue) -->
-                        <circle cx="600" cy="130" r="18" fill="#3E51FF" fill-opacity="0.4" stroke="#3E51FF"/>
-                        <circle cx="650" cy="130" r="7.5" fill="#3E51FF" fill-opacity="0.4" stroke="#3E51FF"/>
-                        <circle cx="720" cy="130" r="4.5" fill="#3E51FF" fill-opacity="0.4" stroke="#3E51FF"/>
-                        <circle cx="680" cy="130" r="4.5" fill="#3E51FF" fill-opacity="0.4" stroke="#3E51FF"/>
-                        <circle cx="550" cy="130" r="4.5" fill="#3E51FF" fill-opacity="0.4" stroke="#3E51FF"/>
-                        <circle cx="520" cy="130" r="4.5" fill="#3E51FF" fill-opacity="0.4" stroke="#3E51FF"/>
-                        <circle cx="480" cy="130" r="7.5" fill="#3E51FF" fill-opacity="0.4" stroke="#3E51FF"/>
+                        <!-- Light gray curved lines from top individual nodes to middle -->
+                        <path d="M600 150V240C600 390 900 370 900 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
+                        <path d="M600 150V240C600 390 820 370 820 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
+                        <path d="M600 150V240C600 390 740 370 740 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
+                        <path d="M600 150V240C600 390 660 370 660 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
+                        <path d="M600 150V240C600 390 320 370 320 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
+                        <path d="M720 150V240C600 390 900 370 900 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
+                        <path d="M680 150V240C600 390 660 370 660 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
+                        <path d="M650 150V240C600 390 820 370 820 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
+                        <path d="M550 150V240C600 390 740 370 740 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
+                        <path d="M520 150V240C600 390 480 370 480 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
+                        <path d="M480 150V240C600 390 560 370 560 520" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
 
-                        <!-- Middle level nodes (companies - orange) -->
-                        <circle cx="320" cy="520" r="9.5" fill="#EF4400" fill-opacity="0.4" stroke="#EF4400"/>
-                        <circle cx="400" cy="520" r="5.5" fill="#EF4400" fill-opacity="0.4" stroke="#EF4400"/>
-                        <circle cx="480" cy="520" r="5.5" fill="#EF4400" fill-opacity="0.4" stroke="#EF4400"/>
-                        <circle cx="560" cy="520" r="5.5" fill="#EF4400" fill-opacity="0.4" stroke="#EF4400"/>
-                        <circle cx="660" cy="520" r="5.5" fill="#EF4400" fill-opacity="0.4" stroke="#EF4400"/>
-                        <circle cx="740" cy="520" r="5.5" fill="#EF4400" fill-opacity="0.4" stroke="#EF4400"/>
-                        <circle cx="820" cy="520" r="5.5" fill="#EF4400" fill-opacity="0.4" stroke="#EF4400"/>
-                        <circle cx="900" cy="520" r="5.5" fill="#3E51FF" fill-opacity="0.4" stroke="#3E51FF"/>
+                        <!-- Light gray curved lines from middle to bottom properties -->
+                        <path d="M320 530V580C320 650 280 640 280 680" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
+                        <path d="M320 530V580C320 650 350 640 350 680" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
+                        <path d="M400 530V580C400 650 420 640 420 680" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
+                        <path d="M480 530V580C480 650 490 640 490 680" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
+                        <path d="M560 530V580C560 650 560 640 560 680" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
+                        <path d="M660 530V580C660 650 630 640 630 680" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
+                        <path d="M740 530V580C740 650 700 640 700 680" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
+                        <path d="M820 530V580C820 650 770 640 770 680" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
+                        <path d="M900 530V580C900 650 840 640 840 680" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
+                        <path d="M900 530V580C900 650 910 640 910 680" stroke="#c8c8c8" stroke-width="0.5" fill="none"/>
 
-                        <!-- Bottom level nodes (properties - teal squares) -->
-                        <rect x="275" y="675" width="11" height="11" fill="#00E2AD" fill-opacity="0.4" stroke="#00E2AD"/>
-                        <rect x="345" y="675" width="11" height="11" fill="#00E2AD" fill-opacity="0.4" stroke="#00E2AD"/>
-                        <rect x="415" y="675" width="11" height="11" fill="#00E2AD" fill-opacity="0.4" stroke="#00E2AD"/>
-                        <rect x="485" y="675" width="11" height="11" fill="#00E2AD" fill-opacity="0.4" stroke="#00E2AD"/>
-                        <rect x="555" y="675" width="11" height="11" fill="#00E2AD" fill-opacity="0.4" stroke="#00E2AD"/>
-                        <rect x="625" y="675" width="11" height="11" fill="#00E2AD" fill-opacity="0.4" stroke="#00E2AD"/>
-                        <rect x="695" y="675" width="11" height="11" fill="#00E2AD" fill-opacity="0.4" stroke="#00E2AD"/>
-                        <rect x="765" y="675" width="11" height="11" fill="#00E2AD" fill-opacity="0.4" stroke="#00E2AD"/>
-                        <rect x="835" y="675" width="11" height="11" fill="#00E2AD" fill-opacity="0.4" stroke="#00E2AD"/>
-                        <rect x="905" y="675" width="11" height="11" fill="#00E2AD" fill-opacity="0.4" stroke="#00E2AD"/>
+                        <!-- Top level nodes (individuals - blue circles) -->
+                        <circle cx="600" cy="130" r="18" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1.5"/>
+                        <circle cx="650" cy="130" r="7.5" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1"/>
+                        <circle cx="720" cy="130" r="4.5" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1"/>
+                        <circle cx="680" cy="130" r="4.5" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1"/>
+                        <circle cx="550" cy="130" r="4.5" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1"/>
+                        <circle cx="520" cy="130" r="4.5" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1"/>
+                        <circle cx="480" cy="130" r="7.5" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1"/>
+
+                        <!-- Middle level nodes (companies - blue rounded rects) -->
+                        <rect x="310" y="510" width="20" height="20" rx="3" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1.5"/>
+                        <rect x="390" y="514" width="12" height="12" rx="2" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1"/>
+                        <rect x="474" y="514" width="12" height="12" rx="2" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1"/>
+                        <rect x="554" y="514" width="12" height="12" rx="2" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1"/>
+                        <rect x="654" y="514" width="12" height="12" rx="2" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1"/>
+                        <rect x="734" y="514" width="12" height="12" rx="2" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1"/>
+                        <rect x="814" y="514" width="12" height="12" rx="2" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1"/>
+                        <rect x="890" y="514" width="20" height="20" rx="3" fill="rgba(65,102,195,0.2)" stroke="#4166c3" stroke-width="1.5"/>
+
+                        <!-- Bottom level nodes (properties - orange for selected, blue for others) -->
+                        <rect x="275" y="675" width="11" height="11" rx="1" fill="rgba(239,68,0,0.15)" stroke="#ef4400" stroke-width="1.5"/>
+                        <rect x="345" y="675" width="11" height="11" rx="1" fill="rgba(65,102,195,0.15)" stroke="#4166c3" stroke-width="1"/>
+                        <rect x="415" y="675" width="11" height="11" rx="1" fill="rgba(65,102,195,0.15)" stroke="#4166c3" stroke-width="1"/>
+                        <rect x="485" y="675" width="11" height="11" rx="1" fill="rgba(65,102,195,0.15)" stroke="#4166c3" stroke-width="1"/>
+                        <rect x="555" y="675" width="11" height="11" rx="1" fill="rgba(65,102,195,0.15)" stroke="#4166c3" stroke-width="1"/>
+                        <rect x="625" y="675" width="11" height="11" rx="1" fill="rgba(65,102,195,0.15)" stroke="#4166c3" stroke-width="1"/>
+                        <rect x="695" y="675" width="11" height="11" rx="1" fill="rgba(65,102,195,0.15)" stroke="#4166c3" stroke-width="1"/>
+                        <rect x="765" y="675" width="11" height="11" rx="1" fill="rgba(65,102,195,0.15)" stroke="#4166c3" stroke-width="1"/>
+                        <rect x="835" y="675" width="11" height="11" rx="1" fill="rgba(65,102,195,0.15)" stroke="#4166c3" stroke-width="1"/>
+                        <rect x="905" y="675" width="11" height="11" rx="1" fill="rgba(65,102,195,0.15)" stroke="#4166c3" stroke-width="1"/>
                     </svg>
+                </div>
+
+                <!-- Property tooltip -->
+                <div style="position: absolute; bottom: 120px; left: 340px; background: rgba(239,68,0,0.06); border: 1px solid #ef4400; border-radius: 6px; padding: 10px 14px; min-width: 180px; pointer-events: none; z-index: 10;">
+                    <div style="font-size: 12px; color: #ef4400; font-weight: 600; margin-bottom: 4px; font-family: 'Akkurat', sans-serif;">195 Main St</div>
+                    <div style="font-size: 12px; color: #333; font-family: 'Akkurat', sans-serif;">Brockton MA 02301</div>
+                    <div style="font-size: 11px; color: #666; margin-top: 6px; font-family: 'Akkurat', sans-serif;">Total units <strong style="color: #333;">1</strong></div>
                 </div>
 
                 <div class="network-graph-controls">
@@ -10183,8 +10196,12 @@
                             <div class="network-legend-dot property"></div>
                             <span>Property</span>
                         </div>
-                        <div class="network-legend-item" style="border-top: 1px solid #333; padding-top: 12px; margin-top: 4px;">
-                            <span>Entity owns company/property</span>
+                        <div class="network-legend-item" style="border-top: 1px solid #e8e8e8; padding-top: 12px; margin-top: 4px;">
+                            <span>Entity owns property</span>
+                        </div>
+                        <div class="network-legend-item" style="margin-top: 0;">
+                            <span style="border-bottom: 2px dashed #999; width: 16px; display: inline-block; flex-shrink: 0;"></span>
+                            <span>Entity owns company</span>
                         </div>
                     </div>
                 </div>
