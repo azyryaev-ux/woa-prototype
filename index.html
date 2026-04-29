@@ -1291,26 +1291,47 @@
 
         .menu-site-card {
             flex: 1;
-            padding: 20px 22px;
-            background: #f9f9f9;
             border: 1.5px solid #e8e8e8;
             border-radius: 10px;
             cursor: pointer;
             transition: all 0.15s ease;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 0;
             text-decoration: none;
+            overflow: hidden;
+        }
+
+        .menu-site-card-photo {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            display: block;
+            flex-shrink: 0;
+        }
+
+        .menu-site-card-body {
+            padding: 14px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            background: #f9f9f9;
         }
 
         .menu-site-card:hover {
-            background: #f3f3f3;
             border-color: #d0d0d0;
         }
 
+        .menu-site-card:hover .menu-site-card-body {
+            background: #f3f3f3;
+        }
+
         .menu-site-card.active {
-            background: #fff5f2;
             border-color: #ef4400;
+        }
+
+        .menu-site-card.active .menu-site-card-body {
+            background: #fff5f2;
         }
 
         .menu-site-card-name {
@@ -13271,25 +13292,33 @@
         <!-- Site cards -->
         <div class="menu-site-cards">
             <a href="#" class="menu-site-card active">
-                <div class="menu-site-card-name">Boston</div>
-                <div class="menu-site-card-state">Massachusetts</div>
-                <div class="menu-site-card-badge">Currently viewing</div>
+                <img src="images/boston.jpg" class="menu-site-card-photo" alt="Boston">
+                <div class="menu-site-card-body">
+                    <div class="menu-site-card-name">Boston</div>
+                    <div class="menu-site-card-state">Massachusetts</div>
+                    <div class="menu-site-card-badge">Currently viewing</div>
+                </div>
             </a>
             <a href="#" class="menu-site-card">
-                <div class="menu-site-card-name">Miami</div>
-                <div class="menu-site-card-state">Florida</div>
+                <img src="images/miami.jpg" class="menu-site-card-photo" alt="Miami">
+                <div class="menu-site-card-body">
+                    <div class="menu-site-card-name">Miami</div>
+                    <div class="menu-site-card-state">Florida</div>
+                </div>
             </a>
             <a href="#" class="menu-site-card">
-                <div class="menu-site-card-name">Houston</div>
-                <div class="menu-site-card-state">Texas</div>
+                <img src="images/houston.jpg" class="menu-site-card-photo" alt="Houston">
+                <div class="menu-site-card-body">
+                    <div class="menu-site-card-name">Houston</div>
+                    <div class="menu-site-card-state">Texas</div>
+                </div>
             </a>
             <a href="#" class="menu-site-card">
-                <div class="menu-site-card-name">Baltimore</div>
-                <div class="menu-site-card-state">Maryland</div>
-            </a>
-            <a href="#" class="menu-site-card">
-                <div class="menu-site-card-name">Atlanta</div>
-                <div class="menu-site-card-state">Georgia</div>
+                <img src="images/baltimore.jpg" class="menu-site-card-photo" alt="Baltimore">
+                <div class="menu-site-card-body">
+                    <div class="menu-site-card-name">Baltimore</div>
+                    <div class="menu-site-card-state">Maryland</div>
+                </div>
             </a>
         </div>
         <!-- Divider -->
