@@ -5615,28 +5615,32 @@
             );
         }
 
-        /* Dark mode for ownership section */
+        /* Ownership structure section — light mode */
         .full-page-section#ownership {
-            background: #1a1a1a;
+            background: #f5f6f8;
         }
 
         .full-page-section#ownership .full-page-section-title {
-            color: #fff;
+            color: #000;
+            font-size: 28px;
+            font-weight: 700;
         }
 
         .full-page-section#ownership .full-page-section-description {
-            color: #b0b0b0;
+            color: #555;
+            max-width: 480px;
         }
 
-        .full-page-section#ownership .network-graph-btn {
-            background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
-            color: #fff;
-            border-color: #444;
+        .ownership-mini-graph-wrap {
+            width: 100%;
+            overflow: hidden;
+            margin-top: 8px;
         }
 
-        .full-page-section#ownership .network-graph-btn:hover {
-            background: linear-gradient(180deg, #333 0%, #222 100%);
-            border-color: #555;
+        .ownership-mini-graph-wrap svg {
+            display: block;
+            width: 100%;
+            height: auto;
         }
 
         .full-page-section-title {
@@ -9175,66 +9179,199 @@
                     <div class="section-title-with-action">
                         <h2 class="full-page-section-title">Ownership Structure</h2>
                         <button class="network-graph-btn" onclick="document.getElementById('network-graph-modal').classList.add('active')">
-                            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+                            <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <circle cx="18" cy="5" r="3" stroke-width="2"/><circle cx="6" cy="12" r="3" stroke-width="2"/><circle cx="18" cy="19" r="3" stroke-width="2"/>
+                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" stroke-width="2"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49" stroke-width="2"/>
                             </svg>
-                            View full network graph
+                            View ownership structure
                         </button>
                     </div>
                     <p class="full-page-section-description">
                         This diagram traces ownership from the property up through the direct owner and to the landlord. Each node represents a connected entity, revealing how ownership is structured and where it ultimately leads.
                     </p>
 
-                    <div class="ownership-diagram-wrapper">
-                        <div class="ownership-chain">
-                            <!-- Landlord node -->
-                            <div class="ownership-node ownership-node--individual">
-                                <div class="ownership-node-icon">
-                                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-                                </div>
-                                <div class="ownership-node-body">
-                                    <div class="ownership-node-name">Raymond Ferrone</div>
-                                    <div class="ownership-node-role">Landlord</div>
-                                </div>
-                            </div>
-                            <div class="ownership-connector">
-                                <div class="ownership-connector-line"></div>
-                                <span class="ownership-connector-label">Entity owns company</span>
-                            </div>
-                            <!-- Owner node -->
-                            <div class="ownership-node ownership-node--company">
-                                <div class="ownership-node-icon">
-                                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-                                </div>
-                                <div class="ownership-node-body">
-                                    <div class="ownership-node-name">Genesis Land Holdings Inc.</div>
-                                    <div class="ownership-node-role">Owner</div>
-                                </div>
-                            </div>
-                            <div class="ownership-connector">
-                                <div class="ownership-connector-line"></div>
-                                <span class="ownership-connector-label">Entity owns property</span>
-                            </div>
-                            <!-- Property node -->
-                            <div class="ownership-node ownership-node--property">
-                                <div class="ownership-node-icon">
-                                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
-                                </div>
-                                <div class="ownership-node-body">
-                                    <div class="ownership-node-name">195 Main St</div>
-                                    <div class="ownership-node-role">bought for $2.2M (2015)</div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="ownership-mini-graph-wrap">
+                        <svg viewBox="0 0 960 470" xmlns="http://www.w3.org/2000/svg" style="font-family:'Akkurat',sans-serif;">
 
-                        <!-- Legend -->
-                        <div class="ownership-legend">
-                            <div class="ownership-legend-item"><span class="ownership-legend-icon ownership-legend-icon--individual"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></span> Individual</div>
-                            <div class="ownership-legend-item"><span class="ownership-legend-icon ownership-legend-icon--company"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5"/></svg></span> Company</div>
-                            <div class="ownership-legend-item"><span class="ownership-legend-icon ownership-legend-icon--property"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></span> Property</div>
-                            <div class="ownership-legend-item"><span class="ownership-legend-dash"></span> Entity owns company</div>
-                            <div class="ownership-legend-item"><span class="ownership-legend-dash"></span> Entity owns property</div>
-                        </div>
+                            <!-- === CONNECTIONS (behind nodes) === -->
+                            <!-- Gray lines: other individuals → their companies -->
+                            <path d="M 230 90 C 230 165 270 190 270 248" stroke="#d4d9e6" stroke-width="0.8" fill="none"/>
+                            <path d="M 330 90 C 330 165 350 190 350 248" stroke="#d4d9e6" stroke-width="0.8" fill="none"/>
+                            <path d="M 580 90 C 580 165 510 190 510 248" stroke="#d4d9e6" stroke-width="0.8" fill="none"/>
+                            <path d="M 680 90 C 680 165 620 190 620 248" stroke="#d4d9e6" stroke-width="0.8" fill="none"/>
+                            <path d="M 780 90 C 780 165 740 190 740 248" stroke="#d4d9e6" stroke-width="0.8" fill="none"/>
+
+                            <!-- Blue S-curve: Raymond Ferrone → Genesis Land Holdings -->
+                            <path d="M 470 90 C 470 170 190 200 190 248" stroke="#5b7fdb" stroke-width="1.5" fill="none"/>
+
+                            <!-- Orange vertical: Genesis Land Holdings → 195 Main St -->
+                            <path d="M 190 260 C 190 330 230 355 230 400" stroke="#ef4400" stroke-width="1.5" fill="none"/>
+
+                            <!-- === ROW 1: INDIVIDUALS (y=90) === -->
+                            <!-- Gray: x=230 -->
+                            <g transform="translate(230,90)">
+                                <circle r="13" fill="white" stroke="#c5cde0" stroke-width="1.4"/>
+                                <circle cy="-3.5" r="4" fill="#c5cde0"/>
+                                <path d="M-7 7 Q0 3 7 7" fill="none" stroke="#c5cde0" stroke-width="1.2" stroke-linecap="round"/>
+                            </g>
+                            <!-- Gray: x=330 -->
+                            <g transform="translate(330,90)">
+                                <circle r="13" fill="white" stroke="#c5cde0" stroke-width="1.4"/>
+                                <circle cy="-3.5" r="4" fill="#c5cde0"/>
+                                <path d="M-7 7 Q0 3 7 7" fill="none" stroke="#c5cde0" stroke-width="1.2" stroke-linecap="round"/>
+                            </g>
+                            <!-- Raymond Ferrone (selected, blue): x=470 -->
+                            <g transform="translate(470,90)">
+                                <circle r="15" fill="#eef1ff" stroke="#4166c3" stroke-width="2"/>
+                                <circle cy="-4" r="4.5" fill="#4166c3"/>
+                                <path d="M-8 8 Q0 3 8 8" fill="none" stroke="#4166c3" stroke-width="1.4" stroke-linecap="round"/>
+                                <!-- Tooltip -->
+                                <rect x="-50" y="-56" width="100" height="30" rx="3" fill="white" stroke="#d0d5e0" stroke-width="1"/>
+                                <text x="0" y="-40" text-anchor="middle" fill="#111" font-size="8.5" font-weight="600">Raymond Ferrone</text>
+                                <text x="0" y="-29" text-anchor="middle" fill="#888" font-size="7.5">Landlord</text>
+                            </g>
+                            <!-- Gray: x=580 -->
+                            <g transform="translate(580,90)">
+                                <circle r="13" fill="white" stroke="#c5cde0" stroke-width="1.4"/>
+                                <circle cy="-3.5" r="4" fill="#c5cde0"/>
+                                <path d="M-7 7 Q0 3 7 7" fill="none" stroke="#c5cde0" stroke-width="1.2" stroke-linecap="round"/>
+                            </g>
+                            <!-- Gray: x=680 -->
+                            <g transform="translate(680,90)">
+                                <circle r="13" fill="white" stroke="#c5cde0" stroke-width="1.4"/>
+                                <circle cy="-3.5" r="4" fill="#c5cde0"/>
+                                <path d="M-7 7 Q0 3 7 7" fill="none" stroke="#c5cde0" stroke-width="1.2" stroke-linecap="round"/>
+                            </g>
+                            <!-- Gray: x=780 -->
+                            <g transform="translate(780,90)">
+                                <circle r="13" fill="white" stroke="#c5cde0" stroke-width="1.4"/>
+                                <circle cy="-3.5" r="4" fill="#c5cde0"/>
+                                <path d="M-7 7 Q0 3 7 7" fill="none" stroke="#c5cde0" stroke-width="1.2" stroke-linecap="round"/>
+                            </g>
+
+                            <!-- === ROW 2: COMPANIES (y=248) === -->
+                            <!-- Genesis Land Holdings (selected, blue): x=190 -->
+                            <g transform="translate(190,248)">
+                                <rect x="-12" y="-9" width="24" height="18" rx="3" fill="#eef1ff" stroke="#4166c3" stroke-width="1.5"/>
+                                <rect x="-7" y="-6" width="4.5" height="3.5" rx="0.5" fill="#4166c3"/>
+                                <rect x="2.5" y="-6" width="4.5" height="3.5" rx="0.5" fill="#4166c3"/>
+                                <rect x="-2" y="-1" width="4" height="8" rx="0.5" fill="#4166c3"/>
+                                <!-- Tooltip to right -->
+                                <rect x="18" y="-22" width="118" height="40" rx="3" fill="white" stroke="#4166c3" stroke-width="1"/>
+                                <text x="77" y="-8" text-anchor="middle" fill="#111" font-size="8.5" font-weight="600">Genesis Land</text>
+                                <text x="77" y="3" text-anchor="middle" fill="#111" font-size="8.5" font-weight="600">Holdings Inc.</text>
+                                <text x="77" y="14" text-anchor="middle" fill="#888" font-size="7.5">Owner</text>
+                            </g>
+                            <!-- Gray companies -->
+                            <g transform="translate(270,248)">
+                                <rect x="-11" y="-8" width="22" height="16" rx="2.5" fill="white" stroke="#c5cde0" stroke-width="1.2"/>
+                                <rect x="-6" y="-5" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                                <rect x="2" y="-5" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                                <rect x="-2" y="0" width="3" height="6" rx="0.4" fill="#c5cde0"/>
+                            </g>
+                            <g transform="translate(350,248)">
+                                <rect x="-11" y="-8" width="22" height="16" rx="2.5" fill="white" stroke="#c5cde0" stroke-width="1.2"/>
+                                <rect x="-6" y="-5" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                                <rect x="2" y="-5" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                                <rect x="-2" y="0" width="3" height="6" rx="0.4" fill="#c5cde0"/>
+                            </g>
+                            <g transform="translate(430,248)">
+                                <rect x="-11" y="-8" width="22" height="16" rx="2.5" fill="white" stroke="#c5cde0" stroke-width="1.2"/>
+                                <rect x="-6" y="-5" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                                <rect x="2" y="-5" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                                <rect x="-2" y="0" width="3" height="6" rx="0.4" fill="#c5cde0"/>
+                            </g>
+                            <g transform="translate(510,248)">
+                                <rect x="-11" y="-8" width="22" height="16" rx="2.5" fill="white" stroke="#c5cde0" stroke-width="1.2"/>
+                                <rect x="-6" y="-5" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                                <rect x="2" y="-5" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                                <rect x="-2" y="0" width="3" height="6" rx="0.4" fill="#c5cde0"/>
+                            </g>
+                            <g transform="translate(580,248)">
+                                <rect x="-11" y="-8" width="22" height="16" rx="2.5" fill="white" stroke="#c5cde0" stroke-width="1.2"/>
+                                <rect x="-6" y="-5" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                                <rect x="2" y="-5" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                                <rect x="-2" y="0" width="3" height="6" rx="0.4" fill="#c5cde0"/>
+                            </g>
+                            <g transform="translate(650,248)">
+                                <rect x="-11" y="-8" width="22" height="16" rx="2.5" fill="white" stroke="#c5cde0" stroke-width="1.2"/>
+                                <rect x="-6" y="-5" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                                <rect x="2" y="-5" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                                <rect x="-2" y="0" width="3" height="6" rx="0.4" fill="#c5cde0"/>
+                            </g>
+                            <g transform="translate(720,248)">
+                                <rect x="-11" y="-8" width="22" height="16" rx="2.5" fill="white" stroke="#c5cde0" stroke-width="1.2"/>
+                                <rect x="-6" y="-5" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                                <rect x="2" y="-5" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                                <rect x="-2" y="0" width="3" height="6" rx="0.4" fill="#c5cde0"/>
+                            </g>
+                            <g transform="translate(790,248)">
+                                <rect x="-11" y="-8" width="22" height="16" rx="2.5" fill="white" stroke="#c5cde0" stroke-width="1.2"/>
+                                <rect x="-6" y="-5" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                                <rect x="2" y="-5" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                                <rect x="-2" y="0" width="3" height="6" rx="0.4" fill="#c5cde0"/>
+                            </g>
+                            <g transform="translate(860,248)">
+                                <rect x="-11" y="-8" width="22" height="16" rx="2.5" fill="white" stroke="#c5cde0" stroke-width="1.2"/>
+                                <rect x="-6" y="-5" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                                <rect x="2" y="-5" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                                <rect x="-2" y="0" width="3" height="6" rx="0.4" fill="#c5cde0"/>
+                            </g>
+                            <g transform="translate(930,248)">
+                                <rect x="-11" y="-8" width="22" height="16" rx="2.5" fill="white" stroke="#c5cde0" stroke-width="1.2"/>
+                                <rect x="-6" y="-5" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                                <rect x="2" y="-5" width="4" height="3" rx="0.4" fill="#c5cde0"/>
+                                <rect x="-2" y="0" width="3" height="6" rx="0.4" fill="#c5cde0"/>
+                            </g>
+
+                            <!-- === ROW 3: PROPERTIES (y=400) === -->
+                            <!-- 195 Main St (selected, orange): x=230 -->
+                            <g transform="translate(230,400)">
+                                <polygon points="0,-13 -12,-3 -12,10 12,10 12,-3" fill="#fff5f2" stroke="#ef4400" stroke-width="1.5" stroke-linejoin="round"/>
+                                <rect x="-4" y="2" width="8" height="8" rx="0.5" fill="#ef4400" opacity="0.3"/>
+                                <!-- Tooltip below -->
+                                <rect x="-52" y="16" width="104" height="30" rx="3" fill="white" stroke="#ef4400" stroke-width="1.2"/>
+                                <text x="0" y="30" text-anchor="middle" fill="#ef4400" font-size="8.5" font-weight="600">195 Main St</text>
+                                <text x="0" y="41" text-anchor="middle" fill="#888" font-size="7.5">bought for $2.2M (2015)</text>
+                            </g>
+                            <!-- Gray properties -->
+                            <g transform="translate(320,400)"><polygon points="0,-12 -11,-3 -11,9 11,9 11,-3" fill="#fde8df" stroke="#e8b5a0" stroke-width="1" stroke-linejoin="round"/><rect x="-3" y="1" width="6" height="8" rx="0.4" fill="#e8b5a0" opacity="0.6"/></g>
+                            <g transform="translate(400,400)"><polygon points="0,-12 -11,-3 -11,9 11,9 11,-3" fill="#fde8df" stroke="#e8b5a0" stroke-width="1" stroke-linejoin="round"/><rect x="-3" y="1" width="6" height="8" rx="0.4" fill="#e8b5a0" opacity="0.6"/></g>
+                            <g transform="translate(480,400)"><polygon points="0,-12 -11,-3 -11,9 11,9 11,-3" fill="#fde8df" stroke="#e8b5a0" stroke-width="1" stroke-linejoin="round"/><rect x="-3" y="1" width="6" height="8" rx="0.4" fill="#e8b5a0" opacity="0.6"/></g>
+                            <g transform="translate(555,400)"><polygon points="0,-12 -11,-3 -11,9 11,9 11,-3" fill="#fde8df" stroke="#e8b5a0" stroke-width="1" stroke-linejoin="round"/><rect x="-3" y="1" width="6" height="8" rx="0.4" fill="#e8b5a0" opacity="0.6"/></g>
+                            <g transform="translate(630,400)"><polygon points="0,-12 -11,-3 -11,9 11,9 11,-3" fill="#fde8df" stroke="#e8b5a0" stroke-width="1" stroke-linejoin="round"/><rect x="-3" y="1" width="6" height="8" rx="0.4" fill="#e8b5a0" opacity="0.6"/></g>
+                            <g transform="translate(705,400)"><polygon points="0,-12 -11,-3 -11,9 11,9 11,-3" fill="#fde8df" stroke="#e8b5a0" stroke-width="1" stroke-linejoin="round"/><rect x="-3" y="1" width="6" height="8" rx="0.4" fill="#e8b5a0" opacity="0.6"/></g>
+                            <g transform="translate(780,400)"><polygon points="0,-12 -11,-3 -11,9 11,9 11,-3" fill="#fde8df" stroke="#e8b5a0" stroke-width="1" stroke-linejoin="round"/><rect x="-3" y="1" width="6" height="8" rx="0.4" fill="#e8b5a0" opacity="0.6"/></g>
+                            <g transform="translate(855,400)"><polygon points="0,-12 -11,-3 -11,9 11,9 11,-3" fill="#fde8df" stroke="#e8b5a0" stroke-width="1" stroke-linejoin="round"/><rect x="-3" y="1" width="6" height="8" rx="0.4" fill="#e8b5a0" opacity="0.6"/></g>
+                            <g transform="translate(930,400)"><polygon points="0,-12 -11,-3 -11,9 11,9 11,-3" fill="#fde8df" stroke="#e8b5a0" stroke-width="1" stroke-linejoin="round"/><rect x="-3" y="1" width="6" height="8" rx="0.4" fill="#e8b5a0" opacity="0.6"/></g>
+
+                            <!-- === LEGEND (bottom right) === -->
+                            <g transform="translate(718,335)">
+                                <rect x="0" y="0" width="210" height="160" rx="5" fill="white" stroke="#e0e0e0" stroke-width="1"/>
+                                <!-- Individual -->
+                                <circle cx="26" cy="28" r="10" fill="white" stroke="#5b7fdb" stroke-width="1.4"/>
+                                <circle cx="26" cy="25" r="3.2" fill="#5b7fdb"/>
+                                <path d="M19 33 Q26 29 33 33" fill="none" stroke="#5b7fdb" stroke-width="1.1" stroke-linecap="round"/>
+                                <text x="46" y="32" fill="#444" font-size="10.5">Individual</text>
+                                <!-- Company -->
+                                <rect x="16" y="50" width="20" height="15" rx="2.5" fill="white" stroke="#5b7fdb" stroke-width="1.4"/>
+                                <rect x="19" y="53" width="4" height="3" rx="0.4" fill="#5b7fdb"/>
+                                <rect x="25" y="53" width="4" height="3" rx="0.4" fill="#5b7fdb"/>
+                                <rect x="21" y="58" width="3" height="6" rx="0.4" fill="#5b7fdb"/>
+                                <text x="46" y="62" fill="#444" font-size="10.5">Company</text>
+                                <!-- Property -->
+                                <polygon points="26,80 15,89 15,98 37,98 37,89" fill="#fde8df" stroke="#ef4400" stroke-width="1.3" stroke-linejoin="round"/>
+                                <rect x="22" y="90" width="6" height="8" rx="0.4" fill="#ef4400" opacity="0.4"/>
+                                <text x="46" y="93" fill="#444" font-size="10.5">Property</text>
+                                <!-- Entity owns company line -->
+                                <line x1="16" y1="116" x2="36" y2="116" stroke="#5b7fdb" stroke-width="1.5" stroke-dasharray="3,2"/>
+                                <text x="46" y="120" fill="#444" font-size="10.5">Entity owns company</text>
+                                <!-- Entity owns property line -->
+                                <line x1="16" y1="138" x2="36" y2="138" stroke="#ef4400" stroke-width="1.5" stroke-dasharray="3,2"/>
+                                <text x="46" y="142" fill="#444" font-size="10.5">Entity owns property</text>
+                            </g>
+
+                        </svg>
                     </div>
                 </div>
 
