@@ -10907,11 +10907,17 @@
         const networkLegendToggle = document.getElementById('network-legend-toggle');
         const networkLegendContent = document.getElementById('network-legend-content');
 
-        // Open network graph when clicking "View network graph" button
+        // Open network graph when clicking "View ownership structure" button
+        const openNetworkGraphBtn = document.getElementById('open-network-graph-btn');
+        if (openNetworkGraphBtn) {
+            openNetworkGraphBtn.addEventListener('click', function() {
+                networkGraphModal.classList.add('active');
+            });
+        }
+        // Also catch the in-page "View full network graph" button inside the ownership section
         document.addEventListener('click', function(e) {
-            const btn = e.target.closest('.landlord-action-btn');
-            if (btn && btn.textContent.includes('View network graph')) {
-                e.preventDefault();
+            const btn = e.target.closest('.network-graph-btn');
+            if (btn) {
                 networkGraphModal.classList.add('active');
             }
         });
