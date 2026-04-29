@@ -1220,23 +1220,23 @@
 
         .menu-dropdown {
             position: fixed;
-            top: 68px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.85);
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.96);
             backdrop-filter: blur(40px) saturate(180%);
             -webkit-backdrop-filter: blur(40px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08);
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.10);
             z-index: 10000;
-            min-width: 800px;
             opacity: 0;
             visibility: hidden;
-            transform: translateY(-8px);
+            transform: translateY(-6px);
             transition: all 0.2s ease;
-            padding: 40px;
+            padding: 32px 40px 28px;
             display: flex;
-            gap: 60px;
+            flex-direction: column;
+            gap: 0;
         }
 
         .menu-dropdown.active {
@@ -1245,46 +1245,145 @@
             transform: translateY(0);
         }
 
-        .menu-dropdown-nav {
-            flex: 0 0 33%;
+        /* Top row: heading + close button */
+        .menu-dropdown-toprow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .menu-dropdown-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: #707070;
+            font-family: 'Akkurat', sans-serif;
+        }
+
+        .menu-dropdown-close {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid #e0e0e0;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            transition: all 0.15s ease;
+            flex-shrink: 0;
+        }
+
+        .menu-dropdown-close:hover {
+            background: #f5f5f5;
+            color: #000;
+        }
+
+        /* Site cards row */
+        .menu-site-cards {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .menu-site-card {
+            flex: 1;
+            padding: 20px 22px;
+            background: #f9f9f9;
+            border: 1.5px solid #e8e8e8;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.15s ease;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            gap: 6px;
+            text-decoration: none;
         }
 
-        .menu-dropdown-heading {
-            flex: 1;
-            display: flex;
-            align-items: flex-start;
-            padding-left: 40px;
-            padding-top: 0;
+        .menu-site-card:hover {
+            background: #f3f3f3;
+            border-color: #d0d0d0;
         }
 
-        .menu-dropdown-heading h2 {
-            font-size: 48px;
+        .menu-site-card.active {
+            background: #fff5f2;
+            border-color: #ef4400;
+        }
+
+        .menu-site-card-name {
+            font-size: 18px;
             font-weight: 700;
-            color: #EF4400;
-            line-height: 1.2;
+            color: #000;
             font-family: 'Akkurat', sans-serif;
             letter-spacing: -0.02em;
-            text-align: right;
+        }
+
+        .menu-site-card.active .menu-site-card-name {
+            color: #ef4400;
+        }
+
+        .menu-site-card-state {
+            font-size: 12px;
+            color: #707070;
+            font-family: 'Akkurat', sans-serif;
+        }
+
+        .menu-site-card-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: #ef4400;
+            font-family: 'Akkurat', sans-serif;
+            margin-top: 4px;
+        }
+
+        .menu-site-card-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #ef4400;
+        }
+
+        /* Divider */
+        .menu-dropdown-divider {
+            height: 1px;
+            background: #ebebeb;
+            margin-bottom: 20px;
+        }
+
+        /* Nav links row */
+        .menu-dropdown-nav {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0;
         }
 
         .menu-dropdown-item {
-            padding: 20px 0;
-            color: rgba(0, 0, 0, 0.7);
-            font-size: 18px;
+            padding: 8px 20px 8px 0;
+            margin-right: 20px;
+            color: #444;
+            font-size: 14px;
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.15s ease;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            transition: color 0.15s ease;
+            border-bottom: none;
             text-decoration: none;
-            display: block;
-            width: 100%;
+            display: inline-block;
+            width: auto;
         }
 
         .menu-dropdown-item:last-child {
-            border-bottom: none;
+            margin-right: 0;
+            padding-right: 0;
         }
 
         .menu-dropdown-item:hover {
@@ -13165,6 +13264,42 @@
 
     <!-- Menu Dropdown (outside map-area so z-index works at root level) -->
     <div class="menu-dropdown" id="menu-dropdown">
+        <!-- Top row: label + close -->
+        <div class="menu-dropdown-toprow">
+            <span class="menu-dropdown-label">Sites we're tracking</span>
+            <button class="menu-dropdown-close" id="menu-dropdown-close-btn" aria-label="Close menu">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <path d="M1 1l10 10M11 1L1 11"/>
+                </svg>
+            </button>
+        </div>
+        <!-- Site cards -->
+        <div class="menu-site-cards">
+            <a href="#" class="menu-site-card active">
+                <div class="menu-site-card-name">Boston</div>
+                <div class="menu-site-card-state">Massachusetts</div>
+                <div class="menu-site-card-badge">Currently viewing</div>
+            </a>
+            <a href="#" class="menu-site-card">
+                <div class="menu-site-card-name">Miami</div>
+                <div class="menu-site-card-state">Florida</div>
+            </a>
+            <a href="#" class="menu-site-card">
+                <div class="menu-site-card-name">Houston</div>
+                <div class="menu-site-card-state">Texas</div>
+            </a>
+            <a href="#" class="menu-site-card">
+                <div class="menu-site-card-name">Baltimore</div>
+                <div class="menu-site-card-state">Maryland</div>
+            </a>
+            <a href="#" class="menu-site-card">
+                <div class="menu-site-card-name">Atlanta</div>
+                <div class="menu-site-card-state">Georgia</div>
+            </a>
+        </div>
+        <!-- Divider -->
+        <div class="menu-dropdown-divider"></div>
+        <!-- Nav links -->
         <div class="menu-dropdown-nav">
             <a href="#" class="menu-dropdown-item">About</a>
             <a href="#" class="menu-dropdown-item">Methodology</a>
@@ -13172,9 +13307,6 @@
             <a href="#" class="menu-dropdown-item">FAQs</a>
             <a href="#" class="menu-dropdown-item">Resources</a>
             <a href="#" class="menu-dropdown-item">Contact</a>
-        </div>
-        <div class="menu-dropdown-heading">
-            <h2>Mapping property ownership across America</h2>
         </div>
     </div>
     <script>
@@ -13188,6 +13320,13 @@
             document.getElementById('afp-menu-btn'),
             document.getElementById('network-menu-button')
         ].filter(Boolean);
+
+        // Close button inside the menu
+        var closeBtn = document.getElementById('menu-dropdown-close-btn');
+        if (closeBtn) closeBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            closeMenu();
+        });
 
         function openMenu() {
             dropdown.classList.add('active');
