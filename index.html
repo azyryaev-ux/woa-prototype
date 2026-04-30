@@ -1290,40 +1290,45 @@
         }
 
         .menu-site-card {
-            flex: 1;
-            border: 1.5px solid #e8e8e8;
+            flex: 0 0 160px;
+            border: 2px solid transparent;
             border-radius: 10px;
             cursor: pointer;
             transition: all 0.15s ease;
             display: flex;
             flex-direction: column;
-            gap: 0;
             text-decoration: none;
             overflow: hidden;
+            position: relative;
+            background: #222;
         }
 
         .menu-site-card-photo {
             width: 100%;
-            height: 120px;
+            height: 150px;
             object-fit: cover;
             display: block;
             flex-shrink: 0;
         }
 
         .menu-site-card-body {
-            padding: 14px 16px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px 10px 9px;
             display: flex;
             flex-direction: column;
-            gap: 4px;
-            background: #f9f9f9;
+            gap: 2px;
+            background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 60%, transparent 100%);
         }
 
         .menu-site-card:hover {
-            border-color: #d0d0d0;
+            border-color: rgba(255,255,255,0.4);
         }
 
         .menu-site-card:hover .menu-site-card-body {
-            background: #f3f3f3;
+            background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
         }
 
         .menu-site-card.active {
@@ -1331,24 +1336,24 @@
         }
 
         .menu-site-card.active .menu-site-card-body {
-            background: #fff5f2;
+            background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 60%, transparent 100%);
         }
 
         .menu-site-card-name {
-            font-size: 18px;
+            font-size: 13px;
             font-weight: 700;
-            color: #000;
+            color: #ffffff;
             font-family: 'Akkurat', sans-serif;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.01em;
         }
 
         .menu-site-card.active .menu-site-card-name {
-            color: #ef4400;
+            color: #ffffff;
         }
 
         .menu-site-card-state {
-            font-size: 12px;
-            color: #707070;
+            font-size: 11px;
+            color: rgba(255,255,255,0.68);
             font-family: 'Akkurat', sans-serif;
         }
 
@@ -1356,21 +1361,21 @@
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            font-size: 10px;
+            font-size: 9px;
             font-weight: 700;
             letter-spacing: 0.5px;
             text-transform: uppercase;
-            color: #ef4400;
+            color: #ff8060;
             font-family: 'Akkurat', sans-serif;
-            margin-top: 4px;
+            margin-top: 3px;
         }
 
         .menu-site-card-badge::before {
             content: '';
-            width: 6px;
-            height: 6px;
+            width: 5px;
+            height: 5px;
             border-radius: 50%;
-            background: #ef4400;
+            background: #ff8060;
         }
 
         /* Divider */
@@ -13292,14 +13297,14 @@
         <!-- Site cards -->
         <div class="menu-site-cards">
             <a href="#" class="menu-site-card">
-                <div class="menu-site-card-photo" style="background: linear-gradient(135deg, #7c9bb5 0%, #4a6741 100%);"></div>
+                <img src="images/bozeman.jpg" class="menu-site-card-photo" alt="Bozeman">
                 <div class="menu-site-card-body">
                     <div class="menu-site-card-name">Bozeman</div>
                     <div class="menu-site-card-state">Montana</div>
                 </div>
             </a>
             <a href="#" class="menu-site-card">
-                <div class="menu-site-card-photo" style="background: linear-gradient(135deg, #8fa8c8 0%, #4a5568 100%);"></div>
+                <img src="images/new_haven.jpg" class="menu-site-card-photo" alt="New Haven">
                 <div class="menu-site-card-body">
                     <div class="menu-site-card-name">New Haven</div>
                     <div class="menu-site-card-state">Connecticut</div>
@@ -13314,14 +13319,14 @@
                 </div>
             </a>
             <a href="#" class="menu-site-card">
-                <div class="menu-site-card-photo" style="background: linear-gradient(135deg, #6b8cba 0%, #2d3748 100%);"></div>
+                <img src="images/chicago.jpg" class="menu-site-card-photo" alt="Chicago">
                 <div class="menu-site-card-body">
                     <div class="menu-site-card-name">Chicago</div>
                     <div class="menu-site-card-state">Illinois</div>
                 </div>
             </a>
             <a href="#" class="menu-site-card">
-                <div class="menu-site-card-photo" style="background: linear-gradient(135deg, #b8936a 0%, #7c5c3a 100%);"></div>
+                <img src="images/kansas_city.jpg" class="menu-site-card-photo" alt="Kansas City">
                 <div class="menu-site-card-body">
                     <div class="menu-site-card-name">Kansas City</div>
                     <div class="menu-site-card-state">Missouri</div>
@@ -13335,7 +13340,7 @@
                 </div>
             </a>
             <a href="#" class="menu-site-card">
-                <div class="menu-site-card-photo" style="background: linear-gradient(135deg, #8fa86e 0%, #4a5c2a 100%);"></div>
+                <img src="images/louisville.jpg" class="menu-site-card-photo" alt="Louisville">
                 <div class="menu-site-card-body">
                     <div class="menu-site-card-name">Louisville</div>
                     <div class="menu-site-card-state">Kentucky</div>
