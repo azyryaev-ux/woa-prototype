@@ -3730,10 +3730,6 @@
             padding: 16px 48px;
             background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
             border-bottom: 1px solid #eaeaea;
-            position: sticky;
-            top: 60px;
-            z-index: 100;
-            backdrop-filter: blur(8px);
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
@@ -3774,9 +3770,8 @@
             padding: 12px 48px;
             background: #fff;
             position: sticky;
-            top: 60px;
+            top: 0;
             z-index: 999;
-            border-top: 1px solid #eaeaea;
             border-bottom: 1px solid #eaeaea;
         }
 
@@ -13517,11 +13512,17 @@
             background: white;
             display: none;
             flex-direction: column;
-            overflow-y: auto;
+            overflow: hidden;
             font-family: 'Akkurat', sans-serif;
         }
         .area-full-page-modal.active {
             display: flex;
+        }
+        /* Inner scroll container — allows position:sticky to work on afp-nav */
+        .afp-scroll-area {
+            flex: 1;
+            overflow-y: auto;
+            min-height: 0;
         }
 
         /* Hero */
@@ -13850,6 +13851,7 @@
             padding: 0 48px;
             height: 55px;
             border-bottom: 1px solid #eaeaea;
+            border-top: none;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -13892,7 +13894,7 @@
 
         /* Content sections */
         .afp-content {
-            padding: 48px 48px 100px;
+            padding: 48px 0 100px;
             display: flex;
             flex-direction: column;
             gap: 64px;
@@ -13903,6 +13905,7 @@
             background: #fafafa;
             border-radius: 6px;
             padding: 40px;
+            margin: 0 48px;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
@@ -14035,6 +14038,8 @@
 
         /* Top 10 table */
         .afp-section-top10 {
+            margin-left: 0;
+            margin-right: 0;
             padding: 40px 0;
             box-sizing: border-box;
         }
@@ -14173,6 +14178,8 @@
             <!-- Back button — frosted glass, same as landlord page -->
             <button class="property-back-btn" id="afp-back-btn">&#8592; Back to map</button>
         </div><!-- end hero -->
+
+        <div class="afp-scroll-area" id="afp-scroll-area">
 
         <!-- White Header Content Section -->
         <div class="afp-header-section">
@@ -14666,6 +14673,8 @@
 
         </div><!-- end afp-content -->
 
+        </div><!-- end afp-scroll-area -->
+
     </div><!-- end area-full-page-modal -->
 
     <script>
@@ -14740,9 +14749,9 @@
         });
         // Nav tabs scroll behavior
         (function() {
-            var areaModal = document.getElementById('area-full-page-modal');
+            var afpScrollArea = document.getElementById('afp-scroll-area');
             var nav = document.getElementById('afp-nav');
-            if (!nav || !areaModal) return;
+            if (!nav || !afpScrollArea) return;
             var tabs = nav.querySelectorAll('.afp-nav-tab[data-section]');
             var sectionIds = ['afp-section-poverty','afp-section-housing','afp-section-demographics','afp-section-landlord-comp','afp-section-ownership-trends','afp-section-top10'];
             var sections = [];
@@ -14757,14 +14766,14 @@
                     var id = tab.getAttribute('data-section');
                     var target = document.getElementById(id);
                     if (target) {
-                        var offset = 60 + 55;
-                        var top = target.getBoundingClientRect().top + areaModal.scrollTop - offset;
-                        areaModal.scrollTo({ top: top, behavior: 'smooth' });
+                        var offset = 55;
+                        var top = target.getBoundingClientRect().top + afpScrollArea.scrollTop - afpScrollArea.getBoundingClientRect().top - offset;
+                        afpScrollArea.scrollTo({ top: top, behavior: 'smooth' });
                     }
                 });
             });
-            areaModal.addEventListener('scroll', function() {
-                var scrollTop = areaModal.scrollTop + 60 + 60;
+            afpScrollArea.addEventListener('scroll', function() {
+                var scrollTop = afpScrollArea.scrollTop + 60;
                 var active = null;
                 sections.forEach(function(item) {
                     if (item.section.offsetTop <= scrollTop) active = item;
