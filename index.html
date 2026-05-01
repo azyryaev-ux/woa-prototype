@@ -4146,12 +4146,7 @@
         }
 
         .landlord-description-header {
-            display: flex;
-            align-items: center;
             gap: 10px;
-            margin-bottom: 20px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #eaeaea;
         }
 
         .landlord-description-icon {
@@ -4180,6 +4175,37 @@
             gap: 24px;
             padding-top: 24px;
             border-top: 1px solid #eaeaea;
+        }
+
+        /* Unified card header height across all 4 cards */
+        .landlord-description-header,
+        .landlord-metro-header,
+        .landlord-link-header,
+        .landlord-ownership-preview-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-height: 44px;
+            padding-bottom: 12px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #eaeaea;
+            font-size: 12px;
+            font-weight: 600;
+            color: #000;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-family: 'Akkurat', sans-serif;
+        }
+
+        /* All card header icons same size */
+        .landlord-description-header svg,
+        .landlord-metro-header svg:first-child,
+        .landlord-link-header svg:first-child,
+        .landlord-ownership-preview-header svg:first-child {
+            flex-shrink: 0;
+            width: 16px;
+            height: 16px;
+            color: #666;
         }
 
         .landlord-stats-section {
@@ -4360,12 +4386,7 @@
         }
 
         .landlord-link-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #eaeaea;
+            gap: 10px;
         }
 
         .landlord-link-text {
@@ -4426,12 +4447,7 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
         .landlord-ownership-preview-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #eaeaea;
+            gap: 10px;
         }
         .landlord-ownership-preview-label {
             font-size: 12px;
@@ -10046,7 +10062,7 @@
                             <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
                             </svg>
-                            <span class="landlord-link-text">View Timeline: Ownership, Mortgages & Evictions</span>
+                            <span class="landlord-link-text">Timeline: Ownership & Evictions</span>
                             <svg class="landlord-link-arrow" width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <line x1="12" y1="5" x2="12" y2="19" stroke-width="2" stroke-linecap="round"/>
                                 <polyline points="6,13 12,19 18,13" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
