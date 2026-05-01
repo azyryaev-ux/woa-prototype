@@ -1604,8 +1604,12 @@
 
         /* Scrollbar styling */
         ::-webkit-scrollbar {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
+        }
+        /* Property modal: overlay scrollbar so it doesn't reduce viewport width */
+        .full-page-modal::-webkit-scrollbar {
+            width: 0px;
         }
 
         ::-webkit-scrollbar-track {
@@ -3543,7 +3547,6 @@
             justify-content: space-between;
             padding: 0 48px 0 24px;
             z-index: 1000;
-            pointer-events: none;
             background: #ffffff;
             box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.06);
             border-bottom: none;
@@ -5432,7 +5435,7 @@
         /* Full Page Property View Modal */
         .full-page-modal {
             position: fixed;
-            top: -4px;
+            top: 0;
             left: 0;
             right: 0;
             bottom: 0;
