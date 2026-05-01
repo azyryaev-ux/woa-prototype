@@ -1,0 +1,120 @@
+/**
+ * WHO OWNS AMERICA — Design Tokens
+ * Source of truth for colors, typography, spacing, and radii.
+ * Import this file into Figma via Plugins > Variables Import/Export
+ * or via the Figma CSS import at: https://woa-design-tool.vercel.app/tokens.css
+ */
+
+:root {
+
+  /* ─── Brand Colors ─────────────────────────────────── */
+  --color-brand-primary:      #ef4400;  /* WOA orange-red — buttons, accents */
+  --color-brand-primary-dark: #d63d00;  /* hover / active state */
+  --color-brand-primary-dim:  #fde8df;  /* light tint background */
+  --color-brand-link:         #4166C3;  /* map / data blue */
+  --color-brand-link-dark:    #224AAF;  /* blue hover */
+
+  /* ─── Neutrals ─────────────────────────────────────── */
+  --color-black:              #000000;
+  --color-gray-900:           #111111;
+  --color-gray-800:           #1a1a1a;
+  --color-gray-700:           #333333;
+  --color-gray-600:           #444444;
+  --color-gray-500:           #555555;
+  --color-gray-400:           #666666;
+  --color-gray-350:           #707070;
+  --color-gray-300:           #888888;
+  --color-gray-250:           #999999;
+  --color-gray-200:           #bbbbbb;
+  --color-gray-150:           #d0d0d0;
+  --color-gray-100:           #d1d1d1;
+  --color-gray-50:            #e8e8e8;
+  --color-border:             #eaeaea;  /* default dividers / card borders */
+  --color-border-light:       #f0f0f0;  /* table row dividers */
+  --color-surface-subtle:     #fafafa;  /* card / section background */
+  --color-surface-light:      #f5f5f5;  /* header gradient end */
+  --color-white:              #ffffff;
+
+  /* ─── Semantic / Status Colors ─────────────────────── */
+  --color-warning:            #d97706;  /* high eviction badge */
+  --color-warning-bg:         #fef3c7;
+  --color-info:               #0369a1;  /* federally subsidized badge */
+  --color-info-bg:            #e0f2fe;
+  --color-selected-bg:        #fff5f2;  /* row selected state */
+  --color-selected-bar:       #ef4400;  /* left accent bar on selected row */
+
+  /* ─── Typography — Font Families ───────────────────── */
+  --font-sans:                'Akkurat', sans-serif;
+  --font-mono:                'Akkurat Mono', monospace;
+
+  /* ─── Typography — Sizes ───────────────────────────── */
+  --text-2xs:   8px;
+  --text-xs:    10px;
+  --text-sm:    11px;   /* table headers, labels */
+  --text-base:  12px;   /* caption, badge text */
+  --text-md:    13px;   /* body / table cells */
+  --text-lg:    14px;   /* secondary body */
+  --text-xl:    16px;
+  --text-2xl:   18px;
+  --text-3xl:   20px;
+  --text-4xl:   24px;
+  --text-5xl:   28px;
+  --text-6xl:   32px;
+  --text-7xl:   36px;
+  --text-8xl:   48px;
+
+  /* ─── Typography — Weights ─────────────────────────── */
+  --font-regular:   400;
+  --font-medium:    500;
+  --font-semibold:  600;
+  --font-bold:      700;
+
+  /* ─── Typography — Letter Spacing ──────────────────── */
+  --tracking-tight:   -0.64px;  /* large display headings */
+  --tracking-normal:  0;
+  --tracking-wide:    0.3px;    /* table column headers */
+  --tracking-wider:   0.5px;    /* badges, labels */
+  --tracking-widest:  0.8px;    /* micro labels (LANDLORD, AREA) */
+
+  /* ─── Spacing ───────────────────────────────────────── */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+
+  /* ─── Border Radius ─────────────────────────────────── */
+  --radius-sm:   4px;
+  --radius-md:   6px;   /* default — cards, sections, buttons */
+  --radius-lg:   8px;
+  --radius-xl:   10px;  /* city photo cards in menu */
+  --radius-full: 9999px;
+
+  /* ─── Shadows ───────────────────────────────────────── */
+  --shadow-table-header: 0 1px 0 #eaeaea, 0 2px 4px rgba(0,0,0,0.02);
+  --shadow-modal:        0 6px 20px rgba(0,0,0,0.25);
+  --shadow-dropdown:     0 4px 16px rgba(0,0,0,0.12);
+  --shadow-card-hover:   0 2px 8px rgba(0,0,0,0.05);
+
+  /* ─── Layout ────────────────────────────────────────── */
+  --header-height:    60px;
+  --icon-rail-width:  53px;
+  --sidebar-width:    320px;
+  --content-padding:  48px;   /* standard page edge padding */
+  --hero-height:      33vh;
+
+  /* ─── Z-Index Scale ─────────────────────────────────── */
+  --z-map:        1;
+  --z-sidebar:    100;
+  --z-header:     200;
+  --z-nav:        999;
+  --z-modal:      1000;
+  --z-menu:       2000;
+  --z-afp-modal:  4000;
+
+}
