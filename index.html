@@ -1098,8 +1098,12 @@
             color: #707070;
             font-weight: 400;
             font-size: 13px;
-            width: 36px;
-            padding-right: 0;
+            width: 28px;
+            min-width: 28px;
+            max-width: 28px;
+            padding-left: 12px;
+            padding-right: 4px;
+            white-space: nowrap;
         }
 
         .owner-cell {
@@ -1128,11 +1132,10 @@
         }
 
         .units-cell {
-            font-weight: 700;
-            font-size: 14px;
-            color: #111;
             text-align: right;
             white-space: nowrap;
+            padding-left: 4px;
+            padding-right: 14px;
         }
 
         /* Map Area */
@@ -7321,6 +7324,16 @@
 
 
         /* ── Top 10 row selection ── */
+        .data-table table th:first-child {
+            width: 28px;
+            padding-left: 12px;
+            padding-right: 4px;
+        }
+        .data-table table th:last-child {
+            text-align: right;
+            white-space: nowrap;
+            padding-right: 14px;
+        }
         .data-table table tbody tr {
             cursor: pointer;
             transition: background 0.1s;
