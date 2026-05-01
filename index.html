@@ -1359,16 +1359,23 @@
         }
 
         .menu-site-card-badge {
+            position: absolute;
+            top: 9px;
+            left: 9px;
             display: inline-flex;
             align-items: center;
-            gap: 4px;
+            gap: 5px;
             font-size: 9px;
             font-weight: 700;
             letter-spacing: 0.5px;
             text-transform: uppercase;
             color: #ff8060;
             font-family: 'Akkurat', sans-serif;
-            margin-top: 3px;
+            background: rgba(0,0,0,0.48);
+            padding: 4px 7px;
+            border-radius: 5px;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
         }
 
         .menu-site-card-badge::before {
@@ -1377,6 +1384,7 @@
             height: 5px;
             border-radius: 50%;
             background: #ff8060;
+            flex-shrink: 0;
         }
 
         /* Divider */
@@ -13313,10 +13321,10 @@
             </a>
             <a href="#" class="menu-site-card active">
                 <img src="images/boston.jpg" class="menu-site-card-photo" alt="Boston">
+                <div class="menu-site-card-badge">Currently viewing</div>
                 <div class="menu-site-card-body">
                     <div class="menu-site-card-name">Boston</div>
                     <div class="menu-site-card-state">MA</div>
-                    <div class="menu-site-card-badge">Currently viewing</div>
                 </div>
             </a>
             <a href="#" class="menu-site-card">
