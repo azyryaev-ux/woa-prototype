@@ -3772,16 +3772,8 @@
             position: sticky;
             top: 60px;
             z-index: 999;
-        }
-
-        .jump-to-nav::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 53px;
-            right: 48px;
-            height: 1px;
-            background: #eaeaea;
+            border-top: 1px solid #eaeaea;
+            border-bottom: 1px solid #eaeaea;
         }
 
         .jump-to-label {
@@ -4648,7 +4640,7 @@
 
         .landlord-properties-table thead tr th:first-child,
         .landlord-properties-table tbody tr td:first-child {
-            padding-left: 53px;
+            padding-left: 48px;
         }
 
         .landlord-properties-table thead tr th:last-child,
@@ -5676,16 +5668,8 @@
             position: sticky;
             top: 60px;
             z-index: 99;
-        }
-
-        .property-nav-sidebar::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 53px;
-            right: 48px;
-            height: 1px;
-            background: #eaeaea;
+            border-top: 1px solid #eaeaea;
+            border-bottom: 1px solid #eaeaea;
         }
 
         .property-nav-link {
@@ -14082,6 +14066,14 @@
             padding: 13px 16px 14px;
             text-align: left;
             font-weight: 400;
+        }
+        .afp-table thead tr th:first-child,
+        .afp-table tbody tr td:first-child {
+            padding-left: 48px;
+        }
+        .afp-table thead tr th:last-child,
+        .afp-table tbody tr td:last-child {
+            padding-right: 48px;
         }
         .afp-table th.right { text-align: right; }
         .afp-table tbody tr:nth-child(even) { background: #f9f9f9; }
