@@ -5023,6 +5023,78 @@
             color: #000;
         }
 
+        /* Subsidy Timeline Section */
+        .landlord-subsidy-timeline-section {
+            padding: 40px 0 56px 0;
+            border-top: 1px solid #eaeaea;
+            margin-top: 8px;
+        }
+        .subsidy-timeline-card {
+            background: #fff;
+            border: 1px solid #eaeaea;
+            border-radius: 6px;
+            padding: 24px 28px;
+            margin-top: 20px;
+        }
+        .subsidy-timeline-inner {
+            display: flex;
+            gap: 32px;
+            align-items: flex-start;
+        }
+        #subsidy-timeline-landlord-chart {
+            flex: 1;
+            min-width: 0;
+            height: 240px;
+            display: block;
+        }
+        .subsidy-timeline-legend {
+            width: 160px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-top: 8px;
+        }
+        .stl-legend-units-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 4px;
+        }
+        .stl-legend-line-swatch {
+            width: 22px;
+            height: 3px;
+            background: #9B8CC4;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+        .stl-legend-units-label {
+            font-size: 13px;
+            color: #444;
+        }
+        .stl-legend-subsidies-heading {
+            font-size: 12px;
+            font-weight: 600;
+            color: #222;
+            margin-top: 6px;
+            margin-bottom: 2px;
+        }
+        .stl-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .stl-legend-bar-swatch {
+            width: 14px;
+            height: 14px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+        .stl-legend-item span {
+            font-size: 13px;
+            color: #444;
+        }
+
         .landlord-timeline-chart-placeholder {
             border: 1px solid #eaeaea;
             border-radius: 6px;
@@ -10693,6 +10765,37 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Subsidy Timeline Section -->
+            <div class="landlord-subsidy-timeline-section">
+                <h2 class="landlord-timeline-title">Subsidy Timeline</h2>
+                <p class="landlord-timeline-description">Track the number of units in the landlord&#39;s portfolio receiving subsidies over time.</p>
+                <div class="subsidy-timeline-card">
+                    <div class="subsidy-timeline-inner">
+                        <canvas id="subsidy-timeline-landlord-chart"></canvas>
+                        <div class="subsidy-timeline-legend">
+                            <div class="stl-legend-units-row">
+                                <div class="stl-legend-line-swatch"></div>
+                                <span class="stl-legend-units-label">Units owned</span>
+                            </div>
+                            <div class="stl-legend-subsidies-heading">Units receiving subsidies</div>
+                            <div class="stl-legend-item">
+                                <div class="stl-legend-bar-swatch" style="background:#D4785A;"></div>
+                                <span>PBRA</span>
+                            </div>
+                            <div class="stl-legend-item">
+                                <div class="stl-legend-bar-swatch" style="background:#C4A85A;"></div>
+                                <span>LIHTC</span>
+                            </div>
+                            <div class="stl-legend-item">
+                                <div class="stl-legend-bar-swatch" style="background:rgba(185,165,215,0.55);"></div>
+                                <span>Section 202</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -12767,10 +12870,132 @@
         ctx.fillText(pillText, px, pillY + 12);
     }
 
+    function drawSubsidyTimelineChart() {
+        var canvas = document.getElementById('subsidy-timeline-landlord-chart');
+        if (!canvas) return;
+        var dpr = window.devicePixelRatio || 1;
+        var cssW = canvas.offsetWidth || canvas.parentElement.offsetWidth || 600;
+        var cssH = 240;
+        canvas.width = cssW * dpr;
+        canvas.height = cssH * dpr;
+        canvas.style.height = cssH + 'px';
+        var ctx = canvas.getContext('2d');
+        ctx.scale(dpr, dpr);
+        var W = cssW, H = cssH;
+
+        // Data
+        var years = [2000, 2005, 2010, 2015, 2020];
+        var pbra    = [5,  8, 12, 10,  6];
+        var lihtc   = [3,  6,  8, 15, 12];
+        var sec202  = [2,  3,  4,  5,  4];
+        var owned   = [15, 22, 28, 35, 30];
+
+        var yMax = 40;
+        var yTicks = [0, 10, 20, 30, 40];
+
+        var pad = { top: 16, right: 12, bottom: 40, left: 38 };
+        var chartW = W - pad.left - pad.right;
+        var chartH = H - pad.top - pad.bottom;
+
+        function yPx(val) { return pad.top + chartH - (val / yMax) * chartH; }
+
+        var n = years.length;
+        var groupW = chartW / n;
+        var barW = groupW * 0.18;
+        var barGap = groupW * 0.04;
+        var groupPad = (groupW - 3 * barW - 2 * barGap) / 2;
+
+        // Background grid lines
+        ctx.save();
+        yTicks.forEach(function(v) {
+            var y = yPx(v);
+            ctx.beginPath();
+            ctx.moveTo(pad.left, y);
+            ctx.lineTo(pad.left + chartW, y);
+            ctx.strokeStyle = '#eaeaea';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+        });
+        ctx.restore();
+
+        // Y-axis labels
+        ctx.save();
+        ctx.font = '11px Akkurat, Arial, sans-serif';
+        ctx.fillStyle = '#aaa';
+        ctx.textAlign = 'right';
+        yTicks.forEach(function(v) {
+            ctx.fillText(v, pad.left - 6, yPx(v) + 4);
+        });
+        ctx.restore();
+
+        // Draw bars
+        years.forEach(function(yr, i) {
+            var groupX = pad.left + i * groupW + groupPad;
+
+            // PBRA
+            ctx.fillStyle = '#D4785A';
+            var h0 = (pbra[i] / yMax) * chartH;
+            ctx.beginPath();
+            ctx.roundRect(groupX, yPx(pbra[i]), barW, h0, 2);
+            ctx.fill();
+
+            // LIHTC
+            ctx.fillStyle = '#C4A85A';
+            var h1 = (lihtc[i] / yMax) * chartH;
+            var x1 = groupX + barW + barGap;
+            ctx.beginPath();
+            ctx.roundRect(x1, yPx(lihtc[i]), barW, h1, 2);
+            ctx.fill();
+
+            // Section 202
+            ctx.fillStyle = 'rgba(185,165,215,0.5)';
+            var h2 = (sec202[i] / yMax) * chartH;
+            var x2 = groupX + 2 * (barW + barGap);
+            ctx.beginPath();
+            ctx.roundRect(x2, yPx(sec202[i]), barW, h2, 2);
+            ctx.fill();
+        });
+
+        // Units owned line
+        ctx.save();
+        ctx.beginPath();
+        years.forEach(function(yr, i) {
+            var cx = pad.left + i * groupW + groupW / 2;
+            var cy = yPx(owned[i]);
+            if (i === 0) ctx.moveTo(cx, cy);
+            else ctx.lineTo(cx, cy);
+        });
+        ctx.strokeStyle = '#9B8CC4';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        // Dots
+        years.forEach(function(yr, i) {
+            var cx = pad.left + i * groupW + groupW / 2;
+            var cy = yPx(owned[i]);
+            ctx.beginPath();
+            ctx.arc(cx, cy, 3.5, 0, Math.PI * 2);
+            ctx.fillStyle = '#9B8CC4';
+            ctx.fill();
+        });
+        ctx.restore();
+
+        // X-axis labels
+        ctx.save();
+        ctx.font = '11px Akkurat, Arial, sans-serif';
+        ctx.fillStyle = '#aaa';
+        ctx.textAlign = 'center';
+        years.forEach(function(yr, i) {
+            var cx = pad.left + i * groupW + groupW / 2;
+            ctx.fillText(yr, cx, H - pad.bottom + 18);
+        });
+        ctx.restore();
+    }
+
     function initCharts() {
         drawActivityChart();
         drawSubsidyChart();
         drawOwnershipChangeChart();
+        drawSubsidyTimelineChart();
     }
 
     // Draw when the property modal opens
