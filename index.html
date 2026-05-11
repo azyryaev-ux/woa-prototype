@@ -5730,29 +5730,26 @@
             border-bottom: 1px solid #eaeaea;
             background: #fff;
         }
-        .pqf-type-row {
-            display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
-        }
-        .pqf-type-label {
-            font-size: 20px; font-weight: 700; color: #000;
-            font-family: 'Akkurat', sans-serif; margin: 0;
-        }
-        .pqf-type-badge {
-            font-size: 11px; font-weight: 600; font-family: 'Akkurat', sans-serif;
-            background: #f0f0f0; color: #555; border-radius: 4px;
-            padding: 3px 8px; white-space: nowrap;
-        }
         .pqf-panels {
             display: flex; gap: 12px;
         }
         .pqf-panel {
             flex: 1; background: #f8f8f8; border-radius: 8px;
-            padding: 14px 18px;
+            padding: 16px 20px;
         }
-        .pqf-panel-heading {
-            font-size: 10px; font-weight: 600; text-transform: uppercase;
-            letter-spacing: 0.07em; color: #999; font-family: 'Akkurat Mono', monospace;
-            margin-bottom: 12px;
+        .pqf-card-heading {
+            font-size: 17px; font-weight: 700; color: #111;
+            font-family: 'Akkurat', sans-serif;
+            margin: 0 0 4px 0;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .pqf-type-badge {
+            font-size: 10px; font-weight: 600; font-family: 'Akkurat', sans-serif;
+            background: #e8e8e8; color: #666; border-radius: 4px;
+            padding: 2px 7px; white-space: nowrap;
+        }
+        .pqf-card-divider {
+            height: 1px; background: #e4e4e4; margin: 12px 0;
         }
         .pqf-facts-grid {
             display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px;
@@ -5761,20 +5758,16 @@
             display: flex; flex-direction: column; gap: 1px;
         }
         .pqf-fact-label {
-            font-size: 10px; color: #999; font-family: 'Akkurat', sans-serif;
-            text-transform: uppercase; letter-spacing: 0.04em;
+            font-size: 10px; color: #999; font-family: 'Akkurat Mono', monospace;
+            text-transform: uppercase; letter-spacing: 0.05em;
         }
         .pqf-fact-value {
             font-size: 14px; font-weight: 700; color: #111;
             font-family: 'Akkurat', sans-serif;
             display: flex; align-items: center; gap: 4px;
         }
-        .pqf-owner-name {
-            font-size: 15px; font-weight: 700; color: #111;
-            font-family: 'Akkurat', sans-serif; margin-bottom: 10px;
-        }
         .pqf-owner-rows {
-            display: flex; flex-direction: column; gap: 6px;
+            display: flex; flex-direction: column; gap: 7px;
         }
         .pqf-owner-row {
             display: flex; align-items: baseline; gap: 6px;
@@ -9466,36 +9459,11 @@
 
             <!-- Quickfacts Header Block -->
             <div class="property-quickfacts">
-                <div class="pqf-type-row">
-                    <h2 class="pqf-type-label">Multifamily residential</h2>
-                    <span class="pqf-type-badge">Private</span>
-                </div>
-                <p class="pqf-landlord-sub">Landlord: <strong>Raymond Ferrone</strong></p>
-
-                <!-- Horizontal fact strip (original layout) -->
-                <div class="pqf-fact-strip">
-                    <div class="pqf-strip-item">
-                        <span class="pqf-strip-label">Year built</span>
-                        <span class="pqf-strip-value">1985 <button class="info-q" data-tooltip-title="Year built" data-tooltip-body="From tax assessment records, cleaned to remove administrative artifacts." data-tooltip-link="https://example.com/methodology">?</button></span>
-                    </div>
-                    <div class="pqf-strip-item">
-                        <span class="pqf-strip-label">Purchase price</span>
-                        <span class="pqf-strip-value">$2.2M <button class="info-q" data-tooltip-title="Purchase price" data-tooltip-body="From deed transfer records at the time of the most recent ownership change." data-tooltip-link="https://example.com/methodology">?</button></span>
-                    </div>
-                    <div class="pqf-strip-item">
-                        <span class="pqf-strip-label">Square footage</span>
-                        <span class="pqf-strip-value">12,450 <button class="info-q" data-tooltip-title="Square footage" data-tooltip-body="Total gross floor area from county assessor records." data-tooltip-link="https://example.com/methodology">?</button></span>
-                    </div>
-                    <div class="pqf-strip-item">
-                        <span class="pqf-strip-label">Total units</span>
-                        <span class="pqf-strip-value">4 <button class="info-q" data-tooltip-title="Total units" data-tooltip-body="Number of residential units reported in tax assessment records." data-tooltip-link="https://example.com/methodology">?</button></span>
-                    </div>
-                </div>
-
                 <div class="pqf-panels">
                     <!-- Property panel -->
                     <div class="pqf-panel">
-                        <div class="pqf-panel-heading">Property</div>
+                        <h2 class="pqf-card-heading">Multifamily residential <span class="pqf-type-badge">Private</span></h2>
+                        <div class="pqf-card-divider"></div>
                         <div class="pqf-facts-grid">
                             <div class="pqf-fact">
                                 <span class="pqf-fact-label">Year built</span>
@@ -9517,8 +9485,8 @@
                     </div>
                     <!-- Ownership panel -->
                     <div class="pqf-panel">
-                        <div class="pqf-panel-heading">Ownership</div>
-                        <div class="pqf-owner-name">Raymond Ferrone</div>
+                        <h2 class="pqf-card-heading">Raymond Ferrone</h2>
+                        <div class="pqf-card-divider"></div>
                         <div class="pqf-owner-rows">
                             <div class="pqf-owner-row">
                                 <span class="pqf-owner-row-label">Direct owner</span>
