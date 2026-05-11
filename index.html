@@ -13081,33 +13081,32 @@
             const body  = document.getElementById('info-tooltip-body');
             const link  = document.getElementById('info-tooltip-link');
             if (!box) return;
-            let activeBtn = null;
-            document.addEventListener('click', function(e) {
+
+            function showTooltip(btn) {
+                title.textContent = btn.dataset.tooltipTitle || '';
+                body.textContent  = btn.dataset.tooltipBody  || '';
+                link.href = btn.dataset.tooltipLink || '#';
+                box.classList.add('visible');
+                const rect = btn.getBoundingClientRect();
+                const bw = 280;
+                let left = rect.left + rect.width / 2 - bw / 2;
+                let top  = rect.bottom + 8;
+                if (left + bw > window.innerWidth - 12) left = window.innerWidth - bw - 12;
+                if (left < 12) left = 12;
+                if (top + 150 > window.innerHeight) top = rect.top - 150 - 8;
+                box.style.left = left + 'px'; box.style.top = top + 'px'; box.style.width = bw + 'px';
+            }
+
+            document.addEventListener('mouseover', function(e) {
                 const btn = e.target.closest('.info-q');
-                if (btn) {
-                    e.stopPropagation();
-                    if (activeBtn === btn && box.classList.contains('visible')) {
-                        box.classList.remove('visible'); activeBtn = null; return;
-                    }
-                    activeBtn = btn;
-                    title.textContent = btn.dataset.tooltipTitle || '';
-                    body.textContent  = btn.dataset.tooltipBody  || '';
-                    link.href = btn.dataset.tooltipLink || '#';
-                    box.classList.add('visible');
-                    const rect = btn.getBoundingClientRect();
-                    const bw = 280;
-                    let left = rect.left + rect.width / 2 - bw / 2;
-                    let top  = rect.bottom + 8;
-                    if (left + bw > window.innerWidth - 12) left = window.innerWidth - bw - 12;
-                    if (left < 12) left = 12;
-                    if (top + 150 > window.innerHeight) top = rect.top - 150 - 8;
-                    box.style.left = left + 'px'; box.style.top = top + 'px'; box.style.width = bw + 'px';
-                } else {
-                    box.classList.remove('visible'); activeBtn = null;
-                }
+                if (btn) showTooltip(btn);
             });
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') { box.classList.remove('visible'); activeBtn = null; }
+
+            document.addEventListener('mouseout', function(e) {
+                const btn = e.target.closest('.info-q');
+                if (btn && !btn.contains(e.relatedTarget)) {
+                    box.classList.remove('visible');
+                }
             });
         })();
 
