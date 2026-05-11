@@ -5738,7 +5738,7 @@
             padding: 16px 20px;
         }
         .pqf-card-heading {
-            font-size: 17px; font-weight: 700; color: #111;
+            font-size: 21px; font-weight: 700; color: #111;
             font-family: 'Akkurat', sans-serif;
             margin: 0 0 4px 0;
             display: flex; align-items: center; gap: 8px;
@@ -5758,11 +5758,11 @@
             display: flex; flex-direction: column; gap: 1px;
         }
         .pqf-fact-label {
-            font-size: 10px; color: #999; font-family: 'Akkurat Mono', monospace;
+            font-size: 11px; color: #999; font-family: 'Akkurat Mono', monospace;
             text-transform: uppercase; letter-spacing: 0.05em;
         }
         .pqf-fact-value {
-            font-size: 14px; font-weight: 700; color: #111;
+            font-size: 16px; font-weight: 700; color: #111;
             font-family: 'Akkurat', sans-serif;
             display: flex; align-items: center; gap: 4px;
         }
@@ -5771,7 +5771,7 @@
         }
         .pqf-owner-row {
             display: flex; align-items: baseline; gap: 6px;
-            font-size: 12px; font-family: 'Akkurat', sans-serif;
+            font-size: 13px; font-family: 'Akkurat', sans-serif;
         }
         .pqf-owner-row-label { color: #999; white-space: nowrap; }
         .pqf-owner-row-value { color: #111; font-weight: 600; }
@@ -13119,7 +13119,6 @@
                 title.textContent = btn.dataset.tooltipTitle || '';
                 body.textContent  = btn.dataset.tooltipBody  || '';
                 link.href = btn.dataset.tooltipLink || '#';
-                box.classList.add('visible');
                 const rect = btn.getBoundingClientRect();
                 const bw = 280;
                 let left = rect.left + rect.width / 2 - bw / 2;
@@ -13128,19 +13127,26 @@
                 if (left < 12) left = 12;
                 if (top + 150 > window.innerHeight) top = rect.top - 150 - 8;
                 box.style.left = left + 'px'; box.style.top = top + 'px'; box.style.width = bw + 'px';
+                box.style.display = 'block';
+                box.classList.add('visible');
             }
 
-            document.addEventListener('mouseover', function(e) {
-                const btn = e.target.closest('.info-q');
-                if (btn) showTooltip(btn);
-            });
+            function hideTooltip() {
+                box.classList.remove('visible');
+            }
 
-            document.addEventListener('mouseout', function(e) {
-                const btn = e.target.closest('.info-q');
-                if (btn && !btn.contains(e.relatedTarget)) {
-                    box.classList.remove('visible');
+            // Attach directly to all current and future .info-q buttons via delegation on document
+            document.addEventListener('mouseenter', function(e) {
+                if (e.target && e.target.classList && e.target.classList.contains('info-q')) {
+                    showTooltip(e.target);
                 }
-            });
+            }, true);
+
+            document.addEventListener('mouseleave', function(e) {
+                if (e.target && e.target.classList && e.target.classList.contains('info-q')) {
+                    hideTooltip();
+                }
+            }, true);
         })();
 
         // ── Compare Properties Modal ──
