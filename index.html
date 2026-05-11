@@ -12565,7 +12565,7 @@
 
         // Pre-acquisition shaded background
         const acqIdx = years.indexOf(acquireYear);
-        const acqX   = pad.left + acqIdx * barGroupW;
+        const acqX   = pad.left + acqIdx * barGroupW + barGroupW / 2;
         ctx.fillStyle = 'rgba(0,0,0,0.03)';
         ctx.fillRect(pad.left, pad.top, acqX - pad.left, chartH);
 
@@ -12593,7 +12593,7 @@
         // Acquisition vertical line (dashed)
         const px = pad.left + acqIdx * barGroupW + barGroupW / 2;
         ctx.strokeStyle = '#333'; ctx.lineWidth = 1.5;
-        ctx.setLineDash([4, 3]);
+        ctx.setLineDash([6, 5]);
         ctx.beginPath(); ctx.moveTo(px, pad.top); ctx.lineTo(px, pad.top + chartH); ctx.stroke();
         ctx.setLineDash([]);
 
@@ -12663,7 +12663,7 @@
             }
         });
         const cx2 = xOf(changeIdx);
-        ctx.strokeStyle = '#000'; ctx.lineWidth = 1.5; ctx.setLineDash([4, 3]);
+        ctx.strokeStyle = '#000'; ctx.lineWidth = 1.5; ctx.setLineDash([6, 5]);
         ctx.beginPath(); ctx.moveTo(cx2, pad.top); ctx.lineTo(cx2, pad.top + chartH); ctx.stroke();
         ctx.setLineDash([]);
         ctx.font = '600 10px Akkurat, sans-serif';
