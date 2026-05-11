@@ -5171,77 +5171,86 @@
         .lc-tp-right { text-align: right; }
         .lc-tp-bold { font-family: 'Akkurat-Bold', 'Akkurat', sans-serif; font-weight: 700; }
 
+        /* Subsidy Timeline Section */
         .landlord-subsidy-timeline-section {
-            padding: 40px 0 56px 0;
-            border-top: 1px solid #eaeaea;
-            margin-top: 8px;
+            background: #fafafa;
+            margin: 0 -48px;
+            padding: 40px 48px 56px;
         }
-        .subsidy-timeline-card {
+        .stt-title {
+            font-family: 'Akkurat-Bold', 'Akkurat', sans-serif;
+            font-size: 33px;
+            font-weight: 700;
+            letter-spacing: -0.64px;
+            color: #000;
+            margin: 0 0 8px 0;
+            line-height: 1.1;
+        }
+        .stt-subtitle {
+            font-family: 'Akkurat', sans-serif;
+            font-size: 15px;
+            color: #666;
+            line-height: 22.4px;
+            margin: 0 0 24px 0;
+            max-width: 382px;
+        }
+        .stt-chart-card {
             background: #fff;
             border: 1px solid #eaeaea;
             border-radius: 6px;
-            padding: 24px 28px;
-            margin-top: 20px;
-        }
-        .subsidy-timeline-inner {
+            padding: 24px 24px 20px 24px;
             display: flex;
-            gap: 32px;
             align-items: flex-start;
         }
         #subsidy-timeline-landlord-chart {
             flex: 1;
             min-width: 0;
-            height: 240px;
+            height: 300px;
             display: block;
         }
-        .subsidy-timeline-legend {
-            width: 160px;
+        .stt-legend {
             flex-shrink: 0;
+            width: 190px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            padding-top: 8px;
+            padding-top: 20px;
+            padding-left: 20px;
         }
-        .stl-legend-units-row {
+        .stt-legend-row {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 10px;
-            margin-bottom: 4px;
+            margin-bottom: 10px;
+            font-family: 'Akkurat', sans-serif;
+            font-size: 13px;
+            color: #000;
+            line-height: 1.45;
         }
-        .stl-legend-line-swatch {
+        .stt-legend-units {
+            align-items: center;
+            margin-bottom: 14px;
+        }
+        .stt-legend-line {
             width: 22px;
-            height: 3px;
-            background: #9B8CC4;
+            height: 2px;
+            background: rgba(165,155,205,0.85);
+            border-radius: 1px;
+            flex-shrink: 0;
+        }
+        .stt-legend-heading {
+            font-family: 'Akkurat-Bold', 'Akkurat', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 10px;
+        }
+        .stt-legend-swatch {
+            width: 12px;
+            height: 12px;
             border-radius: 2px;
             flex-shrink: 0;
+            margin-top: 2px;
         }
-        .stl-legend-units-label {
-            font-size: 13px;
-            color: #444;
-        }
-        .stl-legend-subsidies-heading {
-            font-size: 12px;
-            font-weight: 600;
-            color: #222;
-            margin-top: 6px;
-            margin-bottom: 2px;
-        }
-        .stl-legend-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .stl-legend-bar-swatch {
-            width: 14px;
-            height: 14px;
-            border-radius: 3px;
-            flex-shrink: 0;
-        }
-        .stl-legend-item span {
-            font-size: 13px;
-            color: #444;
-        }
-
         .landlord-timeline-chart-placeholder {
             border: 1px solid #eaeaea;
             border-radius: 6px;
@@ -12994,119 +13003,102 @@
         var canvas = document.getElementById('subsidy-timeline-landlord-chart');
         if (!canvas) return;
         var dpr = window.devicePixelRatio || 1;
-        var cssW = canvas.offsetWidth || canvas.parentElement.offsetWidth || 600;
-        var cssH = 240;
-        canvas.width = cssW * dpr;
+        var cssW = canvas.offsetWidth || 700;
+        var cssH = 300;
+        canvas.width  = cssW * dpr;
         canvas.height = cssH * dpr;
         canvas.style.height = cssH + 'px';
         var ctx = canvas.getContext('2d');
         ctx.scale(dpr, dpr);
         var W = cssW, H = cssH;
 
-        // Data
-        var years = [2000, 2005, 2010, 2015, 2020];
-        var pbra    = [5,  8, 12, 10,  6];
-        var lihtc   = [3,  6,  8, 15, 12];
-        var sec202  = [2,  3,  4,  5,  4];
-        var owned   = [15, 22, 28, 35, 30];
+        var years  = [];
+        for (var y = 2000; y <= 2020; y++) years.push(y);
+        var pbra   = [4, 4, 4, 6, 9,12,12, 5, 0, 7, 8, 8, 8, 6, 8, 0, 0, 8, 0,19,19];
+        var lihtc  = [0, 0, 0, 0, 0, 3, 3, 0, 0, 4, 4, 5, 5, 5, 5, 4, 5, 6, 0, 0, 0];
+        var sec202 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 3, 3, 3, 3, 4, 4, 4, 4];
+        var owned  = [11,13,14,16,18,27,29,30,28,30,31,32,33,34,37,39,39,38,36,38,41];
+        var xLabels = [2000, 2005, 2010, 2015, 2020];
 
         var yMax = 40;
-        var yTicks = [0, 10, 20, 30, 40];
-
-        var pad = { top: 16, right: 12, bottom: 40, left: 38 };
+        var yTicks = [40, 30, 20, 10, 0];
+        var pad = { top: 16, right: 8, bottom: 36, left: 32 };
         var chartW = W - pad.left - pad.right;
         var chartH = H - pad.top - pad.bottom;
-
-        function yPx(val) { return pad.top + chartH - (val / yMax) * chartH; }
-
         var n = years.length;
         var groupW = chartW / n;
-        var barW = groupW * 0.18;
-        var barGap = groupW * 0.04;
-        var groupPad = (groupW - 3 * barW - 2 * barGap) / 2;
+        var barW   = Math.max(Math.floor(groupW * 0.17), 3);
+        var barGap = Math.max(Math.floor(groupW * 0.04), 1);
+        var totalBarW = 3 * barW + 2 * barGap;
+        var groupPad  = (groupW - totalBarW) / 2;
 
-        // Background grid lines
+        function yPx(v) { return pad.top + chartH - (v / yMax) * chartH; }
+        function xCenter(i) { return pad.left + i * groupW + groupW / 2; }
+
+        /* grid lines */
         ctx.save();
         yTicks.forEach(function(v) {
-            var y = yPx(v);
             ctx.beginPath();
-            ctx.moveTo(pad.left, y);
-            ctx.lineTo(pad.left + chartW, y);
+            ctx.moveTo(pad.left, yPx(v));
+            ctx.lineTo(pad.left + chartW, yPx(v));
             ctx.strokeStyle = '#eaeaea';
             ctx.lineWidth = 1;
             ctx.stroke();
         });
         ctx.restore();
 
-        // Y-axis labels
+        /* Y-axis labels */
         ctx.save();
-        ctx.font = '11px Akkurat, Arial, sans-serif';
-        ctx.fillStyle = '#aaa';
+        ctx.font = '11px Akkurat_Mono, monospace';
+        ctx.fillStyle = '#999';
         ctx.textAlign = 'right';
         yTicks.forEach(function(v) {
-            ctx.fillText(v, pad.left - 6, yPx(v) + 4);
+            ctx.fillText(v, pad.left - 6, yPx(v) + 3.5);
         });
         ctx.restore();
 
-        // Draw bars
+        /* bars */
         years.forEach(function(yr, i) {
-            var groupX = pad.left + i * groupW + groupPad;
-
-            // PBRA
-            ctx.fillStyle = '#D4785A';
-            var h0 = (pbra[i] / yMax) * chartH;
-            ctx.beginPath();
-            ctx.roundRect(groupX, yPx(pbra[i]), barW, h0, 2);
-            ctx.fill();
-
-            // LIHTC
-            ctx.fillStyle = '#C4A85A';
-            var h1 = (lihtc[i] / yMax) * chartH;
-            var x1 = groupX + barW + barGap;
-            ctx.beginPath();
-            ctx.roundRect(x1, yPx(lihtc[i]), barW, h1, 2);
-            ctx.fill();
-
-            // Section 202
-            ctx.fillStyle = 'rgba(185,165,215,0.5)';
-            var h2 = (sec202[i] / yMax) * chartH;
-            var x2 = groupX + 2 * (barW + barGap);
-            ctx.beginPath();
-            ctx.roundRect(x2, yPx(sec202[i]), barW, h2, 2);
-            ctx.fill();
+            var gx = pad.left + i * groupW + groupPad;
+            if (pbra[i] > 0) {
+                var h = (pbra[i] / yMax) * chartH;
+                ctx.fillStyle = '#C97060';
+                ctx.fillRect(Math.round(gx), yPx(pbra[i]), barW, h);
+            }
+            if (lihtc[i] > 0) {
+                var h = (lihtc[i] / yMax) * chartH;
+                ctx.fillStyle = '#C9A850';
+                ctx.fillRect(Math.round(gx + barW + barGap), yPx(lihtc[i]), barW, h);
+            }
+            if (sec202[i] > 0) {
+                var h = (sec202[i] / yMax) * chartH;
+                ctx.fillStyle = 'rgba(170,160,210,0.35)';
+                ctx.fillRect(Math.round(gx + 2*(barW + barGap)), yPx(sec202[i]), barW, h);
+            }
         });
 
-        // Units owned line
+        /* Units owned line */
         ctx.save();
         ctx.beginPath();
         years.forEach(function(yr, i) {
-            var cx = pad.left + i * groupW + groupW / 2;
-            var cy = yPx(owned[i]);
-            if (i === 0) ctx.moveTo(cx, cy);
-            else ctx.lineTo(cx, cy);
+            var cx = xCenter(i), cy = yPx(owned[i]);
+            i === 0 ? ctx.moveTo(cx, cy) : ctx.lineTo(cx, cy);
         });
-        ctx.strokeStyle = '#9B8CC4';
-        ctx.lineWidth = 2;
+        ctx.strokeStyle = 'rgba(165,155,205,0.85)';
+        ctx.lineWidth = 1.8;
+        ctx.lineJoin = 'round';
         ctx.stroke();
-        // Dots
-        years.forEach(function(yr, i) {
-            var cx = pad.left + i * groupW + groupW / 2;
-            var cy = yPx(owned[i]);
-            ctx.beginPath();
-            ctx.arc(cx, cy, 3.5, 0, Math.PI * 2);
-            ctx.fillStyle = '#9B8CC4';
-            ctx.fill();
-        });
         ctx.restore();
 
-        // X-axis labels
+        /* X-axis labels */
         ctx.save();
-        ctx.font = '11px Akkurat, Arial, sans-serif';
-        ctx.fillStyle = '#aaa';
-        ctx.textAlign = 'center';
-        years.forEach(function(yr, i) {
-            var cx = pad.left + i * groupW + groupW / 2;
-            ctx.fillText(yr, cx, H - pad.bottom + 18);
+        ctx.font = '11px Akkurat_Mono, monospace';
+        ctx.fillStyle = '#999';
+        ctx.textAlign = 'left';
+        xLabels.forEach(function(yr) {
+            var i = yr - 2000;
+            var cx = pad.left + i * groupW;
+            ctx.fillText(yr, cx, H - pad.bottom + 16);
         });
         ctx.restore();
     }
