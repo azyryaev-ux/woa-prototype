@@ -5726,49 +5726,62 @@
 
         /* ── Property Quickfacts Block ── */
         .property-quickfacts {
-            padding: 28px 48px 32px 48px;
+            padding: 24px 48px 28px 48px;
             border-bottom: 1px solid #eaeaea;
             background: #fff;
         }
-        .property-type-heading {
-            font-size: 22px;
-            font-weight: 700;
-            color: #000;
-            margin: 0 0 4px 0;
-            font-family: 'Akkurat', sans-serif;
+        .pqf-type-row {
+            display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
         }
-        .property-landlord-subheading {
-            font-size: 15px;
-            font-weight: 400;
-            color: #444;
-            margin: 0 0 20px 0;
-            font-family: 'Akkurat', sans-serif;
+        .pqf-type-label {
+            font-size: 20px; font-weight: 700; color: #000;
+            font-family: 'Akkurat', sans-serif; margin: 0;
         }
-        .property-landlord-subheading strong { font-weight: 600; color: #000; }
-        .property-fact-strip {
-            display: flex; align-items: center; gap: 0; flex-wrap: wrap; margin-bottom: 10px;
+        .pqf-type-badge {
+            font-size: 11px; font-weight: 600; font-family: 'Akkurat', sans-serif;
+            background: #f0f0f0; color: #555; border-radius: 4px;
+            padding: 3px 8px; white-space: nowrap;
         }
-        .property-fact-item {
-            display: flex; flex-direction: column; gap: 2px;
-            padding-right: 24px; margin-right: 24px;
-            border-right: 1px solid #e0e0e0;
+        .pqf-panels {
+            display: flex; gap: 12px;
         }
-        .property-fact-item:last-child { border-right: none; padding-right: 0; margin-right: 0; }
-        .property-fact-label {
+        .pqf-panel {
+            flex: 1; background: #f8f8f8; border-radius: 8px;
+            padding: 14px 18px;
+        }
+        .pqf-panel-heading {
             font-size: 10px; font-weight: 600; text-transform: uppercase;
-            letter-spacing: 0.05em; color: #888; font-family: 'Akkurat Mono', monospace;
+            letter-spacing: 0.07em; color: #999; font-family: 'Akkurat Mono', monospace;
+            margin-bottom: 12px;
         }
-        .property-fact-value {
-            font-size: 16px; font-weight: 700; color: #000;
-            font-family: 'Akkurat', sans-serif; display: flex; align-items: center; gap: 5px;
+        .pqf-facts-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px;
         }
-        .property-subfact-strip { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-        .property-subfact-item {
-            font-size: 12px; color: #555; font-family: 'Akkurat', sans-serif;
+        .pqf-fact {
+            display: flex; flex-direction: column; gap: 1px;
+        }
+        .pqf-fact-label {
+            font-size: 10px; color: #999; font-family: 'Akkurat', sans-serif;
+            text-transform: uppercase; letter-spacing: 0.04em;
+        }
+        .pqf-fact-value {
+            font-size: 14px; font-weight: 700; color: #111;
+            font-family: 'Akkurat', sans-serif;
             display: flex; align-items: center; gap: 4px;
         }
-        .property-subfact-item span:first-child { color: #999; }
-        .property-subfact-item strong { font-weight: 600; color: #222; }
+        .pqf-owner-name {
+            font-size: 15px; font-weight: 700; color: #111;
+            font-family: 'Akkurat', sans-serif; margin-bottom: 10px;
+        }
+        .pqf-owner-rows {
+            display: flex; flex-direction: column; gap: 6px;
+        }
+        .pqf-owner-row {
+            display: flex; align-items: baseline; gap: 6px;
+            font-size: 12px; font-family: 'Akkurat', sans-serif;
+        }
+        .pqf-owner-row-label { color: #999; white-space: nowrap; }
+        .pqf-owner-row-value { color: #111; font-weight: 600; }
 
         /* ── Info Tooltip System ── */
         .info-q {
@@ -9427,46 +9440,51 @@
 
             <!-- Quickfacts Header Block -->
             <div class="property-quickfacts">
-                <h2 class="property-type-heading">Multifamily residential</h2>
-                <p class="property-landlord-subheading">Landlord: <strong>Raymond Ferrone</strong> &nbsp;&middot;&nbsp; Private</p>
-                <div class="property-fact-strip">
-                    <div class="property-fact-item">
-                        <span class="property-fact-label">Year built</span>
-                        <span class="property-fact-value">1985
-                            <button class="info-q" data-tooltip-title="Year built" data-tooltip-body="From tax assessment records, cleaned to remove administrative artifacts." data-tooltip-link="https://example.com/methodology">?</button>
-                        </span>
-                    </div>
-                    <div class="property-fact-item">
-                        <span class="property-fact-label">Purchase price</span>
-                        <span class="property-fact-value">$2.2M
-                            <button class="info-q" data-tooltip-title="Purchase price" data-tooltip-body="From deed transfer records at the time of the most recent ownership change." data-tooltip-link="https://example.com/methodology">?</button>
-                        </span>
-                    </div>
-                    <div class="property-fact-item">
-                        <span class="property-fact-label">Square footage</span>
-                        <span class="property-fact-value">12,450
-                            <button class="info-q" data-tooltip-title="Square footage" data-tooltip-body="Total gross floor area from county assessor records." data-tooltip-link="https://example.com/methodology">?</button>
-                        </span>
-                    </div>
-                    <div class="property-fact-item">
-                        <span class="property-fact-label">Total units</span>
-                        <span class="property-fact-value">4
-                            <button class="info-q" data-tooltip-title="Total units" data-tooltip-body="Number of residential units reported in tax assessment records." data-tooltip-link="https://example.com/methodology">?</button>
-                        </span>
-                    </div>
+                <div class="pqf-type-row">
+                    <h2 class="pqf-type-label">Multifamily residential</h2>
+                    <span class="pqf-type-badge">Private</span>
                 </div>
-                <div class="property-subfact-strip">
-                    <div class="property-subfact-item">
-                        <span>Direct owner:</span>
-                        <strong>Genesis Land Holdings Inc.</strong>
+                <div class="pqf-panels">
+                    <!-- Property panel -->
+                    <div class="pqf-panel">
+                        <div class="pqf-panel-heading">Property</div>
+                        <div class="pqf-facts-grid">
+                            <div class="pqf-fact">
+                                <span class="pqf-fact-label">Year built</span>
+                                <span class="pqf-fact-value">1985 <button class="info-q" data-tooltip-title="Year built" data-tooltip-body="From tax assessment records, cleaned to remove administrative artifacts." data-tooltip-link="https://example.com/methodology">?</button></span>
+                            </div>
+                            <div class="pqf-fact">
+                                <span class="pqf-fact-label">Purchase price</span>
+                                <span class="pqf-fact-value">$2.2M <button class="info-q" data-tooltip-title="Purchase price" data-tooltip-body="From deed transfer records at the time of the most recent ownership change." data-tooltip-link="https://example.com/methodology">?</button></span>
+                            </div>
+                            <div class="pqf-fact">
+                                <span class="pqf-fact-label">Square footage</span>
+                                <span class="pqf-fact-value">12,450 <button class="info-q" data-tooltip-title="Square footage" data-tooltip-body="Total gross floor area from county assessor records." data-tooltip-link="https://example.com/methodology">?</button></span>
+                            </div>
+                            <div class="pqf-fact">
+                                <span class="pqf-fact-label">Total units</span>
+                                <span class="pqf-fact-value">4 <button class="info-q" data-tooltip-title="Total units" data-tooltip-body="Number of residential units reported in tax assessment records." data-tooltip-link="https://example.com/methodology">?</button></span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="property-subfact-item">
-                        <span>Total units in portfolio:</span>
-                        <strong>165 across 95 properties</strong>
-                    </div>
-                    <div class="property-subfact-item">
-                        <span>Landlord type:</span>
-                        <strong>Private / Local corporate</strong>
+                    <!-- Ownership panel -->
+                    <div class="pqf-panel">
+                        <div class="pqf-panel-heading">Ownership</div>
+                        <div class="pqf-owner-name">Raymond Ferrone</div>
+                        <div class="pqf-owner-rows">
+                            <div class="pqf-owner-row">
+                                <span class="pqf-owner-row-label">Direct owner</span>
+                                <span class="pqf-owner-row-value">Genesis Land Holdings Inc.</span>
+                            </div>
+                            <div class="pqf-owner-row">
+                                <span class="pqf-owner-row-label">Portfolio</span>
+                                <span class="pqf-owner-row-value">165 units across 95 properties</span>
+                            </div>
+                            <div class="pqf-owner-row">
+                                <span class="pqf-owner-row-label">Landlord type</span>
+                                <span class="pqf-owner-row-value">Private / Local corporate</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
