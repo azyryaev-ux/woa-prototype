@@ -5783,6 +5783,32 @@
         .pqf-owner-row-label { color: #999; white-space: nowrap; }
         .pqf-owner-row-value { color: #111; font-weight: 600; }
 
+        /* ── Quickfacts: original strip layout (combined) ── */
+        .pqf-landlord-sub {
+            font-size: 14px; color: #555; font-family: 'Akkurat', sans-serif;
+            margin-bottom: 16px;
+        }
+        .pqf-landlord-sub strong { font-weight: 600; color: #111; }
+        .pqf-fact-strip {
+            display: flex; align-items: stretch; gap: 0;
+            flex-wrap: wrap; margin-bottom: 16px;
+        }
+        .pqf-strip-item {
+            display: flex; flex-direction: column; gap: 2px;
+            padding-right: 28px; margin-right: 28px;
+            border-right: 1px solid #e0e0e0;
+        }
+        .pqf-strip-item:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+        .pqf-strip-label {
+            font-size: 10px; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.06em; color: #999; font-family: 'Akkurat Mono', monospace;
+        }
+        .pqf-strip-value {
+            font-size: 18px; font-weight: 700; color: #000;
+            font-family: 'Akkurat', sans-serif;
+            display: flex; align-items: center; gap: 5px;
+        }
+
         /* ── Info Tooltip System ── */
         .info-q {
             display: inline-flex; align-items: center; justify-content: center;
@@ -9444,6 +9470,28 @@
                     <h2 class="pqf-type-label">Multifamily residential</h2>
                     <span class="pqf-type-badge">Private</span>
                 </div>
+                <p class="pqf-landlord-sub">Landlord: <strong>Raymond Ferrone</strong></p>
+
+                <!-- Horizontal fact strip (original layout) -->
+                <div class="pqf-fact-strip">
+                    <div class="pqf-strip-item">
+                        <span class="pqf-strip-label">Year built</span>
+                        <span class="pqf-strip-value">1985 <button class="info-q" data-tooltip-title="Year built" data-tooltip-body="From tax assessment records, cleaned to remove administrative artifacts." data-tooltip-link="https://example.com/methodology">?</button></span>
+                    </div>
+                    <div class="pqf-strip-item">
+                        <span class="pqf-strip-label">Purchase price</span>
+                        <span class="pqf-strip-value">$2.2M <button class="info-q" data-tooltip-title="Purchase price" data-tooltip-body="From deed transfer records at the time of the most recent ownership change." data-tooltip-link="https://example.com/methodology">?</button></span>
+                    </div>
+                    <div class="pqf-strip-item">
+                        <span class="pqf-strip-label">Square footage</span>
+                        <span class="pqf-strip-value">12,450 <button class="info-q" data-tooltip-title="Square footage" data-tooltip-body="Total gross floor area from county assessor records." data-tooltip-link="https://example.com/methodology">?</button></span>
+                    </div>
+                    <div class="pqf-strip-item">
+                        <span class="pqf-strip-label">Total units</span>
+                        <span class="pqf-strip-value">4 <button class="info-q" data-tooltip-title="Total units" data-tooltip-body="Number of residential units reported in tax assessment records." data-tooltip-link="https://example.com/methodology">?</button></span>
+                    </div>
+                </div>
+
                 <div class="pqf-panels">
                     <!-- Property panel -->
                     <div class="pqf-panel">
