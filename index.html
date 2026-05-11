@@ -5724,6 +5724,104 @@
             height: 16px;
         }
 
+        /* ── Property Quickfacts Block ── */
+        .property-quickfacts {
+            padding: 28px 48px 32px 48px;
+            border-bottom: 1px solid #eaeaea;
+            background: #fff;
+        }
+        .property-type-heading {
+            font-size: 22px;
+            font-weight: 700;
+            color: #000;
+            margin: 0 0 4px 0;
+            font-family: 'Akkurat', sans-serif;
+        }
+        .property-landlord-subheading {
+            font-size: 15px;
+            font-weight: 400;
+            color: #444;
+            margin: 0 0 20px 0;
+            font-family: 'Akkurat', sans-serif;
+        }
+        .property-landlord-subheading strong { font-weight: 600; color: #000; }
+        .property-fact-strip {
+            display: flex; align-items: center; gap: 0; flex-wrap: wrap; margin-bottom: 10px;
+        }
+        .property-fact-item {
+            display: flex; flex-direction: column; gap: 2px;
+            padding-right: 24px; margin-right: 24px;
+            border-right: 1px solid #e0e0e0;
+        }
+        .property-fact-item:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+        .property-fact-label {
+            font-size: 10px; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.05em; color: #888; font-family: 'Akkurat Mono', monospace;
+        }
+        .property-fact-value {
+            font-size: 16px; font-weight: 700; color: #000;
+            font-family: 'Akkurat', sans-serif; display: flex; align-items: center; gap: 5px;
+        }
+        .property-subfact-strip { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+        .property-subfact-item {
+            font-size: 12px; color: #555; font-family: 'Akkurat', sans-serif;
+            display: flex; align-items: center; gap: 4px;
+        }
+        .property-subfact-item span:first-child { color: #999; }
+        .property-subfact-item strong { font-weight: 600; color: #222; }
+
+        /* ── Info Tooltip System ── */
+        .info-q {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 14px; height: 14px; border-radius: 50%;
+            border: 1.5px solid #bbb; color: #999;
+            font-size: 9px; font-weight: 700; font-family: 'Akkurat Mono', monospace;
+            cursor: pointer; background: none; line-height: 1; padding: 0;
+            flex-shrink: 0; transition: border-color 0.15s, color 0.15s;
+            vertical-align: middle; margin-left: 3px;
+        }
+        .info-q:hover { border-color: #555; color: #333; }
+        .info-tooltip-box {
+            position: fixed; z-index: 9999; background: #1a1a1a; color: #fff;
+            border-radius: 8px; padding: 12px 14px; max-width: 280px;
+            font-size: 12px; font-family: 'Akkurat', sans-serif; line-height: 1.5;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            pointer-events: none; opacity: 0; transition: opacity 0.15s;
+        }
+        .info-tooltip-box.visible { opacity: 1; pointer-events: auto; }
+        .info-tooltip-title {
+            font-weight: 700; margin-bottom: 4px; font-size: 11px;
+            text-transform: uppercase; letter-spacing: 0.05em; color: #aaa;
+        }
+        .info-tooltip-body { color: #ddd; margin-bottom: 8px; }
+        .info-tooltip-link { color: #7EB3FF; text-decoration: none; font-size: 11px; font-weight: 600; }
+        .info-tooltip-link:hover { text-decoration: underline; }
+
+        /* ── Ownership Change Chart ── */
+        .ownership-change-chart-wrap {
+            margin-top: 24px; padding: 20px; background: #fafafa;
+            border-radius: 8px; border: 1px solid #eaeaea;
+        }
+        .ownership-change-chart-title { font-size: 13px; font-weight: 600; color: #333; margin-bottom: 4px; font-family: 'Akkurat', sans-serif; }
+        .ownership-change-chart-desc { font-size: 12px; color: #888; margin-bottom: 14px; font-family: 'Akkurat', sans-serif; }
+
+        /* ── Compare Properties EXPLORE column ── */
+        .cp-explore-cell { min-width: 160px; vertical-align: middle; padding: 8px 12px; }
+        .cp-explore-btns { display: flex; flex-direction: column; gap: 5px; }
+        .cp-explore-btn {
+            font-size: 11px; font-family: 'Akkurat', sans-serif;
+            padding: 4px 8px; border-radius: 4px; border: 1.5px solid #ccc;
+            background: #fff; color: #333; cursor: pointer; white-space: nowrap;
+            transition: background 0.15s, border-color 0.15s;
+        }
+        .cp-explore-btn:hover { background: #f5f5f5; border-color: #aaa; }
+        .cp-explore-btn-red { color: #d63030; border-color: #d63030; }
+        .cp-explore-btn-red:hover { background: rgba(214,48,48,0.06); }
+
+        /* ── Compare Areas EXPLORE column ── */
+        .ca-explore-cell { min-width: 160px; vertical-align: middle; padding: 8px 12px; }
+        .ca-explore-btns { display: flex; flex-direction: column; gap: 5px; }
+
         /* Sticky Navigation Header */
         .property-nav-sidebar {
             display: flex;
@@ -7393,6 +7491,9 @@
 
 
         /* ── Top 10 row selection ── */
+        .data-table table th {
+            vertical-align: top;
+        }
         .data-table table th:first-child {
             width: 28px;
             padding-left: 12px;
@@ -9324,6 +9425,52 @@
                 </div>
             </div>
 
+            <!-- Quickfacts Header Block -->
+            <div class="property-quickfacts">
+                <h2 class="property-type-heading">Multifamily residential</h2>
+                <p class="property-landlord-subheading">Landlord: <strong>Raymond Ferrone</strong> &nbsp;&middot;&nbsp; Private</p>
+                <div class="property-fact-strip">
+                    <div class="property-fact-item">
+                        <span class="property-fact-label">Year built</span>
+                        <span class="property-fact-value">1985
+                            <button class="info-q" data-tooltip-title="Year built" data-tooltip-body="From tax assessment records, cleaned to remove administrative artifacts." data-tooltip-link="https://example.com/methodology">?</button>
+                        </span>
+                    </div>
+                    <div class="property-fact-item">
+                        <span class="property-fact-label">Purchase price</span>
+                        <span class="property-fact-value">$2.2M
+                            <button class="info-q" data-tooltip-title="Purchase price" data-tooltip-body="From deed transfer records at the time of the most recent ownership change." data-tooltip-link="https://example.com/methodology">?</button>
+                        </span>
+                    </div>
+                    <div class="property-fact-item">
+                        <span class="property-fact-label">Square footage</span>
+                        <span class="property-fact-value">12,450
+                            <button class="info-q" data-tooltip-title="Square footage" data-tooltip-body="Total gross floor area from county assessor records." data-tooltip-link="https://example.com/methodology">?</button>
+                        </span>
+                    </div>
+                    <div class="property-fact-item">
+                        <span class="property-fact-label">Total units</span>
+                        <span class="property-fact-value">4
+                            <button class="info-q" data-tooltip-title="Total units" data-tooltip-body="Number of residential units reported in tax assessment records." data-tooltip-link="https://example.com/methodology">?</button>
+                        </span>
+                    </div>
+                </div>
+                <div class="property-subfact-strip">
+                    <div class="property-subfact-item">
+                        <span>Direct owner:</span>
+                        <strong>Genesis Land Holdings Inc.</strong>
+                    </div>
+                    <div class="property-subfact-item">
+                        <span>Total units in portfolio:</span>
+                        <strong>165 across 95 properties</strong>
+                    </div>
+                    <div class="property-subfact-item">
+                        <span>Landlord type:</span>
+                        <strong>Private / Local corporate</strong>
+                    </div>
+                </div>
+            </div>
+
             <!-- Sticky Navigation Header -->
             <nav class="property-nav-sidebar">
                 <span class="jump-to-label">Jump to:</span>
@@ -9463,6 +9610,12 @@
                 <div class="full-page-section" id="ownership">
                     <div class="section-title-with-action">
                         <h2 class="full-page-section-title">Ownership Structure</h2>
+                        <!-- Ownership Change Chart -->
+                        <div class="ownership-change-chart-wrap">
+                            <div class="ownership-change-chart-title">Ownership history</div>
+                            <div class="ownership-change-chart-desc">Assessed value over time, with ownership changes marked.</div>
+                            <canvas id="ownership-change-chart" height="140" style="width:100%;"></canvas>
+                        </div>
                         <button class="network-graph-btn" onclick="document.getElementById('network-graph-modal').classList.add('active')">
                             <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <circle cx="18" cy="5" r="3" stroke-width="2"/><circle cx="6" cy="12" r="3" stroke-width="2"/><circle cx="18" cy="19" r="3" stroke-width="2"/>
@@ -12330,13 +12483,20 @@
         const canvas = document.getElementById('activity-timeline-chart');
         if (!canvas) return;
         const ctx = canvas.getContext('2d');
-        const years = [];
-        for (let y = 2000; y <= 2022; y++) years.push(y);
-        const purchaseYear = 2005;
 
-        // Fake eviction / complaint data
-        const evictions  = years.map(y => y < purchaseYear ? 0 : Math.max(0, Math.round(Math.sin((y-2005)*0.7)*3 + 4 + Math.random()*2)));
-        const complaints = years.map(y => y < purchaseYear ? 0 : Math.max(0, Math.round(Math.cos((y-2005)*0.9)*2 + 2 + Math.random()*1.5)));
+        const acquireYear = 2005;
+        const startYear   = acquireYear - 5;
+        const years = [];
+        for (let y = startYear; y <= 2022; y++) years.push(y);
+
+        const evictions  = years.map(y => {
+            if (y < acquireYear) return Math.max(0, Math.round(Math.sin((y - startYear) * 0.8) * 2 + 2 + Math.random()));
+            return Math.max(0, Math.round(Math.sin((y - acquireYear) * 0.7) * 3 + 4 + Math.random() * 2));
+        });
+        const complaints = years.map(y => {
+            if (y < acquireYear) return Math.max(0, Math.round(Math.cos((y - startYear) * 0.9) + 1 + Math.random()));
+            return Math.max(0, Math.round(Math.cos((y - acquireYear) * 0.9) * 2 + 2 + Math.random() * 1.5));
+        });
 
         const dpr   = window.devicePixelRatio || 1;
         const W     = canvas.parentElement.offsetWidth || 700;
@@ -12370,59 +12530,118 @@
             }
         }
 
-        // Bars
+        // Pre-acquisition shaded background
+        const acqIdx = years.indexOf(acquireYear);
+        const acqX   = pad.left + acqIdx * barGroupW;
+        ctx.fillStyle = 'rgba(0,0,0,0.03)';
+        ctx.fillRect(pad.left, pad.top, acqX - pad.left, chartH);
+
+        // Bars — greyed before acquisition, full color after
         years.forEach((yr, i) => {
             const cx = pad.left + i * barGroupW + barGroupW / 2;
+            const preAcq = yr < acquireYear;
 
-            // Eviction bar
             const eh = (evictions[i] / maxVal) * chartH;
-            ctx.fillStyle = '#D96E4A';
+            ctx.fillStyle = preAcq ? 'rgba(217,110,74,0.25)' : '#D96E4A';
             ctx.fillRect(cx - barW - 1, pad.top + chartH - eh, barW, eh);
 
-            // Complaint bar
             const ch = (complaints[i] / maxVal) * chartH;
-            ctx.fillStyle = '#C4AA6A';
+            ctx.fillStyle = preAcq ? 'rgba(196,170,106,0.25)' : '#C4AA6A';
             ctx.fillRect(cx + 1, pad.top + chartH - ch, barW, ch);
 
-            // X-axis label every 5 years
             if (yr % 5 === 0) {
-                ctx.fillStyle = '#999';
+                ctx.fillStyle = preAcq ? '#ccc' : '#999';
                 ctx.font = '10px Akkurat Mono, monospace';
                 ctx.textAlign = 'center';
                 ctx.fillText(yr, cx, pad.top + chartH + 14);
             }
         });
 
-        // Purchase marker — vertical line + pill badge
-        const pi = years.indexOf(purchaseYear);
-        const px = pad.left + pi * barGroupW + barGroupW / 2;
-
-        // Vertical line
-        ctx.strokeStyle = '#888';
-        ctx.lineWidth = 1;
+        // Acquisition vertical line (dashed)
+        const px = pad.left + acqIdx * barGroupW + barGroupW / 2;
+        ctx.strokeStyle = '#333'; ctx.lineWidth = 1.5;
+        ctx.setLineDash([4, 3]);
+        ctx.beginPath(); ctx.moveTo(px, pad.top); ctx.lineTo(px, pad.top + chartH); ctx.stroke();
         ctx.setLineDash([]);
-        ctx.beginPath();
-        ctx.moveTo(px, pad.top + 18);
-        ctx.lineTo(px, pad.top + chartH);
-        ctx.stroke();
 
-        // Pill badge
-        const pillText = 'Purchase';
+        // Owner labels either side
         ctx.font = '600 10px Akkurat, sans-serif';
-        const textW = ctx.measureText(pillText).width;
-        const pillW = textW + 14;
-        const pillH = 18;
-        const pillX = px - pillW / 2;
-        const pillY = pad.top;
+        ctx.fillStyle = '#aaa'; ctx.textAlign = 'right';
+        ctx.fillText('Prior owner', px - 8, pad.top + 11);
+        ctx.fillStyle = '#333'; ctx.textAlign = 'left';
+        ctx.fillText('Genesis Land Holdings', px + 8, pad.top + 11);
 
-        ctx.fillStyle = '#333';
-        ctx.beginPath();
-        ctx.roundRect(pillX, pillY, pillW, pillH, 4);
-        ctx.fill();
-
-        ctx.fillStyle = '#fff';
-        ctx.textAlign = 'center';
+        // Acquired pill badge
+        const pillText = 'Acquired ' + acquireYear;
+        ctx.font = '600 10px Akkurat, sans-serif';
+        const textW2 = ctx.measureText(pillText).width;
+        const pillW = textW2 + 14; const pillH = 18;
+        const pillX = px - pillW / 2; const pillY = pad.top + 16;
+        ctx.fillStyle = '#111';
+        ctx.beginPath(); ctx.roundRect(pillX, pillY, pillW, pillH, 4); ctx.fill();
+        ctx.fillStyle = '#fff'; ctx.textAlign = 'center';
         ctx.fillText(pillText, px, pillY + 12);
+    }
+
+    // ── Ownership Change Chart ──
+    function drawOwnershipChangeChart() {
+        const canvas = document.getElementById('ownership-change-chart');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        const changeYear = 2015; const startYear = 2005; const endYear = 2022;
+        const years = [];
+        for (let y = startYear; y <= endYear; y++) years.push(y);
+        const values = years.map((y, i) => {
+            const base = y < changeYear ? 1200 + i * 40 : 2200 + (y - changeYear) * 60;
+            return base + (Math.random() - 0.5) * 80;
+        });
+        const dpr = window.devicePixelRatio || 1;
+        const W = canvas.parentElement.offsetWidth || 600; const H = 140;
+        canvas.width = W * dpr; canvas.height = H * dpr;
+        canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+        ctx.scale(dpr, dpr);
+        const pad = { top: 30, right: 20, bottom: 30, left: 52 };
+        const chartW = W - pad.left - pad.right; const chartH = H - pad.top - pad.bottom;
+        const minVal = Math.min(...values) * 0.95; const maxVal = Math.max(...values) * 1.05;
+        const xStep = chartW / (years.length - 1);
+        function xOf(i) { return pad.left + i * xStep; }
+        function yOf(v) { return pad.top + chartH - ((v - minVal) / (maxVal - minVal)) * chartH; }
+        ctx.clearRect(0, 0, W, H);
+        for (let i = 0; i <= 3; i++) {
+            const yv = minVal + (i / 3) * (maxVal - minVal); const yp = yOf(yv);
+            ctx.strokeStyle = '#eaeaea'; ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(pad.left, yp); ctx.lineTo(pad.left + chartW, yp); ctx.stroke();
+            ctx.fillStyle = '#bbb'; ctx.font = '9px Akkurat Mono, monospace'; ctx.textAlign = 'right';
+            ctx.fillText('$' + Math.round(yv / 1000) + 'k', pad.left - 4, yp + 3);
+        }
+        const changeIdx = years.indexOf(changeYear);
+        ctx.beginPath();
+        years.forEach((yr, i) => { if (i > changeIdx) return; i === 0 ? ctx.moveTo(xOf(i), yOf(values[i])) : ctx.lineTo(xOf(i), yOf(values[i])); });
+        ctx.strokeStyle = '#aaa'; ctx.lineWidth = 2; ctx.setLineDash([]); ctx.stroke();
+        ctx.beginPath();
+        years.forEach((yr, i) => { if (i < changeIdx) return; i === changeIdx ? ctx.moveTo(xOf(i), yOf(values[i])) : ctx.lineTo(xOf(i), yOf(values[i])); });
+        ctx.strokeStyle = '#333'; ctx.lineWidth = 2; ctx.stroke();
+        years.forEach((yr, i) => {
+            if (yr % 5 === 0 || yr === changeYear) {
+                ctx.fillStyle = yr === changeYear ? '#000' : '#999';
+                ctx.font = yr === changeYear ? '600 10px Akkurat Mono, monospace' : '10px Akkurat Mono, monospace';
+                ctx.textAlign = 'center';
+                ctx.fillText(yr, xOf(i), pad.top + chartH + 14);
+            }
+        });
+        const cx2 = xOf(changeIdx);
+        ctx.strokeStyle = '#000'; ctx.lineWidth = 1.5; ctx.setLineDash([4, 3]);
+        ctx.beginPath(); ctx.moveTo(cx2, pad.top); ctx.lineTo(cx2, pad.top + chartH); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.font = '600 10px Akkurat, sans-serif';
+        ctx.fillStyle = '#aaa'; ctx.textAlign = 'right'; ctx.fillText('Prior owner', cx2 - 8, pad.top + 11);
+        ctx.fillStyle = '#000'; ctx.textAlign = 'left'; ctx.fillText('Genesis Land Holdings', cx2 + 8, pad.top + 11);
+        const badge = 'Ownership change ' + changeYear;
+        ctx.font = '600 9px Akkurat, sans-serif';
+        const bw = ctx.measureText(badge).width + 12; const bh = 16;
+        const bx = cx2 - bw / 2; const by = pad.top + 14;
+        ctx.fillStyle = '#000'; ctx.beginPath(); ctx.roundRect(bx, by, bw, bh, 3); ctx.fill();
+        ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.fillText(badge, cx2, by + 11);
     }
 
     // ── Subsidy Timeline Chart ──
@@ -12524,6 +12743,7 @@
     function initCharts() {
         drawActivityChart();
         drawSubsidyChart();
+        drawOwnershipChangeChart();
     }
 
     // Draw when the property modal opens
@@ -12854,6 +13074,43 @@
     })();
 
 
+        // ── Info Tooltip System ──
+        (function() {
+            const box   = document.getElementById('info-tooltip-box');
+            const title = document.getElementById('info-tooltip-title');
+            const body  = document.getElementById('info-tooltip-body');
+            const link  = document.getElementById('info-tooltip-link');
+            if (!box) return;
+            let activeBtn = null;
+            document.addEventListener('click', function(e) {
+                const btn = e.target.closest('.info-q');
+                if (btn) {
+                    e.stopPropagation();
+                    if (activeBtn === btn && box.classList.contains('visible')) {
+                        box.classList.remove('visible'); activeBtn = null; return;
+                    }
+                    activeBtn = btn;
+                    title.textContent = btn.dataset.tooltipTitle || '';
+                    body.textContent  = btn.dataset.tooltipBody  || '';
+                    link.href = btn.dataset.tooltipLink || '#';
+                    box.classList.add('visible');
+                    const rect = btn.getBoundingClientRect();
+                    const bw = 280;
+                    let left = rect.left + rect.width / 2 - bw / 2;
+                    let top  = rect.bottom + 8;
+                    if (left + bw > window.innerWidth - 12) left = window.innerWidth - bw - 12;
+                    if (left < 12) left = 12;
+                    if (top + 150 > window.innerHeight) top = rect.top - 150 - 8;
+                    box.style.left = left + 'px'; box.style.top = top + 'px'; box.style.width = bw + 'px';
+                } else {
+                    box.classList.remove('visible'); activeBtn = null;
+                }
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') { box.classList.remove('visible'); activeBtn = null; }
+            });
+        })();
+
         // ── Compare Properties Modal ──
         (function() {
             var PROP_DATA = {
@@ -12918,10 +13175,11 @@
                             var city   = ci > -1 ? raw.slice(ci + 2) : '';
                             return '<div class="cp-addr-top"><span class="cp-addr-dot" style="background:' + d.color + '"></span><span class="cp-addr-label">' + street + (city ? '<br><span style="font-weight:400;font-size:13px;color:#666;">' + city + '</span>' : '') + '</span></div>';
                         })()
-                        + '<div class="cp-row-actions">'
-                        + '<button class="cp-row-btn-map">View on map</button>'
-                        + '<button class="cp-row-btn-page">View full property page</button>'
-                        + '</div></div></td>'
+                        + '</div></td>'
+                        + '<td class="cp-explore-cell"><div class="cp-explore-btns">'
+                        + '<button class="cp-row-btn-map cp-explore-btn">View on map</button>'
+                        + '<button class="cp-row-btn-page cp-explore-btn cp-explore-btn-red">View full property page</button>'
+                        + '</div></td>'
                         + '<td>' + d.type + '</td>'
                         + '<td>' + d.units + '</td>'
                         + '<td>' + d.value + '</td>'
@@ -13175,10 +13433,11 @@
                     return '<tr>'
                         + '<td><div class="ca-name-cell">'
                         + (function(){ var cm = (d.spark||'').match(/<path[^>]*stroke='(#[A-Fa-f0-9]+)'/); var dc = cm ? cm[1] : '#888'; return '<div style="display:flex;align-items:center;gap:8px;margin-bottom:2px;"><span class="sel-area-color-dot" style="color:' + dc + ';display:block;flex-shrink:0;"></span><span class="ca-name-label" style="line-height:1;">ZIP ' + z + '</span></div>'; })()
-                        + '<div class="ca-row-actions">'
-                        + '<button class="ca-row-btn-map">View on map</button>'
-                        + '<button class="ca-row-btn-area">View full area page</button>'
-                        + '</div></div></td>'
+                        + '</div></td>'
+                        + '<td class="ca-explore-cell"><div class="ca-explore-btns">'
+                        + '<button class="ca-row-btn-map cp-explore-btn">View on map</button>'
+                        + '<button class="ca-row-btn-area cp-explore-btn cp-explore-btn-red">View full area page</button>'
+                        + '</div></td>'
                         + '<td class="ca-spark-cell">' + d.spark + '</td>'
                         + '<td>' + d.efr + '</td>'
                         + '<td>' + d.pop + '</td>'
@@ -13452,6 +13711,7 @@
                     <thead>
                         <tr>
                             <th class="col-name-th" data-sort-col="name">Name <span class="ca-sort-arrow">&#x25B2;</span></th>
+                            <th>Explore</th>
                             <th class="col-chart-th">% Out-of-metro owner units over time</th>
                             <th data-sort-col="efr">Eviction filing rate <span class="ca-sort-arrow">&#x25B2;</span></th>
                             <th data-sort-col="pop">Population <span class="ca-sort-arrow">&#x25B2;</span></th>
@@ -13496,6 +13756,7 @@
                     <thead>
                         <tr>
                             <th data-cp-sort="id">Address <span class="compare-props-sort-arrow">&#x25B2;</span></th>
+                            <th>Explore</th>
                             <th data-cp-sort="type">Type <span class="compare-props-sort-arrow">&#x25B2;</span></th>
                             <th data-cp-sort="units">Units <span class="compare-props-sort-arrow">&#x25B2;</span></th>
                             <th data-cp-sort="value">Assessed value <span class="compare-props-sort-arrow">&#x25B2;</span></th>
@@ -13510,6 +13771,13 @@
                 </table>
             </div>
         </div>
+    </div>
+
+    <!-- Info Tooltip Floating Box -->
+    <div class="info-tooltip-box" id="info-tooltip-box">
+        <div class="info-tooltip-title" id="info-tooltip-title"></div>
+        <div class="info-tooltip-body" id="info-tooltip-body"></div>
+        <a class="info-tooltip-link" id="info-tooltip-link" href="#" target="_blank">Learn more &#x2192;</a>
     </div>
 
     <!-- Menu Dropdown (outside map-area so z-index works at root level) -->
