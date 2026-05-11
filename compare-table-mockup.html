@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compare Table View Mockup</title>
+<style>
+    @font-face { font-family: 'Akkurat'; src: url('Akkurat-Regular.ttf'); font-weight: 400; }
+    @font-face { font-family: 'Akkurat'; src: url('Akkurat-Bold.ttf'); font-weight: 700; }
+    @font-face { font-family: 'Akkurat Mono'; src: url('Akkurat-Mono.ttf'); font-weight: 400; }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+        font-family: 'Akkurat', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: #f0f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 24px;
+    }
+
+    /* ── Outer frame (simulates the full-screen overlay) ── */
+    .frame {
+        width: 100%;
+        max-width: 1300px;
+        height: 90vh;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    /* ── Top bar ── */
+    .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 24px 28px 18px 28px;
+        border-bottom: 1px solid #eaeaea;
+        flex-shrink: 0;
+    }
+
+    .count {
+        font-family: 'Akkurat', sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        color: #000;
+        letter-spacing: -0.02em;
+    }
+
+    .topbar-right {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .search-box {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding: 7px 12px;
+        background: #fff;
+    }
+
+    .search-box svg { color: #aaa; flex-shrink: 0; }
+
+    .search-box input {
+        border: none;
+        outline: none;
+        font-family: 'Akkurat', sans-serif;
+        font-size: 13px;
+        color: #333;
+        width: 160px;
+        background: transparent;
+    }
+
+    .search-box input::placeholder { color: #ccc; }
+
+    .close-btn {
+        background: none;
+        border: none;
+        font-size: 18px;
+        color: #888;
+        cursor: pointer;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.15s ease;
+    }
+
+    .close-btn:hover { background: #f0f0f0; color: #000; }
+
+    /* ── Scrollable table area ── */
+    .scroll-area {
+        flex: 1;
+        overflow: auto;
+        padding: 0 28px 32px 28px;
+    }
+
+    /* ── Table ── */
+    .compare-table {
+        border-collapse: collapse;
+        width: max-content;
+        min-width: 100%;
+        table-layout: fixed;
+    }
+
+    /* Group header row */
+    .group-row th {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    /* ADDRESS header cell */
+    .th-address {
+        position: sticky;
+        left: 0;
+        background: #fff;
+        z-index: 4;
+        padding: 0 16px 10px 0;
+        vertical-align: bottom;
+        font-family: 'Akkurat Mono', monospace;
+        font-size: 10px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        color: #555;
+        white-space: nowrap;
+        border-bottom: 2px solid #000;
+        width: 160px;
+        min-width: 160px;
+    }
+
+    /* Expand button header */
+    .th-expand {
+        padding: 0 16px 10px 0;
+        vertical-align: bottom;
+        border-bottom: 2px solid #000;
+        width: 168px;
+        min-width: 168px;
+        font-family: 'Akkurat Mono', monospace;
+        font-size: 10px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        color: #555;
+    }
+
+    /* Empty group spacer */
+    .th-spacer {
+        border-bottom: none;
+        padding: 0;
+    }
+
+    /* "PROPERTY FINANCES" group label */
+    .th-group-label {
+        font-family: 'Akkurat Mono', monospace;
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        color: #000;
+        padding: 16px 0 6px 12px;
+        border-bottom: 1px solid #aaa;
+        white-space: nowrap;
+        vertical-align: bottom;
+        border-left: 2px solid #ddd;
+    }
+
+    /* Angled column headers */
+    .th-angled {
+        position: relative;
+        height: 180px;
+        padding: 0;
+        vertical-align: bottom;
+        border-bottom: 2px solid #000;
+        overflow: visible;
+    }
+
+    .th-inner {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        transform-origin: bottom left;
+        transform: rotate(-45deg);
+        white-space: nowrap;
+        line-height: 1;
+    }
+
+    .th-inner span {
+        font-family: 'Akkurat Mono', monospace;
+        font-size: 10px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #444;
+        display: inline-block;
+    }
+
+    /* Finance column accent */
+    .finance-col-border { border-left: 2px solid #ddd; }
+
+    /* ── Body rows ── */
+    .tr-even { background: #fafafa; }
+    .tr-odd  { background: #fff; }
+    .tr-even:hover, .tr-odd:hover { background: #f0f0f0; transition: background 0.1s; }
+
+    /* Sticky address cell */
+    .td-address {
+        position: sticky;
+        left: 0;
+        z-index: 2;
+        padding: 10px 16px 10px 0;
+        vertical-align: middle;
+        border-bottom: 1px solid #eaeaea;
+        width: 160px;
+        min-width: 160px;
+    }
+
+    .tr-even .td-address { background: #fafafa; }
+    .tr-odd  .td-address { background: #fff; }
+    .tr-even:hover .td-address, .tr-odd:hover .td-address { background: #f0f0f0; }
+
+    .addr-line1 {
+        font-family: 'Akkurat', sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        color: #000;
+        line-height: 1.35;
+    }
+
+    .addr-line2 {
+        font-family: 'Akkurat', sans-serif;
+        font-size: 12px;
+        color: #888;
+        margin-top: 2px;
+        line-height: 1.35;
+    }
+
+    /* Expand button cell */
+    .td-expand {
+        padding: 10px 16px 10px 0;
+        border-bottom: 1px solid #eaeaea;
+        vertical-align: middle;
+    }
+
+    .explore-btns {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .explore-btn {
+        background: #fff;
+        color: #000;
+        border: 1.5px solid #ccc;
+        border-radius: 5px;
+        padding: 6px 12px;
+        font-family: 'Akkurat', sans-serif;
+        font-size: 11px;
+        font-weight: 500;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: background 0.15s, border-color 0.15s;
+        letter-spacing: 0.01em;
+        text-align: center;
+    }
+
+    .explore-btn:hover { background: #f5f5f5; border-color: #aaa; }
+
+    .explore-btn-red {
+        color: #d63030;
+        border-color: #d63030;
+    }
+
+    .explore-btn-red:hover { background: #fff5f5; border-color: #b52424; }
+
+    /* Data cells */
+    .td {
+        padding: 10px 12px;
+        border-bottom: 1px solid #eaeaea;
+        vertical-align: middle;
+        font-family: 'Akkurat Mono', monospace;
+        font-size: 12px;
+        color: #222;
+        line-height: 1.4;
+    }
+
+    .td-text {
+        font-family: 'Akkurat', sans-serif;
+        white-space: normal;
+        color: #333;
+    }
+
+    .td-num { white-space: nowrap; }
+
+    .td-finance { border-left: 2px solid #eaeaea; }
+
+    /* Landlord cell */
+    .landlord-cell {
+        display: flex;
+        align-items: flex-start;
+        gap: 7px;
+    }
+
+    .landlord-dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        margin-top: 3px;
+    }
+
+    .landlord-name {
+        font-family: 'Akkurat', sans-serif;
+        font-size: 12px;
+        color: #222;
+        line-height: 1.4;
+        white-space: normal;
+    }
+</style>
+</head>
+<body>
+
+<div class="frame">
+    <!-- Top bar -->
+    <div class="topbar">
+        <div class="count">Compare properties</div>
+        <div class="topbar-right">
+            <div class="search-box">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+                </svg>
+                <input type="text" placeholder="Search">
+            </div>
+            <button class="close-btn">&#x2715;</button>
+        </div>
+    </div>
+
+    <!-- Scrollable table -->
+    <div class="scroll-area">
+        <table class="compare-table">
+            <thead>
+                <!-- Group header row -->
+                <tr class="group-row">
+                    <th class="th-address th-spacer" rowspan="2">ADDRESS</th>
+                    <th class="th-expand th-spacer" rowspan="2">EXPLORE</th>
+                    <th class="th-spacer" colspan="9"></th>
+                    <th class="th-group-label" colspan="2">PROPERTY FINANCES</th>
+                </tr>
+
+                <!-- Angled column label row -->
+                <tr>
+                    <th class="th-angled" style="width:110px;min-width:110px">
+                        <div class="th-inner"><span>PROPERTY TYPE</span></div>
+                    </th>
+                    <th class="th-angled" style="width:44px;min-width:44px">
+                        <div class="th-inner"><span>NUMBER OF UNITS</span></div>
+                    </th>
+                    <th class="th-angled" style="width:44px;min-width:44px">
+                        <div class="th-inner"><span>YEAR BUILT</span></div>
+                    </th>
+                    <th class="th-angled" style="width:88px;min-width:88px">
+                        <div class="th-inner"><span>TOTAL VALUE</span></div>
+                    </th>
+                    <th class="th-angled" style="width:130px;min-width:130px">
+                        <div class="th-inner"><span>CURRENT OWNER NAME</span></div>
+                    </th>
+                    <th class="th-angled" style="width:44px;min-width:44px">
+                        <div class="th-inner"><span>NUMBER OF EVICTIONS OVER ENTIRE TIME PERIOD</span></div>
+                    </th>
+                    <th class="th-angled" style="width:130px;min-width:130px">
+                        <div class="th-inner"><span>LANDLORD</span></div>
+                    </th>
+                    <th class="th-angled" style="width:44px;min-width:44px">
+                        <div class="th-inner"><span>TOTAL UNITS</span></div>
+                    </th>
+                    <th class="th-angled" style="width:44px;min-width:44px">
+                        <div class="th-inner"><span>TOTAL PROPERTIES</span></div>
+                    </th>
+                    <th class="th-angled finance-col-border" style="width:72px;min-width:72px">
+                        <div class="th-inner"><span>MONTHLY DEBT SERVICE</span></div>
+                    </th>
+                    <th class="th-angled" style="width:72px;min-width:72px">
+                        <div class="th-inner"><span>MONTHLY RENTAL INCOME</span></div>
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <!-- Row 1 -->
+                <tr class="tr-even">
+                    <td class="td-address">
+                        <div class="addr-line1">195 Main St</div>
+                        <div class="addr-line2">Brockton MA</div>
+                    </td>
+                    <td class="td-expand">
+                        <div class="explore-btns">
+                            <button class="explore-btn">View on map</button>
+                            <button class="explore-btn explore-btn-red">View property profile</button>
+                        </div>
+                    </td>
+                    <td class="td td-text">Single family residential</td>
+                    <td class="td td-num">4</td>
+                    <td class="td td-num">1980</td>
+                    <td class="td td-num">$2,222,222</td>
+                    <td class="td td-text">Genesis Land Holdings Incorporated</td>
+                    <td class="td td-num">44</td>
+                    <td class="td" style="white-space:normal">
+                        <div class="landlord-cell">
+                            <div class="landlord-dot" style="background:#22c55e"></div>
+                            <div class="landlord-name">Genesis Land Holdings Incorporated</div>
+                        </div>
+                    </td>
+                    <td class="td td-num">95</td>
+                    <td class="td td-num">44</td>
+                    <td class="td td-num td-finance">$5,000</td>
+                    <td class="td td-num">$8,200</td>
+                </tr>
+
+                <!-- Row 2 -->
+                <tr class="tr-odd">
+                    <td class="td-address">
+                        <div class="addr-line1">195 Cedar St</div>
+                        <div class="addr-line2">Brockton MA</div>
+                    </td>
+                    <td class="td-expand">
+                        <div class="explore-btns">
+                            <button class="explore-btn">View on map</button>
+                            <button class="explore-btn explore-btn-red">View property profile</button>
+                        </div>
+                    </td>
+                    <td class="td td-text">Multi-family residential</td>
+                    <td class="td td-num">12</td>
+                    <td class="td td-num">1965</td>
+                    <td class="td td-num">$1,850,000</td>
+                    <td class="td td-text">Riverside Properties LLC</td>
+                    <td class="td td-num">18</td>
+                    <td class="td" style="white-space:normal">
+                        <div class="landlord-cell">
+                            <div class="landlord-dot" style="background:#06b6d4"></div>
+                            <div class="landlord-name">Riverside Properties LLC</div>
+                        </div>
+                    </td>
+                    <td class="td td-num">162</td>
+                    <td class="td td-num">28</td>
+                    <td class="td td-num td-finance">$3,200</td>
+                    <td class="td td-num">$14,400</td>
+                </tr>
+
+                <!-- Row 3 -->
+                <tr class="tr-even">
+                    <td class="td-address">
+                        <div class="addr-line1">199 Cedar St</div>
+                        <div class="addr-line2">Brockton MA</div>
+                    </td>
+                    <td class="td-expand">
+                        <div class="explore-btns">
+                            <button class="explore-btn">View on map</button>
+                            <button class="explore-btn explore-btn-red">View property profile</button>
+                        </div>
+                    </td>
+                    <td class="td td-text">Commercial</td>
+                    <td class="td td-num">6</td>
+                    <td class="td td-num">1978</td>
+                    <td class="td td-num">$980,000</td>
+                    <td class="td td-text">Riverside Properties LLC</td>
+                    <td class="td td-num">7</td>
+                    <td class="td" style="white-space:normal">
+                        <div class="landlord-cell">
+                            <div class="landlord-dot" style="background:#06b6d4"></div>
+                            <div class="landlord-name">Riverside Properties LLC</div>
+                        </div>
+                    </td>
+                    <td class="td td-num">162</td>
+                    <td class="td td-num">28</td>
+                    <td class="td td-num td-finance">$1,800</td>
+                    <td class="td td-num">$6,600</td>
+                </tr>
+
+                <!-- Row 4 -->
+                <tr class="tr-odd">
+                    <td class="td-address">
+                        <div class="addr-line1">195 Elm St</div>
+                        <div class="addr-line2">Brockton MA</div>
+                    </td>
+                    <td class="td-expand">
+                        <div class="explore-btns">
+                            <button class="explore-btn">View on map</button>
+                            <button class="explore-btn explore-btn-red">View property profile</button>
+                        </div>
+                    </td>
+                    <td class="td td-text">Single family residential</td>
+                    <td class="td td-num">2</td>
+                    <td class="td td-num">1992</td>
+                    <td class="td td-num">$420,000</td>
+                    <td class="td td-text">Hartwell Capital Group</td>
+                    <td class="td td-num">31</td>
+                    <td class="td" style="white-space:normal">
+                        <div class="landlord-cell">
+                            <div class="landlord-dot" style="background:#ef4444"></div>
+                            <div class="landlord-name">Hartwell Capital Group</div>
+                        </div>
+                    </td>
+                    <td class="td td-num">44</td>
+                    <td class="td td-num">11</td>
+                    <td class="td td-num td-finance">$890</td>
+                    <td class="td td-num">$2,100</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
