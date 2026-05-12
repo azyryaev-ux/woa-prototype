@@ -4450,34 +4450,59 @@
             border: 1px solid #eaeaea;
             border-radius: 6px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: background 0.15s ease, border-color 0.15s ease;
             overflow: hidden;
-            padding: 20px;
+            padding: 21px;
+            text-align: left;
         }
         .landlord-ownership-preview:hover {
             background: #f5f5f5;
             border-color: #d1d1d1;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
-        .landlord-ownership-preview-header {
+        /* New Figma-exact inner layout */
+        .lop-header {
+            display: flex;
+            align-items: center;
             gap: 10px;
+            padding-bottom: 13px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid #eaeaea;
         }
-        .landlord-ownership-preview-label {
-            font-size: 12px;
-            font-weight: 600;
+        .lop-label {
+            font-size: 13px;
+            font-family: 'Akkurat-Bold', 'Akkurat', sans-serif;
+            font-weight: 700;
             color: #000;
-            font-family: 'Akkurat', sans-serif;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            flex: 1;
+            line-height: 18px;
         }
-        .ownership-svg-preview {
-            width: 100%;
-            flex: 1;
+        .lop-body {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        .lop-graph-wrap {
+            flex-shrink: 0;
+            width: 160px;
+            height: 120px;
             background: #fff;
             border: 1px solid #eaeaea;
-            border-radius: 6px;
-            display: block;
+            border-radius: 4px;
+            overflow: hidden;
+            padding: 1px;
+        }
+        .lop-desc {
+            font-size: 15px;
+            font-family: 'Akkurat', sans-serif;
+            color: #555;
+            line-height: 23.8px;
+            margin: 0;
+        }
+        .lop-desc strong {
+            font-family: 'Akkurat-Bold', 'Akkurat', sans-serif;
+            font-weight: 700;
+            color: #555;
         }
 
         .landlord-metro-navigation {
@@ -10536,8 +10561,9 @@
                     <!-- Ownership structure preview -->
 
                     <button class="landlord-ownership-preview" id="open-network-graph-btn-card" onclick="document.getElementById('open-network-graph-btn').click()">
-                        <div class="landlord-ownership-preview-header">
-                            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <!-- Header -->
+                        <div class="lop-header">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <circle cx="12" cy="5" r="2" stroke-width="1.8"/>
                                 <circle cx="5" cy="17" r="2" stroke-width="1.8"/>
                                 <circle cx="12" cy="17" r="2" stroke-width="1.8"/>
@@ -10547,55 +10573,47 @@
                                 <line x1="12" y1="10" x2="12" y2="15" stroke-width="1.8" stroke-linecap="round"/>
                                 <line x1="12" y1="10" x2="19" y2="15" stroke-width="1.8" stroke-linecap="round"/>
                             </svg>
-                            <span class="landlord-ownership-preview-label">View Ownership Structure</span>
-                            <svg width="16" height="16" fill="none" stroke="#666" viewBox="0 0 24 24">
-                                <line x1="12" y1="5" x2="12" y2="19" stroke-width="2" stroke-linecap="round"/>
-                                <polyline points="6,13 12,19 18,13" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                            </svg>
+                            <span class="lop-label">View Ownership Structure</span>
                         </div>
-                        <!-- Inline SVG org-chart preview -->
-                        <svg class="ownership-svg-preview" viewBox="0 0 220 110" xmlns="http://www.w3.org/2000/svg">
-                            <!-- connecting lines -->
-                            <!-- root -> children -->
-                            <line x1="110" y1="28" x2="110" y2="42" stroke="#d0d0d0" stroke-width="1.5"/>
-                            <line x1="110" y1="42" x2="42" y2="56" stroke="#d0d0d0" stroke-width="1.5"/>
-                            <line x1="110" y1="42" x2="110" y2="56" stroke="#d0d0d0" stroke-width="1.5"/>
-                            <line x1="110" y1="42" x2="178" y2="56" stroke="#d0d0d0" stroke-width="1.5"/>
-                            <!-- left child -> grandchildren -->
-                            <line x1="42" y1="70" x2="22" y2="84" stroke="#e0e0e0" stroke-width="1.2"/>
-                            <line x1="42" y1="70" x2="62" y2="84" stroke="#e0e0e0" stroke-width="1.2"/>
-                            <!-- middle child -> grandchild -->
-                            <line x1="110" y1="70" x2="110" y2="84" stroke="#e0e0e0" stroke-width="1.2"/>
-                            <!-- right child -> grandchild -->
-                            <line x1="178" y1="70" x2="178" y2="84" stroke="#e0e0e0" stroke-width="1.2"/>
+                        <!-- Body: graph preview + description -->
+                        <div class="lop-body">
+                            <div class="lop-graph-wrap">
+                                <svg viewBox="0 0 165 112" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                    <!-- Blue S-curve: Raymond Ferrone -> Genesis Land Holdings -->
+                                    <path d="M 82 14 C 82 36 40 38 40 60" stroke="#224aaf" stroke-width="1" fill="none" opacity="0.4"/>
+                                    <!-- S-curve to Genesis Land -->
+                                    <path d="M 82 14 C 82 36 82 38 82 60" stroke="#224aaf" stroke-width="1" fill="none" opacity="0.4"/>
+                                    <path d="M 82 14 C 82 36 124 38 124 60" stroke="#224aaf" stroke-width="1" fill="none" opacity="0.4"/>
+                                    <!-- Orange vertical: Genesis Land -> 195 Main St -->
+                                    <path d="M 40 72 C 40 90 55 95 55 108" stroke="#ef4400" stroke-width="1" fill="none" opacity="0.6"/>
+                                    <path d="M 82 72 C 82 90 82 95 82 108" stroke="#ef4400" stroke-width="1" fill="none" opacity="0.6"/>
+                                    <path d="M 124 72 C 124 90 109 95 109 108" stroke="#ef4400" stroke-width="1" fill="none" opacity="0.6"/>
 
-                            <!-- Root node: individual/investor -->
-                            <rect x="82" y="12" width="56" height="16" rx="8" fill="#1a1a1a"/>
-                            <text x="110" y="23" text-anchor="middle" font-size="6.5" fill="white" font-family="sans-serif" font-weight="600">Genesis Land</text>
+                                    <!-- Raymond Ferrone node (blue, selected) -->
+                                    <rect x="52" y="7" width="60" height="14" rx="4" fill="rgba(34,74,175,0.1)" stroke="#224aaf" stroke-width="0.5"/>
+                                    <text x="82" y="13.5" text-anchor="middle" font-size="4.5" fill="#224aaf" font-family="sans-serif" font-weight="700">Raymond Ferrone</text>
+                                    <text x="82" y="19" text-anchor="middle" font-size="3.5" fill="#224aaf" font-family="sans-serif">Landlord</text>
 
-                            <!-- Level 2: 3 LLCs -->
-                            <rect x="18" y="56" width="48" height="14" rx="4" fill="#fff" stroke="#d1d1d1" stroke-width="1"/>
-                            <text x="42" y="65" text-anchor="middle" font-size="5.5" fill="#333" font-family="sans-serif">Holdings LLC</text>
+                                    <!-- Genesis Land (selected, blue): x=190 -->
+                                    <rect x="14" y="60" width="52" height="12" rx="3" fill="#fff" stroke="#d1d1d1" stroke-width="0.7"/>
+                                    <text x="40" y="68" text-anchor="middle" font-size="4.5" fill="#333" font-family="sans-serif">Holdings LLC</text>
 
-                            <rect x="86" y="56" width="48" height="14" rx="4" fill="#fff" stroke="#d1d1d1" stroke-width="1"/>
-                            <text x="110" y="65" text-anchor="middle" font-size="5.5" fill="#333" font-family="sans-serif">Realty Trust</text>
+                                    <rect x="56" y="60" width="52" height="12" rx="3" fill="#fff" stroke="#d1d1d1" stroke-width="0.7"/>
+                                    <text x="82" y="68" text-anchor="middle" font-size="4.5" fill="#333" font-family="sans-serif">Realty Trust</text>
 
-                            <rect x="154" y="56" width="48" height="14" rx="4" fill="#fff" stroke="#d1d1d1" stroke-width="1"/>
-                            <text x="178" y="65" text-anchor="middle" font-size="5.5" fill="#333" font-family="sans-serif">Capital LP</text>
+                                    <rect x="98" y="60" width="52" height="12" rx="3" fill="#fff" stroke="#d1d1d1" stroke-width="0.7"/>
+                                    <text x="124" y="68" text-anchor="middle" font-size="4.5" fill="#333" font-family="sans-serif">Capital LP</text>
 
-                            <!-- Level 3: property nodes (small circles) -->
-                            <circle cx="22" cy="91" r="6" fill="#fff" stroke="#ef4400" stroke-width="1"/>
-                            <text x="22" y="94" text-anchor="middle" font-size="4.5" fill="#ef4400" font-family="sans-serif">prop</text>
+                                    <!-- 195 Main St node (orange) -->
+                                    <rect x="26" y="103" width="58" height="11" rx="2.5" fill="rgba(239,68,0,0.08)" stroke="#ef4400" stroke-width="0.5"/>
+                                    <text x="55" y="109" text-anchor="middle" font-size="3.8" fill="#d63d00" font-family="sans-serif" font-weight="700">195 Main St</text>
 
-                            <circle cx="62" cy="91" r="6" fill="#fff" stroke="#ef4400" stroke-width="1"/>
-                            <text x="62" y="94" text-anchor="middle" font-size="4.5" fill="#ef4400" font-family="sans-serif">prop</text>
-
-                            <circle cx="110" cy="91" r="6" fill="#fff" stroke="#ef4400" stroke-width="1"/>
-                            <text x="110" y="94" text-anchor="middle" font-size="4.5" fill="#ef4400" font-family="sans-serif">prop</text>
-
-                            <circle cx="178" cy="91" r="6" fill="#fff" stroke="#ef4400" stroke-width="1"/>
-                            <text x="178" y="94" text-anchor="middle" font-size="4.5" fill="#ef4400" font-family="sans-serif">prop</text>
-                        </svg>
+                                    <rect x="68" y="103" width="58" height="11" rx="2.5" fill="rgba(239,68,0,0.08)" stroke="#ef4400" stroke-width="0.5"/>
+                                    <text x="97" y="109" text-anchor="middle" font-size="3.8" fill="#d63d00" font-family="sans-serif" font-weight="700">bought for $2.2M</text>
+                                </svg>
+                            </div>
+                            <p class="lop-desc">Click to view how a network of individuals like <strong>Aaron Judice</strong> and companies like <strong>Peabody Properties, Inc</strong> collectively form this landlord conglomerate.</p>
+                        </div>
                     </button>
                 </div>
             </div>
