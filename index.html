@@ -15049,7 +15049,7 @@
         /* AFP Overview Glass Cards */
         .afp-overview-section {
             padding: 48px 48px 0;
-            background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+            background: #fff;
         }
         .afp-overview-title {
             font-family: 'Akkurat-Bold','Akkurat',sans-serif;
@@ -15183,8 +15183,17 @@
             height: 180px;
             display: block;
         }
-        .afp-section-area-trends { border-bottom: none; }
-        .afp-section-area-trends .afp-section-title { margin-bottom: 0; }
+        /* Area Trends: full-width white section, not a grey card */
+        .afp-section-area-trends {
+            background: #fff !important;
+            border-radius: 0 !important;
+            margin: 0 !important;
+            padding: 48px 48px 64px !important;
+            gap: 0 !important;
+        }
+        .afp-section-area-trends .afp-section-title {
+            margin-bottom: 24px;
+        }
 
         .afp-sparkline {
             display: block;
@@ -15354,7 +15363,7 @@
         </div><!-- end header section -->
 
         <!-- Overview Section -->
-        <div class="afp-overview-section">
+        <div class="afp-overview-section" id="afp-section-overview">
             <div class="afp-overview-title">Overview</div>
             <div class="afp-overview-cards">
 
@@ -15469,155 +15478,14 @@
         <div class="afp-nav" id="afp-nav">
             <span class="afp-nav-label">Jump to:</span>
             <div class="afp-nav-tabs">
-                <button class="afp-nav-tab active" data-section="afp-section-poverty">Poverty rate over time</button>
-                <button class="afp-nav-tab" data-section="afp-section-housing">Housing stock</button>
-                <button class="afp-nav-tab" data-section="afp-section-demographics">Demographics</button>
-                <button class="afp-nav-tab" data-section="afp-section-landlord-comp">Landlord composition</button>
-                <button class="afp-nav-tab" data-section="afp-section-ownership-trends">Ownership trends</button>
+                <button class="afp-nav-tab active" data-section="afp-section-overview">Overview</button>
+                <button class="afp-nav-tab" data-section="afp-section-ownership-trends">Area trends</button>
                 <button class="afp-nav-tab" data-section="afp-section-top10">Top 10 landlords/properties</button>
             </div>
         </div>
 
         <!-- Main Content -->
         <div class="afp-content" id="afp-content">
-
-            <!-- Section: Poverty rate over time -->
-            <div class="afp-section" id="afp-section-poverty">
-                <div style="display:flex; align-items:center; gap:8px; padding-bottom:0.5px;">
-                    <div class="afp-section-title" style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-                        <div class="afp-heading-dropdown-wrap">
-                            <button class="afp-heading-trigger" id="afp-poverty-trigger" style="font-size:32px; letter-spacing:-0.64px;">
-                                <span id="afp-poverty-label">Poverty rate over time</span>
-                                <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 2l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                            </button>
-                            <div class="afp-heading-menu" id="afp-poverty-menu">
-                                <button class="afp-heading-option active" data-afp-target="afp-poverty-label">Poverty rate over time</button>
-                                <button class="afp-heading-option" data-afp-target="afp-poverty-label">Lorem ipsum 1</button>
-                                <button class="afp-heading-option" data-afp-target="afp-poverty-label">Lorem ipsum 2</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <p class="afp-section-desc">Boston has seen a consistent rise in its poverty rate over the past two decades, driven by rising housing costs and displacement of lower-income residents from central neighborhoods.</p>
-                <div class="afp-chart-wrap" style="margin-top:24px;">
-                    <svg class="afp-chart-svg" viewBox="0 0 1100 212" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Grid lines -->
-                        <line x1="40" y1="20" x2="1080" y2="20" stroke="#f0f0f0" stroke-width="1"/>
-                        <line x1="40" y1="60" x2="1080" y2="60" stroke="#f0f0f0" stroke-width="1"/>
-                        <line x1="40" y1="100" x2="1080" y2="100" stroke="#f0f0f0" stroke-width="1"/>
-                        <line x1="40" y1="140" x2="1080" y2="140" stroke="#f0f0f0" stroke-width="1"/>
-                        <line x1="40" y1="180" x2="1080" y2="180" stroke="#f0f0f0" stroke-width="1"/>
-                        <!-- Y-axis labels -->
-                        <text x="32" y="24" font-family="Akkurat Mono,monospace" font-size="10" fill="#999" text-anchor="end">80%</text>
-                        <text x="32" y="64" font-family="Akkurat Mono,monospace" font-size="10" fill="#999" text-anchor="end">60%</text>
-                        <text x="32" y="104" font-family="Akkurat Mono,monospace" font-size="10" fill="#999" text-anchor="end">40%</text>
-                        <text x="32" y="144" font-family="Akkurat Mono,monospace" font-size="10" fill="#999" text-anchor="end">20%</text>
-                        <text x="32" y="184" font-family="Akkurat Mono,monospace" font-size="10" fill="#999" text-anchor="end">0%</text>
-                        <!-- Upward trending line (gray) -->
-                        <polyline points="50,165 200,158 350,148 500,140 650,130 800,118 950,105 1070,92" 
-                            fill="none" stroke="#c0c0c0" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-                        <!-- X-axis labels -->
-                        <text x="50" y="205" font-family="Akkurat Mono,monospace" font-size="10" fill="#999">2000</text>
-                        <text x="320" y="205" font-family="Akkurat Mono,monospace" font-size="10" fill="#999">2010</text>
-                        <text x="600" y="205" font-family="Akkurat Mono,monospace" font-size="10" fill="#999">2015</text>
-                        <text x="870" y="205" font-family="Akkurat Mono,monospace" font-size="10" fill="#999">2019</text>
-                    </svg>
-                </div>
-            </div>
-
-            <!-- Section: Housing stock -->
-            <div class="afp-section" id="afp-section-housing">
-                <div class="afp-section-title">Housing stock</div>
-                <p class="afp-section-desc">Boston's housing market is characterized by high density, aging rental stock, and significant pressure from institutional investment and new luxury development.</p>
-                <div class="afp-stats-row" style="display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:24px;">
-                    <div class="afp-stat-card">
-                        <div class="afp-stat-label">Population</div>
-                        <div class="afp-stat-value">692,600</div>
-                    </div>
-                    <div class="afp-stat-card">
-                        <div class="afp-stat-label">Renter households</div>
-                        <div class="afp-stat-value">186,400</div>
-                    </div>
-                    <div class="afp-stat-card">
-                        <div class="afp-stat-label">Median rent</div>
-                        <div class="afp-stat-value">$2,845</div>
-                    </div>
-                    <div class="afp-stat-card">
-                        <div class="afp-stat-label">Housing units</div>
-                        <div class="afp-stat-value">298,000</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Section: Demographics -->
-            <div class="afp-section" id="afp-section-demographics">
-                <div class="afp-section-title">Demographics</div>
-                <p class="afp-section-desc">Boston is a diverse city with significant racial and economic disparities, particularly in access to stable housing and homeownership across communities.</p>
-                <div class="afp-stats-row" style="display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:24px;">
-                    <div class="afp-stat-card">
-                        <div class="afp-stat-label">White</div>
-                        <div class="afp-stat-value">52.8%</div>
-                    </div>
-                    <div class="afp-stat-card">
-                        <div class="afp-stat-label">Black</div>
-                        <div class="afp-stat-value">22.4%</div>
-                    </div>
-                    <div class="afp-stat-card">
-                        <div class="afp-stat-label">Hispanic/Latino</div>
-                        <div class="afp-stat-value">19.7%</div>
-                    </div>
-                    <div class="afp-stat-card">
-                        <div class="afp-stat-label">Asian</div>
-                        <div class="afp-stat-value">10.2%</div>
-                    </div>
-                </div>
-                <div class="afp-stats-row" style="display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px;">
-                    <div class="afp-stat-card">
-                        <div class="afp-stat-label">Median household income</div>
-                        <div class="afp-stat-value">$92,600</div>
-                    </div>
-                    <div class="afp-stat-card">
-                        <div class="afp-stat-label">Poverty rate</div>
-                        <div class="afp-stat-value">17.5%</div>
-                    </div>
-                    <div class="afp-stat-card">
-                        <div class="afp-stat-label">College degree or higher</div>
-                        <div class="afp-stat-value">48.6%</div>
-                    </div>
-                    <div class="afp-stat-card">
-                        <div class="afp-stat-label">Unemployment rate</div>
-                        <div class="afp-stat-value">4.2%</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Section: Landlord composition -->
-            <div class="afp-section" id="afp-section-landlord-comp">
-                <div class="afp-section-title">Landlord composition</div>
-                <p class="afp-section-desc">Boston's rental market is dominated by large institutional and corporate landlords, with above-average concentration in the 100+ unit tier.</p>
-                <div class="afp-stats-row" style="display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:24px;">
-                    <div class="afp-stat-card">
-                        <div class="afp-stat-label">Corporate ownership</div>
-                        <div class="afp-stat-value">36.8%</div>
-                        <div class="afp-stat-badge">Above average</div>
-                    </div>
-                    <div class="afp-stat-card">
-                        <div class="afp-stat-label">100+ unit landlords</div>
-                        <div class="afp-stat-value">26.8%</div>
-                        <div class="afp-stat-badge">Above average</div>
-                    </div>
-                    <div class="afp-stat-card">
-                        <div class="afp-stat-label">Out of state owners</div>
-                        <div class="afp-stat-value">19.3%</div>
-                        <div class="afp-stat-badge">Above average</div>
-                    </div>
-                    <div class="afp-stat-card">
-                        <div class="afp-stat-label">Avg units per landlord</div>
-                        <div class="afp-stat-value">42.6</div>
-                        <div class="afp-stat-badge">Above average</div>
-                    </div>
-                </div>
-            </div>
 
             <!-- Section: Area Trends -->
             <div class="afp-section afp-section-area-trends" id="afp-section-ownership-trends">
@@ -16062,7 +15930,7 @@
             var nav = document.getElementById('afp-nav');
             if (!nav || !afpScrollArea) return;
             var tabs = nav.querySelectorAll('.afp-nav-tab[data-section]');
-            var sectionIds = ['afp-section-poverty','afp-section-housing','afp-section-demographics','afp-section-landlord-comp','afp-section-ownership-trends','afp-section-top10'];
+            var sectionIds = ['afp-section-overview','afp-section-ownership-trends','afp-section-top10'];
             var sections = [];
             sectionIds.forEach(function(id, i) {
                 var sec = document.getElementById(id);
