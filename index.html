@@ -5194,29 +5194,40 @@
             font-size: 14px;
         }
         .lc-top-players-table thead {
-            background: #f9f9f9;
             position: sticky;
             top: 0;
             z-index: 1;
+            background: rgba(255,255,255,0.7);
         }
         .lc-top-players-table th {
             font-family: 'Akkurat_Mono', 'Akkurat Mono', monospace;
-            font-size: 12px;
-            letter-spacing: 0.5px;
+            font-size: 11px;
+            letter-spacing: 0.4px;
             text-transform: uppercase;
-            color: #666;
-            padding: 10px 20px;
-            border-bottom: 1px solid #eaeaea;
+            color: #aaa;
+            padding: 8px 16px 8px;
+            border-bottom: 1px solid #f0f0f0;
             text-align: left;
             font-weight: 400;
             line-height: 1.2;
-            vertical-align: top;
+            vertical-align: middle;
             white-space: nowrap;
         }
         .lc-top-players-table td {
-            padding: 10px 20px 11px;
-            border-bottom: 1px solid #fafafa;
-            color: #000;
+            padding: 10px 16px 10px;
+            border-bottom: 1px solid #f5f5f5;
+            color: #111;
+            font-size: 14px;
+        }
+        .lc-tp-rank-col { width: 28px; padding-left: 20px !important; padding-right: 4px !important; }
+        .lc-tp-rank {
+            font-family: 'Akkurat_Mono', 'Akkurat Mono', monospace;
+            font-size: 12px;
+            color: #bbb;
+            padding-left: 20px !important;
+            padding-right: 4px !important;
+            width: 28px;
+            white-space: nowrap;
         }
         .lc-tp-right { text-align: right; }
         .lc-top-players-table th.lc-tp-right { text-align: right; }
@@ -10693,16 +10704,17 @@
                         <table class="lc-top-players-table">
                             <thead>
                                 <tr>
+                                    <th class="lc-tp-rank-col"></th>
                                     <th>Company Name</th>
                                     <th class="lc-tp-right">Properties owned</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td>Peabody Properties, Inc</td><td class="lc-tp-right lc-tp-bold">1345</td></tr>
-                                <tr><td>Oakwood</td><td class="lc-tp-right lc-tp-bold">1345</td></tr>
-                                <tr><td>Lorem LLC</td><td class="lc-tp-right lc-tp-bold">1345</td></tr>
-                                <tr><td>Lorem 2 LLC</td><td class="lc-tp-right lc-tp-bold">1345</td></tr>
-                                <tr><td>Berkshire Residential Inv...</td><td class="lc-tp-right lc-tp-bold">1345</td></tr>
+                                <tr><td class="lc-tp-rank">1</td><td>Peabody Properties, Inc</td><td class="lc-tp-right lc-tp-bold">1345</td></tr>
+                                <tr><td class="lc-tp-rank">2</td><td>Oakwood</td><td class="lc-tp-right lc-tp-bold">987</td></tr>
+                                <tr><td class="lc-tp-rank">3</td><td>Lorem LLC</td><td class="lc-tp-right lc-tp-bold">823</td></tr>
+                                <tr><td class="lc-tp-rank">4</td><td>Lorem 2 LLC</td><td class="lc-tp-right lc-tp-bold">612</td></tr>
+                                <tr><td class="lc-tp-rank">5</td><td>Berkshire Residential Inv...</td><td class="lc-tp-right lc-tp-bold">441</td></tr>
                             </tbody>
                         </table>
                     </div>
