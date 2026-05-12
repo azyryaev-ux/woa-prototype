@@ -13085,13 +13085,18 @@
             startAngle += slice + gap;
         });
 
-        // Clear inner circle (donut hole)
+        // Clear inner circle (donut hole) and fill white
         ctx.beginPath();
         ctx.arc(cx, cy, innerR, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(0,0,0,0)';
         ctx.globalCompositeOperation = 'destination-out';
         ctx.fill();
         ctx.globalCompositeOperation = 'source-over';
+
+        // White fill for donut hole so text is legible
+        ctx.beginPath();
+        ctx.arc(cx, cy, innerR, 0, Math.PI * 2);
+        ctx.fillStyle = '#ffffff';
+        ctx.fill();
 
         // Centre label
         ctx.fillStyle = '#111';
@@ -13099,7 +13104,7 @@
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText('95', cx, cy - 8);
-        ctx.fillStyle = '#888';
+        ctx.fillStyle = '#999';
         ctx.font = '11px Akkurat, sans-serif';
         ctx.fillText('properties', cx, cy + 10);
     }
