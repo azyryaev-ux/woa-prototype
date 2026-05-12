@@ -5121,15 +5121,40 @@
             flex: 1;
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            gap: 20px;
             padding-top: 8px;
         }
-        .lc-portfolio-circle {
-            width: 171px;
-            height: 171px;
-            border-radius: 50%;
-            background: #d8d8d8;
+        #portfolio-composition-chart {
             flex-shrink: 0;
+        }
+        .lc-donut-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .lc-donut-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #333;
+            font-family: 'Akkurat', sans-serif;
+        }
+        .lc-donut-swatch {
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+        .lc-donut-label {
+            flex: 1;
+            color: #555;
+        }
+        .lc-donut-pct {
+            font-family: 'Akkurat_Mono', 'Akkurat Mono', monospace;
+            font-size: 12px;
+            color: #333;
+            font-weight: 600;
         }
         /* Top Players */
         .lc-top-players-card { overflow: hidden; }
@@ -10631,7 +10656,13 @@
                         <span class="lc-card-title">Portfolio Composition</span>
                     </div>
                     <div class="lc-donut-wrap">
-                        <div class="lc-portfolio-circle"></div>
+                        <canvas id="portfolio-composition-chart" width="160" height="160"></canvas>
+                        <div class="lc-donut-legend">
+                            <div class="lc-donut-legend-item"><span class="lc-donut-swatch" style="background:#C97060;"></span><span class="lc-donut-label">Single-family Residential</span><span class="lc-donut-pct">65%</span></div>
+                            <div class="lc-donut-legend-item"><span class="lc-donut-swatch" style="background:#C9A850;"></span><span class="lc-donut-label">Multi-family Residential</span><span class="lc-donut-pct">22%</span></div>
+                            <div class="lc-donut-legend-item"><span class="lc-donut-swatch" style="background:#AAA0D2;"></span><span class="lc-donut-label">Condominium</span><span class="lc-donut-pct">8%</span></div>
+                            <div class="lc-donut-legend-item"><span class="lc-donut-swatch" style="background:#7BAEC9;"></span><span class="lc-donut-label">Commercial</span><span class="lc-donut-pct">4%</span></div>
+                        </div>
                     </div>
                 </div>
 
@@ -12158,6 +12189,7 @@
             if (isOpenLandlord) {
                 e.preventDefault();
                 landlordPageModal.classList.add('active');
+                setTimeout(function() { drawPortfolioCompositionChart(); }, 50);
             }
         });
 
@@ -13008,6 +13040,70 @@
         ctx.fillText(pillText, px, pillY + 12);
     }
 
+    function drawPortfolioCompositionChart() {
+        var canvas = document.getElementById('portfolio-composition-chart');
+        if (!canvas) return;
+        var dpr = window.devicePixelRatio || 1;
+        var size = 160;
+        canvas.width  = size * dpr;
+        canvas.height = size * dpr;
+        canvas.style.width  = size + 'px';
+        canvas.style.height = size + 'px';
+        var ctx = canvas.getContext('2d');
+        ctx.scale(dpr, dpr);
+        ctx.clearRect(0, 0, size, size);
+
+        var cx = size / 2, cy = size / 2;
+        var outerR = 72, innerR = 42;
+
+        // Data: [value, color, label]
+        var segments = [
+            { val: 62, color: '#C97060' },
+            { val: 21, color: '#C9A850' },
+            { val:  8, color: '#AAA0D2' },
+            { val:  4, color: '#7BAEC9' }
+        ];
+        var total = segments.reduce(function(s,d){ return s + d.val; }, 0);
+        var startAngle = -Math.PI / 2;
+        var gap = 0.02; // radians gap between slices
+
+        segments.forEach(function(seg) {
+            var slice = (seg.val / total) * (Math.PI * 2 - gap * segments.length);
+            ctx.beginPath();
+            ctx.moveTo(cx, cy);
+            ctx.arc(cx, cy, outerR, startAngle + gap/2, startAngle + gap/2 + slice);
+            ctx.closePath();
+            ctx.fillStyle = seg.color;
+            ctx.fill();
+
+            // inner cutout
+            ctx.beginPath();
+            ctx.arc(cx, cy, innerR, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(255,255,255,0.0)';
+            ctx.fill();
+
+            startAngle += slice + gap;
+        });
+
+        // Clear inner circle (donut hole)
+        ctx.beginPath();
+        ctx.arc(cx, cy, innerR, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(0,0,0,0)';
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.fill();
+        ctx.globalCompositeOperation = 'source-over';
+
+        // Centre label
+        ctx.fillStyle = '#111';
+        ctx.font = '700 20px Akkurat, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('95', cx, cy - 8);
+        ctx.fillStyle = '#888';
+        ctx.font = '11px Akkurat, sans-serif';
+        ctx.fillText('properties', cx, cy + 10);
+    }
+
     function drawSubsidyTimelineChart() {
         var canvas = document.getElementById('subsidy-timeline-landlord-chart');
         if (!canvas) return;
@@ -13117,6 +13213,7 @@
         drawSubsidyChart();
         drawOwnershipChangeChart();
         drawSubsidyTimelineChart();
+        drawPortfolioCompositionChart();
     }
 
     // Draw when the property modal opens
@@ -13131,6 +13228,7 @@
     window.addEventListener('resize', initCharts);
     // Also draw on load in case modal is already open
     window.addEventListener('load', initCharts);
+    window.drawPortfolioCompositionChart = drawPortfolioCompositionChart;
 })();
 
     // ── Icon Rail ──
