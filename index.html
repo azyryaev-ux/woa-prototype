@@ -8627,49 +8627,53 @@
                     <div class="data-filter-accordion-body" id="data-filters-body">
                             <!-- Property type -->
                             <div class="data-filter-section-label" id="stat-target-proptype">Property type</div>
-                            <div class="data-checklist">
+                            <div class="data-checklist" id="pt-checklist">
                                 <label class="data-check-item">
-                                    <input type="checkbox" checked>
+                                    <input type="checkbox" checked id="pt-all" class="pt-chip">
+                                    <span class="data-check-text">All</span>
+                                </label>
+                                <label class="data-check-item">
+                                    <input type="checkbox" class="pt-chip">
                                     <span class="data-check-dot orange"></span>
                                     <span class="data-check-text">Commercial</span>
                                 </label>
                                 <label class="data-check-item">
-                                    <input type="checkbox" checked>
+                                    <input type="checkbox" class="pt-chip">
                                     <span class="data-check-dot orange"></span>
                                     <span class="data-check-text">Condominium</span>
                                 </label>
                                 <label class="data-check-item">
-                                    <input type="checkbox" checked>
+                                    <input type="checkbox" class="pt-chip">
                                     <span class="data-check-dot orange"></span>
                                     <span class="data-check-text">Single-family Residential</span>
                                 </label>
                                 <label class="data-check-item">
-                                    <input type="checkbox" checked>
+                                    <input type="checkbox" class="pt-chip">
                                     <span class="data-check-dot orange"></span>
                                     <span class="data-check-text">Small-building Residential</span>
                                 </label>
                                 <label class="data-check-item">
-                                    <input type="checkbox" checked>
+                                    <input type="checkbox" class="pt-chip">
                                     <span class="data-check-dot orange"></span>
                                     <span class="data-check-text">Large-building Residential</span>
                                 </label>
                                 <label class="data-check-item">
-                                    <input type="checkbox" checked>
+                                    <input type="checkbox" class="pt-chip">
                                     <span class="data-check-dot orange"></span>
                                     <span class="data-check-text">Residential Other</span>
                                 </label>
                                 <label class="data-check-item">
-                                    <input type="checkbox" checked>
+                                    <input type="checkbox" class="pt-chip">
                                     <span class="data-check-dot orange"></span>
                                     <span class="data-check-text">Multi-use</span>
                                 </label>
                                 <label class="data-check-item">
-                                    <input type="checkbox" checked>
+                                    <input type="checkbox" class="pt-chip">
                                     <span class="data-check-dot orange"></span>
                                     <span class="data-check-text">Vacant</span>
                                 </label>
                                 <label class="data-check-item">
-                                    <input type="checkbox" checked>
+                                    <input type="checkbox" class="pt-chip">
                                     <span class="data-check-dot orange"></span>
                                     <span class="data-check-text">Other</span>
                                 </label>
@@ -8687,44 +8691,48 @@
 
                             <!-- Landlord type -->
                             <div class="data-filter-section-label" id="stat-target-landlord" style="margin-top:32px;">Landlord type</div>
-                            <div class="data-checklist">
+                            <div class="data-checklist" id="lt-checklist">
                                 <label class="data-check-item">
-                                    <input type="checkbox" checked>
+                                    <input type="checkbox" checked id="lt-all" class="lt-chip">
+                                    <span class="data-check-text">All</span>
+                                </label>
+                                <label class="data-check-item">
+                                    <input type="checkbox" class="lt-chip">
                                     <span class="data-check-dot orange"></span>
                                     <span class="data-check-text">Person</span>
                                 </label>
                                 <label class="data-check-item">
-                                    <input type="checkbox" checked>
+                                    <input type="checkbox" class="lt-chip">
                                     <span class="data-check-dot orange"></span>
                                     <span class="data-check-text">Government</span>
                                 </label>
                                 <label class="data-check-item">
-                                    <input type="checkbox" checked>
+                                    <input type="checkbox" class="lt-chip">
                                     <span class="data-check-dot orange"></span>
                                     <span class="data-check-text">REIT</span>
                                 </label>
                                 <label class="data-check-item">
-                                    <input type="checkbox" checked>
+                                    <input type="checkbox" class="lt-chip">
                                     <span class="data-check-dot orange"></span>
                                     <span class="data-check-text">Bank</span>
                                 </label>
                                 <label class="data-check-item">
-                                    <input type="checkbox" checked>
+                                    <input type="checkbox" class="lt-chip">
                                     <span class="data-check-dot orange"></span>
                                     <span class="data-check-text">Nonprofit</span>
                                 </label>
                                 <label class="data-check-item">
-                                    <input type="checkbox" checked>
+                                    <input type="checkbox" class="lt-chip">
                                     <span class="data-check-dot orange"></span>
                                     <span class="data-check-text">Out-of-state</span>
                                 </label>
                                 <label class="data-check-item">
-                                    <input type="checkbox" checked>
+                                    <input type="checkbox" class="lt-chip">
                                     <span class="data-check-dot orange"></span>
                                     <span class="data-check-text">Local corporate</span>
                                 </label>
                                 <label class="data-check-item">
-                                    <input type="checkbox" checked>
+                                    <input type="checkbox" class="lt-chip">
                                     <span class="data-check-dot orange"></span>
                                     <span class="data-check-text">Local shell</span>
                                 </label>
@@ -15621,6 +15629,34 @@
             initTop10('#panel-landlords .data-table table', 'landlord-select-all-btn', 'landlord-action-bar', 'landlord-count-badge');
             initTop10('#panel-properties .data-table table', 'prop-select-all-btn', 'prop-action-bar', 'prop-count-badge');
         });
+    })();
+    </script>
+
+    <script>
+    (function() {
+        function setupAllChip(allId, chipClass) {
+            var allChip = document.getElementById(allId);
+            if (!allChip) return;
+            var chips = Array.from(document.querySelectorAll('.' + chipClass)).filter(function(c) { return c.id !== allId; });
+            allChip.addEventListener('change', function() {
+                if (allChip.checked) {
+                    chips.forEach(function(c) { c.checked = false; });
+                }
+            });
+            chips.forEach(function(chip) {
+                chip.addEventListener('change', function() {
+                    if (chip.checked) {
+                        allChip.checked = false;
+                    }
+                    // if nothing selected, re-select All
+                    if (!chips.some(function(c) { return c.checked; }) && !allChip.checked) {
+                        allChip.checked = true;
+                    }
+                });
+            });
+        }
+        setupAllChip('pt-all', 'pt-chip');
+        setupAllChip('lt-all', 'lt-chip');
     })();
     </script>
 </body>
