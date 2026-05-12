@@ -15046,6 +15046,146 @@
         }
         .afp-view-landlord-btn:hover { opacity: 0.9; }
         /* Sparkline */
+        /* AFP Overview Glass Cards */
+        .afp-overview-section {
+            padding: 48px 48px 0;
+            background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+        }
+        .afp-overview-title {
+            font-family: 'Akkurat-Bold','Akkurat',sans-serif;
+            font-weight: 700;
+            font-size: 33px;
+            letter-spacing: -0.64px;
+            color: #000;
+            margin-bottom: 24px;
+        }
+        .afp-overview-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            padding-bottom: 48px;
+        }
+        .afp-glass-card {
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.8);
+            box-shadow: 0px 1px 3px rgba(0,0,0,0.02), 0px 4px 12px rgba(0,0,0,0.03), inset 0px 1px 0px 1px rgba(255,255,255,0.9);
+            border-radius: 6px;
+            padding: 20px;
+        }
+        .afp-gc-header {
+            font-family: 'Akkurat-Bold','Akkurat',sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #000;
+            padding-bottom: 13px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        .afp-gc-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .afp-gc-stat {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .afp-gc-label {
+            font-family: 'Akkurat','Akkurat-Regular',sans-serif;
+            font-size: 14px;
+            color: #666;
+            line-height: 18.2px;
+        }
+        .afp-gc-value {
+            font-family: 'Akkurat_Mono','Akkurat Mono',monospace;
+            font-size: 29px;
+            color: #000;
+            line-height: 33.6px;
+        }
+        .afp-gc-value-row {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .afp-gc-badge {
+            font-family: 'Akkurat-Bold','Akkurat',sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #ff9f1c;
+            background: #fff6ec;
+            border: 1px solid #fff0dc;
+            border-radius: 4px;
+            padding: 2px 8px;
+            white-space: nowrap;
+            line-height: 1.4;
+        }
+        /* AFP Area Trends */
+        .afp-trends-panels {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 24px;
+        }
+        .afp-trends-panel {
+            background: #fafafa;
+            border-radius: 6px;
+            padding: 40px;
+        }
+        .afp-trends-panel-title {
+            font-family: 'Akkurat-Bold','Akkurat',sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            color: #000;
+            margin-bottom: 12px;
+        }
+        .afp-trends-panel-desc {
+            font-family: 'Akkurat','Akkurat-Regular',sans-serif;
+            font-size: 15px;
+            color: #555;
+            line-height: 1.5;
+            margin: 0 0 20px;
+        }
+        .afp-trends-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+        .afp-trends-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Akkurat','Akkurat-Regular',sans-serif;
+            font-size: 14px;
+            color: #444;
+        }
+        .afp-contextual-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Akkurat','Akkurat-Regular',sans-serif;
+            font-size: 15px;
+            color: #d63d00;
+            text-decoration: none;
+            margin-bottom: 24px;
+        }
+        .afp-contextual-link:hover { text-decoration: underline; }
+        .afp-trends-canvas {
+            width: 100%;
+            height: 180px;
+            display: block;
+        }
+        .afp-section-area-trends { border-bottom: none; }
+        .afp-section-area-trends .afp-section-title { margin-bottom: 0; }
+
         .afp-sparkline {
             display: block;
         }
@@ -15213,6 +15353,118 @@
             </div>
         </div><!-- end header section -->
 
+        <!-- Overview Section -->
+        <div class="afp-overview-section">
+            <div class="afp-overview-title">Overview</div>
+            <div class="afp-overview-cards">
+
+                <!-- Card 1: Housing Stock -->
+                <div class="afp-glass-card">
+                    <div class="afp-gc-header">Housing Stock</div>
+                    <div class="afp-gc-stats">
+                        <div class="afp-gc-stat">
+                            <div class="afp-gc-label">Population</div>
+                            <div class="afp-gc-value">692,600</div>
+                        </div>
+                        <div class="afp-gc-stat">
+                            <div class="afp-gc-label">Renter households</div>
+                            <div class="afp-gc-value">186,400</div>
+                        </div>
+                        <div class="afp-gc-stat">
+                            <div class="afp-gc-label">Median rent</div>
+                            <div class="afp-gc-value">$2,845</div>
+                        </div>
+                        <div class="afp-gc-stat">
+                            <div class="afp-gc-label">Housing units</div>
+                            <div class="afp-gc-value">298,000</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Racial/Ethnic Demographics -->
+                <div class="afp-glass-card">
+                    <div class="afp-gc-header">Racial/Ethnic Demographics</div>
+                    <div class="afp-gc-stats">
+                        <div class="afp-gc-stat">
+                            <div class="afp-gc-label">White</div>
+                            <div class="afp-gc-value-row">
+                                <div class="afp-gc-value">52.8%</div>
+                                <div class="afp-gc-badge">Above average</div>
+                            </div>
+                        </div>
+                        <div class="afp-gc-stat">
+                            <div class="afp-gc-label">Black</div>
+                            <div class="afp-gc-value">22.4%</div>
+                        </div>
+                        <div class="afp-gc-stat">
+                            <div class="afp-gc-label">Latino</div>
+                            <div class="afp-gc-value">19.7%</div>
+                        </div>
+                        <div class="afp-gc-stat">
+                            <div class="afp-gc-label">Asian</div>
+                            <div class="afp-gc-value">10.2%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Socioeconomic Demographics -->
+                <div class="afp-glass-card">
+                    <div class="afp-gc-header">Socioeconomic Demographics</div>
+                    <div class="afp-gc-stats">
+                        <div class="afp-gc-stat">
+                            <div class="afp-gc-label">Median household income</div>
+                            <div class="afp-gc-value">$92,600</div>
+                        </div>
+                        <div class="afp-gc-stat">
+                            <div class="afp-gc-label">College degree or higher</div>
+                            <div class="afp-gc-value-row">
+                                <div class="afp-gc-value">48.6%</div>
+                                <div class="afp-gc-badge">Above average</div>
+                            </div>
+                        </div>
+                        <div class="afp-gc-stat">
+                            <div class="afp-gc-label">Poverty rate</div>
+                            <div class="afp-gc-value">17.5%</div>
+                        </div>
+                        <div class="afp-gc-stat">
+                            <div class="afp-gc-label">Unaffordability rate</div>
+                            <div class="afp-gc-value">4.2%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Landlord Composition -->
+                <div class="afp-glass-card">
+                    <div class="afp-gc-header">Landlord Composition</div>
+                    <div class="afp-gc-stats">
+                        <div class="afp-gc-stat">
+                            <div class="afp-gc-label">Corporate ownership</div>
+                            <div class="afp-gc-value-row">
+                                <div class="afp-gc-value">36.8%</div>
+                                <div class="afp-gc-badge">Above average</div>
+                            </div>
+                        </div>
+                        <div class="afp-gc-stat">
+                            <div class="afp-gc-label">100+ unit landlords</div>
+                            <div class="afp-gc-value">26.8%</div>
+                        </div>
+                        <div class="afp-gc-stat">
+                            <div class="afp-gc-label">Out-of-state owners</div>
+                            <div class="afp-gc-value">19.3%</div>
+                        </div>
+                        <div class="afp-gc-stat">
+                            <div class="afp-gc-label">Avg units per landlord</div>
+                            <div class="afp-gc-value-row">
+                                <div class="afp-gc-value">42.6</div>
+                                <div class="afp-gc-badge">Above average</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div><!-- end overview section -->
+
         <!-- Sticky Nav Tabs -->
         <div class="afp-nav" id="afp-nav">
             <span class="afp-nav-label">Jump to:</span>
@@ -15367,50 +15619,43 @@
                 </div>
             </div>
 
-            <!-- Section: Ownership trends -->
-            <div class="afp-section" id="afp-section-ownership-trends">
-                <div class="afp-section-title">Ownership trends</div>
-                <p class="afp-section-desc">Corporate and out-of-state ownership have both trended upward since 2019, with 100+ unit ownership showing the steepest increase over the period.</p>
-                <div class="afp-legend" style="margin-top:16px;">
-                    <div class="afp-legend-item">
-                        <div class="afp-legend-dot" style="background:#D46033;"></div>
-                        Corporate ownership
+            <!-- Section: Area Trends -->
+            <div class="afp-section afp-section-area-trends" id="afp-section-ownership-trends">
+                <div class="afp-section-title">Area Trends</div>
+                <div class="afp-trends-panels">
+
+                    <!-- Panel 1: Ownership -->
+                    <div class="afp-trends-panel">
+                        <div class="afp-trends-panel-title">Ownership</div>
+                        <p class="afp-trends-panel-desc">Corporate and out-of-state ownership have trended upward since 2019, with 100+ unit ownership showing the steepest increase.</p>
+                        <div class="afp-trends-legend">
+                            <div class="afp-trends-legend-item">
+                                <svg width="20" height="3" viewBox="0 0 20 3"><line x1="0" y1="1.5" x2="20" y2="1.5" stroke="#D46033" stroke-width="3"/></svg>
+                                <span>Corporate ownership</span>
+                            </div>
+                            <div class="afp-trends-legend-item">
+                                <svg width="20" height="3" viewBox="0 0 20 3"><line x1="0" y1="1.5" x2="20" y2="1.5" stroke="#4D9FFF" stroke-width="3"/></svg>
+                                <span>100+ unit ownership</span>
+                            </div>
+                            <div class="afp-trends-legend-item">
+                                <svg width="20" height="3" viewBox="0 0 20 3"><line x1="0" y1="1.5" x2="20" y2="1.5" stroke="#4DC4A0" stroke-width="3"/></svg>
+                                <span>Out-of-state ownership</span>
+                            </div>
+                        </div>
+                        <canvas id="afp-ownership-chart" class="afp-trends-canvas"></canvas>
                     </div>
-                    <div class="afp-legend-item">
-                        <div class="afp-legend-dot" style="background:#4D9FFF;"></div>
-                        100+ unit ownership
+
+                    <!-- Panel 2: Contextual data -->
+                    <div class="afp-trends-panel">
+                        <div class="afp-trends-panel-title">Contextual data</div>
+                        <p class="afp-trends-panel-desc">Track demographic and economic indicators alongside ownership trends to understand the broader context of housing in Boston.</p>
+                        <a href="#" class="afp-contextual-link" onclick="return false;">
+                            Poverty rate over time
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3" stroke="#d63d00" stroke-width="1.5" stroke-linecap="round"/><path d="M5 3h8v8" stroke="#d63d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                        <canvas id="afp-contextual-chart" class="afp-trends-canvas"></canvas>
                     </div>
-                    <div class="afp-legend-item">
-                        <div class="afp-legend-dot" style="background:#4DC4A0;"></div>
-                        Out-of-state ownership
-                    </div>
-                </div>
-                <div class="afp-chart-wrap">
-                    <svg class="afp-chart-svg" viewBox="0 0 1100 220" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Grid lines -->
-                        <line x1="40" y1="20" x2="1080" y2="20" stroke="#f0f0f0" stroke-width="1"/>
-                        <line x1="40" y1="60" x2="1080" y2="60" stroke="#f0f0f0" stroke-width="1"/>
-                        <line x1="40" y1="100" x2="1080" y2="100" stroke="#f0f0f0" stroke-width="1"/>
-                        <line x1="40" y1="140" x2="1080" y2="140" stroke="#f0f0f0" stroke-width="1"/>
-                        <line x1="40" y1="180" x2="1080" y2="180" stroke="#f0f0f0" stroke-width="1"/>
-                        <!-- Corporate (orange-red, steepest) -->
-                        <polyline points="50,160 220,148 390,132 560,118 730,100 900,82 1070,62"
-                            fill="none" stroke="#D46033" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-                        <!-- 100+ unit (blue, moderate) -->
-                        <polyline points="50,168 220,160 390,150 560,138 730,124 900,108 1070,92"
-                            fill="none" stroke="#4D9FFF" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-                        <!-- Out-of-state (teal, slight) -->
-                        <polyline points="50,172 220,166 390,158 560,150 730,140 900,130 1070,118"
-                            fill="none" stroke="#4DC4A0" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-                        <!-- X-axis labels -->
-                        <text x="44" y="205" font-family="Akkurat Mono,monospace" font-size="10" fill="#999">2019</text>
-                        <text x="210" y="205" font-family="Akkurat Mono,monospace" font-size="10" fill="#999">2020</text>
-                        <text x="378" y="205" font-family="Akkurat Mono,monospace" font-size="10" fill="#999">2021</text>
-                        <text x="546" y="205" font-family="Akkurat Mono,monospace" font-size="10" fill="#999">2022</text>
-                        <text x="714" y="205" font-family="Akkurat Mono,monospace" font-size="10" fill="#999">2023</text>
-                        <text x="882" y="205" font-family="Akkurat Mono,monospace" font-size="10" fill="#999">2024</text>
-                        <text x="1050" y="205" font-family="Akkurat Mono,monospace" font-size="10" fill="#999">2025</text>
-                    </svg>
+
                 </div>
             </div>
 
@@ -15646,6 +15891,146 @@
         var backBtn = document.getElementById('afp-back-btn');
         if (backBtn) backBtn.addEventListener('click', function() {
             document.getElementById('area-full-page-modal').classList.remove('active');
+        });
+
+        // Draw area trends charts when modal opens
+        function drawAfpOwnershipChart() {
+            var canvas = document.getElementById('afp-ownership-chart');
+            if (!canvas) return;
+            var dpr = window.devicePixelRatio || 1;
+            var panelEl = canvas.parentElement;
+            var panelStyle = window.getComputedStyle(panelEl);
+            var padH = parseFloat(panelStyle.paddingLeft) + parseFloat(panelStyle.paddingRight);
+            var w = Math.max(panelEl.clientWidth - padH, 200);
+            var h = 180;
+            canvas.width = Math.round(w * dpr);
+            canvas.height = Math.round(h * dpr);
+            canvas.style.width = w + 'px';
+            canvas.style.height = h + 'px';
+            var ctx = canvas.getContext('2d');
+            ctx.scale(dpr, dpr);
+
+            var padL = 44, padR = 10, padT = 10, padB = 36;
+            var chartW = w - padL - padR;
+            var chartH = h - padT - padB;
+
+            // Grid lines
+            ctx.strokeStyle = '#e0e0e0';
+            ctx.lineWidth = 1;
+            for (var i = 0; i <= 4; i++) {
+                var gy = padT + (chartH / 4) * i;
+                ctx.beginPath(); ctx.moveTo(padL, gy); ctx.lineTo(w - padR, gy); ctx.stroke();
+            }
+
+            // Y-axis labels
+            ctx.fillStyle = '#aaa';
+            ctx.font = '10px Akkurat_Mono, monospace';
+            ctx.textAlign = 'right';
+            ['50%','40%','30%','20%','10%'].forEach(function(lbl, i) {
+                ctx.fillText(lbl, padL - 6, padT + (chartH / 4) * i + 4);
+            });
+
+            // Series data (2019-2024)
+            var years = ['2019','2020','2021','2022','2023','2024'];
+            var nPts = years.length;
+            var xStep = chartW / (nPts - 1);
+            var minVal = 0, maxVal = 50;
+            var series = [
+                { color: '#D46033', data: [27, 29, 31, 33, 35, 37] },
+                { color: '#4D9FFF', data: [20, 22, 23, 24, 25, 27] },
+                { color: '#4DC4A0', data: [15, 16, 17, 17, 18, 19] }
+            ];
+            series.forEach(function(s) {
+                ctx.beginPath();
+                s.data.forEach(function(v, i) {
+                    var x = padL + i * xStep;
+                    var y = padT + chartH - ((v - minVal) / (maxVal - minVal)) * chartH;
+                    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+                });
+                ctx.strokeStyle = s.color;
+                ctx.lineWidth = 2.5;
+                ctx.lineJoin = 'round';
+                ctx.lineCap = 'round';
+                ctx.stroke();
+            });
+
+            // X-axis labels
+            ctx.fillStyle = '#aaa';
+            ctx.font = '10px Akkurat_Mono, monospace';
+            ctx.textAlign = 'center';
+            years.forEach(function(yr, i) {
+                ctx.fillText(yr, padL + i * xStep, h - padB + 18);
+            });
+        }
+
+        function drawAfpContextualChart() {
+            var canvas = document.getElementById('afp-contextual-chart');
+            if (!canvas) return;
+            var dpr = window.devicePixelRatio || 1;
+            var panelEl = canvas.parentElement;
+            var panelStyle = window.getComputedStyle(panelEl);
+            var padH = parseFloat(panelStyle.paddingLeft) + parseFloat(panelStyle.paddingRight);
+            var w = Math.max(panelEl.clientWidth - padH, 200);
+            var h = 180;
+            canvas.width = Math.round(w * dpr);
+            canvas.height = Math.round(h * dpr);
+            canvas.style.width = w + 'px';
+            canvas.style.height = h + 'px';
+            var ctx = canvas.getContext('2d');
+            ctx.scale(dpr, dpr);
+
+            var padL = 44, padR = 10, padT = 10, padB = 36;
+            var chartW = w - padL - padR;
+            var chartH = h - padT - padB;
+
+            ctx.strokeStyle = '#e0e0e0';
+            ctx.lineWidth = 1;
+            for (var i = 0; i <= 4; i++) {
+                var gy = padT + (chartH / 4) * i;
+                ctx.beginPath(); ctx.moveTo(padL, gy); ctx.lineTo(w - padR, gy); ctx.stroke();
+            }
+
+            ctx.fillStyle = '#aaa';
+            ctx.font = '10px Akkurat_Mono, monospace';
+            ctx.textAlign = 'right';
+            ['25%','20%','15%','10%','5%'].forEach(function(lbl, i) {
+                ctx.fillText(lbl, padL - 6, padT + (chartH / 4) * i + 4);
+            });
+
+            var years = ['2019','2020','2021','2022','2023','2024'];
+            var nPts = years.length;
+            var xStep = chartW / (nPts - 1);
+            var data = [14, 15, 16, 16.5, 17, 17.5];
+            var minVal = 0, maxVal = 25;
+
+            ctx.beginPath();
+            data.forEach(function(v, i) {
+                var x = padL + i * xStep;
+                var y = padT + chartH - ((v - minVal) / (maxVal - minVal)) * chartH;
+                if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+            });
+            ctx.strokeStyle = '#888';
+            ctx.lineWidth = 2.5;
+            ctx.lineJoin = 'round';
+            ctx.lineCap = 'round';
+            ctx.stroke();
+
+            ctx.fillStyle = '#aaa';
+            ctx.font = '10px Akkurat_Mono, monospace';
+            ctx.textAlign = 'center';
+            years.forEach(function(yr, i) {
+                ctx.fillText(yr, padL + i * xStep, h - padB + 18);
+            });
+        }
+
+        // Hook chart draws to modal open
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.sel-area-action-btn-page')) {
+                setTimeout(function() {
+                    drawAfpOwnershipChart();
+                    drawAfpContextualChart();
+                }, 80);
+            }
         });
         // City dropdown
         (function() {
