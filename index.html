@@ -15199,7 +15199,7 @@
             padding: 40px;
         }
         .afp-trends-panel-title {
-            font-family: 'Akkurat-Bold','Akkurat',sans-serif;
+            font-family: 'Akkurat','Akkurat-Regular',sans-serif;
             font-weight: 700;
             font-size: 24px;
             color: #000;
@@ -15237,9 +15237,9 @@
         .afp-avg-toggle {
             font-family: 'Akkurat','Akkurat-Regular',sans-serif;
             font-size: 12px;
-            color: #aaa;
+            color: #444;
             background: transparent;
-            border: 1px solid #ddd;
+            border: 1px solid #999;
             border-radius: 4px;
             padding: 3px 8px;
             cursor: pointer;
@@ -15248,8 +15248,8 @@
             text-align: left;
         }
         .afp-avg-toggle:hover {
-            border-color: #bbb;
-            color: #555;
+            border-color: #666;
+            color: #111;
         }
         .afp-avg-toggle.active {
             color: #fff;
@@ -15265,6 +15265,31 @@
             text-decoration: none;
         }
         .afp-contextual-link:hover { text-decoration: underline; }
+        /* Contextual metric dropdown */
+        .afp-metric-select-wrap {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+        }
+        .afp-metric-select {
+            appearance: none;
+            -webkit-appearance: none;
+            background: transparent;
+            border: none;
+            font-family: 'Akkurat','Akkurat-Regular',sans-serif;
+            font-size: 15px;
+            color: #d63d00;
+            cursor: pointer;
+            padding-right: 20px;
+            outline: none;
+        }
+        .afp-metric-select option { color: #333; }
+        .afp-metric-chevron {
+            position: absolute;
+            right: 0;
+            pointer-events: none;
+            color: #d63d00;
+        }
         .afp-trends-canvas {
             width: 100%;
             height: 180px;
@@ -15620,10 +15645,15 @@
                         <div class="afp-trends-panel-title">Contextual data</div>
                         <p class="afp-trends-panel-desc">Track demographic and economic indicators alongside ownership trends to understand the broader context of housing in Boston.</p>
                         <div class="afp-trends-above-chart">
-                            <a href="#" class="afp-contextual-link" onclick="return false;">
-                                Poverty rate over time
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3" stroke="#d63d00" stroke-width="1.5" stroke-linecap="round"/><path d="M5 3h8v8" stroke="#d63d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                            </a>
+                            <div class="afp-metric-select-wrap">
+                                <select class="afp-metric-select" id="afp-contextual-metric">
+                                    <option value="poverty">Poverty rate over time</option>
+                                    <option value="income">Median household income</option>
+                                    <option value="unemployment">Unemployment rate</option>
+                                    <option value="unaffordability">Unaffordability rate</option>
+                                </select>
+                                <svg class="afp-metric-chevron" width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5l5 5 5-5" stroke="#d63d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </div>
                         </div>
                         <canvas id="afp-contextual-chart" class="afp-trends-canvas"></canvas>
                     </div>
@@ -16052,9 +16082,20 @@
             });
         })();
 
+        var afpContextualDatasets = {
+            poverty:       { data: [14, 15, 16, 16.5, 17, 17.5], min: 0, max: 25, yLabels: ['25%','20%','15%','10%','5%'] },
+            income:        { data: [88, 89, 90, 90.5, 91.8, 92.6], min: 80, max: 100, yLabels: ['$100k','$95k','$90k','$85k','$80k'] },
+            unemployment:  { data: [4.8, 5.6, 7.9, 5.2, 4.1, 3.8], min: 0, max: 12, yLabels: ['12%','9%','6%','3%','0%'] },
+            unaffordability: { data: [3.5, 3.7, 3.9, 4.0, 4.1, 4.2], min: 0, max: 8, yLabels: ['8%','6%','4%','2%','0%'] }
+        };
+
         function drawAfpContextualChart() {
             var canvas = document.getElementById('afp-contextual-chart');
             if (!canvas) return;
+            var sel = document.getElementById('afp-contextual-metric');
+            var metric = sel ? sel.value : 'poverty';
+            var ds = afpContextualDatasets[metric] || afpContextualDatasets.poverty;
+
             var dpr = window.devicePixelRatio || 1;
             var panelEl = canvas.parentElement;
             var panelStyle = window.getComputedStyle(panelEl);
@@ -16082,26 +16123,24 @@
             ctx.fillStyle = '#aaa';
             ctx.font = '10px Akkurat_Mono, monospace';
             ctx.textAlign = 'right';
-            ['25%','20%','15%','10%','5%'].forEach(function(lbl, i) {
+            ds.yLabels.forEach(function(lbl, i) {
                 ctx.fillText(lbl, padL - 6, padT + (chartH / 4) * i + 4);
             });
 
             var years = ['2019','2020','2021','2022','2023','2024'];
-            var nPts = years.length;
-            var xStep = chartW / (nPts - 1);
-            var data = [14, 15, 16, 16.5, 17, 17.5];
-            var minVal = 0, maxVal = 25;
+            var xStep = chartW / (years.length - 1);
 
             ctx.beginPath();
-            data.forEach(function(v, i) {
+            ds.data.forEach(function(v, i) {
                 var x = padL + i * xStep;
-                var y = padT + chartH - ((v - minVal) / (maxVal - minVal)) * chartH;
+                var y = padT + chartH - ((v - ds.min) / (ds.max - ds.min)) * chartH;
                 if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
             });
             ctx.strokeStyle = '#888';
             ctx.lineWidth = 2.5;
             ctx.lineJoin = 'round';
             ctx.lineCap = 'round';
+            ctx.setLineDash([]);
             ctx.stroke();
 
             ctx.fillStyle = '#aaa';
@@ -16111,6 +16150,15 @@
                 ctx.fillText(yr, padL + i * xStep, h - padB + 18);
             });
         }
+
+        // Wire metric dropdown to redraw
+        (function() {
+            document.addEventListener('change', function(e) {
+                if (e.target && e.target.id === 'afp-contextual-metric') {
+                    drawAfpContextualChart();
+                }
+            });
+        })();
 
         // Hook chart draws to modal open
         document.addEventListener('click', function(e) {
