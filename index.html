@@ -14761,6 +14761,46 @@
         }
         .afp-metro-link-btn:hover { background: #f5f5f5; }
         .afp-metro-link-btn svg { opacity: 0.5; flex-shrink: 0; }
+        /* Landlord composition bars */
+        .afp-lbars {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            margin-top: 10px;
+        }
+        .afp-lbar-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .afp-lbar-label {
+            font-family: 'Akkurat','Akkurat-Regular',sans-serif;
+            font-size: 12px;
+            color: #555;
+            width: 100px;
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+        .afp-lbar-track {
+            flex: 1;
+            height: 6px;
+            background: #f0f0f0;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .afp-lbar-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.4s ease;
+        }
+        .afp-lbar-pct {
+            font-family: 'Akkurat_Mono','Akkurat Mono',monospace;
+            font-size: 11px;
+            color: #888;
+            width: 30px;
+            text-align: right;
+            flex-shrink: 0;
+        }
         /* 3rd card: view top 10 */
         .afp-card3 {
             flex-shrink: 0;
@@ -15359,22 +15399,57 @@
                         Boston stands out among major U.S. cities with exceptionally high corporate ownership at 34.2%, significantly above the national average. The city also has a highly educated population, with nearly half holding college degrees or higher. Out-of-state landlord ownership is 19.3%, suggesting a more locally-anchored rental market compared to peer cities.
                     </div>
                 </div>
-                <!-- Card 2: Explore Other Metro Areas -->
+                <!-- Card 2: Landlord Composition -->
                 <div class="afp-info-card">
                     <div class="afp-info-card-header">
                         <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="9" cy="9" r="7" stroke="black" stroke-width="1.5" fill="none"/>
-                            <line x1="9" y1="3" x2="9" y2="15" stroke="black" stroke-width="1.5"/>
-                            <path d="M3 6.5 Q9 4 15 6.5" stroke="black" stroke-width="1.5" fill="none"/>
-                            <path d="M3 11.5 Q9 14 15 11.5" stroke="black" stroke-width="1.5" fill="none"/>
+                            <rect x="2" y="4" width="14" height="2" rx="1" fill="black"/>
+                            <rect x="2" y="8" width="10" height="2" rx="1" fill="black"/>
+                            <rect x="2" y="12" width="7" height="2" rx="1" fill="black"/>
                         </svg>
-                        <span class="afp-info-card-title">Explore Other Metro Areas</span>
+                        <span class="afp-info-card-title">Landlord Composition</span>
                     </div>
-                    <div class="afp-metro-links" style="margin-top: 8px;">
-                        <button class="afp-metro-link-btn">Baltimore <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 9L9 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3.5 2H9V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                        <button class="afp-metro-link-btn">Houston <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 9L9 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3.5 2H9V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                        <button class="afp-metro-link-btn">Chicago <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 9L9 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3.5 2H9V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                        <button class="afp-metro-link-btn">Detroit <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 9L9 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3.5 2H9V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                    <div class="afp-lbars">
+                        <div class="afp-lbar-row">
+                            <span class="afp-lbar-label">Person</span>
+                            <div class="afp-lbar-track"><div class="afp-lbar-fill" style="width:34%; background:#C97060;"></div></div>
+                            <span class="afp-lbar-pct">34%</span>
+                        </div>
+                        <div class="afp-lbar-row">
+                            <span class="afp-lbar-label">Local corporate</span>
+                            <div class="afp-lbar-track"><div class="afp-lbar-fill" style="width:24%; background:#C9A850;"></div></div>
+                            <span class="afp-lbar-pct">24%</span>
+                        </div>
+                        <div class="afp-lbar-row">
+                            <span class="afp-lbar-label">Out-of-state</span>
+                            <div class="afp-lbar-track"><div class="afp-lbar-fill" style="width:19%; background:#9B8FC7;"></div></div>
+                            <span class="afp-lbar-pct">19%</span>
+                        </div>
+                        <div class="afp-lbar-row">
+                            <span class="afp-lbar-label">REIT</span>
+                            <div class="afp-lbar-track"><div class="afp-lbar-fill" style="width:11%; background:#6BA8C4;"></div></div>
+                            <span class="afp-lbar-pct">11%</span>
+                        </div>
+                        <div class="afp-lbar-row">
+                            <span class="afp-lbar-label">Local shell</span>
+                            <div class="afp-lbar-track"><div class="afp-lbar-fill" style="width:6%; background:#D4876B;"></div></div>
+                            <span class="afp-lbar-pct">6%</span>
+                        </div>
+                        <div class="afp-lbar-row">
+                            <span class="afp-lbar-label">Nonprofit</span>
+                            <div class="afp-lbar-track"><div class="afp-lbar-fill" style="width:3%; background:#7BB89A;"></div></div>
+                            <span class="afp-lbar-pct">3%</span>
+                        </div>
+                        <div class="afp-lbar-row">
+                            <span class="afp-lbar-label">Bank</span>
+                            <div class="afp-lbar-track"><div class="afp-lbar-fill" style="width:2%; background:#C48090;"></div></div>
+                            <span class="afp-lbar-pct">2%</span>
+                        </div>
+                        <div class="afp-lbar-row">
+                            <span class="afp-lbar-label">Government</span>
+                            <div class="afp-lbar-track"><div class="afp-lbar-fill" style="width:1%; background:#9AAAB8;"></div></div>
+                            <span class="afp-lbar-pct">1%</span>
+                        </div>
                     </div>
                 </div>
                 <!-- Card 3: View Top 10 -->
