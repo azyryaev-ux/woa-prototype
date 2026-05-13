@@ -14761,44 +14761,42 @@
         }
         .afp-metro-link-btn:hover { background: #f5f5f5; }
         .afp-metro-link-btn svg { opacity: 0.5; flex-shrink: 0; }
-        /* Landlord composition bars */
-        .afp-lbars {
-            display: flex;
-            flex-direction: column;
-            gap: 7px;
-            margin-top: 10px;
-        }
-        .afp-lbar-row {
+        /* Landlord composition donut */
+        .afp-lc-donut-wrap {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 16px;
+            margin-top: 10px;
         }
-        .afp-lbar-label {
+        .afp-lc-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            flex: 1;
+            min-width: 0;
+        }
+        .afp-lc-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+        .afp-lc-swatch {
+            width: 8px;
+            height: 8px;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+        .afp-lc-lbl {
             font-family: 'Akkurat','Akkurat-Regular',sans-serif;
             font-size: 12px;
             color: #555;
-            width: 100px;
-            flex-shrink: 0;
+            flex: 1;
             white-space: nowrap;
         }
-        .afp-lbar-track {
-            flex: 1;
-            height: 6px;
-            background: #f0f0f0;
-            border-radius: 3px;
-            overflow: hidden;
-        }
-        .afp-lbar-fill {
-            height: 100%;
-            border-radius: 3px;
-            transition: width 0.4s ease;
-        }
-        .afp-lbar-pct {
+        .afp-lc-pct {
             font-family: 'Akkurat_Mono','Akkurat Mono',monospace;
             font-size: 11px;
             color: #888;
-            width: 30px;
-            text-align: right;
             flex-shrink: 0;
         }
         /* 3rd card: view top 10 */
@@ -15430,46 +15428,17 @@
                         </svg>
                         <span class="afp-info-card-title">Landlord Composition</span>
                     </div>
-                    <div class="afp-lbars">
-                        <div class="afp-lbar-row">
-                            <span class="afp-lbar-label">Person</span>
-                            <div class="afp-lbar-track"><div class="afp-lbar-fill" style="width:34%; background:#C97060;"></div></div>
-                            <span class="afp-lbar-pct">34%</span>
-                        </div>
-                        <div class="afp-lbar-row">
-                            <span class="afp-lbar-label">Local corporate</span>
-                            <div class="afp-lbar-track"><div class="afp-lbar-fill" style="width:24%; background:#C9A850;"></div></div>
-                            <span class="afp-lbar-pct">24%</span>
-                        </div>
-                        <div class="afp-lbar-row">
-                            <span class="afp-lbar-label">Out-of-state</span>
-                            <div class="afp-lbar-track"><div class="afp-lbar-fill" style="width:19%; background:#9B8FC7;"></div></div>
-                            <span class="afp-lbar-pct">19%</span>
-                        </div>
-                        <div class="afp-lbar-row">
-                            <span class="afp-lbar-label">REIT</span>
-                            <div class="afp-lbar-track"><div class="afp-lbar-fill" style="width:11%; background:#6BA8C4;"></div></div>
-                            <span class="afp-lbar-pct">11%</span>
-                        </div>
-                        <div class="afp-lbar-row">
-                            <span class="afp-lbar-label">Local shell</span>
-                            <div class="afp-lbar-track"><div class="afp-lbar-fill" style="width:6%; background:#D4876B;"></div></div>
-                            <span class="afp-lbar-pct">6%</span>
-                        </div>
-                        <div class="afp-lbar-row">
-                            <span class="afp-lbar-label">Nonprofit</span>
-                            <div class="afp-lbar-track"><div class="afp-lbar-fill" style="width:3%; background:#7BB89A;"></div></div>
-                            <span class="afp-lbar-pct">3%</span>
-                        </div>
-                        <div class="afp-lbar-row">
-                            <span class="afp-lbar-label">Bank</span>
-                            <div class="afp-lbar-track"><div class="afp-lbar-fill" style="width:2%; background:#C48090;"></div></div>
-                            <span class="afp-lbar-pct">2%</span>
-                        </div>
-                        <div class="afp-lbar-row">
-                            <span class="afp-lbar-label">Government</span>
-                            <div class="afp-lbar-track"><div class="afp-lbar-fill" style="width:1%; background:#9AAAB8;"></div></div>
-                            <span class="afp-lbar-pct">1%</span>
+                    <div class="afp-lc-donut-wrap">
+                        <canvas id="afp-lc-donut" width="110" height="110" style="flex-shrink:0;"></canvas>
+                        <div class="afp-lc-legend">
+                            <div class="afp-lc-legend-item"><span class="afp-lc-swatch" style="background:#C97060;"></span><span class="afp-lc-lbl">Person</span><span class="afp-lc-pct">34%</span></div>
+                            <div class="afp-lc-legend-item"><span class="afp-lc-swatch" style="background:#C9A850;"></span><span class="afp-lc-lbl">Local corporate</span><span class="afp-lc-pct">24%</span></div>
+                            <div class="afp-lc-legend-item"><span class="afp-lc-swatch" style="background:#9B8FC7;"></span><span class="afp-lc-lbl">Out-of-state</span><span class="afp-lc-pct">19%</span></div>
+                            <div class="afp-lc-legend-item"><span class="afp-lc-swatch" style="background:#6BA8C4;"></span><span class="afp-lc-lbl">REIT</span><span class="afp-lc-pct">11%</span></div>
+                            <div class="afp-lc-legend-item"><span class="afp-lc-swatch" style="background:#D4876B;"></span><span class="afp-lc-lbl">Local shell</span><span class="afp-lc-pct">6%</span></div>
+                            <div class="afp-lc-legend-item"><span class="afp-lc-swatch" style="background:#7BB89A;"></span><span class="afp-lc-lbl">Nonprofit</span><span class="afp-lc-pct">3%</span></div>
+                            <div class="afp-lc-legend-item"><span class="afp-lc-swatch" style="background:#C48090;"></span><span class="afp-lc-lbl">Bank</span><span class="afp-lc-pct">2%</span></div>
+                            <div class="afp-lc-legend-item"><span class="afp-lc-swatch" style="background:#9AAAB8;"></span><span class="afp-lc-lbl">Government</span><span class="afp-lc-pct">1%</span></div>
                         </div>
                     </div>
                 </div>
@@ -15899,6 +15868,68 @@
         });
 
         // Draw area trends charts when modal opens
+        function drawAfpLcDonut() {
+            var canvas = document.getElementById('afp-lc-donut');
+            if (!canvas) return;
+            var dpr = window.devicePixelRatio || 1;
+            var size = 110;
+            canvas.width = Math.round(size * dpr);
+            canvas.height = Math.round(size * dpr);
+            canvas.style.width = size + 'px';
+            canvas.style.height = size + 'px';
+            var ctx = canvas.getContext('2d');
+            ctx.scale(dpr, dpr);
+
+            var cx = size / 2, cy = size / 2;
+            var outerR = size / 2 - 2;
+            var innerR = outerR * 0.58;
+            var gap = 0.018;
+
+            var slices = [
+                { pct: 34, color: '#C97060' },
+                { pct: 24, color: '#C9A850' },
+                { pct: 19, color: '#9B8FC7' },
+                { pct: 11, color: '#6BA8C4' },
+                { pct: 6,  color: '#D4876B' },
+                { pct: 3,  color: '#7BB89A' },
+                { pct: 2,  color: '#C48090' },
+                { pct: 1,  color: '#9AAAB8' }
+            ];
+
+            var startAngle = -Math.PI / 2;
+            slices.forEach(function(s) {
+                var sweep = (s.pct / 100) * Math.PI * 2;
+                ctx.beginPath();
+                ctx.arc(cx, cy, outerR, startAngle + gap / 2, startAngle + sweep - gap / 2);
+                ctx.arc(cx, cy, 0, startAngle + sweep - gap / 2, startAngle + gap / 2, true);
+                ctx.closePath();
+                ctx.fillStyle = s.color;
+                ctx.fill();
+                startAngle += sweep;
+            });
+
+            // Punch out donut hole
+            ctx.globalCompositeOperation = 'destination-out';
+            ctx.beginPath();
+            ctx.arc(cx, cy, innerR, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.globalCompositeOperation = 'source-over';
+
+            // White fill + center text
+            ctx.beginPath();
+            ctx.arc(cx, cy, innerR, 0, Math.PI * 2);
+            ctx.fillStyle = '#ffffff';
+            ctx.fill();
+
+            ctx.fillStyle = '#111';
+            ctx.font = 'bold 11px Akkurat_Mono, monospace';
+            ctx.textAlign = 'center';
+            ctx.fillText('239,322', cx, cy - 3);
+            ctx.fillStyle = '#999';
+            ctx.font = '9px Akkurat, sans-serif';
+            ctx.fillText('landlords', cx, cy + 10);
+        }
+
         // Avg toggle state: which series show their average line
         var afpAvgActive = [false, false, false];
 
@@ -16087,6 +16118,7 @@
         document.addEventListener('click', function(e) {
             if (e.target.closest('.sel-area-action-btn-page')) {
                 setTimeout(function() {
+                    drawAfpLcDonut();
                     drawAfpOwnershipChart();
                     drawAfpContextualChart();
                 }, 80);
