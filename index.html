@@ -15212,19 +15212,48 @@
             line-height: 1.5;
             margin: 0 0 20px;
         }
-        .afp-trends-legend {
+        /* Legend + avg toggles — horizontal layout */
+        .afp-trends-above-chart {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            min-height: 64px;
+            align-items: flex-start;
+        }
+        .afp-trends-legend-col {
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            margin-bottom: 24px;
+            gap: 6px;
+            flex: 1;
         }
         .afp-trends-legend-item {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 7px;
             font-family: 'Akkurat','Akkurat-Regular',sans-serif;
-            font-size: 14px;
+            font-size: 13px;
             color: #444;
+        }
+        .afp-avg-toggle {
+            font-family: 'Akkurat','Akkurat-Regular',sans-serif;
+            font-size: 12px;
+            color: #aaa;
+            background: transparent;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 3px 8px;
+            cursor: pointer;
+            transition: color 0.15s, background 0.15s, border-color 0.15s;
+            white-space: nowrap;
+            text-align: left;
+        }
+        .afp-avg-toggle:hover {
+            border-color: #bbb;
+            color: #555;
+        }
+        .afp-avg-toggle.active {
+            color: #fff;
+            border-color: transparent;
         }
         .afp-contextual-link {
             display: inline-flex;
@@ -15234,47 +15263,8 @@
             font-size: 15px;
             color: #d63d00;
             text-decoration: none;
-            margin-bottom: 24px;
         }
         .afp-contextual-link:hover { text-decoration: underline; }
-        /* Avg toggle pills */
-        .afp-trends-legend {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 24px;
-        }
-        .afp-trends-legend-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Akkurat','Akkurat-Regular',sans-serif;
-            font-size: 14px;
-            color: #444;
-        }
-        .afp-avg-toggle {
-            margin-left: auto;
-            font-family: 'Akkurat_Mono','Akkurat Mono',monospace;
-            font-size: 11px;
-            letter-spacing: 0.4px;
-            text-transform: uppercase;
-            color: #aaa;
-            background: transparent;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 2px 8px;
-            cursor: pointer;
-            transition: color 0.15s, background 0.15s, border-color 0.15s;
-            white-space: nowrap;
-        }
-        .afp-avg-toggle:hover {
-            border-color: #bbb;
-            color: #666;
-        }
-        .afp-avg-toggle.active {
-            color: #fff;
-            border-color: transparent;
-        }
         .afp-trends-canvas {
             width: 100%;
             height: 180px;
@@ -15433,12 +15423,12 @@
                         <div class="afp-lc-legend">
                             <div class="afp-lc-legend-item"><span class="afp-lc-swatch" style="background:#C97060;"></span><span class="afp-lc-lbl">Person</span><span class="afp-lc-pct">34%</span></div>
                             <div class="afp-lc-legend-item"><span class="afp-lc-swatch" style="background:#C9A850;"></span><span class="afp-lc-lbl">Local corporate</span><span class="afp-lc-pct">24%</span></div>
-                            <div class="afp-lc-legend-item"><span class="afp-lc-swatch" style="background:#9B8FC7;"></span><span class="afp-lc-lbl">Out-of-state</span><span class="afp-lc-pct">19%</span></div>
+                            <div class="afp-lc-legend-item"><span class="afp-lc-swatch" style="background:#8875CC;"></span><span class="afp-lc-lbl">Out-of-state</span><span class="afp-lc-pct">19%</span></div>
                             <div class="afp-lc-legend-item"><span class="afp-lc-swatch" style="background:#6BA8C4;"></span><span class="afp-lc-lbl">REIT</span><span class="afp-lc-pct">11%</span></div>
-                            <div class="afp-lc-legend-item"><span class="afp-lc-swatch" style="background:#D4876B;"></span><span class="afp-lc-lbl">Local shell</span><span class="afp-lc-pct">6%</span></div>
+                            <div class="afp-lc-legend-item"><span class="afp-lc-swatch" style="background:#D97830;"></span><span class="afp-lc-lbl">Local shell</span><span class="afp-lc-pct">6%</span></div>
                             <div class="afp-lc-legend-item"><span class="afp-lc-swatch" style="background:#7BB89A;"></span><span class="afp-lc-lbl">Nonprofit</span><span class="afp-lc-pct">3%</span></div>
-                            <div class="afp-lc-legend-item"><span class="afp-lc-swatch" style="background:#C48090;"></span><span class="afp-lc-lbl">Bank</span><span class="afp-lc-pct">2%</span></div>
-                            <div class="afp-lc-legend-item"><span class="afp-lc-swatch" style="background:#9AAAB8;"></span><span class="afp-lc-lbl">Government</span><span class="afp-lc-pct">1%</span></div>
+                            <div class="afp-lc-legend-item"><span class="afp-lc-swatch" style="background:#B040A8;"></span><span class="afp-lc-lbl">Bank</span><span class="afp-lc-pct">2%</span></div>
+                            <div class="afp-lc-legend-item"><span class="afp-lc-swatch" style="background:#5A7080;"></span><span class="afp-lc-lbl">Government</span><span class="afp-lc-pct">1%</span></div>
                         </div>
                     </div>
                 </div>
@@ -15599,21 +15589,27 @@
                     <div class="afp-trends-panel">
                         <div class="afp-trends-panel-title">Ownership</div>
                         <p class="afp-trends-panel-desc">Corporate and out-of-state ownership have trended upward since 2019, with 100+ unit ownership showing the steepest increase.</p>
-                        <div class="afp-trends-legend" id="afp-ownership-legend">
-                            <div class="afp-trends-legend-item">
-                                <svg width="20" height="3" viewBox="0 0 20 3"><line x1="0" y1="1.5" x2="20" y2="1.5" stroke="#D46033" stroke-width="3"/></svg>
-                                <span>Corporate ownership</span>
-                                <button class="afp-avg-toggle" data-series="0" style="--active-bg:#D46033;">Avg</button>
+                        <div class="afp-trends-above-chart" id="afp-ownership-legend">
+                            <div class="afp-trends-legend-col">
+                                <div class="afp-trends-legend-item">
+                                    <svg width="20" height="3" viewBox="0 0 20 3"><line x1="0" y1="1.5" x2="20" y2="1.5" stroke="#D46033" stroke-width="3"/></svg>
+                                    <span>Corporate ownership</span>
+                                </div>
+                                <button class="afp-avg-toggle" data-series="0">Show average</button>
                             </div>
-                            <div class="afp-trends-legend-item">
-                                <svg width="20" height="3" viewBox="0 0 20 3"><line x1="0" y1="1.5" x2="20" y2="1.5" stroke="#4D9FFF" stroke-width="3"/></svg>
-                                <span>100+ unit ownership</span>
-                                <button class="afp-avg-toggle" data-series="1" style="--active-bg:#4D9FFF;">Avg</button>
+                            <div class="afp-trends-legend-col">
+                                <div class="afp-trends-legend-item">
+                                    <svg width="20" height="3" viewBox="0 0 20 3"><line x1="0" y1="1.5" x2="20" y2="1.5" stroke="#4D9FFF" stroke-width="3"/></svg>
+                                    <span>100+ unit ownership</span>
+                                </div>
+                                <button class="afp-avg-toggle" data-series="1">Show average</button>
                             </div>
-                            <div class="afp-trends-legend-item">
-                                <svg width="20" height="3" viewBox="0 0 20 3"><line x1="0" y1="1.5" x2="20" y2="1.5" stroke="#4DC4A0" stroke-width="3"/></svg>
-                                <span>Out-of-state ownership</span>
-                                <button class="afp-avg-toggle" data-series="2" style="--active-bg:#4DC4A0;">Avg</button>
+                            <div class="afp-trends-legend-col">
+                                <div class="afp-trends-legend-item">
+                                    <svg width="20" height="3" viewBox="0 0 20 3"><line x1="0" y1="1.5" x2="20" y2="1.5" stroke="#4DC4A0" stroke-width="3"/></svg>
+                                    <span>Out-of-state ownership</span>
+                                </div>
+                                <button class="afp-avg-toggle" data-series="2">Show average</button>
                             </div>
                         </div>
                         <canvas id="afp-ownership-chart" class="afp-trends-canvas"></canvas>
@@ -15623,10 +15619,12 @@
                     <div class="afp-trends-panel">
                         <div class="afp-trends-panel-title">Contextual data</div>
                         <p class="afp-trends-panel-desc">Track demographic and economic indicators alongside ownership trends to understand the broader context of housing in Boston.</p>
-                        <a href="#" class="afp-contextual-link" onclick="return false;">
-                            Poverty rate over time
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3" stroke="#d63d00" stroke-width="1.5" stroke-linecap="round"/><path d="M5 3h8v8" stroke="#d63d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        </a>
+                        <div class="afp-trends-above-chart">
+                            <a href="#" class="afp-contextual-link" onclick="return false;">
+                                Poverty rate over time
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3" stroke="#d63d00" stroke-width="1.5" stroke-linecap="round"/><path d="M5 3h8v8" stroke="#d63d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </a>
+                        </div>
                         <canvas id="afp-contextual-chart" class="afp-trends-canvas"></canvas>
                     </div>
 
@@ -15888,12 +15886,12 @@
             var slices = [
                 { pct: 34, color: '#C97060' },
                 { pct: 24, color: '#C9A850' },
-                { pct: 19, color: '#9B8FC7' },
+                { pct: 19, color: '#8875CC' },
                 { pct: 11, color: '#6BA8C4' },
-                { pct: 6,  color: '#D4876B' },
+                { pct: 6,  color: '#D97830' },
                 { pct: 3,  color: '#7BB89A' },
-                { pct: 2,  color: '#C48090' },
-                { pct: 1,  color: '#9AAAB8' }
+                { pct: 2,  color: '#B040A8' },
+                { pct: 1,  color: '#5A7080' }
             ];
 
             var startAngle = -Math.PI / 2;
