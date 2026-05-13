@@ -15154,6 +15154,9 @@
             flex-wrap: wrap;
         }
         .afp-gc-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
             font-family: 'Akkurat-Bold','Akkurat',sans-serif;
             font-size: 12px;
             font-weight: 700;
@@ -15166,6 +15169,24 @@
             padding: 2px 8px;
             white-space: nowrap;
             line-height: 1.4;
+        }
+        .afp-gc-badge::after {
+            content: '?';
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            border: 1.5px solid #ff9f1c;
+            color: #ff9f1c;
+            font-size: 8px;
+            font-family: 'Akkurat-Bold','Akkurat',sans-serif;
+            font-weight: 700;
+            letter-spacing: 0;
+            text-transform: none;
+            line-height: 1;
+            flex-shrink: 0;
         }
         /* AFP Area Trends */
         .afp-trends-panels {
