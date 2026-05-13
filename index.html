@@ -14765,15 +14765,17 @@
         .afp-lc-donut-wrap {
             display: flex;
             align-items: center;
-            gap: 16px;
-            margin-top: 10px;
+            gap: 20px;
+            flex: 1;
+            min-height: 0;
         }
         .afp-lc-legend {
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 4px;
             flex: 1;
             min-width: 0;
+            justify-content: center;
         }
         .afp-lc-legend-item {
             display: flex;
@@ -15471,7 +15473,7 @@
                         <span class="afp-info-card-title">Landlord Composition</span>
                     </div>
                     <div class="afp-lc-donut-wrap">
-                        <canvas id="afp-lc-donut" width="110" height="110" style="flex-shrink:0;"></canvas>
+                        <canvas id="afp-lc-donut" width="150" height="150" style="flex-shrink:0; width:150px; height:150px;"></canvas>
                         <div class="afp-lc-legend">
                             <div class="afp-lc-legend-item"><span class="afp-lc-swatch" style="background:#C97060;"></span><span class="afp-lc-lbl">Person</span><span class="afp-lc-pct">34%</span></div>
                             <div class="afp-lc-legend-item"><span class="afp-lc-swatch" style="background:#C9A850;"></span><span class="afp-lc-lbl">Local corporate</span><span class="afp-lc-pct">24%</span></div>
@@ -16007,7 +16009,7 @@
                         <span class="afp-info-card-title">Landlord Composition</span>
                     </div>
                     <div class="afp-lc-donut-wrap">
-                        <canvas id="zfp-lc-donut" width="110" height="110" style="flex-shrink:0;"></canvas>
+                        <canvas id="zfp-lc-donut" width="150" height="150" style="flex-shrink:0; width:150px; height:150px;"></canvas>
                         <div class="afp-lc-legend">
                             <div class="afp-lc-legend-item"><span class="afp-lc-swatch" style="background:#C97060;"></span><span class="afp-lc-lbl">Person</span><span class="afp-lc-pct">34%</span></div>
                             <div class="afp-lc-legend-item"><span class="afp-lc-swatch" style="background:#C9A850;"></span><span class="afp-lc-lbl">Local corporate</span><span class="afp-lc-pct">24%</span></div>
@@ -16463,7 +16465,7 @@
             var canvas = document.getElementById('afp-lc-donut');
             if (!canvas) return;
             var dpr = window.devicePixelRatio || 1;
-            var size = 110;
+            var size = 150;
             canvas.width = Math.round(size * dpr);
             canvas.height = Math.round(size * dpr);
             canvas.style.width = size + 'px';
@@ -16848,7 +16850,7 @@
             var canvas = document.getElementById('zfp-lc-donut');
             if (!canvas) return;
             var dpr = window.devicePixelRatio || 1;
-            var size = 110;
+            var size = 150;
             canvas.width = Math.round(size * dpr);
             canvas.height = Math.round(size * dpr);
             canvas.style.width = size + 'px';
