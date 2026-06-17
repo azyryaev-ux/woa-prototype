@@ -86,35 +86,65 @@
     color: var(--accent);
   }
 
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 0;
-    list-style: none;
-    flex: 1;
-  }
 
-  .nav-links a {
-    display: block;
-    padding: 0 14px;
-    height: 60px;
-    line-height: 60px;
-    font-size: 13px;
-    font-weight: 400;
-    color: var(--text-3);
-    text-decoration: none;
-    border-bottom: 2px solid transparent;
-    transition: color 0.15s, border-color 0.15s;
-  }
-
-  .nav-links a:hover { color: var(--text); border-bottom-color: var(--border-mid); }
-  .nav-links a.active { color: var(--text); border-bottom-color: var(--accent); font-weight: 700; }
 
   .nav-right {
     display: flex;
     align-items: center;
     gap: 0;
     margin-left: auto;
+  }
+
+
+  /* === Subnav — styled like landlord jump-to nav === */
+  .page-subnav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    background: #fff;
+    position: sticky;
+    top: 60px;
+    z-index: 99;
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .page-subnav-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #707070;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-family: 'Akkurat', sans-serif;
+    margin-right: 8px;
+    white-space: nowrap;
+  }
+  .page-subnav-links {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  .page-subnav-link {
+    padding: 6px 14px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .page-subnav-link:hover {
+    background: #f5f5f5;
+    color: #000;
+  }
+  .page-subnav-link.active {
+    background: #000;
+    color: #fff;
   }
 
   /* Hamburger — matches app-header-menu exactly */
@@ -183,7 +213,7 @@
   }
 
   .hero-inner {
-    max-width: 1100px;
+    max-width: 1210px;
     margin: 0 auto;
     position: relative;
     z-index: 1;
@@ -294,7 +324,7 @@
   }
 
   .stats-strip-inner {
-    max-width: 1100px;
+    max-width: 1210px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -339,7 +369,7 @@
   .section-alt { background: var(--bg-off); }
 
   .section-inner {
-    max-width: 1100px;
+    max-width: 1210px;
     margin: 0 auto;
   }
 
@@ -970,7 +1000,7 @@
   }
 
   .footer-inner {
-    max-width: 1100px;
+    max-width: 1210px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -1024,7 +1054,7 @@
   /* ── MENU DROPDOWN (copied from main app) ── */
   .menu-dropdown {
     position: fixed;
-    top: 60px;
+    top: 108px;
     left: 0;
     right: 0;
     background: rgba(255,255,255,0.96);
@@ -1219,13 +1249,7 @@
     <div class="nav-logo-mark"></div>
     <span class="nav-logo-text">WHO OWNS <span class="nav-logo-city">AMERICA</span></span>
   </a>
-  <ul class="nav-links">
-    <li><a href="#overview" class="active">Overview</a></li>
-    <li><a href="#ownership">Ownership</a></li>
-    <li><a href="#cities">Cities</a></li>
-    <li><a href="#landlords">Landlords</a></li>
-    <li><a href="#narratives">Stories</a></li>
-  </ul>
+
   <div class="nav-right">
     <button class="nav-hamburger" id="nav-hamburger-btn" aria-label="Menu">
       <span></span>
@@ -1233,6 +1257,17 @@
     </button>
   </div>
 </nav>
+
+<div class="page-subnav">
+  <span class="page-subnav-label">Jump to:</span>
+  <div class="page-subnav-links">
+    <a href="#overview" class="page-subnav-link active">Overview</a>
+    <a href="#ownership" class="page-subnav-link">Ownership</a>
+    <a href="#cities" class="page-subnav-link">Cities</a>
+    <a href="#landlords" class="page-subnav-link">Landlords</a>
+    <a href="#narratives" class="page-subnav-link">Stories</a>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="overview">
