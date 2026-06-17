@@ -506,7 +506,7 @@
 
   .map-sidebar {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 16px;
     order: -1;
   }
@@ -514,49 +514,54 @@
   .map-fact-card {
     background: #fff;
     border: 1px solid var(--border);
+    border-top: 3px solid var(--accent);
     border-radius: 6px;
-    padding: 16px 18px;
+    padding: 20px 20px 22px;
   }
 
   .map-fact-card-label {
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--text-4);
-    margin-bottom: 6px;
+    margin-bottom: 10px;
   }
 
   .map-fact-card-value {
-    font-size: 26px;
+    font-size: 38px;
     font-weight: 700;
     color: var(--accent);
     letter-spacing: -0.02em;
     line-height: 1;
-    margin-bottom: 4px;
+    margin-bottom: 10px;
   }
 
   .map-fact-card-note {
-    font-size: 14px;
+    font-size: 13px;
     color: var(--text-3);
-    line-height: 1.5;
+    line-height: 1.55;
   }
 
   .map-methodology-note {
-    background: var(--accent-light);
-    border: 1px solid var(--accent-mid);
+    background: #fff;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--accent);
     border-radius: 6px;
-    padding: 14px 16px;
-    font-size: 14px;
-    color: var(--text-2);
-    line-height: 1.5;
+    padding: 20px 20px 22px;
+    font-size: 13px;
+    color: var(--text-3);
+    line-height: 1.55;
   }
 
   .map-methodology-note strong {
     color: var(--accent);
     font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     display: block;
-    margin-bottom: 3px;
+    margin-bottom: 10px;
   }
 
   /* ── OWNERSHIP CHARTS ── */
@@ -598,19 +603,25 @@
     margin-bottom: 20px;
   }
   .renter-impact-stat {
-    font-size: 64px;
+    font-size: 80px;
     font-weight: 700;
     color: var(--accent);
-    letter-spacing: -0.03em;
+    letter-spacing: -0.04em;
     line-height: 1;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
+  }
+  .renter-impact-stat-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 24px;
+    font-weight: 500;
   }
   .renter-impact-body {
-    font-size: 19px;
+    font-size: 21px;
     line-height: 1.7;
-    color: rgba(255,255,255,0.7);
-    max-width: 52ch;
-    margin-bottom: 28px;
+    color: rgba(255,255,255,0.72);
+    max-width: 48ch;
+    margin-bottom: 32px;
   }
   .renter-impact-cta {
     display: inline-flex;
@@ -1627,10 +1638,7 @@
     <div class="section-label">Geographic distribution</div>
     <div class="section-title">Mapping corporate ownership across America</div>
     <p class="section-desc">
-      Corporate ownership of rental housing isn't uniform. Markets with high
-      investor activity often overlap with areas of rapid rent growth, lower
-      homeownership rates, and higher concentrations of non-white residents.
-      Each dot below represents a metro area in our dataset.
+      Each dot represents a metro area in our dataset; dot size reflects corporate ownership concentration.
     </p>
 
     <div class="map-layout">
@@ -1843,6 +1851,7 @@
         <div>
           <div class="renter-impact-label">What this means for renters</div>
           <div class="renter-impact-stat">5-15%</div>
+          <div class="renter-impact-stat-label">average rent increase after institutional acquisition</div>
           <p class="renter-impact-body">Average rent increase within two years of a large institutional landlord acquiring a building. Unlike individual owners, corporate landlords use systematic rent-optimization algorithms, coordinated eviction policies, and legal teams that make it harder for tenants to push back.</p>
         </div>
         <a href="#" class="renter-impact-cta">Read the research &#8594;</a>
