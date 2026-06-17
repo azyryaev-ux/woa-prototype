@@ -180,70 +180,164 @@
     transform: translateY(-4.25px) rotate(-45deg);
   }
 
-  /* ── HERO ── */
-  .hero {
-    /* Gradient: near-black top to warm dark charcoal bottom */
-    background: linear-gradient(160deg, #111111 0%, #1a1008 100%);
-    color: #fff;
-    padding: 64px 32px 68px;
+  /* ── HERO: TWO-PANEL SCROLL-OVER ── */
+
+  .hero-scroll-root {
     position: relative;
-    overflow: hidden;
   }
 
-  /* Subtle dot grid texture */
-  .hero::before {
+  .hero-photo {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    overflow: hidden;
+    background: #0a0a0a url('images/hero-city.jpg') center center / cover no-repeat;
+  }
+
+  .hero-photo::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
-    background-size: 28px 28px;
-    pointer-events: none;
-  }
-
-  /* Subtle warm glow bottom-right */
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: -60px;
-    right: -60px;
-    width: 480px;
-    height: 480px;
-    background: radial-gradient(circle, rgba(214,61,0,0.12) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .hero-inner {
-    max-width: 1210px;
-    margin: 0 auto;
-    position: relative;
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.3) 0%,
+      rgba(0,0,0,0.25) 40%,
+      rgba(0,0,0,0.7) 75%,
+      rgba(0,0,0,0.95) 100%
+    );
     z-index: 1;
+  }
+
+  .hero-photo-content {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    z-index: 2;
+    max-width: 1210px;
+    padding: 0 48px 80px;
+    box-sizing: border-box;
   }
 
   .hero-eyebrow {
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 16px;
+    margin-bottom: 20px;
   }
 
-  .hero h1 {
-    font-size: 46px;
+  .hero-photo-content h1 {
+    font-size: clamp(52px, 7vw, 96px);
     font-weight: 700;
-    line-height: 1.08;
-    letter-spacing: -0.02em;
-    margin-bottom: 20px;
+    line-height: 0.97;
+    letter-spacing: -0.03em;
     color: #fff;
+    max-width: 14ch;
+    text-shadow: 0 2px 32px rgba(0,0,0,0.4);
+    margin: 0 0 40px;
+  }
+
+  .hero-scroll-hint {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+  .hero-scroll-hint-line {
+    width: 32px;
+    height: 1px;
+    background: rgba(255,255,255,0.25);
+  }
+
+  /* Panel 2: story slides over */
+  .hero-story {
+    position: relative;
+    z-index: 2;
+    background: #111111;
+    border-radius: 20px 20px 0 0;
+    margin-top: -40px;
+    box-shadow: 0 -24px 80px rgba(0,0,0,0.6);
+    padding: 64px 48px 72px;
+  }
+
+  .hero-story-inner {
+    max-width: 1210px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .hero-story-photo-wrap {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+  }
+  .hero-story-photo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(0.7) brightness(0.85);
+  }
+  .hero-story-photo-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 12px 14px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    font-family: 'Akkurat Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-story-text { padding-top: 8px; }
+
+  .hero-story-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 24px;
   }
 
   .hero-lead {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.7;
-    color: rgba(255,255,255,0.65);
-    margin-bottom: 28px;
-    max-width: 66ch;
+    color: rgba(255,255,255,0.72);
+    margin-bottom: 24px;
+    max-width: 60ch;
   }
+  .hero-lead:first-of-type {
+    font-size: 20px;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.28);
+    font-family: 'Akkurat Mono', monospace;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+  .hero-meta-divider { width: 1px; height: 10px; background: rgba(255,255,255,0.15); }
 
   .hero-cta {
     display: inline-flex;
@@ -259,44 +353,27 @@
     padding: 11px 20px;
     cursor: pointer;
     text-decoration: none;
-    letter-spacing: 0.01em;
     transition: background 0.15s, transform 0.15s;
-    align-self: flex-start;
-    margin-bottom: 28px;
+    margin-top: 28px;
   }
   .hero-cta:hover { background: #be3500; transform: translateY(-1px); }
   .hero-cta-arrow { font-size: 15px; transition: transform 0.15s; }
   .hero-cta:hover .hero-cta-arrow { transform: translateX(3px); }
 
-  .hero-meta {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    font-size: 11px;
-    color: rgba(255,255,255,0.38);
-    font-family: 'Akkurat Mono', monospace;
-  }
-
-  .hero-meta-divider { width: 1px; height: 10px; background: rgba(255,255,255,0.18); }
-
-  /* Inline centrepiece stat callout */
   .hero-stat-callout {
     display: flex;
     align-items: baseline;
     gap: 16px;
-    margin-bottom: 28px;
+    margin: 32px 0 0;
     padding: 20px 24px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
     border-left: 3px solid var(--accent);
     border-radius: 6px;
-    max-width: 640px;
   }
-
   .hero-stat-number {
     font-size: 52px;
     font-weight: 700;
-    color: #fff;
     letter-spacing: -0.03em;
     line-height: 1;
     flex-shrink: 0;
@@ -305,19 +382,14 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-
   .hero-stat-text {
     font-size: 14px;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.55);
     line-height: 1.5;
   }
+  .hero-stat-text strong { color: rgba(255,255,255,0.85); font-weight: 700; }
 
-  .hero-stat-text strong {
-    color: rgba(255,255,255,0.88);
-    font-weight: 700;
-  }
-
-  /* ── NATIONAL STATS STRIP ── */
+    /* ── NATIONAL STATS STRIP ── */
   .stats-strip {
     background: var(--accent);
     padding: 0 32px;
