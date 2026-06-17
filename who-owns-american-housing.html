@@ -187,13 +187,7 @@
     margin: 0 auto;
     position: relative;
     z-index: 1;
-    display: grid;
-    grid-template-columns: 60% 40%;
-    gap: 48px;
-    align-items: center;
   }
-
-  .hero-left { display: flex; flex-direction: column; }
 
   .hero-eyebrow {
     font-size: 11px;
@@ -254,80 +248,42 @@
 
   .hero-meta-divider { width: 1px; height: 10px; background: rgba(255,255,255,0.18); }
 
-  /* Right column: centrepiece stat */
-  .hero-right {
+  /* Inline centrepiece stat callout */
+  .hero-stat-callout {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-    border-left: 1px solid rgba(255,255,255,0.1);
-    padding-left: 48px;
-  }
-
-  .hero-stat-eyebrow {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
-    margin-bottom: 10px;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding: 20px 24px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    max-width: 640px;
   }
 
   .hero-stat-number {
-    font-size: 88px;
+    font-size: 52px;
     font-weight: 700;
     color: #fff;
-    letter-spacing: -0.04em;
-    line-height: 0.9;
-    margin-bottom: 14px;
-    /* subtle accent tint */
-    background: linear-gradient(135deg, #fff 60%, rgba(214,61,0,0.6) 100%);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #fff 50%, rgba(214,61,0,0.7) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  .hero-stat-label {
-    font-size: 15px;
+  .hero-stat-text {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.5;
+  }
+
+  .hero-stat-text strong {
+    color: rgba(255,255,255,0.88);
     font-weight: 700;
-    color: rgba(255,255,255,0.82);
-    line-height: 1.35;
-    margin-bottom: 14px;
-    max-width: 260px;
-  }
-
-  .hero-stat-sub {
-    font-size: 13px;
-    color: rgba(255,255,255,0.42);
-    line-height: 1.55;
-    max-width: 260px;
-  }
-
-  .hero-stat-bar-wrap {
-    width: 100%;
-    max-width: 240px;
-    margin-top: 20px;
-  }
-
-  .hero-stat-bar-track {
-    height: 3px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 2px;
-    overflow: hidden;
-    margin-bottom: 6px;
-  }
-
-  .hero-stat-bar-fill {
-    height: 100%;
-    width: 41%;
-    background: var(--accent);
-    border-radius: 2px;
-  }
-
-  .hero-stat-bar-label {
-    font-size: 10px;
-    color: rgba(255,255,255,0.35);
-    font-family: 'Akkurat Mono', monospace;
   }
 
   /* ── NATIONAL STATS STRIP ── */
