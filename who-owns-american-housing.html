@@ -1095,57 +1095,112 @@
   }
 
   /* ── FOOTER ── */
+  /* ── FOOTER ── */
   .footer {
     background: var(--bg-dark);
-    color: rgba(255,255,255,0.5);
-    padding: 40px 32px;
+    color: rgba(255,255,255,0.4);
+    padding: 0 32px;
     font-size: 12px;
+    border-top: 2px solid var(--accent);
   }
 
   .footer-inner {
     max-width: 1210px;
     margin: 0 auto;
+  }
+
+  /* Top row: logo + tagline */
+  .footer-top {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
-    gap: 24px;
-    flex-wrap: wrap;
+    gap: 48px;
+    padding: 52px 0 36px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
   }
 
   .footer-brand {
     display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-logo {
+    display: flex;
     align-items: center;
-    gap: 10px;
-    color: rgba(255,255,255,0.8);
-    font-weight: 700;
-    font-size: 13px;
+    gap: 8px;
   }
 
   .footer-logo-mark {
-    width: 24px; height: 24px;
-    background: var(--accent);
-    border-radius: 3px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 9px;
+    width: 14px;
+    height: 14px;
+    background: #b6b6b6;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .footer-logo-text {
+    font-size: 13px;
     font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #fff;
+    text-transform: uppercase;
+  }
+
+  .footer-logo-text span { color: var(--accent); }
+
+  .footer-tagline {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.6;
+    max-width: 38ch;
+  }
+
+  /* Right: nav group */
+  .footer-nav-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-end;
+  }
+
+  .footer-nav-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
   }
 
   .footer-links {
     display: flex;
-    gap: 20px;
+    gap: 24px;
     list-style: none;
   }
 
   .footer-links a {
-    color: rgba(255,255,255,0.45);
+    color: rgba(255,255,255,0.5);
     text-decoration: none;
     font-size: 13px;
     transition: color 0.15s;
   }
-  .footer-links a:hover { color: rgba(255,255,255,0.8); }
+  .footer-links a:hover { color: rgba(255,255,255,0.9); }
+
+  /* Bottom row: copyright */
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0 28px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.22);
+  }
+
+  .footer-bottom a {
+    color: rgba(255,255,255,0.35);
+    text-decoration: none;
+  }
+  .footer-bottom a:hover { color: rgba(255,255,255,0.7); }
 
   /* ── CITY CIRCLES ON MAP ── */
   .city-dot {
