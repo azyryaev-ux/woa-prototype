@@ -331,9 +331,9 @@
   }
 
   .stat-pill {
-    padding: 20px 0;
+    padding: 36px 0 40px;
     border-right: 1px solid rgba(255,255,255,0.2);
-    padding-left: 24px;
+    padding-left: 28px;
   }
   .stat-pill:first-child { padding-left: 0; }
   .stat-pill:last-child { border-right: none; }
@@ -344,21 +344,30 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: rgba(255,255,255,0.7);
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
 
   .stat-pill-value {
-    font-size: 28px;
+    font-size: 44px;
     font-weight: 700;
     color: #fff;
     letter-spacing: -0.02em;
     line-height: 1;
-    margin-bottom: 3px;
+    margin-bottom: 6px;
   }
 
   .stat-pill-sub {
     font-size: 14px;
-    color: rgba(255,255,255,0.65);
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 12px;
+  }
+
+  .stat-pill-explainer {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.55;
+    max-width: 22ch;
   }
 
   /* ── SECTION WRAPPER ── */
@@ -1302,22 +1311,26 @@
     <div class="stat-pill">
       <div class="stat-pill-label">Rental units tracked</div>
       <div class="stat-pill-value">2.1M</div>
-      <div class="stat-pill-sub">across 9 metro areas</div>
+      <div class="stat-pill-sub">Across 9 major metro areas</div>
+      <div class="stat-pill-explainer">Every rental unit in our dataset was traced through county property records and LLC filings. Together they represent a cross-section of the American rental market, from dense urban cores to sprawling suburbs.</div>
     </div>
     <div class="stat-pill">
       <div class="stat-pill-label">Corporate owned</div>
       <div class="stat-pill-value">27%</div>
       <div class="stat-pill-sub">567K units — up 9 pts since 2015</div>
+      <div class="stat-pill-explainer">Nearly 1 in 3 rentals is now held by a corporate entity rather than an individual landlord. That share has risen steadily for a decade and accelerated sharply after 2020.</div>
     </div>
     <div class="stat-pill">
       <div class="stat-pill-label">Large portfolio (100+ units)</div>
       <div class="stat-pill-value">41%</div>
       <div class="stat-pill-sub">892K units nationally</div>
+      <div class="stat-pill-explainer">Properties owned by landlords controlling 100 or more units. Renters in these buildings typically face higher rents, more frequent evictions, and fewer maintenance responses than those renting from small owners.</div>
     </div>
     <div class="stat-pill">
       <div class="stat-pill-label">Cities tracked</div>
       <div class="stat-pill-value">28</div>
       <div class="stat-pill-sub">50K+ population threshold</div>
+      <div class="stat-pill-explainer">We focused on cities large enough to have a meaningful rental market but small enough to be overlooked by national reporting. The result is a picture of mid-size America where the ownership shift is often most acute.</div>
     </div>
   </div>
 </div>
