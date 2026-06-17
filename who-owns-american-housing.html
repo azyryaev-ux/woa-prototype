@@ -556,13 +556,32 @@
   /* ── OWNERSHIP CHARTS ── */
   /* Renter impact band */
   .renter-impact-band {
-    background: #1a1a1a;
-    border-radius: 8px;
-    padding: 40px 48px;
+    background: #111;
+    border-radius: 10px;
+    overflow: hidden;
     margin-top: 8px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 38%;
+    min-height: 280px;
+  }
+  /* dot-grid texture */
+  .renter-impact-band::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+    z-index: 0;
   }
   .renter-impact-inner {
-    max-width: 720px;
+    position: relative;
+    z-index: 1;
+    padding: 44px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   .renter-impact-label {
     font-size: 11px;
@@ -570,12 +589,54 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 14px;
+    margin-bottom: 20px;
+  }
+  .renter-impact-stat {
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 16px;
   }
   .renter-impact-body {
-    font-size: 17px;
-    line-height: 1.75;
-    color: rgba(255,255,255,0.72);
+    font-size: 19px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.7);
+    max-width: 52ch;
+    margin-bottom: 28px;
+  }
+  .renter-impact-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    transition: gap 0.15s;
+  }
+  .renter-impact-cta:hover { gap: 12px; }
+  /* Right: photo with gradient bleed */
+  .renter-impact-photo {
+    position: relative;
+    overflow: hidden;
+  }
+  .renter-impact-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(0.6) brightness(0.7);
+  }
+  .renter-impact-photo::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, #111 0%, transparent 40%);
+    z-index: 1;
   }
 
   .ownership-grid {
@@ -1773,8 +1834,15 @@
 
     <div class="renter-impact-band">
       <div class="renter-impact-inner">
-        <div class="renter-impact-label">What this means for renters</div>
-        <p class="renter-impact-body">When a large institutional landlord acquires properties, studies show average rents typically rise 5-15% within two years of acquisition. Individual landlords sometimes negotiate informally; institutional owners operate with systematic rent-optimization algorithms, coordinated eviction policies, and legal teams that make it harder for tenants to contest increases or request repairs.</p>
+        <div>
+          <div class="renter-impact-label">What this means for renters</div>
+          <div class="renter-impact-stat">5-15%</div>
+          <p class="renter-impact-body">Average rent increase within two years of a large institutional landlord acquiring a building. Unlike individual owners, corporate landlords use systematic rent-optimization algorithms, coordinated eviction policies, and legal teams that make it harder for tenants to push back.</p>
+        </div>
+        <a href="#" class="renter-impact-cta">Read the research &#8594;</a>
+      </div>
+      <div class="renter-impact-photo">
+        <img src="images/houston.jpg" alt="Houston housing">
       </div>
     </div>
   </div>
