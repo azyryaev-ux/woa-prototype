@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Who Owns American Housing? — WOA</title>
+<title>Who Owns American Housing? - WOA</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
   @font-face { font-family: 'Akkurat'; src: url('Akkurat-Regular.ttf') format('truetype'); font-weight: 400; }
@@ -53,7 +53,7 @@
     box-shadow: 0px 4px 12px rgba(0,0,0,0.06);
   }
 
-  /* Logo: matches app exactly — gray circle + WHO OWNS AMERICA */
+  /* Logo: matches app exactly - gray circle + WHO OWNS AMERICA */
   .nav-logo {
     display: flex;
     align-items: center;
@@ -96,7 +96,7 @@
   }
 
 
-  /* === Subnav — styled like landlord jump-to nav === */
+  /* === Subnav - styled like landlord jump-to nav === */
   .page-subnav {
     display: flex;
     align-items: center;
@@ -147,7 +147,7 @@
     color: #fff;
   }
 
-  /* Hamburger — matches app-header-menu exactly */
+  /* Hamburger - matches app-header-menu exactly */
   .nav-hamburger {
     display: flex;
     flex-direction: column;
@@ -484,6 +484,30 @@
   }
 
   /* ── OWNERSHIP CHARTS ── */
+  /* Renter impact band */
+  .renter-impact-band {
+    background: #1a1a1a;
+    border-radius: 8px;
+    padding: 40px 48px;
+    margin-top: 8px;
+  }
+  .renter-impact-inner {
+    max-width: 720px;
+  }
+  .renter-impact-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .renter-impact-body {
+    font-size: 17px;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.72);
+  }
+
   .ownership-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -523,8 +547,8 @@
   }
 
   .ownership-donut-wrap {
-    width: 110px;
-    height: 110px;
+    width: 160px;
+    height: 160px;
     flex-shrink: 0;
     position: relative;
   }
@@ -539,17 +563,17 @@
   }
 
   .ownership-donut-center-value {
-    font-size: 19px;
+    font-size: 26px;
     font-weight: 700;
     color: var(--text);
     line-height: 1;
   }
 
   .ownership-donut-center-label {
-    font-size: 9px;
-    color: var(--text-4);
-    line-height: 1.2;
-    margin-top: 2px;
+    font-size: 11px;
+    color: var(--text-3);
+    line-height: 1.3;
+    margin-top: 4px;
   }
 
   .ownership-legend {
@@ -1284,7 +1308,7 @@
   <!-- Panel 1: full-viewport photo with huge headline -->
   <section class="hero-photo">
     <div class="hero-photo-content">
-      <div class="hero-eyebrow">National Housing Report &mdash; 2026</div>
+      <div class="hero-eyebrow">National Housing Report - 2026</div>
       <h1>Who Owns American Housing?</h1>
       <div class="hero-scroll-hint">
         <span class="hero-scroll-hint-line"></span>
@@ -1300,7 +1324,7 @@
       <!-- Left: city photo -->
       <div class="hero-story-photo-wrap">
         <img src="images/miami.jpg" alt="Miami cityscape">
-        <div class="hero-story-photo-caption">Miami, FL &mdash; one of 28 cities tracked</div>
+        <div class="hero-story-photo-caption">Miami, FL - one of 28 cities tracked</div>
       </div>
 
       <!-- Right: editorial text -->
@@ -1351,7 +1375,7 @@
     <div class="stat-pill">
       <div class="stat-pill-label">Corporate owned</div>
       <div class="stat-pill-value">27%</div>
-      <div class="stat-pill-sub">567K units — up 9 pts since 2015</div>
+      <div class="stat-pill-sub">567K units - up 9 pts since 2015</div>
       <div class="stat-pill-explainer">Nearly 1 in 3 rentals is now held by a corporate entity rather than an individual landlord. That share has risen steadily for a decade and accelerated sharply after 2020.</div>
     </div>
     <div class="stat-pill">
@@ -1465,17 +1489,17 @@
         <div class="map-fact-card">
           <div class="map-fact-card-label">Fastest growing market</div>
           <div class="map-fact-card-value">Miami</div>
-          <div class="map-fact-card-note">Corporate ownership rose 6.8 percentage points — the sharpest increase in our dataset, driven by Sun Belt investment funds.</div>
+          <div class="map-fact-card-note">Corporate ownership rose 6.8 percentage points - the sharpest increase in our dataset, driven by Sun Belt investment funds.</div>
         </div>
         <div class="map-fact-card">
           <div class="map-fact-card-label">Largest market</div>
           <div class="map-fact-card-value">Chicago</div>
-          <div class="map-fact-card-note">612K rental units tracked. Institutional landlords hold 43.8% — above the national average across all tracked cities.</div>
+          <div class="map-fact-card-note">612K rental units tracked. Institutional landlords hold 43.8% - above the national average across all tracked cities.</div>
         </div>
         <div class="map-fact-card">
           <div class="map-fact-card-label">Most fragmented ownership</div>
           <div class="map-fact-card-value">Bozeman</div>
-          <div class="map-fact-card-note">Montana's smaller market shows lower large-portfolio concentration (30.9%) — but rates have climbed steadily since 2019.</div>
+          <div class="map-fact-card-note">Montana's smaller market shows lower large-portfolio concentration (30.9%) - but rates have climbed steadily since 2019.</div>
         </div>
         <div class="map-methodology-note">
           <strong>How we trace ownership</strong>
@@ -1493,7 +1517,7 @@
     <div class="section-title">Who holds the housing stock?</div>
     <p class="section-desc">
       Across our nine metro areas, nearly half of all rental units are controlled
-      by large-portfolio landlords — those owning 100 or more units. This share
+      by large-portfolio landlords - those owning 100 or more units. This share
       has risen steadily since 2010, with the sharpest acceleration coming after
       2020. Small-scale "mom and pop" landlords, once the backbone of the rental
       market, now hold a shrinking slice of the pie.
@@ -1507,7 +1531,7 @@
         <div class="ownership-card-headline">41% of units held by large landlords</div>
         <div class="ownership-chart-wrap">
           <div class="ownership-donut-wrap">
-            <canvas id="donut-size" width="110" height="110"></canvas>
+            <canvas id="donut-size" width="160" height="160"></canvas>
             <div class="ownership-donut-center">
               <div class="ownership-donut-center-value">41%</div>
               <div class="ownership-donut-center-label">large<br>portfolio</div>
@@ -1544,7 +1568,7 @@
         <div class="ownership-card-headline">More than 1 in 4 units is corporate-owned</div>
         <div class="ownership-chart-wrap">
           <div class="ownership-donut-wrap">
-            <canvas id="donut-type" width="110" height="110"></canvas>
+            <canvas id="donut-type" width="160" height="160"></canvas>
             <div class="ownership-donut-center">
               <div class="ownership-donut-center-value">27%</div>
               <div class="ownership-donut-center-label">corporate<br>owned</div>
@@ -1606,7 +1630,7 @@
       Ownership concentration varies significantly from city to city, even within
       the same metro area. Click any column header to sort. Cities with higher
       concentrations of non-white residents tend to see higher corporate ownership
-      rates — a pattern explored further in the Stories section below.
+      rates - a pattern explored further in the Stories section below.
     </p>
 
     <div class="table-controls">
@@ -1638,8 +1662,8 @@
     <div class="section-title">The six biggest corporate owners</div>
     <p class="section-desc">
       Six companies together control over 330,000 rental units across the cities in
-      our dataset. Most are backed by institutional investors — asset managers and
-      private equity funds — whose names rarely appear on lease agreements. Their
+      our dataset. Most are backed by institutional investors - asset managers and
+      private equity funds - whose names rarely appear on lease agreements. Their
       rapid growth since 2012 has reshaped entire neighborhoods in cities from
       Houston to Boston.
     </p>
@@ -1722,7 +1746,7 @@
             <td class="landlord-rank">6</td>
             <td class="landlord-name-cell">
               <strong>Pretium Partners</strong>
-              <span>Private equity fund — also backs Progress Residential</span>
+              <span>Private equity fund - also backs Progress Residential</span>
             </td>
             <td><div class="landlord-units">38,920</div></td>
             <td>8</td>
@@ -1758,7 +1782,7 @@
       <div class="narrative-card">
         <div class="narrative-card-accent"></div>
         <div class="narrative-card-body">
-          <div class="narrative-card-tag">Narrative 1 — Portfolio growth</div>
+          <div class="narrative-card-tag">Narrative 1 - Portfolio growth</div>
           <div class="narrative-card-title">The Great Consolidation: How Wall Street Bought Your Neighborhood</div>
           <p class="narrative-card-excerpt">
             After the 2008 financial crisis, a new kind of landlord emerged. Armed with cheap
@@ -1787,7 +1811,7 @@
       <div class="narrative-card">
         <div class="narrative-card-accent"></div>
         <div class="narrative-card-body">
-          <div class="narrative-card-tag">Narrative 2 — Race and ownership</div>
+          <div class="narrative-card-tag">Narrative 2 - Race and ownership</div>
           <div class="narrative-card-title">Color-Coded Ownership: Corporate Landlords and Racial Concentration</div>
           <p class="narrative-card-excerpt">
             Across the cities in our dataset, a striking pattern emerges: neighborhoods with
@@ -1827,8 +1851,8 @@
           <div class="blog-card-title">The Great Consolidation: How Wall Street Bought Your Neighborhood</div>
           <div class="blog-card-excerpt">
             A deep investigation into the post-2008 wave of institutional home-buying,
-            the private equity funds behind it, and what happens to tenants — and
-            communities — when the landlord is a hedge fund.
+            the private equity funds behind it, and what happens to tenants - and
+            communities - when the landlord is a hedge fund.
           </div>
           <div class="blog-card-cta">Read narrative <span>→</span></div>
         </div>
@@ -1862,7 +1886,7 @@
   <div class="footer-inner">
     <div class="footer-brand">
       <div class="footer-logo-mark">WOA</div>
-      Who Owns America — Research Initiative
+      Who Owns America - Research Initiative
     </div>
     <ul class="footer-links">
       <li><a href="#">Methodology</a></li>
@@ -2026,7 +2050,7 @@ function drawDonut(canvasId, slices) {
   var canvas = document.getElementById(canvasId);
   if (!canvas) return;
   var dpr = window.devicePixelRatio || 1;
-  var size = 110;
+  var size = 160;
   canvas.width = size * dpr;
   canvas.height = size * dpr;
   canvas.style.width = size + 'px';
@@ -2034,7 +2058,7 @@ function drawDonut(canvasId, slices) {
   var ctx = canvas.getContext('2d');
   ctx.scale(dpr, dpr);
 
-  var cx = size / 2, cy = size / 2, r = 48, innerR = 30;
+  var cx = size / 2, cy = size / 2, r = 70, innerR = 44;
   var total = slices.reduce(function(s, sl) { return s + sl.value; }, 0);
   var angle = -Math.PI / 2;
 
