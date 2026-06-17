@@ -409,10 +409,9 @@
 
   /* ── MAP SECTION ── */
   .map-layout {
-    display: grid;
-    grid-template-columns: 1fr 280px;
-    gap: 32px;
-    align-items: start;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
   }
 
   .map-canvas-wrap {
@@ -430,9 +429,10 @@
   }
 
   .map-sidebar {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
+    order: -1;
   }
 
   .map-fact-card {
