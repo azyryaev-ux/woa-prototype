@@ -932,6 +932,195 @@
     transition: opacity 0.15s;
   }
   .city-dot:hover { opacity: 0.8; }
+
+  /* ── MENU DROPDOWN (copied from main app) ── */
+  .menu-dropdown {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    border-top: 1px solid rgba(0,0,0,0.10);
+    border-bottom: 1px solid rgba(0,0,0,0.10);
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: all 0.2s ease;
+    padding: 32px 22px 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .menu-dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .menu-dropdown-toprow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .menu-dropdown-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #707070;
+    font-family: 'Akkurat', sans-serif;
+  }
+  .menu-site-cards {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .menu-site-card {
+    flex: 1 1 0;
+    min-width: 0;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    overflow: hidden;
+    position: relative;
+    background: #222;
+  }
+  .menu-site-card-photo {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+    flex-shrink: 0;
+  }
+  .menu-site-card-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px 10px 9px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 60%, transparent 100%);
+  }
+  .menu-site-card:hover { box-shadow: inset 0 0 0 2px rgba(255,255,255,0.3); }
+  .menu-site-card.active { box-shadow: inset 0 0 0 1.5px #ef4400; }
+  .menu-site-card-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    font-family: 'Akkurat', sans-serif;
+    letter-spacing: -0.01em;
+  }
+  .menu-site-card-state {
+    font-size: 11px;
+    color: rgba(255,255,255,0.68);
+    font-family: 'Akkurat', sans-serif;
+  }
+  .menu-site-card-badge {
+    position: absolute;
+    top: 9px;
+    left: 9px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #ff8060;
+    font-family: 'Akkurat', sans-serif;
+    background: rgba(0,0,0,0.48);
+    padding: 4px 7px;
+    border-radius: 5px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .menu-site-card-badge::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #ff8060;
+    flex-shrink: 0;
+  }
+  .menu-dropdown-divider {
+    height: 1px;
+    background: #ebebeb;
+    margin-bottom: 20px;
+  }
+  .menu-dropdown-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+  }
+  .menu-dropdown-item {
+    padding: 8px 20px 8px 0;
+    margin-right: 20px;
+    color: #444;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.15s ease;
+    border-bottom: none;
+    text-decoration: none;
+    display: inline-block;
+    width: auto;
+  }
+  .menu-dropdown-item:last-child { margin-right: 0; padding-right: 0; }
+  .menu-dropdown-item:hover { color: #000; }
+  .menu-dropdown-feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    padding: 12px 14px;
+    background: #fdf2ef;
+    border: 1px solid #f2c4b4;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .menu-dropdown-feature:hover { background: #fbe5df; border-color: #d63d00; }
+  .menu-dropdown-feature-icon {
+    width: 28px;
+    height: 28px;
+    background: #d63d00;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    font-family: 'Akkurat', sans-serif;
+  }
+  .menu-dropdown-feature-text { flex: 1; }
+  .menu-dropdown-feature-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #d63d00;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 1px;
+  }
+  .menu-dropdown-feature-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #222;
+    line-height: 1.2;
+  }
+  .menu-dropdown-feature-arrow { color: #d63d00; font-size: 14px; }
+
 </style>
 </head>
 <body>
@@ -956,24 +1145,6 @@
     </button>
   </div>
 </nav>
-<script>
-(function() {
-  var btn = document.getElementById('nav-hamburger-btn');
-  var dropdown = document.getElementById('menu-dropdown');
-  if (!btn || !dropdown) return;
-  btn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    var isActive = dropdown.classList.toggle('active');
-    btn.classList.toggle('active', isActive);
-  });
-  document.addEventListener('click', function(e) {
-    if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
-      dropdown.classList.remove('active');
-      btn.classList.remove('active');
-    }
-  });
-})();
-</script>
 
 <!-- HERO -->
 <section class="hero" id="overview">
@@ -1928,5 +2099,113 @@ window.addEventListener('load', function() {
   }, 50);
 });
 </script>
+
+<!-- Menu Dropdown -->
+<div class="menu-dropdown" id="menu-dropdown">
+  <div class="menu-dropdown-toprow">
+    <span class="menu-dropdown-label">Sites we're currently tracking</span>
+  </div>
+  <div class="menu-site-cards">
+    <a href="index.html" class="menu-site-card">
+      <img src="images/bozeman.jpg" class="menu-site-card-photo" alt="Bozeman">
+      <div class="menu-site-card-body">
+        <div class="menu-site-card-name">Bozeman</div>
+        <div class="menu-site-card-state">MT</div>
+      </div>
+    </a>
+    <a href="index.html" class="menu-site-card">
+      <img src="images/new_haven2.jpg" class="menu-site-card-photo" alt="New Haven">
+      <div class="menu-site-card-body">
+        <div class="menu-site-card-name">New Haven</div>
+        <div class="menu-site-card-state">CT</div>
+      </div>
+    </a>
+    <a href="index.html" class="menu-site-card active">
+      <img src="images/boston.jpg" class="menu-site-card-photo" alt="Boston">
+      <div class="menu-site-card-badge">Currently viewing</div>
+      <div class="menu-site-card-body">
+        <div class="menu-site-card-name">Boston</div>
+        <div class="menu-site-card-state">MA</div>
+      </div>
+    </a>
+    <a href="index.html" class="menu-site-card">
+      <img src="images/chicago.jpg" class="menu-site-card-photo" alt="Chicago">
+      <div class="menu-site-card-body">
+        <div class="menu-site-card-name">Chicago</div>
+        <div class="menu-site-card-state">IL</div>
+      </div>
+    </a>
+    <a href="index.html" class="menu-site-card">
+      <img src="images/kansas_city.jpg" class="menu-site-card-photo" alt="Kansas City">
+      <div class="menu-site-card-body">
+        <div class="menu-site-card-name">Kansas City</div>
+        <div class="menu-site-card-state">MO</div>
+      </div>
+    </a>
+    <a href="index.html" class="menu-site-card">
+      <img src="images/baltimore.jpg" class="menu-site-card-photo" alt="Baltimore">
+      <div class="menu-site-card-body">
+        <div class="menu-site-card-name">Baltimore</div>
+        <div class="menu-site-card-state">MD</div>
+      </div>
+    </a>
+    <a href="index.html" class="menu-site-card">
+      <img src="images/louisville.jpg" class="menu-site-card-photo" alt="Louisville">
+      <div class="menu-site-card-body">
+        <div class="menu-site-card-name">Louisville</div>
+        <div class="menu-site-card-state">KY</div>
+      </div>
+    </a>
+    <a href="index.html" class="menu-site-card">
+      <img src="images/houston.jpg" class="menu-site-card-photo" alt="Houston">
+      <div class="menu-site-card-body">
+        <div class="menu-site-card-name">Houston</div>
+        <div class="menu-site-card-state">TX</div>
+      </div>
+    </a>
+    <a href="index.html" class="menu-site-card">
+      <img src="images/miami.jpg" class="menu-site-card-photo" alt="Miami">
+      <div class="menu-site-card-body">
+        <div class="menu-site-card-name">Miami</div>
+        <div class="menu-site-card-state">FL</div>
+      </div>
+    </a>
+  </div>
+  <div class="menu-dropdown-divider"></div>
+  <div class="menu-dropdown-nav">
+    <a href="#" class="menu-dropdown-item">About</a>
+    <a href="#" class="menu-dropdown-item">Methodology</a>
+    <a href="#" class="menu-dropdown-item">Documentation</a>
+    <a href="#" class="menu-dropdown-item">FAQs</a>
+    <a href="#" class="menu-dropdown-item">Resources</a>
+    <a href="#" class="menu-dropdown-item">Contact</a>
+  </div>
+</div>
+<script>
+(function() {
+  var btn = document.getElementById('nav-hamburger-btn');
+  var dropdown = document.getElementById('menu-dropdown');
+  if (!btn || !dropdown) return;
+  function openMenu() {
+    dropdown.classList.add('active');
+    btn.classList.add('active');
+  }
+  function closeMenu() {
+    dropdown.classList.remove('active');
+    btn.classList.remove('active');
+  }
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    dropdown.classList.contains('active') ? closeMenu() : openMenu();
+  });
+  document.addEventListener('click', function(e) {
+    if (!btn.contains(e.target) && !dropdown.contains(e.target)) closeMenu();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeMenu();
+  });
+})();
+</script>
+
 </body>
 </html>
