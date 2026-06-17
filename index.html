@@ -1433,6 +1433,58 @@
             color: #000;
         }
 
+        .menu-dropdown-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            padding: 12px 14px;
+            background: #fdf2ef;
+            border: 1px solid #f2c4b4;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.15s, border-color 0.15s;
+        }
+        .menu-dropdown-feature:hover {
+            background: #fbe5df;
+            border-color: #d63d00;
+        }
+        .menu-dropdown-feature-icon {
+            width: 28px;
+            height: 28px;
+            background: #d63d00;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            font-family: 'Akkurat', sans-serif;
+        }
+        .menu-dropdown-feature-text {
+            flex: 1;
+        }
+        .menu-dropdown-feature-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: #d63d00;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 1px;
+        }
+        .menu-dropdown-feature-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #222;
+            line-height: 1.2;
+        }
+        .menu-dropdown-feature-arrow {
+            color: #d63d00;
+            font-size: 14px;
+        }
+
         /* Floating Legend */
         .floating-legend {
             position: absolute;
@@ -14366,6 +14418,15 @@
         </div>
         <!-- Divider -->
         <div class="menu-dropdown-divider"></div>
+        <!-- Featured page link -->
+        <a href="who-owns-american-housing.html" class="menu-dropdown-feature" target="_blank">
+            <div class="menu-dropdown-feature-icon">WOA</div>
+            <div class="menu-dropdown-feature-text">
+                <div class="menu-dropdown-feature-label">National report</div>
+                <div class="menu-dropdown-feature-title">Who Owns American Housing?</div>
+            </div>
+            <span class="menu-dropdown-feature-arrow">→</span>
+        </a>
         <!-- Nav links -->
         <div class="menu-dropdown-nav">
             <a href="#" class="menu-dropdown-item">About</a>
