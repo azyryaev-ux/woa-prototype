@@ -261,7 +261,8 @@
 
   /* Panel 2: story slides over */
   .hero-story {
-    position: relative;
+    position: sticky;
+    top: 0;
     z-index: 2;
     background: #111111;
     border-radius: 20px 20px 0 0;
@@ -393,6 +394,11 @@
   .stats-strip {
     background: var(--accent);
     padding: 0 32px;
+    position: relative;
+    z-index: 3;
+    border-radius: 20px 20px 0 0;
+    margin-top: -30px;
+    box-shadow: 0 -20px 60px rgba(0,0,0,0.35);
   }
 
   .stats-strip-inner {
