@@ -152,15 +152,48 @@
 
   /* ── HERO ── */
   .hero {
-    background: var(--bg-dark);
+    /* Gradient: near-black top to warm dark charcoal bottom */
+    background: linear-gradient(160deg, #111111 0%, #1a1008 100%);
     color: #fff;
-    padding: 64px 32px 60px;
+    padding: 64px 32px 68px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Subtle dot grid texture */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+  }
+
+  /* Subtle warm glow bottom-right */
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    right: -60px;
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(circle, rgba(214,61,0,0.12) 0%, transparent 70%);
+    pointer-events: none;
   }
 
   .hero-inner {
     max-width: 1100px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    gap: 48px;
+    align-items: center;
   }
+
+  .hero-left { display: flex; flex-direction: column; }
 
   .hero-eyebrow {
     font-size: 11px;
@@ -174,7 +207,7 @@
   .hero h1 {
     font-size: 46px;
     font-weight: 700;
-    line-height: 1.1;
+    line-height: 1.08;
     letter-spacing: -0.02em;
     margin-bottom: 20px;
     color: #fff;
@@ -183,21 +216,119 @@
   .hero-lead {
     font-size: 16px;
     line-height: 1.7;
-    color: rgba(255,255,255,0.72);
-    max-width: 680px;
-    margin-bottom: 32px;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 28px;
   }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: #fff;
+    font-family: 'Akkurat', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    border: none;
+    border-radius: 5px;
+    padding: 11px 20px;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: background 0.15s, transform 0.15s;
+    align-self: flex-start;
+    margin-bottom: 28px;
+  }
+  .hero-cta:hover { background: #be3500; transform: translateY(-1px); }
+  .hero-cta-arrow { font-size: 15px; transition: transform 0.15s; }
+  .hero-cta:hover .hero-cta-arrow { transform: translateX(3px); }
 
   .hero-meta {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
     font-size: 11px;
-    color: rgba(255,255,255,0.45);
+    color: rgba(255,255,255,0.38);
     font-family: 'Akkurat Mono', monospace;
   }
 
-  .hero-meta-divider { width: 1px; height: 12px; background: rgba(255,255,255,0.2); }
+  .hero-meta-divider { width: 1px; height: 10px; background: rgba(255,255,255,0.18); }
+
+  /* Right column: centrepiece stat */
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    border-left: 1px solid rgba(255,255,255,0.1);
+    padding-left: 48px;
+  }
+
+  .hero-stat-eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 10px;
+  }
+
+  .hero-stat-number {
+    font-size: 88px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    margin-bottom: 14px;
+    /* subtle accent tint */
+    background: linear-gradient(135deg, #fff 60%, rgba(214,61,0,0.6) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-stat-label {
+    font-size: 15px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.82);
+    line-height: 1.35;
+    margin-bottom: 14px;
+    max-width: 260px;
+  }
+
+  .hero-stat-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.42);
+    line-height: 1.55;
+    max-width: 260px;
+  }
+
+  .hero-stat-bar-wrap {
+    width: 100%;
+    max-width: 240px;
+    margin-top: 20px;
+  }
+
+  .hero-stat-bar-track {
+    height: 3px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+
+  .hero-stat-bar-fill {
+    height: 100%;
+    width: 41%;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  .hero-stat-bar-label {
+    font-size: 10px;
+    color: rgba(255,255,255,0.35);
+    font-family: 'Akkurat Mono', monospace;
+  }
 
   /* ── NATIONAL STATS STRIP ── */
   .stats-strip {
