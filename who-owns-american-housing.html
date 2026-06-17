@@ -943,8 +943,8 @@
   }
 
   .narrative-card {
-    background: #fff;
-    border: 1px solid var(--border);
+    background: #1a1a1a;
+    border: none;
     border-radius: 8px;
     overflow: hidden;
     display: flex;
@@ -957,7 +957,7 @@
   }
 
   .narrative-card-body {
-    padding: 32px;
+    padding: 36px;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -973,18 +973,18 @@
   }
 
   .narrative-card-title {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 700;
     letter-spacing: -0.02em;
-    color: var(--text);
+    color: #fff;
     line-height: 1.2;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
   }
 
   .narrative-card-excerpt {
     font-size: 15px;
-    color: var(--text-2);
-    line-height: 1.7;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.75;
     margin-bottom: 16px;
   }
 
@@ -992,7 +992,7 @@
     display: flex;
     align-items: center;
     gap: 16px;
-    background: var(--bg-off);
+    background: rgba(255,255,255,0.05);
     border-radius: 6px;
     padding: 16px 18px;
     margin: 8px 0 24px;
@@ -1010,7 +1010,7 @@
 
   .narrative-card-stat-label {
     font-size: 13px;
-    color: var(--text-3);
+    color: rgba(255,255,255,0.45);
     line-height: 1.45;
   }
 
@@ -1955,12 +1955,6 @@
             distressed-asset speculation has grown into a permanent, large-scale transfer of
             housing wealth from individuals to corporations.
           </p>
-          <p class="narrative-card-excerpt">
-            Our data shows that large-portfolio ownership (100+ units) has grown from 35% to 60%
-            of all tracked rental units over two decades. The steepest climb came between 2020
-            and 2024, when pandemic-era market disruption opened yet another window for
-            institutional acquisition.
-          </p>
           <div class="narrative-card-stat">
             <div class="narrative-card-stat-value">+25 pts</div>
             <div class="narrative-card-stat-label">Growth in large-portfolio share since 2005, with the fastest acceleration after 2020</div>
@@ -1983,12 +1977,6 @@
             to see high concentrations of corporate landlord ownership. This isn't coincidence.
             Researchers have documented how targeted acquisition strategies specifically focus
             on lower-income, majority-minority zip codes.
-          </p>
-          <p class="narrative-card-excerpt">
-            Our scatter plot analysis of 18 cities shows an inverse relationship between the
-            share of white residents and corporate landlord concentration. Cities like Miami
-            (16% white) see 47.9% large-landlord ownership; predominantly white Bozeman (88%
-            white) sits at 30.9%.
           </p>
           <div class="narrative-card-stat">
             <div class="narrative-card-stat-value">−17 pts</div>
