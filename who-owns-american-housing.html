@@ -45,43 +45,45 @@
     z-index: 100;
     background: #fff;
     border-bottom: 1px solid var(--border);
-    height: 48px;
+    height: 60px;
     display: flex;
     align-items: center;
-    padding: 0 32px;
+    padding: 0 24px;
     gap: 0;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.06);
   }
 
+  /* Logo: matches app exactly — gray circle + WHO OWNS AMERICA */
   .nav-logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 7px;
     text-decoration: none;
-    margin-right: 36px;
+    margin-right: 32px;
     flex-shrink: 0;
   }
 
   .nav-logo-mark {
-    width: 26px;
-    height: 26px;
-    background: var(--accent);
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 10px;
-    font-weight: 700;
-    font-family: 'Akkurat', sans-serif;
-    letter-spacing: 0;
-    line-height: 1;
+    width: 14px;
+    height: 14px;
+    background: #b6b6b6;
+    border-radius: 50%;
+    flex-shrink: 0;
   }
 
   .nav-logo-text {
     font-size: 13px;
     font-weight: 700;
-    color: var(--text);
-    letter-spacing: -0.01em;
+    letter-spacing: 0.5px;
+    font-family: 'Akkurat', sans-serif;
+    color: #000;
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .nav-logo-city {
+    color: var(--accent);
   }
 
   .nav-links {
@@ -95,9 +97,9 @@
   .nav-links a {
     display: block;
     padding: 0 14px;
-    height: 48px;
-    line-height: 48px;
-    font-size: 12px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 13px;
     font-weight: 400;
     color: var(--text-3);
     text-decoration: none;
@@ -222,7 +224,7 @@
   }
 
   .stat-pill-sub {
-    font-size: 11px;
+    font-size: 14px;
     color: rgba(255,255,255,0.65);
   }
 
@@ -317,7 +319,7 @@
   }
 
   .map-fact-card-note {
-    font-size: 12px;
+    font-size: 14px;
     color: var(--text-3);
     line-height: 1.5;
   }
@@ -327,7 +329,7 @@
     border: 1px solid var(--accent-mid);
     border-radius: 6px;
     padding: 14px 16px;
-    font-size: 12px;
+    font-size: 14px;
     color: var(--text-2);
     line-height: 1.5;
   }
@@ -419,7 +421,7 @@
     display: flex;
     align-items: center;
     gap: 7px;
-    font-size: 11px;
+    font-size: 14px;
     color: var(--text-2);
   }
 
@@ -433,7 +435,7 @@
   .legend-pct {
     margin-left: auto;
     font-family: 'Akkurat Mono', monospace;
-    font-size: 11px;
+    font-size: 14px;
     color: var(--text);
     font-weight: 700;
   }
@@ -456,7 +458,7 @@
     border-radius: 4px;
     padding: 0 10px;
     font-family: 'Akkurat', sans-serif;
-    font-size: 12px;
+    font-size: 14px;
     color: var(--text);
     background: #fff;
     outline: none;
@@ -466,7 +468,7 @@
   .table-search:focus { border-color: var(--accent); }
 
   .table-sort-hint {
-    font-size: 11px;
+    font-size: 14px;
     color: var(--text-4);
     margin-left: auto;
   }
@@ -483,7 +485,7 @@
   table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 12px;
+    font-size: 13px;
   }
 
   thead th {
@@ -491,7 +493,7 @@
     border-bottom: 1px solid var(--border);
     padding: 10px 14px;
     text-align: left;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.07em;
     text-transform: uppercase;
@@ -564,7 +566,7 @@
     display: inline-block;
     padding: 1px 5px;
     border-radius: 3px;
-    font-size: 9px;
+    font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.03em;
     margin-left: 4px;
@@ -634,7 +636,7 @@
   }
 
   .landlord-name-cell span {
-    font-size: 11px;
+    font-size: 14px;
     color: var(--text-4);
   }
 
@@ -648,20 +650,20 @@
 
   .landlord-growth {
     font-family: 'Akkurat Mono', monospace;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 700;
     color: var(--accent);
   }
 
   .landlord-markets {
-    font-size: 11px;
+    font-size: 14px;
     color: var(--text-3);
     line-height: 1.55;
     max-width: 260px;
   }
 
   .landlord-owners {
-    font-size: 11px;
+    font-size: 14px;
     color: var(--text-3);
     line-height: 1.55;
     max-width: 200px;
@@ -709,7 +711,7 @@
   }
 
   .narrative-card-excerpt {
-    font-size: 13px;
+    font-size: 14px;
     color: var(--text-2);
     line-height: 1.65;
     margin-bottom: 20px;
@@ -735,7 +737,7 @@
   }
 
   .narrative-card-stat-label {
-    font-size: 12px;
+    font-size: 14px;
     color: var(--text-3);
     line-height: 1.4;
   }
@@ -744,7 +746,7 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 700;
     color: var(--accent);
     text-decoration: none;
@@ -838,7 +840,7 @@
   }
 
   .blog-card-excerpt {
-    font-size: 12px;
+    font-size: 14px;
     color: var(--text-3);
     line-height: 1.6;
     margin-bottom: 16px;
@@ -904,7 +906,7 @@
   .footer-links a {
     color: rgba(255,255,255,0.45);
     text-decoration: none;
-    font-size: 11px;
+    font-size: 13px;
     transition: color 0.15s;
   }
   .footer-links a:hover { color: rgba(255,255,255,0.8); }
@@ -921,9 +923,9 @@
 
 <!-- TOP NAV -->
 <nav class="top-nav">
-  <a class="nav-logo" href="#">
-    <div class="nav-logo-mark">WOA</div>
-    <span class="nav-logo-text">Who Owns America</span>
+  <a class="nav-logo" href="index.html">
+    <div class="nav-logo-mark"></div>
+    <span class="nav-logo-text">WHO OWNS <span class="nav-logo-city">AMERICA</span></span>
   </a>
   <ul class="nav-links">
     <li><a href="#overview" class="active">Overview</a></li>
@@ -1207,7 +1209,7 @@
 
     </div>
 
-    <div style="background:#fff;border:1px solid var(--border);border-radius:6px;padding:20px 24px;font-size:13px;color:var(--text-2);line-height:1.7;max-width:820px;">
+    <div style="background:#fff;border:1px solid var(--border);border-radius:6px;padding:20px 24px;font-size:14px;color:var(--text-2);line-height:1.7;max-width:820px;">
       <strong style="color:var(--text);">What this means for renters.</strong>
       When a large institutional landlord acquires properties, studies show average rents typically
       rise 5–15% within two years of acquisition. Unlike individual landlords who may negotiate
@@ -1355,7 +1357,7 @@
       </table>
     </div>
 
-    <p style="margin-top:14px;font-size:11px;color:var(--text-4);">
+    <p style="margin-top:14px;font-size:14px;color:var(--text-4);">
       Unit counts reflect properties traceable to each entity across our 9 metro areas. Actual national portfolios may be larger.
       Data as of January 2026.
     </p>
