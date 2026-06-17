@@ -1332,6 +1332,14 @@
   }
   .footer-bottom a:hover { color: rgba(255,255,255,0.7); }
 
+  .footer-mission {
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.7;
+    max-width: 44ch;
+    margin-top: 4px;
+  }
+
   /* ── CITY CIRCLES ON MAP ── */
   .city-dot {
     cursor: pointer;
@@ -2135,18 +2143,41 @@
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-inner">
-    <div class="footer-brand">
-      <div class="footer-logo-mark">WOA</div>
-      Who Owns America - Research Initiative
+
+    <div class="footer-top">
+      <!-- Left: brand + mission -->
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-mark"></div>
+          <div class="footer-logo-text">W<span>OA</span></div>
+        </div>
+        <div class="footer-tagline">Who Owns America - Research Initiative</div>
+        <p class="footer-mission">
+          We track corporate and institutional ownership of American housing across 9 metro areas,
+          making property record data accessible to journalists, researchers, and the renters most
+          affected. Transparency in housing ownership is essential to understanding the forces
+          reshaping where and how Americans live.
+        </p>
+      </div>
+
+      <!-- Right: nav -->
+      <div class="footer-nav-group">
+        <div class="footer-nav-label">Resources</div>
+        <ul class="footer-links">
+          <li><a href="#">Methodology</a></li>
+          <li><a href="#">Data sources</a></li>
+          <li><a href="#">Download data</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="index.html">Explore the tool</a></li>
+        </ul>
+      </div>
     </div>
-    <ul class="footer-links">
-      <li><a href="#">Methodology</a></li>
-      <li><a href="#">Data sources</a></li>
-      <li><a href="#">Download data</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="index.html">Explore the tool</a></li>
-    </ul>
-    <span style="font-size:11px;">© 2026 Who Owns American Housing Project</span>
+
+    <div class="footer-bottom">
+      <span>© 2026 Who Owns American Housing Project. Data updated January 2026.</span>
+      <a href="#">Contact the team</a>
+    </div>
+
   </div>
 </footer>
 
