@@ -1,0 +1,1894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Who Owns American Housing? — WOA</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  @font-face { font-family: 'Akkurat'; src: url('Akkurat-Regular.ttf') format('truetype'); font-weight: 400; }
+  @font-face { font-family: 'Akkurat'; src: url('Akkurat-Bold.ttf') format('truetype'); font-weight: 700; }
+  @font-face { font-family: 'Akkurat Mono'; src: url('Akkurat-Mono.ttf') format('truetype'); }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --accent: #d63d00;
+    --accent-light: #fdf2ef;
+    --accent-mid: #f2c4b4;
+    --text: #222;
+    --text-2: #444;
+    --text-3: #777;
+    --text-4: #999;
+    --border: #eaeaea;
+    --border-mid: #d8d8d8;
+    --bg: #fff;
+    --bg-off: #fafafa;
+    --bg-dark: #1a1a1a;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Akkurat', 'Akkurat-Regular', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── TOP NAV ── */
+  .top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    height: 48px;
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+    gap: 0;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    margin-right: 36px;
+    flex-shrink: 0;
+  }
+
+  .nav-logo-mark {
+    width: 26px;
+    height: 26px;
+    background: var(--accent);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    font-family: 'Akkurat', sans-serif;
+    letter-spacing: 0;
+    line-height: 1;
+  }
+
+  .nav-logo-text {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    list-style: none;
+    flex: 1;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 0 14px;
+    height: 48px;
+    line-height: 48px;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text-3);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .nav-links a:hover { color: var(--text); border-bottom-color: var(--border-mid); }
+  .nav-links a.active { color: var(--text); border-bottom-color: var(--accent); font-weight: 700; }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+  }
+
+  .nav-cta {
+    background: var(--accent);
+    color: #fff;
+    font-family: 'Akkurat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 14px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    transition: background 0.15s;
+  }
+  .nav-cta:hover { background: #be3500; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--bg-dark);
+    color: #fff;
+    padding: 64px 32px 60px;
+  }
+
+  .hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+
+  .hero-lead {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.72);
+    max-width: 680px;
+    margin-bottom: 32px;
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    font-family: 'Akkurat Mono', monospace;
+  }
+
+  .hero-meta-divider { width: 1px; height: 12px; background: rgba(255,255,255,0.2); }
+
+  /* ── NATIONAL STATS STRIP ── */
+  .stats-strip {
+    background: var(--accent);
+    padding: 0 32px;
+  }
+
+  .stats-strip-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .stat-pill {
+    padding: 20px 0;
+    border-right: 1px solid rgba(255,255,255,0.2);
+    padding-left: 24px;
+  }
+  .stat-pill:first-child { padding-left: 0; }
+  .stat-pill:last-child { border-right: none; }
+
+  .stat-pill-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 4px;
+  }
+
+  .stat-pill-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+
+  .stat-pill-sub {
+    font-size: 11px;
+    color: rgba(255,255,255,0.65);
+  }
+
+  /* ── SECTION WRAPPER ── */
+  .section {
+    padding: 60px 32px;
+  }
+
+  .section-alt { background: var(--bg-off); }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .section-desc {
+    font-size: 14px;
+    color: var(--text-2);
+    line-height: 1.65;
+    max-width: 640px;
+    margin-bottom: 36px;
+  }
+
+  /* ── MAP SECTION ── */
+  .map-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 32px;
+    align-items: start;
+  }
+
+  .map-canvas-wrap {
+    background: var(--bg-off);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    position: relative;
+  }
+
+  .map-canvas-wrap svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .map-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .map-fact-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px 18px;
+  }
+
+  .map-fact-card-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-4);
+    margin-bottom: 6px;
+  }
+
+  .map-fact-card-value {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .map-fact-card-note {
+    font-size: 12px;
+    color: var(--text-3);
+    line-height: 1.5;
+  }
+
+  .map-methodology-note {
+    background: var(--accent-light);
+    border: 1px solid var(--accent-mid);
+    border-radius: 6px;
+    padding: 14px 16px;
+    font-size: 12px;
+    color: var(--text-2);
+    line-height: 1.5;
+  }
+
+  .map-methodology-note strong {
+    color: var(--accent);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  /* ── OWNERSHIP CHARTS ── */
+  .ownership-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 36px;
+  }
+
+  .ownership-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 24px;
+  }
+
+  .ownership-card-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 4px;
+  }
+
+  .ownership-card-headline {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  .ownership-chart-wrap {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .ownership-donut-wrap {
+    width: 110px;
+    height: 110px;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .ownership-donut-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .ownership-donut-center-value {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .ownership-donut-center-label {
+    font-size: 9px;
+    color: var(--text-4);
+    line-height: 1.2;
+    margin-top: 2px;
+  }
+
+  .ownership-legend {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .legend-row {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11px;
+    color: var(--text-2);
+  }
+
+  .legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .legend-pct {
+    margin-left: auto;
+    font-family: 'Akkurat Mono', monospace;
+    font-size: 11px;
+    color: var(--text);
+    font-weight: 700;
+  }
+
+  .trend-chart-wrap { height: 120px; }
+
+  /* ── DATA TABLE ── */
+  .table-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .table-search {
+    flex: 1;
+    max-width: 280px;
+    height: 32px;
+    border: 1px solid var(--border-mid);
+    border-radius: 4px;
+    padding: 0 10px;
+    font-family: 'Akkurat', sans-serif;
+    font-size: 12px;
+    color: var(--text);
+    background: #fff;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .table-search:focus { border-color: var(--accent); }
+
+  .table-sort-hint {
+    font-size: 11px;
+    color: var(--text-4);
+    margin-left: auto;
+  }
+
+  .table-sort-hint span { color: var(--accent); font-weight: 700; }
+
+  .data-table-wrap {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+
+  thead th {
+    background: var(--bg-off);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+  }
+
+  thead th:hover { color: var(--text); }
+  thead th.sorted { color: var(--accent); }
+
+  .sort-arrow {
+    display: inline-block;
+    margin-left: 4px;
+    opacity: 0.4;
+    font-size: 9px;
+  }
+  thead th.sorted .sort-arrow { opacity: 1; }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.1s;
+  }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: var(--bg-off); }
+  tbody tr.metro-header { background: var(--bg-off); }
+  tbody tr.metro-header td {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  tbody td {
+    padding: 10px 14px;
+    color: var(--text-2);
+    vertical-align: middle;
+  }
+
+  tbody td strong { color: var(--text); font-weight: 700; }
+
+  .pct-bar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .pct-bar-track {
+    width: 56px;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .pct-bar-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    opacity: 0.55;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    margin-left: 4px;
+  }
+
+  .badge-above { background: #fef3f0; color: var(--accent); }
+  .badge-below { background: #f0f4ff; color: #3d5acc; }
+  .badge-avg { background: var(--bg-off); color: var(--text-3); border: 1px solid var(--border); }
+
+  .sparkline-cell canvas { display: block; }
+
+  /* ── LANDLORDS TABLE ── */
+  .landlords-table-wrap {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    overflow-x: auto;
+  }
+
+  .landlords-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+
+  .landlords-table thead th {
+    background: var(--bg-off);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 16px;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    white-space: nowrap;
+    cursor: default;
+  }
+
+  .landlords-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.1s;
+  }
+  .landlords-table tbody tr:last-child { border-bottom: none; }
+  .landlords-table tbody tr:hover { background: var(--bg-off); }
+
+  .landlords-table tbody td {
+    padding: 14px 16px;
+    color: var(--text-2);
+    vertical-align: top;
+  }
+
+  .landlord-rank {
+    font-family: 'Akkurat Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-4);
+    text-align: center;
+  }
+
+  .landlord-name-cell strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+
+  .landlord-name-cell span {
+    font-size: 11px;
+    color: var(--text-4);
+  }
+
+  .landlord-units {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    font-family: 'Akkurat', sans-serif;
+    letter-spacing: -0.01em;
+  }
+
+  .landlord-growth {
+    font-family: 'Akkurat Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .landlord-markets {
+    font-size: 11px;
+    color: var(--text-3);
+    line-height: 1.55;
+    max-width: 260px;
+  }
+
+  .landlord-owners {
+    font-size: 11px;
+    color: var(--text-3);
+    line-height: 1.55;
+    max-width: 200px;
+  }
+
+  /* ── NARRATIVE TEASERS ── */
+  .narratives-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .narrative-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .narrative-card-accent {
+    height: 4px;
+    background: var(--accent);
+  }
+
+  .narrative-card-body {
+    padding: 24px;
+  }
+
+  .narrative-card-tag {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .narrative-card-title {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+
+  .narrative-card-excerpt {
+    font-size: 13px;
+    color: var(--text-2);
+    line-height: 1.65;
+    margin-bottom: 20px;
+  }
+
+  .narrative-card-stat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg-off);
+    border-radius: 4px;
+    padding: 12px 14px;
+    margin-bottom: 18px;
+  }
+
+  .narrative-card-stat-value {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .narrative-card-stat-label {
+    font-size: 12px;
+    color: var(--text-3);
+    line-height: 1.4;
+  }
+
+  .narrative-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: gap 0.15s;
+  }
+  .narrative-link:hover { gap: 10px; }
+  .narrative-link-arrow { font-size: 13px; }
+
+  /* ── BLOG POST CARDS ── */
+  .blog-cards-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+    padding-top: 48px;
+    border-top: 1px solid var(--border);
+  }
+
+  .blog-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .blog-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 16px rgba(214,61,0,0.08);
+  }
+
+  .blog-card-image {
+    height: 180px;
+    background: var(--bg-dark);
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .blog-card-image canvas {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+  }
+
+  .blog-card-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.65) 100%);
+  }
+
+  .blog-card-image-tag {
+    position: absolute;
+    top: 12px;
+    left: 14px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
+
+  .blog-card-body {
+    padding: 20px 22px 22px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .blog-card-meta {
+    font-size: 10px;
+    color: var(--text-4);
+    margin-bottom: 8px;
+    font-family: 'Akkurat Mono', monospace;
+  }
+
+  .blog-card-title {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+
+  .blog-card-excerpt {
+    font-size: 12px;
+    color: var(--text-3);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    flex: 1;
+  }
+
+  .blog-card-cta {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--bg-dark);
+    color: rgba(255,255,255,0.5);
+    padding: 40px 32px;
+    font-size: 12px;
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255,255,255,0.8);
+    font-weight: 700;
+    font-size: 13px;
+  }
+
+  .footer-logo-mark {
+    width: 24px; height: 24px;
+    background: var(--accent);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    font-size: 11px;
+    transition: color 0.15s;
+  }
+  .footer-links a:hover { color: rgba(255,255,255,0.8); }
+
+  /* ── CITY CIRCLES ON MAP ── */
+  .city-dot {
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .city-dot:hover { opacity: 0.8; }
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="top-nav">
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-mark">WOA</div>
+    <span class="nav-logo-text">Who Owns America</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#overview" class="active">Overview</a></li>
+    <li><a href="#ownership">Ownership</a></li>
+    <li><a href="#cities">Cities</a></li>
+    <li><a href="#landlords">Landlords</a></li>
+    <li><a href="#narratives">Stories</a></li>
+  </ul>
+  <div class="nav-right">
+    <a class="nav-cta" href="index.html">Explore the Tool</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="overview">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">National housing report — 2026</div>
+    <h1>Who Owns American Housing?</h1>
+    <p class="hero-lead">
+      In a matter of years, the ownership of American rental housing has shifted
+      dramatically. A small number of corporations and institutional investors now
+      control hundreds of thousands of homes across the country — reshaping
+      communities, driving rents, and making it harder than ever for ordinary
+      Americans to find affordable places to live.
+    </p>
+    <p class="hero-lead" style="margin-top: -10px;">
+      This report draws on property records, corporate filings, and LLC network
+      analysis across 9 major metro areas to trace who really owns the roof over
+      your head.
+    </p>
+    <div class="hero-meta">
+      <span>Updated January 2026</span>
+      <div class="hero-meta-divider"></div>
+      <span>2.3M+ records analyzed</span>
+      <div class="hero-meta-divider"></div>
+      <span>9 metro areas</span>
+    </div>
+  </div>
+</section>
+
+<!-- NATIONAL STATS STRIP -->
+<div class="stats-strip">
+  <div class="stats-strip-inner">
+    <div class="stat-pill">
+      <div class="stat-pill-label">Rental units tracked</div>
+      <div class="stat-pill-value">2.1M</div>
+      <div class="stat-pill-sub">across 9 metro areas</div>
+    </div>
+    <div class="stat-pill">
+      <div class="stat-pill-label">Corporate owned</div>
+      <div class="stat-pill-value">27%</div>
+      <div class="stat-pill-sub">567K units — up 9 pts since 2015</div>
+    </div>
+    <div class="stat-pill">
+      <div class="stat-pill-label">Large portfolio (100+ units)</div>
+      <div class="stat-pill-value">41%</div>
+      <div class="stat-pill-sub">892K units nationally</div>
+    </div>
+    <div class="stat-pill">
+      <div class="stat-pill-label">Cities tracked</div>
+      <div class="stat-pill-value">28</div>
+      <div class="stat-pill-sub">50K+ population threshold</div>
+    </div>
+  </div>
+</div>
+
+<!-- MAP SECTION -->
+<section class="section" id="map">
+  <div class="section-inner">
+    <div class="section-label">Geographic distribution</div>
+    <div class="section-title">Mapping corporate ownership across America</div>
+    <p class="section-desc">
+      Corporate ownership of rental housing isn't uniform. Markets with high
+      investor activity often overlap with areas of rapid rent growth, lower
+      homeownership rates, and higher concentrations of non-white residents.
+      Each dot below represents a metro area in our dataset.
+    </p>
+
+    <div class="map-layout">
+      <div class="map-canvas-wrap">
+        <svg viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg" style="display:block;background:#f5f3f0;">
+          <!-- Simple US outline approximation -->
+          <rect width="960" height="540" fill="#f5f3f0"/>
+
+          <!-- US states simplified paths -->
+          <path d="M 80 80 L 880 80 L 920 200 L 900 380 L 780 480 L 650 520 L 500 520 L 280 480 L 120 420 L 60 280 Z" fill="#e8e5e0" stroke="#d0ccc6" stroke-width="1"/>
+
+          <!-- Northeast corner -->
+          <path d="M 820 80 L 880 80 L 900 160 L 860 180 L 820 150 Z" fill="#dedad4" stroke="#d0ccc6" stroke-width="0.5"/>
+
+          <!-- Great Lakes region -->
+          <ellipse cx="580" cy="200" rx="60" ry="20" fill="#c8dde8" opacity="0.5"/>
+          <ellipse cx="640" cy="185" rx="35" ry="12" fill="#c8dde8" opacity="0.5"/>
+
+          <!-- Gulf coast curve -->
+          <path d="M 450 460 Q 520 510 580 490 Q 620 480 650 500" stroke="#c8dde8" stroke-width="2" fill="none" opacity="0.7"/>
+
+          <!-- Florida peninsula -->
+          <path d="M 750 440 L 780 480 L 760 520 L 730 520 L 710 500 L 720 460 Z" fill="#e0dbd5" stroke="#d0ccc6" stroke-width="0.5"/>
+
+          <!-- City markers -->
+          <!-- Boston -->
+          <circle class="city-dot" cx="880" cy="178" r="14" fill="rgba(214,61,0,0.15)" stroke="none"/>
+          <circle class="city-dot" cx="880" cy="178" r="8" fill="#d63d00" stroke="#fff" stroke-width="2.5"/>
+          <text x="880" y="162" text-anchor="middle" fill="#1a1a1a" font-size="11" font-family="Akkurat,sans-serif" font-weight="700" style="paint-order:stroke;stroke:#f5f3f0;stroke-width:3px;">Boston</text>
+
+          <!-- New Haven -->
+          <circle class="city-dot" cx="845" cy="200" r="12" fill="rgba(214,61,0,0.12)" stroke="none"/>
+          <circle class="city-dot" cx="845" cy="200" r="7" fill="#d63d00" stroke="#fff" stroke-width="2"/>
+          <text x="820" y="220" text-anchor="middle" fill="#1a1a1a" font-size="10" font-family="Akkurat,sans-serif" font-weight="700" style="paint-order:stroke;stroke:#f5f3f0;stroke-width:3px;">New Haven</text>
+
+          <!-- Baltimore -->
+          <circle class="city-dot" cx="810" cy="240" r="13" fill="rgba(214,61,0,0.13)" stroke="none"/>
+          <circle class="city-dot" cx="810" cy="240" r="7" fill="#d63d00" stroke="#fff" stroke-width="2"/>
+          <text x="780" y="260" text-anchor="middle" fill="#1a1a1a" font-size="10" font-family="Akkurat,sans-serif" font-weight="700" style="paint-order:stroke;stroke:#f5f3f0;stroke-width:3px;">Baltimore</text>
+
+          <!-- Chicago -->
+          <circle class="city-dot" cx="590" cy="230" r="18" fill="rgba(214,61,0,0.15)" stroke="none"/>
+          <circle class="city-dot" cx="590" cy="230" r="9" fill="#d63d00" stroke="#fff" stroke-width="2.5"/>
+          <text x="590" y="213" text-anchor="middle" fill="#1a1a1a" font-size="12" font-family="Akkurat,sans-serif" font-weight="700" style="paint-order:stroke;stroke:#f5f3f0;stroke-width:3px;">Chicago</text>
+
+          <!-- Louisville -->
+          <circle class="city-dot" cx="640" cy="290" r="13" fill="rgba(214,61,0,0.12)" stroke="none"/>
+          <circle class="city-dot" cx="640" cy="290" r="7" fill="#d63d00" stroke="#fff" stroke-width="2"/>
+          <text x="678" y="296" text-anchor="start" fill="#1a1a1a" font-size="10" font-family="Akkurat,sans-serif" font-weight="700" style="paint-order:stroke;stroke:#f5f3f0;stroke-width:3px;">Louisville</text>
+
+          <!-- Kansas City -->
+          <circle class="city-dot" cx="490" cy="280" r="14" fill="rgba(214,61,0,0.13)" stroke="none"/>
+          <circle class="city-dot" cx="490" cy="280" r="8" fill="#d63d00" stroke="#fff" stroke-width="2"/>
+          <text x="490" y="264" text-anchor="middle" fill="#1a1a1a" font-size="11" font-family="Akkurat,sans-serif" font-weight="700" style="paint-order:stroke;stroke:#f5f3f0;stroke-width:3px;">Kansas City</text>
+
+          <!-- Houston -->
+          <circle class="city-dot" cx="470" cy="420" r="20" fill="rgba(214,61,0,0.15)" stroke="none"/>
+          <circle class="city-dot" cx="470" cy="420" r="10" fill="#d63d00" stroke="#fff" stroke-width="2.5"/>
+          <text x="470" y="403" text-anchor="middle" fill="#1a1a1a" font-size="12" font-family="Akkurat,sans-serif" font-weight="700" style="paint-order:stroke;stroke:#f5f3f0;stroke-width:3px;">Houston</text>
+
+          <!-- Miami -->
+          <circle class="city-dot" cx="760" cy="485" r="16" fill="rgba(214,61,0,0.15)" stroke="none"/>
+          <circle class="city-dot" cx="760" cy="485" r="8" fill="#d63d00" stroke="#fff" stroke-width="2.5"/>
+          <text x="760" y="468" text-anchor="middle" fill="#1a1a1a" font-size="11" font-family="Akkurat,sans-serif" font-weight="700" style="paint-order:stroke;stroke:#f5f3f0;stroke-width:3px;">Miami</text>
+
+          <!-- Bozeman -->
+          <circle class="city-dot" cx="230" cy="160" r="11" fill="rgba(214,61,0,0.10)" stroke="none"/>
+          <circle class="city-dot" cx="230" cy="160" r="6" fill="#d63d00" stroke="#fff" stroke-width="2"/>
+          <text x="230" y="146" text-anchor="middle" fill="#1a1a1a" font-size="10" font-family="Akkurat,sans-serif" font-weight="700" style="paint-order:stroke;stroke:#f5f3f0;stroke-width:3px;">Bozeman</text>
+
+          <!-- Legend -->
+          <rect x="30" y="460" width="180" height="60" rx="4" fill="rgba(255,255,255,0.9)" stroke="#eaeaea" stroke-width="1"/>
+          <text x="42" y="480" fill="#999" font-size="9" font-family="Akkurat,sans-serif" font-weight="700" letter-spacing="0.08em">CORPORATE OWNERSHIP</text>
+          <circle cx="42" cy="498" r="4" fill="#d63d00" stroke="#fff" stroke-width="1.5"/>
+          <text x="52" y="502" fill="#444" font-size="9" font-family="Akkurat,sans-serif">Low</text>
+          <circle cx="90" cy="498" r="6" fill="#d63d00" stroke="#fff" stroke-width="1.5"/>
+          <text x="102" y="502" fill="#444" font-size="9" font-family="Akkurat,sans-serif">Mid</text>
+          <circle cx="140" cy="498" r="9" fill="#d63d00" stroke="#fff" stroke-width="1.5"/>
+          <text x="154" y="502" fill="#444" font-size="9" font-family="Akkurat,sans-serif">High</text>
+        </svg>
+      </div>
+
+      <div class="map-sidebar">
+        <div class="map-fact-card">
+          <div class="map-fact-card-label">Fastest growing market</div>
+          <div class="map-fact-card-value">Miami</div>
+          <div class="map-fact-card-note">Corporate ownership rose 6.8 percentage points — the sharpest increase in our dataset, driven by Sun Belt investment funds.</div>
+        </div>
+        <div class="map-fact-card">
+          <div class="map-fact-card-label">Largest market</div>
+          <div class="map-fact-card-value">Chicago</div>
+          <div class="map-fact-card-note">612K rental units tracked. Institutional landlords hold 43.8% — above the national average across all tracked cities.</div>
+        </div>
+        <div class="map-fact-card">
+          <div class="map-fact-card-label">Most fragmented ownership</div>
+          <div class="map-fact-card-value">Bozeman</div>
+          <div class="map-fact-card-note">Montana's smaller market shows lower large-portfolio concentration (30.9%) — but rates have climbed steadily since 2019.</div>
+        </div>
+        <div class="map-methodology-note">
+          <strong>How we trace ownership</strong>
+          We follow chains of LLCs, trusts, and corporate shells through state property records to identify the ultimate beneficial owner behind each rental unit.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OWNERSHIP CONCENTRATION CHARTS -->
+<section class="section section-alt" id="ownership">
+  <div class="section-inner">
+    <div class="section-label">Ownership concentration</div>
+    <div class="section-title">Who holds the housing stock?</div>
+    <p class="section-desc">
+      Across our nine metro areas, nearly half of all rental units are controlled
+      by large-portfolio landlords — those owning 100 or more units. This share
+      has risen steadily since 2010, with the sharpest acceleration coming after
+      2020. Small-scale "mom and pop" landlords, once the backbone of the rental
+      market, now hold a shrinking slice of the pie.
+    </p>
+
+    <div class="ownership-grid">
+
+      <!-- Donut 1: Landlord size breakdown -->
+      <div class="ownership-card">
+        <div class="ownership-card-title">Portfolio size</div>
+        <div class="ownership-card-headline">41% of units held by large landlords</div>
+        <div class="ownership-chart-wrap">
+          <div class="ownership-donut-wrap">
+            <canvas id="donut-size" width="110" height="110"></canvas>
+            <div class="ownership-donut-center">
+              <div class="ownership-donut-center-value">41%</div>
+              <div class="ownership-donut-center-label">large<br>portfolio</div>
+            </div>
+          </div>
+          <div class="ownership-legend">
+            <div class="legend-row">
+              <div class="legend-dot" style="background:#d63d00;"></div>
+              <span>100+ units</span>
+              <span class="legend-pct">41%</span>
+            </div>
+            <div class="legend-row">
+              <div class="legend-dot" style="background:#e87a56;"></div>
+              <span>10–99 units</span>
+              <span class="legend-pct">24%</span>
+            </div>
+            <div class="legend-row">
+              <div class="legend-dot" style="background:#f0a888;"></div>
+              <span>2–9 units</span>
+              <span class="legend-pct">22%</span>
+            </div>
+            <div class="legend-row">
+              <div class="legend-dot" style="background:#f7d4c2;"></div>
+              <span>1 unit</span>
+              <span class="legend-pct">13%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Donut 2: Corporate vs individual -->
+      <div class="ownership-card">
+        <div class="ownership-card-title">Ownership type</div>
+        <div class="ownership-card-headline">More than 1 in 4 units is corporate-owned</div>
+        <div class="ownership-chart-wrap">
+          <div class="ownership-donut-wrap">
+            <canvas id="donut-type" width="110" height="110"></canvas>
+            <div class="ownership-donut-center">
+              <div class="ownership-donut-center-value">27%</div>
+              <div class="ownership-donut-center-label">corporate<br>owned</div>
+            </div>
+          </div>
+          <div class="ownership-legend">
+            <div class="legend-row">
+              <div class="legend-dot" style="background:#d63d00;"></div>
+              <span>Corporate entity</span>
+              <span class="legend-pct">27%</span>
+            </div>
+            <div class="legend-row">
+              <div class="legend-dot" style="background:#e87a56;"></div>
+              <span>LLC (beneficial unknown)</span>
+              <span class="legend-pct">19%</span>
+            </div>
+            <div class="legend-row">
+              <div class="legend-dot" style="background:#f0a888;"></div>
+              <span>Individual / family</span>
+              <span class="legend-pct">38%</span>
+            </div>
+            <div class="legend-row">
+              <div class="legend-dot" style="background:#f7d4c2;"></div>
+              <span>Trust / estate</span>
+              <span class="legend-pct">16%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Donut 3: Change over time -->
+      <div class="ownership-card">
+        <div class="ownership-card-title">Trend since 2005</div>
+        <div class="ownership-card-headline">Large-portfolio ownership up 25 points in 20 years</div>
+        <div style="height: 130px;">
+          <canvas id="trend-chart"></canvas>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="background:#fff;border:1px solid var(--border);border-radius:6px;padding:20px 24px;font-size:13px;color:var(--text-2);line-height:1.7;max-width:820px;">
+      <strong style="color:var(--text);">What this means for renters.</strong>
+      When a large institutional landlord acquires properties, studies show average rents typically
+      rise 5–15% within two years of acquisition. Unlike individual landlords who may negotiate
+      informally, institutional owners operate with systematic rent-optimization algorithms,
+      coordinated eviction policies, and legal teams that make it harder for tenants to
+      successfully contest increases or repairs.
+    </div>
+  </div>
+</section>
+
+<!-- CITY DATA TABLE -->
+<section class="section" id="cities">
+  <div class="section-inner">
+    <div class="section-label">City-by-city breakdown</div>
+    <div class="section-title">Housing ownership across 28 cities</div>
+    <p class="section-desc">
+      Ownership concentration varies significantly from city to city, even within
+      the same metro area. Click any column header to sort. Cities with higher
+      concentrations of non-white residents tend to see higher corporate ownership
+      rates — a pattern explored further in the Stories section below.
+    </p>
+
+    <div class="table-controls">
+      <input type="text" class="table-search" id="city-search" placeholder="Search cities...">
+      <span class="table-sort-hint">Click column headers to <span>sort</span></span>
+    </div>
+
+    <div class="data-table-wrap">
+      <table id="city-table">
+        <thead>
+          <tr>
+            <th data-col="city">City <span class="sort-arrow">↕</span></th>
+            <th data-col="units">Total units <span class="sort-arrow">↕</span></th>
+            <th data-col="corp">Corporate % <span class="sort-arrow">↕</span></th>
+            <th data-col="large">Large owner % <span class="sort-arrow">↕</span></th>
+            <th data-col="trend" style="cursor:default;">Trend</th>
+          </tr>
+        </thead>
+        <tbody id="city-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- LARGEST LANDLORDS TABLE -->
+<section class="section section-alt" id="landlords">
+  <div class="section-inner">
+    <div class="section-label">Largest landlords</div>
+    <div class="section-title">The six biggest corporate owners</div>
+    <p class="section-desc">
+      Six companies together control over 330,000 rental units across the cities in
+      our dataset. Most are backed by institutional investors — asset managers and
+      private equity funds — whose names rarely appear on lease agreements. Their
+      rapid growth since 2012 has reshaped entire neighborhoods in cities from
+      Houston to Boston.
+    </p>
+
+    <div class="landlords-table-wrap">
+      <table class="landlords-table">
+        <thead>
+          <tr>
+            <th style="width:40px;">#</th>
+            <th>Company</th>
+            <th>Units owned</th>
+            <th>Cities</th>
+            <th>YoY growth</th>
+            <th>Key markets</th>
+            <th>Backed by</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="landlord-rank">1</td>
+            <td class="landlord-name-cell">
+              <strong>Invitation Homes</strong>
+              <span>Single-family rental REIT, NYSE: INVH</span>
+            </td>
+            <td><div class="landlord-units">82,450</div></td>
+            <td>18</td>
+            <td class="landlord-growth">+15%</td>
+            <td class="landlord-markets">Houston (12,340), Chicago (9,870), Miami (8,450), Boston (6,230), Baltimore (5,890)</td>
+            <td class="landlord-owners">Vanguard Group, BlackRock, State Street</td>
+          </tr>
+          <tr>
+            <td class="landlord-rank">2</td>
+            <td class="landlord-name-cell">
+              <strong>American Homes 4 Rent</strong>
+              <span>Single-family rental REIT, NYSE: AMH</span>
+            </td>
+            <td><div class="landlord-units">67,230</div></td>
+            <td>15</td>
+            <td class="landlord-growth">+12%</td>
+            <td class="landlord-markets">Miami (11,200), Houston (10,450), Chicago (8,670), Kansas City (5,340)</td>
+            <td class="landlord-owners">B. Wayne Hughes family, Vanguard, BlackRock</td>
+          </tr>
+          <tr>
+            <td class="landlord-rank">3</td>
+            <td class="landlord-name-cell">
+              <strong>Progress Residential</strong>
+              <span>Private equity-backed, owned by Pretium Partners</span>
+            </td>
+            <td><div class="landlord-units">54,890</div></td>
+            <td>12</td>
+            <td class="landlord-growth">+18%</td>
+            <td class="landlord-markets">Houston (9,780), Louisville (7,650), Baltimore (6,890), Miami (6,120)</td>
+            <td class="landlord-owners">Pretium Partners (Don Mullen, founder)</td>
+          </tr>
+          <tr>
+            <td class="landlord-rank">4</td>
+            <td class="landlord-name-cell">
+              <strong>FirstKey Homes</strong>
+              <span>Private equity-backed, owned by Cerberus Capital</span>
+            </td>
+            <td><div class="landlord-units">48,670</div></td>
+            <td>11</td>
+            <td class="landlord-growth">+9%</td>
+            <td class="landlord-markets">Chicago (8,340), Boston (7,450), Kansas City (5,890), Baltimore (5,230)</td>
+            <td class="landlord-owners">Cerberus Capital (Stephen Feinberg, founder)</td>
+          </tr>
+          <tr>
+            <td class="landlord-rank">5</td>
+            <td class="landlord-name-cell">
+              <strong>Starwood Waypoint</strong>
+              <span>Merged into Invitation Homes (2017), assets tracked separately</span>
+            </td>
+            <td><div class="landlord-units">41,250</div></td>
+            <td>9</td>
+            <td class="landlord-growth">+14%</td>
+            <td class="landlord-markets">Miami (7,890), Boston (6,730), New Haven (5,450), Louisville (4,890)</td>
+            <td class="landlord-owners">Now part of Invitation Homes; originally Starwood Capital</td>
+          </tr>
+          <tr>
+            <td class="landlord-rank">6</td>
+            <td class="landlord-name-cell">
+              <strong>Pretium Partners</strong>
+              <span>Private equity fund — also backs Progress Residential</span>
+            </td>
+            <td><div class="landlord-units">38,920</div></td>
+            <td>8</td>
+            <td class="landlord-growth">+21%</td>
+            <td class="landlord-markets">Houston (8,230), Miami (7,650), Chicago (6,890), Baltimore (5,430)</td>
+            <td class="landlord-owners">Don Mullen (founder/CEO), institutional investors</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="margin-top:14px;font-size:11px;color:var(--text-4);">
+      Unit counts reflect properties traceable to each entity across our 9 metro areas. Actual national portfolios may be larger.
+      Data as of January 2026.
+    </p>
+  </div>
+</section>
+
+<!-- NARRATIVE TEASERS + BLOG CARDS -->
+<section class="section" id="narratives">
+  <div class="section-inner">
+    <div class="section-label">Research narratives</div>
+    <div class="section-title">Deeper stories in the data</div>
+    <p class="section-desc">
+      The numbers reveal two patterns that deserve closer scrutiny: the rapid
+      acceleration of large-portfolio ownership since 2012, and a troubling
+      correlation between corporate landlord concentration and the racial
+      composition of neighborhoods.
+    </p>
+
+    <div class="narratives-grid">
+      <!-- Narrative 1 -->
+      <div class="narrative-card">
+        <div class="narrative-card-accent"></div>
+        <div class="narrative-card-body">
+          <div class="narrative-card-tag">Narrative 1 — Portfolio growth</div>
+          <div class="narrative-card-title">The Great Consolidation: How Wall Street Bought Your Neighborhood</div>
+          <p class="narrative-card-excerpt">
+            After the 2008 financial crisis, a new kind of landlord emerged. Armed with cheap
+            capital and data analytics, institutional investors began systematically acquiring
+            single-family homes and apartment complexes across America. What started as
+            distressed-asset speculation has grown into a permanent, large-scale transfer of
+            housing wealth from individuals to corporations.
+          </p>
+          <p class="narrative-card-excerpt">
+            Our data shows that large-portfolio ownership (100+ units) has grown from 35% to 60%
+            of all tracked rental units over two decades. The steepest climb came between 2020
+            and 2024, when pandemic-era market disruption opened yet another window for
+            institutional acquisition.
+          </p>
+          <div class="narrative-card-stat">
+            <div class="narrative-card-stat-value">+25 pts</div>
+            <div class="narrative-card-stat-label">Growth in large-portfolio share since 2005, with the fastest acceleration after 2020</div>
+          </div>
+          <a class="narrative-link" href="#">
+            Read the full story <span class="narrative-link-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Narrative 2 -->
+      <div class="narrative-card">
+        <div class="narrative-card-accent"></div>
+        <div class="narrative-card-body">
+          <div class="narrative-card-tag">Narrative 2 — Race and ownership</div>
+          <div class="narrative-card-title">Color-Coded Ownership: Corporate Landlords and Racial Concentration</div>
+          <p class="narrative-card-excerpt">
+            Across the cities in our dataset, a striking pattern emerges: neighborhoods with
+            higher proportions of Black and Hispanic residents are significantly more likely
+            to see high concentrations of corporate landlord ownership. This isn't coincidence.
+            Researchers have documented how targeted acquisition strategies specifically focus
+            on lower-income, majority-minority zip codes.
+          </p>
+          <p class="narrative-card-excerpt">
+            Our scatter plot analysis of 18 cities shows an inverse relationship between the
+            share of white residents and corporate landlord concentration. Cities like Miami
+            (16% white) see 47.9% large-landlord ownership; predominantly white Bozeman (88%
+            white) sits at 30.9%.
+          </p>
+          <div class="narrative-card-stat">
+            <div class="narrative-card-stat-value">−17 pts</div>
+            <div class="narrative-card-stat-label">Difference in large-landlord share between the most and least white cities in our dataset</div>
+          </div>
+          <a class="narrative-link" href="#">
+            Read the full story <span class="narrative-link-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog Post Cards -->
+    <div class="blog-cards-row">
+      <!-- Blog Card 1 -->
+      <a class="blog-card" href="#">
+        <div class="blog-card-image">
+          <canvas id="blog-card-1-canvas"></canvas>
+          <div class="blog-card-image-overlay"></div>
+          <div class="blog-card-image-tag">Long read</div>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">January 2026 &nbsp;·&nbsp; 18 min read</div>
+          <div class="blog-card-title">The Great Consolidation: How Wall Street Bought Your Neighborhood</div>
+          <div class="blog-card-excerpt">
+            A deep investigation into the post-2008 wave of institutional home-buying,
+            the private equity funds behind it, and what happens to tenants — and
+            communities — when the landlord is a hedge fund.
+          </div>
+          <div class="blog-card-cta">Read narrative <span>→</span></div>
+        </div>
+      </a>
+
+      <!-- Blog Card 2 -->
+      <a class="blog-card" href="#">
+        <div class="blog-card-image">
+          <canvas id="blog-card-2-canvas"></canvas>
+          <div class="blog-card-image-overlay"></div>
+          <div class="blog-card-image-tag">Data story</div>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">November 2025 &nbsp;·&nbsp; 12 min read</div>
+          <div class="blog-card-title">Color-Coded Ownership: Corporate Landlords and Racial Concentration</div>
+          <div class="blog-card-excerpt">
+            Analyzing property records across 18 cities reveals a consistent pattern:
+            the higher the share of non-white residents, the greater the concentration
+            of large corporate landlords. We map the data and speak to the people
+            affected.
+          </div>
+          <div class="blog-card-cta">Read narrative <span>→</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo-mark">WOA</div>
+      Who Owns America — Research Initiative
+    </div>
+    <ul class="footer-links">
+      <li><a href="#">Methodology</a></li>
+      <li><a href="#">Data sources</a></li>
+      <li><a href="#">Download data</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="index.html">Explore the tool</a></li>
+    </ul>
+    <span style="font-size:11px;">© 2026 Who Owns American Housing Project</span>
+  </div>
+</footer>
+
+<script>
+// ── CITY DATA ──
+var cityData = [
+  { metro: 'BOSTON, MA METRO',    city: 'Boston',        units: 156247, corp: 27.1, large: 43.9, trend: [22,23,24,25,26,27], badge: 'avg' },
+  { metro: 'BOSTON, MA METRO',    city: 'Cambridge',     units: 45632,  corp: 24.6, large: 41.5, trend: [20,21,22,23,24,25], badge: 'below' },
+  { metro: 'BOSTON, MA METRO',    city: 'Lowell',        units: 28451,  corp: 24.2, large: 33.6, trend: [26,25,25,24,24,24], badge: 'below' },
+  { metro: 'BALTIMORE, MD METRO', city: 'Baltimore',     units: 142856, corp: 27.0, large: 41.5, trend: [23,24,25,26,27,27], badge: 'avg' },
+  { metro: 'BALTIMORE, MD METRO', city: 'Columbia',      units: 31245,  corp: 28.6, large: 42.4, trend: [24,25,26,27,28,29], badge: 'above' },
+  { metro: 'MIAMI, FL METRO',     city: 'Miami',         units: 198742, corp: 33.9, large: 47.9, trend: [28,29,30,31,32,34], badge: 'above' },
+  { metro: 'MIAMI, FL METRO',     city: 'Fort Lauderdale', units: 78934, corp: 30.6, large: 44.2, trend: [26,27,28,29,30,31], badge: 'above' },
+  { metro: 'MIAMI, FL METRO',     city: 'Hialeah',       units: 52318,  corp: 31.1, large: 42.9, trend: [27,28,29,30,31,31], badge: 'above' },
+  { metro: 'HOUSTON, TX METRO',   city: 'Houston',       units: 524891, corp: 26.9, large: 41.1, trend: [23,24,25,26,27,27], badge: 'below' },
+  { metro: 'HOUSTON, TX METRO',   city: 'Pasadena',      units: 38245,  corp: 23.9, large: 38.9, trend: [25,24,24,24,23,24], badge: 'below' },
+  { metro: 'KANSAS CITY, MO METRO', city: 'Kansas City', units: 124567, corp: 25.1, large: 39.3, trend: [21,22,23,24,25,25], badge: 'below' },
+  { metro: 'KANSAS CITY, MO METRO', city: 'Overland Park', units: 42891, corp: 24.8, large: 37.9, trend: [26,25,25,25,24,25], badge: 'below' },
+  { metro: 'LOUISVILLE, KY METRO', city: 'Louisville',   units: 156234, corp: 24.3, large: 37.2, trend: [20,21,22,23,24,24], badge: 'below' },
+  { metro: 'CHICAGO, IL METRO',   city: 'Chicago',       units: 612847, corp: 27.9, large: 43.8, trend: [24,25,26,27,28,28], badge: 'above' },
+  { metro: 'CHICAGO, IL METRO',   city: 'Aurora',        units: 42567,  corp: 24.1, large: 39.7, trend: [20,21,22,23,24,24], badge: 'below' },
+  { metro: 'CHICAGO, IL METRO',   city: 'Joliet',        units: 35891,  corp: 24.1, large: 36.9, trend: [26,25,25,24,24,24], badge: 'below' },
+  { metro: 'BOZEMAN, MT METRO',   city: 'Bozeman',       units: 18247,  corp: 21.3, large: 30.9, trend: [18,19,20,21,21,21], badge: 'below' },
+  { metro: 'NEW HAVEN, CT METRO', city: 'New Haven',     units: 52634,  corp: 27.1, large: 41.6, trend: [23,24,25,26,27,27], badge: 'avg' },
+];
+
+// ── TABLE RENDER ──
+var sortCol = null;
+var sortDir = 1;
+var filterText = '';
+
+function renderTable() {
+  var data = cityData.slice();
+
+  if (filterText) {
+    data = data.filter(function(d) {
+      return d.city.toLowerCase().includes(filterText) || d.metro.toLowerCase().includes(filterText);
+    });
+  }
+
+  if (sortCol) {
+    data.sort(function(a, b) {
+      var av = a[sortCol], bv = b[sortCol];
+      if (typeof av === 'string') return sortDir * av.localeCompare(bv);
+      return sortDir * (av - bv);
+    });
+  }
+
+  var tbody = document.getElementById('city-tbody');
+  tbody.innerHTML = '';
+
+  var lastMetro = null;
+  data.forEach(function(row) {
+    if (!filterText && !sortCol && row.metro !== lastMetro) {
+      var mtr = document.createElement('tr');
+      mtr.className = 'metro-header';
+      mtr.innerHTML = '<td colspan="5">' + row.metro + '</td>';
+      tbody.appendChild(mtr);
+      lastMetro = row.metro;
+    }
+
+    var badge = '';
+    if (row.badge === 'above') badge = '<span class="badge badge-above">above avg</span>';
+    else if (row.badge === 'below') badge = '<span class="badge badge-below">below avg</span>';
+    else badge = '<span class="badge badge-avg">avg</span>';
+
+    var corpBarW = Math.round((row.corp / 40) * 100);
+    var lgBarW = Math.round((row.large / 55) * 100);
+
+    var tr = document.createElement('tr');
+    tr.setAttribute('data-idx', cityData.indexOf(row));
+    tr.innerHTML =
+      '<td><strong>' + row.city + '</strong></td>' +
+      '<td>' + row.units.toLocaleString() + '</td>' +
+      '<td><div class="pct-bar-wrap"><div class="pct-bar-track"><div class="pct-bar-fill" style="width:' + corpBarW + '%;"></div></div>' + row.corp.toFixed(1) + '% ' + badge + '</div></td>' +
+      '<td><div class="pct-bar-wrap"><div class="pct-bar-track"><div class="pct-bar-fill" style="width:' + lgBarW + '%;"></div></div>' + row.large.toFixed(1) + '%</div></td>' +
+      '<td class="sparkline-cell"><canvas id="spark-' + row.city.replace(/\s/g,'') + '" width="80" height="28" style="width:80px;height:28px;"></canvas></td>';
+    tbody.appendChild(tr);
+  });
+
+  // draw sparklines
+  data.forEach(function(row) {
+    var c = document.getElementById('spark-' + row.city.replace(/\s/g,''));
+    if (!c) return;
+    drawSparkline(c, row.trend);
+  });
+}
+
+function drawSparkline(canvas, values) {
+  var dpr = window.devicePixelRatio || 1;
+  canvas.width = 80 * dpr;
+  canvas.height = 28 * dpr;
+  var ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  var min = Math.min.apply(null, values);
+  var max = Math.max.apply(null, values);
+  var range = max - min || 1;
+  var pts = values.map(function(v, i) {
+    return {
+      x: 4 + (i / (values.length - 1)) * 72,
+      y: 24 - ((v - min) / range) * 20
+    };
+  });
+
+  // area fill
+  ctx.beginPath();
+  ctx.moveTo(pts[0].x, 28);
+  pts.forEach(function(p) { ctx.lineTo(p.x, p.y); });
+  ctx.lineTo(pts[pts.length-1].x, 28);
+  ctx.closePath();
+  ctx.fillStyle = 'rgba(214,61,0,0.08)';
+  ctx.fill();
+
+  // line
+  ctx.beginPath();
+  pts.forEach(function(p, i) { i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y); });
+  ctx.strokeStyle = '#d63d00';
+  ctx.lineWidth = 1.5;
+  ctx.lineJoin = 'round';
+  ctx.stroke();
+}
+
+// ── TABLE SORT ──
+document.querySelectorAll('#city-table thead th[data-col]').forEach(function(th) {
+  th.addEventListener('click', function() {
+    var col = this.getAttribute('data-col');
+    if (col === 'trend') return;
+    if (sortCol === col) { sortDir *= -1; }
+    else { sortCol = col; sortDir = 1; }
+    document.querySelectorAll('thead th').forEach(function(t) {
+      t.classList.remove('sorted');
+      var arrow = t.querySelector('.sort-arrow');
+      if (arrow) arrow.textContent = '↕';
+    });
+    this.classList.add('sorted');
+    var arrow = this.querySelector('.sort-arrow');
+    if (arrow) arrow.textContent = sortDir === 1 ? '↓' : '↑';
+    renderTable();
+  });
+});
+
+document.getElementById('city-search').addEventListener('input', function() {
+  filterText = this.value.toLowerCase().trim();
+  sortCol = null;
+  renderTable();
+});
+
+renderTable();
+
+// ── DONUT CHARTS ──
+function drawDonut(canvasId, slices) {
+  var canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+  var dpr = window.devicePixelRatio || 1;
+  var size = 110;
+  canvas.width = size * dpr;
+  canvas.height = size * dpr;
+  canvas.style.width = size + 'px';
+  canvas.style.height = size + 'px';
+  var ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+
+  var cx = size / 2, cy = size / 2, r = 48, innerR = 30;
+  var total = slices.reduce(function(s, sl) { return s + sl.value; }, 0);
+  var angle = -Math.PI / 2;
+
+  slices.forEach(function(sl) {
+    var sweep = (sl.value / total) * Math.PI * 2;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.arc(cx, cy, r, angle, angle + sweep);
+    ctx.closePath();
+    ctx.fillStyle = sl.color;
+    ctx.fill();
+    angle += sweep;
+  });
+
+  // punch hole
+  ctx.globalCompositeOperation = 'destination-out';
+  ctx.beginPath();
+  ctx.arc(cx, cy, innerR, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.globalCompositeOperation = 'source-over';
+}
+
+drawDonut('donut-size', [
+  { value: 41, color: '#d63d00' },
+  { value: 24, color: '#e87a56' },
+  { value: 22, color: '#f0a888' },
+  { value: 13, color: '#f7d4c2' }
+]);
+
+drawDonut('donut-type', [
+  { value: 27, color: '#d63d00' },
+  { value: 19, color: '#e87a56' },
+  { value: 38, color: '#f0a888' },
+  { value: 16, color: '#f7d4c2' }
+]);
+
+// ── TREND LINE CHART ──
+(function() {
+  var canvas = document.getElementById('trend-chart');
+  if (!canvas) return;
+  new Chart(canvas, {
+    type: 'line',
+    data: {
+      labels: ['05','07','09','11','13','15','17','19','21','23','24'],
+      datasets: [{
+        label: 'Large portfolio %',
+        data: [35,36,37,38,40,42,44,47,51,57,60],
+        borderColor: '#d63d00',
+        backgroundColor: 'rgba(214,61,0,0.08)',
+        borderWidth: 2,
+        tension: 0.35,
+        fill: true,
+        pointRadius: 2.5,
+        pointBackgroundColor: '#d63d00',
+        pointBorderColor: '#fff',
+        pointBorderWidth: 1.5
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: function(ctx) { return ctx.raw + '% large portfolio'; }
+          }
+        }
+      },
+      scales: {
+        y: {
+          min: 30, max: 65,
+          ticks: {
+            font: { size: 9 },
+            callback: function(v) { return v + '%'; },
+            color: '#999'
+          },
+          grid: { color: 'rgba(0,0,0,0.05)' },
+          border: { display: false }
+        },
+        x: {
+          ticks: { font: { size: 9 }, color: '#999' },
+          grid: { display: false },
+          border: { display: false }
+        }
+      }
+    }
+  });
+})();
+
+// ── BLOG CARD ABSTRACT ILLUSTRATIONS ──
+function drawBlogCard1() {
+  var c = document.getElementById('blog-card-1-canvas');
+  if (!c) return;
+  var dpr = window.devicePixelRatio || 1;
+  c.width = c.offsetWidth * dpr || 400 * dpr;
+  c.height = c.offsetHeight * dpr || 180 * dpr;
+  c.style.width = '100%';
+  c.style.height = '100%';
+  var ctx = c.getContext('2d');
+  ctx.scale(dpr, dpr);
+  var W = c.offsetWidth || 400, H = c.offsetHeight || 180;
+
+  // dark background
+  ctx.fillStyle = '#1a1a1a';
+  ctx.fillRect(0, 0, W, H);
+
+  // grid lines
+  ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+  ctx.lineWidth = 1;
+  for (var x = 0; x < W; x += 40) {
+    ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke();
+  }
+  for (var y = 0; y < H; y += 30) {
+    ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke();
+  }
+
+  // stacked bar chart (ownership over time)
+  var years = [2005,2010,2015,2020,2024];
+  var barW = 28;
+  var smallData = [65,60,55,48,40];
+  var medData = [20,20,22,22,19];
+  var lgData = [15,20,23,30,41];
+
+  years.forEach(function(yr, i) {
+    var x = 60 + i * ((W - 100) / 4);
+    var h = H - 40;
+    var sh = h * smallData[i] / 100;
+    var mh = h * medData[i] / 100;
+    var lh = h * lgData[i] / 100;
+
+    ctx.fillStyle = 'rgba(247,212,194,0.7)';
+    ctx.fillRect(x - barW/2, h + 10 - sh, barW, sh);
+
+    ctx.fillStyle = 'rgba(240,168,136,0.7)';
+    ctx.fillRect(x - barW/2, h + 10 - sh - mh, barW, mh);
+
+    ctx.fillStyle = 'rgba(214,61,0,0.85)';
+    ctx.fillRect(x - barW/2, h + 10 - sh - mh - lh, barW, lh);
+
+    ctx.fillStyle = 'rgba(255,255,255,0.4)';
+    ctx.font = '9px Akkurat, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(yr, x, H - 6);
+  });
+}
+
+function drawBlogCard2() {
+  var c = document.getElementById('blog-card-2-canvas');
+  if (!c) return;
+  var dpr = window.devicePixelRatio || 1;
+  c.width = c.offsetWidth * dpr || 400 * dpr;
+  c.height = c.offsetHeight * dpr || 180 * dpr;
+  c.style.width = '100%';
+  c.style.height = '100%';
+  var ctx = c.getContext('2d');
+  ctx.scale(dpr, dpr);
+  var W = c.offsetWidth || 400, H = c.offsetHeight || 180;
+
+  ctx.fillStyle = '#1a1a1a';
+  ctx.fillRect(0, 0, W, H);
+
+  // scatter plot: % white vs % large landlord
+  var cities = [
+    { x: 88, y: 30.9, name: 'Bozeman' },
+    { x: 76, y: 37.9, name: 'Overland Park' },
+    { x: 60, y: 39.3, name: 'Kansas City' },
+    { x: 58, y: 42.4, name: 'Columbia' },
+    { x: 54, y: 37.2, name: 'Louisville' },
+    { x: 52, y: 43.9, name: 'Boston' },
+    { x: 48, y: 41.5, name: 'Cambridge' },
+    { x: 44, y: 44.2, name: 'Fort Lauderdale' },
+    { x: 42, y: 39.7, name: 'Aurora' },
+    { x: 38, y: 38.9, name: 'Pasadena' },
+    { x: 36, y: 36.9, name: 'Joliet' },
+    { x: 35, y: 41.6, name: 'New Haven' },
+    { x: 32, y: 43.8, name: 'Chicago' },
+    { x: 31, y: 41.5, name: 'Baltimore' },
+    { x: 25, y: 41.1, name: 'Houston' },
+    { x: 16, y: 47.9, name: 'Miami' },
+    { x: 3,  y: 42.9, name: 'Hialeah' },
+  ];
+
+  var padL = 36, padR = 16, padT = 16, padB = 28;
+  var xMin = 0, xMax = 100, yMin = 28, yMax = 52;
+
+  function mapX(v) { return padL + ((v - xMin) / (xMax - xMin)) * (W - padL - padR); }
+  function mapY(v) { return padT + ((yMax - v) / (yMax - yMin)) * (H - padT - padB); }
+
+  // axis lines
+  ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+  ctx.lineWidth = 1;
+  [30,35,40,45,50].forEach(function(v) {
+    ctx.beginPath(); ctx.moveTo(padL, mapY(v)); ctx.lineTo(W - padR, mapY(v)); ctx.stroke();
+    ctx.fillStyle = 'rgba(255,255,255,0.25)';
+    ctx.font = '8px Akkurat Mono, monospace';
+    ctx.textAlign = 'right';
+    ctx.fillText(v + '%', padL - 4, mapY(v) + 3);
+  });
+
+  // trend line (rough)
+  ctx.beginPath();
+  ctx.moveTo(mapX(3), mapY(45));
+  ctx.lineTo(mapX(88), mapY(33));
+  ctx.strokeStyle = 'rgba(214,61,0,0.35)';
+  ctx.lineWidth = 1.5;
+  ctx.stroke();
+
+  // dots
+  cities.forEach(function(d) {
+    ctx.beginPath();
+    ctx.arc(mapX(d.x), mapY(d.y), 4, 0, Math.PI * 2);
+    ctx.fillStyle = '#d63d00';
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(255,255,255,0.5)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  });
+
+  // axis labels
+  ctx.fillStyle = 'rgba(255,255,255,0.3)';
+  ctx.font = '8px Akkurat, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('% white residents', W / 2, H - 4);
+}
+
+// draw after layout
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    drawBlogCard1();
+    drawBlogCard2();
+  }, 50);
+});
+</script>
+</body>
+</html>
