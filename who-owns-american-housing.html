@@ -906,26 +906,61 @@
   }
 
   /* ── NARRATIVE TEASERS ── */
+
+  /* Editorial section header: big title left, explainer right */
+  .narratives-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: end;
+    margin-bottom: 56px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .narratives-heading {
+    font-size: clamp(44px, 5vw, 68px);
+    font-weight: 700;
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    margin: 0;
+  }
+
+  .narratives-desc {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-2);
+    max-width: 52ch;
+    align-self: end;
+    padding-bottom: 4px;
+  }
+
   .narratives-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    gap: 32px;
   }
 
   .narrative-card {
     background: #fff;
     border: 1px solid var(--border);
-    border-radius: 6px;
+    border-radius: 8px;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
 
   .narrative-card-accent {
-    height: 4px;
+    height: 3px;
     background: var(--accent);
   }
 
   .narrative-card-body {
-    padding: 24px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
   }
 
   .narrative-card-tag {
@@ -934,37 +969,38 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 10px;
+    margin-bottom: 14px;
   }
 
   .narrative-card-title {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 700;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
     color: var(--text);
-    line-height: 1.25;
-    margin-bottom: 12px;
+    line-height: 1.2;
+    margin-bottom: 18px;
   }
 
   .narrative-card-excerpt {
-    font-size: 14px;
+    font-size: 15px;
     color: var(--text-2);
-    line-height: 1.65;
-    margin-bottom: 20px;
+    line-height: 1.7;
+    margin-bottom: 16px;
   }
 
   .narrative-card-stat {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 16px;
     background: var(--bg-off);
-    border-radius: 4px;
-    padding: 12px 14px;
-    margin-bottom: 18px;
+    border-radius: 6px;
+    padding: 16px 18px;
+    margin: 8px 0 24px;
+    border-left: 3px solid var(--accent);
   }
 
   .narrative-card-stat-value {
-    font-size: 22px;
+    font-size: 28px;
     font-weight: 700;
     color: var(--accent);
     letter-spacing: -0.02em;
@@ -973,9 +1009,9 @@
   }
 
   .narrative-card-stat-label {
-    font-size: 14px;
+    font-size: 13px;
     color: var(--text-3);
-    line-height: 1.4;
+    line-height: 1.45;
   }
 
   .narrative-link {
@@ -1893,14 +1929,19 @@
 <!-- NARRATIVE TEASERS + BLOG CARDS -->
 <section class="section" id="narratives">
   <div class="section-inner">
-    <div class="section-label">Research narratives</div>
-    <div class="section-title">Deeper stories in the data</div>
-    <p class="section-desc">
-      The numbers reveal two patterns that deserve closer scrutiny: the rapid
-      acceleration of large-portfolio ownership since 2012, and a troubling
-      correlation between corporate landlord concentration and the racial
-      composition of neighborhoods.
-    </p>
+
+    <div class="narratives-header">
+      <div>
+        <div class="section-label" style="margin-bottom:20px;">Research narratives</div>
+        <h2 class="narratives-heading">Deeper stories<br>in the data</h2>
+      </div>
+      <p class="narratives-desc">
+        The numbers reveal two patterns that deserve closer scrutiny: the rapid
+        acceleration of large-portfolio ownership since 2012, and a troubling
+        correlation between corporate landlord concentration and the racial
+        composition of neighborhoods.
+      </p>
+    </div>
 
     <div class="narratives-grid">
       <!-- Narrative 1 -->
