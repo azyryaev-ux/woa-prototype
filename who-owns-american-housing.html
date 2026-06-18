@@ -1246,33 +1246,68 @@
 
   /* ── FOOTER ── */
   /* ── FOOTER ── */
+  /* (footer styles below) */
+
+  /* ── FOOTER CTA STRIP ── */
+  .footer-cta-strip {
+    background: var(--accent);
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .footer-cta-strip-text {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+  .footer-cta-strip-text span {
+    opacity: 0.7;
+    font-weight: 400;
+    font-size: 13px;
+    margin-left: 12px;
+  }
+  .footer-cta-btn {
+    background: #fff;
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: opacity 0.15s;
+    flex-shrink: 0;
+  }
+  .footer-cta-btn:hover { opacity: 0.88; }
+
+  /* ── FOOTER MAIN ── */
   .footer {
     background: var(--bg-dark);
     color: rgba(255,255,255,0.4);
-    padding: 0 32px;
     font-size: 12px;
-    border-top: 2px solid var(--accent);
+    border-top: none;
   }
-
   .footer-inner {
     max-width: 1210px;
     margin: 0 auto;
   }
-
-  /* Top row: logo + tagline */
   .footer-top {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
     gap: 48px;
-    padding: 52px 0 36px;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
+    padding: 52px 32px 44px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
   }
 
   .footer-brand {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
   }
 
   .footer-logo {
@@ -1296,22 +1331,67 @@
     color: #fff;
     text-transform: uppercase;
   }
-
   .footer-logo-text span { color: var(--accent); }
 
   .footer-tagline {
-    font-size: 13px;
-    color: rgba(255,255,255,0.4);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+  }
+
+  .footer-mission {
+    font-size: 15px;
+    color: rgba(255,255,255,0.78);
     line-height: 1.6;
-    max-width: 38ch;
+    max-width: 34ch;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    border-left: 2px solid var(--accent);
+    padding-left: 14px;
+  }
+
+  /* Middle: coverage stats */
+  .footer-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .footer-stats-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+    margin-bottom: 4px;
+  }
+  .footer-stat-row {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    border-left: 1px solid rgba(255,255,255,0.1);
+    padding-left: 14px;
+  }
+  .footer-stat-val {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .footer-stat-desc {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.4;
   }
 
   /* Right: nav group */
   .footer-nav-group {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    align-items: flex-end;
+    gap: 10px;
+    align-items: flex-start;
   }
 
   .footer-nav-label {
@@ -1320,11 +1400,13 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: rgba(255,255,255,0.25);
+    margin-bottom: 4px;
   }
 
   .footer-links {
     display: flex;
-    gap: 24px;
+    flex-direction: column;
+    gap: 10px;
     list-style: none;
   }
 
@@ -1336,33 +1418,23 @@
   }
   .footer-links a:hover { color: rgba(255,255,255,0.9); }
 
-  /* Bottom row: copyright */
+  /* Bottom bar */
   .footer-bottom {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 0 28px;
+    padding: 18px 32px;
     font-size: 11px;
     color: rgba(255,255,255,0.22);
+    background: rgba(0,0,0,0.25);
   }
 
   .footer-bottom a {
     color: rgba(255,255,255,0.35);
     text-decoration: none;
+    transition: color 0.15s;
   }
   .footer-bottom a:hover { color: rgba(255,255,255,0.7); }
-
-  .footer-mission {
-    font-size: 15.5px;
-    color: rgba(255,255,255,0.75);
-    line-height: 1.6;
-    max-width: 38ch;
-    margin-top: 10px;
-    font-weight: 500;
-    letter-spacing: -0.01em;
-    border-left: 2px solid var(--accent);
-    padding-left: 14px;
-  }
 
   /* ── CITY CIRCLES ON MAP ── */
   .city-dot {
@@ -2118,9 +2190,19 @@
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="footer-inner">
 
+  <!-- CTA strip -->
+  <div class="footer-cta-strip">
+    <div class="footer-cta-strip-text">
+      Explore the data tool
+      <span>Search and filter ownership across 9 cities</span>
+    </div>
+    <a href="index.html" class="footer-cta-btn">Open the tool →</a>
+  </div>
+
+  <div class="footer-inner">
     <div class="footer-top">
+
       <!-- Left: brand + mission -->
       <div class="footer-brand">
         <div class="footer-logo">
@@ -2131,6 +2213,23 @@
         <p class="footer-mission">
           Tracking corporate ownership of American housing — making property data accessible to the renters most affected.
         </p>
+      </div>
+
+      <!-- Middle: coverage stats -->
+      <div class="footer-stats">
+        <div class="footer-stats-label">Data coverage</div>
+        <div class="footer-stat-row">
+          <div class="footer-stat-val">2.1M</div>
+          <div class="footer-stat-desc">Rental units tracked</div>
+        </div>
+        <div class="footer-stat-row">
+          <div class="footer-stat-val">9</div>
+          <div class="footer-stat-desc">Metro areas</div>
+        </div>
+        <div class="footer-stat-row">
+          <div class="footer-stat-val">41%</div>
+          <div class="footer-stat-desc">Units held by large-portfolio landlords</div>
+        </div>
       </div>
 
       <!-- Right: nav -->
@@ -2144,6 +2243,7 @@
           <li><a href="index.html">Explore the tool</a></li>
         </ul>
       </div>
+
     </div>
 
     <div class="footer-bottom">
