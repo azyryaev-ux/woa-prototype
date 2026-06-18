@@ -213,12 +213,12 @@
   .hero-photo-content {
     position: absolute;
     bottom: 0;
-    left: 50%;
+    left: calc(50% - 80px);
     transform: translateX(-50%);
     width: 100%;
     z-index: 2;
     max-width: 1210px;
-    padding: 0 48px 120px;
+    padding: 0 48px 140px;
     box-sizing: border-box;
   }
 
@@ -2573,6 +2573,25 @@ window.addEventListener('load', function() {
     drawBlogCard2();
   }, 50);
 });
+
+// ── HERO PARALLAX ──
+(function() {
+  var heroPhoto   = document.querySelector('.hero-photo');
+  var heroContent = document.querySelector('.hero-photo-content');
+  if (!heroPhoto) return;
+
+  function onScroll() {
+    var y = window.pageYOffset;
+    // Background drifts downward at 30% of scroll speed (slow pan)
+    heroPhoto.style.backgroundPositionY = 'calc(50% + ' + (y * 0.3) + 'px)';
+    // Text drifts up very slightly (5%) — creates depth between text and bg
+    if (heroContent) {
+      heroContent.style.transform = 'translateX(-50%) translateY(' + (-y * 0.05) + 'px)';
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
 </script>
 
 <!-- Menu Dropdown -->
