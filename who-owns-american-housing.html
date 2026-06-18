@@ -388,9 +388,10 @@
   .stats-strip {
     background: var(--accent);
     padding: 0 32px;
-    position: relative;
+    position: sticky;
+    top: 0;
     z-index: 3;
-    border-radius: 20px 20px 0 0;
+    border-radius: 0;
     margin-top: -30px;
     box-shadow: 0 -20px 60px rgba(0,0,0,0.35);
   }
@@ -403,7 +404,7 @@
   }
 
   .stat-pill {
-    padding: 36px 32px 40px 32px;
+    padding: 72px 32px 80px 32px;
     border-right: 1px solid rgba(255,255,255,0.2);
   }
   .stat-pill:first-child { padding-left: 0; }
@@ -2040,54 +2041,6 @@
         correlation between corporate landlord concentration and the racial
         composition of neighborhoods.
       </p>
-    </div>
-
-    <div class="narratives-grid">
-      <!-- Narrative 1 -->
-      <div class="narrative-card">
-        <div class="narrative-card-accent"></div>
-        <div class="narrative-card-body">
-          <div class="narrative-card-tag">Narrative 1 - Portfolio growth</div>
-          <div class="narrative-card-title">The Great Consolidation: How Wall Street Bought Your Neighborhood</div>
-          <p class="narrative-card-excerpt">
-            After the 2008 financial crisis, a new kind of landlord emerged. Armed with cheap
-            capital and data analytics, institutional investors began systematically acquiring
-            single-family homes and apartment complexes across America. What started as
-            distressed-asset speculation has grown into a permanent, large-scale transfer of
-            housing wealth from individuals to corporations.
-          </p>
-          <div class="narrative-card-stat">
-            <div class="narrative-card-stat-value">+25 pts</div>
-            <div class="narrative-card-stat-label">Growth in large-portfolio share since 2005, with the fastest acceleration after 2020</div>
-          </div>
-          <a class="narrative-link" href="#">
-            Read the full story <span class="narrative-link-arrow">→</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Narrative 2 -->
-      <div class="narrative-card">
-        <div class="narrative-card-accent"></div>
-        <div class="narrative-card-body">
-          <div class="narrative-card-tag">Narrative 2 - Race and ownership</div>
-          <div class="narrative-card-title">Color-Coded Ownership: Corporate Landlords and Racial Concentration</div>
-          <p class="narrative-card-excerpt">
-            Across the cities in our dataset, a striking pattern emerges: neighborhoods with
-            higher proportions of Black and Hispanic residents are significantly more likely
-            to see high concentrations of corporate landlord ownership. This isn't coincidence.
-            Researchers have documented how targeted acquisition strategies specifically focus
-            on lower-income, majority-minority zip codes.
-          </p>
-          <div class="narrative-card-stat">
-            <div class="narrative-card-stat-value">−17 pts</div>
-            <div class="narrative-card-stat-label">Difference in large-landlord share between the most and least white cities in our dataset</div>
-          </div>
-          <a class="narrative-link" href="#">
-            Read the full story <span class="narrative-link-arrow">→</span>
-          </a>
-        </div>
-      </div>
     </div>
 
     <!-- Blog Post Cards -->
