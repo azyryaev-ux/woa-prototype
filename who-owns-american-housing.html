@@ -1174,12 +1174,44 @@
   }
 
   .blog-card-body {
-    padding: 24px 26px 26px;
+    padding: 0;
     display: flex;
     flex-direction: column;
     flex: 1;
     position: relative;
     z-index: 1;
+    overflow: hidden;
+  }
+
+  .blog-card-body-inner {
+    padding: 24px 26px 26px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    transform: translateY(0);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .blog-card:hover .blog-card-body-inner {
+    transform: translateY(-14px);
+  }
+
+  .blog-card-reveal {
+    padding: 0 26px 20px;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.35s ease 0.05s, transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.05s;
+    font-size: 11px;
+    font-family: 'Akkurat Mono', monospace;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.04em;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 14px;
+    margin: 0 26px 20px;
+    flex-shrink: 0;
+  }
+  .blog-card:hover .blog-card-reveal {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .blog-card-meta {
@@ -1225,9 +1257,7 @@
     position: relative; z-index: 1;
     transition: gap 0.2s;
   }
-  .blog-card:hover .blog-card-cta {
-    gap: 12px;
-  }
+
 
   /* ── FOOTER ── */
   /* ── FOOTER ── */
@@ -2137,14 +2167,17 @@
           <div class="blog-card-image-tag">Long read</div>
         </div>
         <div class="blog-card-body">
-          <div class="blog-card-meta">January 2026 &nbsp;·&nbsp; 18 min read</div>
-          <div class="blog-card-title">The Great Consolidation: How Wall Street Bought Your Neighborhood</div>
-          <div class="blog-card-excerpt">
-            A deep investigation into the post-2008 wave of institutional home-buying,
-            the private equity funds behind it, and what happens to tenants - and
-            communities - when the landlord is a hedge fund.
+          <div class="blog-card-body-inner">
+            <div class="blog-card-meta">January 2026 &nbsp;·&nbsp; 18 min read</div>
+            <div class="blog-card-title">The Great Consolidation: How Wall Street Bought Your Neighborhood</div>
+            <div class="blog-card-excerpt">
+              A deep investigation into the post-2008 wave of institutional home-buying,
+              the private equity funds behind it, and what happens to tenants - and
+              communities - when the landlord is a hedge fund.
+            </div>
+            <div class="blog-card-cta">Read narrative <span>→</span></div>
           </div>
-          <div class="blog-card-cta">Read narrative <span>→</span></div>
+          <div class="blog-card-reveal">Post-2008 &nbsp;·&nbsp; Private equity &nbsp;·&nbsp; 9 metro areas</div>
         </div>
       </a>
 
@@ -2156,15 +2189,18 @@
           <div class="blog-card-image-tag">Data story</div>
         </div>
         <div class="blog-card-body">
-          <div class="blog-card-meta">November 2025 &nbsp;·&nbsp; 12 min read</div>
-          <div class="blog-card-title">Color-Coded Ownership: Corporate Landlords and Racial Concentration</div>
-          <div class="blog-card-excerpt">
-            Analyzing property records across 18 cities reveals a consistent pattern:
-            the higher the share of non-white residents, the greater the concentration
-            of large corporate landlords. We map the data and speak to the people
-            affected.
+          <div class="blog-card-body-inner">
+            <div class="blog-card-meta">November 2025 &nbsp;·&nbsp; 12 min read</div>
+            <div class="blog-card-title">Color-Coded Ownership: Corporate Landlords and Racial Concentration</div>
+            <div class="blog-card-excerpt">
+              Analyzing property records across 18 cities reveals a consistent pattern:
+              the higher the share of non-white residents, the greater the concentration
+              of large corporate landlords. We map the data and speak to the people
+              affected.
+            </div>
+            <div class="blog-card-cta">Read narrative <span>→</span></div>
           </div>
-          <div class="blog-card-cta">Read narrative <span>→</span></div>
+          <div class="blog-card-reveal">Race + ownership &nbsp;·&nbsp; 18 cities &nbsp;·&nbsp; Property records</div>
         </div>
       </a>
     </div>
