@@ -224,11 +224,20 @@
 
   .hero-eyebrow {
     font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--accent);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    font-family: 'Akkurat Mono', monospace;
+    color: rgba(255,255,255,0.45);
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .hero-eyebrow-divider {
+    width: 1px;
+    height: 10px;
+    background: rgba(255,255,255,0.2);
+    display: inline-block;
   }
 
   .hero-photo-content h1 {
@@ -1680,7 +1689,13 @@
   <!-- Panel 1: full-viewport photo with huge headline -->
   <section class="hero-photo">
     <div class="hero-photo-content">
-      <div class="hero-eyebrow">National Housing Report - 2026</div>
+      <div class="hero-eyebrow">
+        <span>Updated January 2026</span>
+        <span class="hero-eyebrow-divider"></span>
+        <span>2.3M+ records analyzed</span>
+        <span class="hero-eyebrow-divider"></span>
+        <span>9 cities</span>
+      </div>
       <h1>Who Owns American Housing?</h1>
       <div class="hero-scroll-hint">
         <span class="hero-scroll-hint-line"></span>
