@@ -1114,19 +1114,8 @@
     border-radius: 10px;
     overflow: hidden;
     text-decoration: none;
-    transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
-  }
-  /* Bottom accent bar that reveals on hover */
-  .blog-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--accent);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease;
   }
   .blog-card::before {
     content: '';
@@ -1138,12 +1127,8 @@
     z-index: 0;
   }
   .blog-card:hover {
-    border-color: rgba(214,61,0,0.5);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(214,61,0,0.15);
-    transform: translateY(-5px);
-  }
-  .blog-card:hover::after {
-    transform: scaleX(1);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.5);
   }
 
   .blog-card-image {
