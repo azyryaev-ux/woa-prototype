@@ -512,7 +512,6 @@
   .map-fact-card {
     background: #fff;
     border: 1px solid var(--border);
-    border-top: 3px solid var(--accent);
     border-radius: 6px;
     padding: 20px 20px 22px;
   }
@@ -542,9 +541,8 @@
   }
 
   .map-methodology-note {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-top: 3px solid var(--accent);
+    background: rgba(214,61,0,0.06);
+    border: 1px solid rgba(214,61,0,0.18);
     border-radius: 6px;
     padding: 20px 20px 22px;
     font-size: 13px;
@@ -600,19 +598,27 @@
     color: var(--accent);
     margin-bottom: 20px;
   }
+  .renter-impact-stat-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 24px;
+  }
   .renter-impact-stat {
     font-size: 72px;
     font-weight: 700;
     color: var(--accent);
     letter-spacing: -0.04em;
     line-height: 1;
-    margin-bottom: 10px;
+    flex-shrink: 0;
   }
   .renter-impact-stat-label {
-    font-size: 13px;
-    color: rgba(255,255,255,0.4);
-    margin-bottom: 24px;
-    font-weight: 500;
+    font-size: 14px;
+    color: var(--accent);
+    font-weight: 700;
+    padding-top: 8px;
+    line-height: 1.4;
+    max-width: 14ch;
   }
   .renter-impact-body {
     font-size: 17px;
@@ -1998,8 +2004,10 @@
       <div class="renter-impact-inner">
         <div>
           <div class="renter-impact-label">What this means for renters</div>
-          <div class="renter-impact-stat">5-15%</div>
-          <div class="renter-impact-stat-label">average rent increase after institutional acquisition</div>
+          <div class="renter-impact-stat-row">
+            <div class="renter-impact-stat">5-15%</div>
+            <div class="renter-impact-stat-label">average rent increase after institutional acquisition</div>
+          </div>
           <p class="renter-impact-body">Average rent increase within two years of a large institutional landlord acquiring a building. Unlike individual owners, corporate landlords use systematic rent-optimization algorithms, coordinated eviction policies, and legal teams that make it harder for tenants to push back.</p>
         </div>
         <a href="#" class="renter-impact-cta">Read the research &#8594;</a>
