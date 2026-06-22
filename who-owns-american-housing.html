@@ -1363,23 +1363,28 @@
   /* ── FOOTER CTA STRIP ── */
   .footer-cta-strip {
     background: var(--accent);
-    padding: 28px 32px;
+    padding: 24px 32px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 24px;
+  }
+  .footer-cta-strip-group {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
   }
   .footer-cta-strip-text {
     font-size: 15px;
     font-weight: 700;
     color: #fff;
     letter-spacing: -0.01em;
+    line-height: 1.2;
   }
-  .footer-cta-strip-text span {
-    opacity: 0.7;
+  .footer-cta-strip-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
     font-weight: 400;
-    font-size: 13px;
-    margin-left: 12px;
   }
   .footer-cta-btn {
     background: #fff;
@@ -2253,7 +2258,7 @@
 </section>
 
 <!-- NARRATIVE TEASERS + BLOG CARDS -->
-<section class="section" id="narratives" style="padding-bottom: 240px; position: relative; z-index: 6;">
+<section class="section" id="narratives" style="padding-bottom: 240px; position: sticky; top: 0; z-index: 6; background: #fff;">
   <div class="section-inner">
 
     <div class="narratives-header">
@@ -2324,9 +2329,9 @@
 
   <!-- CTA strip -->
   <div class="footer-cta-strip">
-    <div class="footer-cta-strip-text">
-      Explore the data tool
-      <span>Search and filter ownership across 9 cities</span>
+    <div class="footer-cta-strip-group">
+      <div class="footer-cta-strip-text">Explore the data tool</div>
+      <div class="footer-cta-strip-sub">Search and filter ownership across 9 cities</div>
     </div>
     <a href="index.html" class="footer-cta-btn">Open the tool →</a>
   </div>
