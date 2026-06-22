@@ -438,10 +438,6 @@
     margin-bottom: 40px;
     padding-bottom: 28px;
     border-bottom: 1px solid rgba(255,255,255,0.2);
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 32px;
   }
 
   .stats-strip-heading {
@@ -467,15 +463,11 @@
   }
 
   .stat-pill {
-    padding: 20px 32px 20px 32px;
+    padding: 0 32px;
     border-right: 1px solid rgba(255,255,255,0.2);
-    border-radius: 8px;
-    transition: background 0.2s ease;
-    cursor: default;
   }
-  .stat-pill:hover { background: rgba(0,0,0,0.08); }
-  .stat-pill:first-child { padding-left: 0; border-radius: 0 8px 8px 0; }
-  .stat-pill:last-child { border-right: none; border-radius: 8px 0 0 8px; }
+  .stat-pill:first-child { padding-left: 0; }
+  .stat-pill:last-child { border-right: none; }
 
   .stat-pill-label {
     font-size: 11px;
@@ -1833,7 +1825,6 @@
   <div class="stats-strip-inner">
     <div class="stats-strip-header">
       <h2 class="stats-strip-heading">What we're tracking</h2>
-      <span class="stats-strip-meta">Updated January 2026 &nbsp;·&nbsp; property records across 9 cities</span>
     </div>
     <div class="stats-strip-grid">
       <div class="stat-pill">
