@@ -285,7 +285,7 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1.6fr;
-    gap: 64px;
+    gap: 0;
     align-items: start;
   }
 
@@ -313,21 +313,43 @@
     letter-spacing: 0.05em;
   }
 
-  .hero-story-text { padding-top: 8px; }
+  .hero-story-text {
+    padding-top: 8px;
+    border-left: 1px solid rgba(255,255,255,0.08);
+    padding-left: 64px;
+  }
 
   .hero-story-label {
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.5);
     margin-bottom: 24px;
+    border-left: 2px solid var(--accent);
+    padding-left: 12px;
   }
 
   .hero-lead {
     font-size: 16px;
     line-height: 1.75;
     color: rgba(255,255,255,0.72);
+    margin-bottom: 24px;
+    max-width: 60ch;
+  }
+
+  .hero-lead-primary {
+    font-size: 19px;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.88);
+    margin-bottom: 20px;
+    max-width: 56ch;
+  }
+
+  .hero-lead-secondary {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.5);
     margin-bottom: 24px;
     max-width: 60ch;
   }
@@ -368,19 +390,19 @@
 
   .hero-stat-callout {
     display: flex;
-    align-items: flex-start;
-    gap: 16px;
+    align-items: center;
+    gap: 24px;
     margin: 32px 0 0;
-    padding: 20px 24px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.07);
+    padding: 28px 32px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.09);
     border-radius: 6px;
-    max-width: 380px;
+    width: 100%;
   }
   .hero-stat-number {
-    font-size: 52px;
+    font-size: 80px;
     font-weight: 700;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.04em;
     line-height: 1;
     flex-shrink: 0;
     color: #ffffff;
@@ -1725,14 +1747,14 @@
       <!-- Right: editorial text -->
       <div class="hero-story-text">
         <div class="hero-story-label">About this report</div>
-        <p class="hero-lead">
+        <p class="hero-lead-primary">
           In a matter of years, the ownership of American rental housing has shifted
           dramatically. A small number of corporations and institutional investors now
           control hundreds of thousands of homes across the country, reshaping
           communities, driving rents, and making it harder than ever for ordinary
           Americans to find affordable places to live.
         </p>
-        <p class="hero-lead">
+        <p class="hero-lead-secondary">
           This report draws on property records, corporate filings, and LLC network
           analysis across 9 cities to trace who really owns the roof over your head.
         </p>
