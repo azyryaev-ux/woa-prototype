@@ -1192,8 +1192,6 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
     margin-top: 48px;
-    padding-top: 48px;
-    border-top: 1px solid var(--border);
   }
 
   .blog-card {
@@ -2783,6 +2781,36 @@ window.addEventListener('load', function() {
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
+})();
+
+// ── SUBNAV SCROLL TRACKING ──
+(function() {
+  var sections = ['overview', 'ownership', 'cities', 'landlords', 'narratives'];
+  var links = document.querySelectorAll('.page-subnav-link');
+  var navHeight = 60 + 48; // top-nav + subnav height approx
+
+  function getActiveSection() {
+    var scrollY = window.scrollY + navHeight + 40;
+    var active = sections[0];
+    for (var i = 0; i < sections.length; i++) {
+      var el = document.getElementById(sections[i]);
+      if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) {
+        active = sections[i];
+      }
+    }
+    return active;
+  }
+
+  function updateNav() {
+    var active = getActiveSection();
+    links.forEach(function(link) {
+      var href = link.getAttribute('href').replace('#', '');
+      link.classList.toggle('active', href === active);
+    });
+  }
+
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
 })();
 </script>
 
