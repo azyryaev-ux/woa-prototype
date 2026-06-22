@@ -645,7 +645,7 @@
     position: relative;
     display: grid;
     grid-template-columns: 1fr 38%;
-    min-height: 252px;
+    min-height: 300px;
   }
   /* dot-grid texture */
   .renter-impact-band::before {
@@ -657,13 +657,24 @@
     pointer-events: none;
     z-index: 0;
   }
+  /* vertical divider between columns */
+  .renter-impact-band::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 62%;
+    width: 1px;
+    background: rgba(255,255,255,0.08);
+    z-index: 2;
+    pointer-events: none;
+  }
   .renter-impact-inner {
     position: relative;
     z-index: 1;
-    padding: 36px 44px;
+    padding: 48px 44px 44px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 24px;
   }
   .renter-impact-label {
     font-size: 11px;
@@ -671,13 +682,13 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 20px;
+    border-left: 2px solid var(--accent);
+    padding-left: 12px;
   }
-  .renter-impact-stat-row {
+  .renter-impact-stat-block {
     display: flex;
-    align-items: flex-start;
-    gap: 18px;
-    margin-bottom: 24px;
+    flex-direction: column;
+    gap: 6px;
   }
   .renter-impact-stat {
     font-size: 72px;
@@ -685,37 +696,41 @@
     color: var(--accent);
     letter-spacing: -0.04em;
     line-height: 1;
-    flex-shrink: 0;
   }
   .renter-impact-stat-label {
-    font-size: 14px;
-    color: var(--accent);
-    font-weight: 700;
-    padding-top: 8px;
-    line-height: 1.4;
-    max-width: 14ch;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    font-family: 'Akkurat Mono', monospace;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
   .renter-impact-body {
-    font-size: 17px;
+    font-size: 16px;
     line-height: 1.65;
     color: rgba(255,255,255,0.92);
     max-width: 52ch;
-    margin-bottom: 0;
   }
-  .renter-impact-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
+  .renter-impact-second-stat {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .renter-impact-second-stat-val {
+    font-size: 32px;
     font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
     color: var(--accent);
-    text-decoration: none;
-    transition: gap 0.15s;
+    letter-spacing: -0.03em;
+    line-height: 1;
   }
-  .renter-impact-cta:hover { gap: 12px; }
-  /* Right: photo with gradient bleed */
+  .renter-impact-second-stat-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.4;
+    max-width: 22ch;
+  }
+  /* Right: photo with gradient bleed on left edge */
   .renter-impact-photo {
     position: relative;
     overflow: hidden;
@@ -731,7 +746,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, #111 0%, transparent 40%);
+    background: linear-gradient(to right, #111 0%, rgba(17,17,17,0.3) 35%, transparent 65%);
     z-index: 1;
   }
 
@@ -2076,13 +2091,15 @@
 
     <div class="renter-impact-band">
       <div class="renter-impact-inner">
-        <div>
-          <div class="renter-impact-label">What this means for renters</div>
-          <div class="renter-impact-stat-row">
-            <div class="renter-impact-stat">5-15%</div>
-            <div class="renter-impact-stat-label">average rent increase after institutional acquisition</div>
-          </div>
-          <p class="renter-impact-body">Average rent increase within two years of a large institutional landlord acquiring a building. Unlike individual owners, corporate landlords use systematic rent-optimization algorithms, coordinated eviction policies, and legal teams that make it harder for tenants to push back.</p>
+        <div class="renter-impact-label">What this means for renters</div>
+        <div class="renter-impact-stat-block">
+          <div class="renter-impact-stat">5-15%</div>
+          <div class="renter-impact-stat-label">avg rent increase after institutional acquisition</div>
+        </div>
+        <p class="renter-impact-body">Average rent increase within two years of a large institutional landlord acquiring a building. Unlike individual owners, corporate landlords use systematic rent-optimization algorithms, coordinated eviction policies, and legal teams that make it harder for tenants to push back.</p>
+        <div class="renter-impact-second-stat">
+          <div class="renter-impact-second-stat-val">3.2×</div>
+          <div class="renter-impact-second-stat-desc">more eviction filings compared to individual-owner buildings</div>
         </div>
       </div>
       <div class="renter-impact-photo">
