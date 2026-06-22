@@ -1392,10 +1392,15 @@
 
   /* ── FOOTER MAIN ── */
   .footer {
+    position: relative;
+    z-index: 10;
     background: var(--bg-dark);
     color: rgba(255,255,255,0.4);
     font-size: 12px;
     border-top: none;
+    border-radius: 20px 20px 0 0;
+    margin-top: -40px;
+    box-shadow: 0 -24px 80px rgba(0,0,0,0.35);
   }
   .footer-inner {
     width: 100%;
@@ -2241,7 +2246,7 @@
 </section>
 
 <!-- NARRATIVE TEASERS + BLOG CARDS -->
-<section class="section" id="narratives">
+<section class="section" id="narratives" style="padding-bottom: 120px;">
   <div class="section-inner">
 
     <div class="narratives-header">
@@ -2345,8 +2350,8 @@
           <div class="footer-stat-desc">Metro areas</div>
         </div>
         <div class="footer-stat-row">
-          <div class="footer-stat-val">41%</div>
-          <div class="footer-stat-desc">Units held by large-portfolio landlords</div>
+          <div class="footer-stat-val">Annual</div>
+          <div class="footer-stat-desc">Update frequency</div>
         </div>
       </div>
 
